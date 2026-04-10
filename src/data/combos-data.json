@@ -1,0 +1,153 @@
+[
+  {
+    "category": "Celebration",
+    "icon": "🎉",
+    "combos": [
+      { "name": "Party Time", "combo": "🎉🥳🎊✨🎈" },
+      { "name": "Congratulations", "combo": "🎊🎉👏🥂✨" },
+      { "name": "Birthday", "combo": "🎂🎁🎈🎉🥳" },
+      { "name": "New Year", "combo": "🎆🎇✨🥂🎊" },
+      { "name": "Achievement", "combo": "🏆🥇🎯💪✨" },
+      { "name": "Graduation", "combo": "🎓📚🎉👏🌟" },
+      { "name": "Wedding", "combo": "💒💍🎊🥂👰" },
+      { "name": "Promotion", "combo": "📈🎉🥳💼✨" }
+    ]
+  },
+  {
+    "category": "Love",
+    "icon": "💕",
+    "combos": [
+      { "name": "In Love", "combo": "🥰💕💗✨😍" },
+      { "name": "Heart Eyes", "combo": "😍❤️‍🔥💘✨🫠" },
+      { "name": "Couple", "combo": "👫💑❤️💕🌹" },
+      { "name": "Missing You", "combo": "💔😢🥺💭💗" },
+      { "name": "Flirty", "combo": "😏😘💋✨😉" },
+      { "name": "Self Love", "combo": "💖🪞✨🫶🦋" },
+      { "name": "Valentine", "combo": "💝🌹💌❤️✨" },
+      { "name": "BFF", "combo": "👯‍♀️💕🫶✨💗" }
+    ]
+  },
+  {
+    "category": "Mood",
+    "icon": "😊",
+    "combos": [
+      { "name": "Happy", "combo": "😊💫✨🌈💕" },
+      { "name": "Sad", "combo": "😢💔🥺😞🌧" },
+      { "name": "Angry", "combo": "😤🔥💢👊😡" },
+      { "name": "Chill", "combo": "😎🏖️🍹🌴✨" },
+      { "name": "Excited", "combo": "🤩🎉⚡💫🔥" },
+      { "name": "Sleepy", "combo": "😴💤🌙🛏️☁️" },
+      { "name": "Confused", "combo": "🤔❓😵‍💫🧐💭" },
+      { "name": "Sassy", "combo": "💅💁‍♀️✨😏🔥" }
+    ]
+  },
+  {
+    "category": "Nature",
+    "icon": "🌿",
+    "combos": [
+      { "name": "Forest", "combo": "🌲🍃🌿🍄🦊" },
+      { "name": "Ocean", "combo": "🌊🐚🏖️🐠🦀" },
+      { "name": "Sunset", "combo": "🌅🧡💛☁️✨" },
+      { "name": "Spring", "combo": "🌸🌷🦋🌼☀️" },
+      { "name": "Rainy Day", "combo": "🌧️☂️🍵📖💤" },
+      { "name": "Garden", "combo": "🌻🌹🌺🪻🌷" },
+      { "name": "Night Sky", "combo": "🌙⭐✨🌌🔭" },
+      { "name": "Mountain", "combo": "🏔️⛰️🥾🌄🦅" }
+    ]
+  },
+  {
+    "category": "Food",
+    "icon": "🍕",
+    "combos": [
+      { "name": "Pizza Night", "combo": "🍕🍺🎬🛋️✨" },
+      { "name": "Brunch", "combo": "🥐☕🍳🧋🌤️" },
+      { "name": "Sushi", "combo": "🍣🥢🍱🍶🎎" },
+      { "name": "BBQ", "combo": "🥩🔥🌽🍺🏕️" },
+      { "name": "Dessert", "combo": "🍰🧁🍩🍫🍦" },
+      { "name": "Coffee", "combo": "☕📖🌿💭✨" },
+      { "name": "Healthy", "combo": "🥗🥑🍎🥦💪" },
+      { "name": "Date Night", "combo": "🍷🕯️🥘💕🌹" }
+    ]
+  },
+  {
+    "category": "Travel",
+    "icon": "✈️",
+    "combos": [
+      { "name": "Vacation", "combo": "✈️🏖️🌴🍹☀️" },
+      { "name": "Road Trip", "combo": "🚗🛣️🎶🌄⛽" },
+      { "name": "City Trip", "combo": "🏙️🗼🚇📸🌃" },
+      { "name": "Camping", "combo": "⛺🏕️🔥🌲🌌" },
+      { "name": "Backpacking", "combo": "🎒🗺️⛰️🏕️✨" },
+      { "name": "Cruise", "combo": "🚢🌊🏝️🍹🌅" }
+    ]
+  },
+  {
+    "category": "Aesthetic",
+    "icon": "✨",
+    "combos": [
+      { "name": "Coquette", "combo": "🎀🌷🫧🧸🩰" },
+      { "name": "Dark Academia", "combo": "📚🖋️🕯️🏛️🤎" },
+      { "name": "Y2K", "combo": "🦋💿🪐⚡🍬" },
+      { "name": "Cottagecore", "combo": "🌾🍞🧺🌻🐝" },
+      { "name": "Minimalist", "combo": "✨🤍⋆☁️🪞" },
+      { "name": "Soft Girl", "combo": "🧸🎀🌸💕☁️" },
+      { "name": "Grunge", "combo": "🖤⛓️🌧️🥀🔗" },
+      { "name": "Vintage", "combo": "📻🎞️🕰️☕🤎" },
+      { "name": "Fairy", "combo": "🧚‍♀️✨🌙🦋🫧" },
+      { "name": "Ocean Girl", "combo": "🐚🌊🦪🤍🫧" },
+      { "name": "Nature Core", "combo": "🍄🌿🐚🍃🪵" },
+      { "name": "Ethereal", "combo": "🤍🕊️☁️✨🫧" }
+    ]
+  },
+  {
+    "category": "Kaomoji",
+    "icon": "(◕‿◕)",
+    "combos": [
+      { "name": "Happy", "combo": "(◕‿◕)" },
+      { "name": "Bear", "combo": "ʕ•ᴥ•ʔ" },
+      { "name": "Love", "combo": "(♥‿♥)" },
+      { "name": "Shrug", "combo": "¯\\_(ツ)_/¯" },
+      { "name": "Table Flip", "combo": "(╯°□°)╯︵ ┻━┻" },
+      { "name": "Unflip", "combo": "┬─┬ノ( º _ ºノ)" },
+      { "name": "Lenny", "combo": "( ͡° ͜ʖ ͡°)" },
+      { "name": "Sparkle", "combo": "☆*:.｡.o(≧▽≦)o.｡.:*☆" },
+      { "name": "Magic", "combo": "(ﾉ◕ヮ◕)ﾉ*:・ﾟ✧" },
+      { "name": "Cry", "combo": "(╥_╥)" },
+      { "name": "Angry", "combo": "(ノಠ益ಠ)ノ彡┻━┻" },
+      { "name": "Cool", "combo": "(⌐■_■)" },
+      { "name": "Wink", "combo": "(^_~)" },
+      { "name": "Surprised", "combo": "(⊙_⊙)" },
+      { "name": "Cat", "combo": "(=^・ω・^=)" },
+      { "name": "Hug", "combo": "(づ￣ ³￣)づ" },
+      { "name": "Running", "combo": "ε=ε=ε=┌(;*´Д`)ﾉ" },
+      { "name": "Music", "combo": "♪♪♪ ヽ(ˇ∀ˇ )ゞ" },
+      { "name": "Fight", "combo": "(ง •̀_•́)ง" },
+      { "name": "Disapproval", "combo": "ಠ_ಠ" }
+    ]
+  },
+  {
+    "category": "Holiday",
+    "icon": "🎄",
+    "combos": [
+      { "name": "Christmas", "combo": "🎄🎅🎁❄️⭐" },
+      { "name": "Halloween", "combo": "🎃👻🦇🕷️🌙" },
+      { "name": "Easter", "combo": "🐣🥚🌷🐰🌸" },
+      { "name": "Thanksgiving", "combo": "🦃🍂🥧🍁🙏" },
+      { "name": "Fourth of July", "combo": "🇺🇸🎆🗽🎇🦅" },
+      { "name": "Lunar New Year", "combo": "🧧🐉🎆🏮🎊" },
+      { "name": "Diwali", "combo": "🪔✨🎆🕯️🎉" }
+    ]
+  },
+  {
+    "category": "Work & Study",
+    "icon": "💼",
+    "combos": [
+      { "name": "Study Session", "combo": "📚✏️💡🧠☕" },
+      { "name": "Work Mode", "combo": "💻📊📈☕💪" },
+      { "name": "Meeting", "combo": "📋🤝💼📊👔" },
+      { "name": "Deadline", "combo": "⏰😰💻🔥📄" },
+      { "name": "Break Time", "combo": "☕🍪📱😌🎶" },
+      { "name": "Creative", "combo": "🎨💡✏️🧠✨" }
+    ]
+  }
+]

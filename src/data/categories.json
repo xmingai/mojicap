@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "smileys_emotion",
+    "name": "Smileys & Emotion",
+    "icon": "📦"
+  },
+  {
+    "slug": "people_body",
+    "name": "People & Body",
+    "icon": "📦"
+  },
+  {
+    "slug": "animals_nature",
+    "name": "Animals & Nature",
+    "icon": "📦"
+  },
+  {
+    "slug": "food_drink",
+    "name": "Food & Drink",
+    "icon": "📦"
+  },
+  {
+    "slug": "travel_places",
+    "name": "Travel & Places",
+    "icon": "📦"
+  },
+  {
+    "slug": "activities",
+    "name": "Activities",
+    "icon": "⚽"
+  },
+  {
+    "slug": "objects",
+    "name": "Objects",
+    "icon": "💡"
+  },
+  {
+    "slug": "symbols",
+    "name": "Symbols",
+    "icon": "♥️"
+  },
+  {
+    "slug": "flags",
+    "name": "Flags",
+    "icon": "🏁"
+  }
+]
