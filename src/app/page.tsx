@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { EmojiButton, ComboButton } from "@/components/copy-buttons";
+import { ComboButton } from "@/components/copy-buttons";
+import { PopularEmojiGrid } from "@/components/popular-emoji-grid";
 
 const MODULES = [
   {
@@ -49,6 +50,9 @@ const POPULAR_EMOJIS = [
   "😂", "❤️", "🤣", "👍", "😭", "🙏", "😘", "🥰", "😍", "😊",
   "🎉", "🔥", "🥺", "💕", "😁", "💜", "😢", "👏", "😉", "💗",
   "✨", "🤗", "🤩", "💯", "🙌", "🫶", "😎", "🥳", "💪", "🤭",
+  "🥲", "💀", "😈", "🤡", "👻", "🤯", "🫠", "😤", "🫡", "🤑",
+  "🫣", "🫢", "😻", "💝", "🌟", "⭐", "🌈", "🍀", "🦋", "🐱",
+  "🐶", "🌸", "🌹", "🍕", "☕", "🎶", "💎", "👀", "🙈", "❄️",
 ];
 
 const TRENDING_COMBOS = [
@@ -117,11 +121,7 @@ export default function HomePage() {
             View all <ArrowRight className="h-3 w-3" />
           </Link>
         </div>
-        <div className="flex flex-wrap gap-1">
-          {POPULAR_EMOJIS.map((emoji, i) => (
-            <EmojiButton key={i} emoji={emoji} />
-          ))}
-        </div>
+        <PopularEmojiGrid emojis={POPULAR_EMOJIS} />
       </section>
 
       {/* Trending Combos Preview */}
