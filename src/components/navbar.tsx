@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { Sun, Moon, Search } from "lucide-react";
@@ -22,8 +23,8 @@ export function Navbar() {
     <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 font-semibold text-lg tracking-tight">
-          <span className="text-2xl">⚡</span>
+        <Link href="/" className="flex items-center gap-2.5 font-semibold text-lg tracking-tight">
+          <Image src="/logo.png" alt="EmojiKit Logo" width={32} height={32} className="rounded-md" />
           <span>EmojiKit</span>
         </Link>
 
