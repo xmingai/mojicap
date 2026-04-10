@@ -2,8 +2,8 @@
 
 ## 线上地址
 
-- **生产环境**: https://emojikit-eight.vercel.app
-- **Vercel 项目**: stepwisecode-projects/emojikit
+- **生产环境**: https://emojikit-five.vercel.app
+- **Vercel 项目**: truiosacer543-9368s-projects/emojikit（网页端管理）
 - **GitHub 仓库**: https://github.com/xmingai/emojikit
 
 ---
