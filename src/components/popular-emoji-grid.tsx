@@ -63,7 +63,7 @@ export function PopularEmojiGrid({ emojis }: PopularEmojiGridProps) {
         {emojis.map((emoji, i) => (
           <button
             key={`${emoji}-${i}`}
-            className="rounded-xl hover:bg-muted transition-all active:scale-90 cursor-copy hover:scale-105"
+            className="rounded-xl hover:bg-muted transition-all active:scale-90 cursor-pointer hover:scale-105"
             style={{
               fontSize: `${currentSize.value}px`,
               padding: `${Math.max(4, currentSize.value * 0.2)}px`,
