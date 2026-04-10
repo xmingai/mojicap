@@ -9,7 +9,7 @@ import { Copy } from "lucide-react";
 
 export function FancyTextClient() {
   const [text, setText] = useState("Hello World");
-  const [sizeIndex, setSizeIndex] = useState(1); // Default to M (20px)
+  const [sizeIndex, setSizeIndex] = useState(3); // Default to XL (32px)
   const currentSize = FANCY_TEXT_SIZE_PRESETS[sizeIndex];
 
   const results = useMemo(() => transformAllFonts(text), [text]);

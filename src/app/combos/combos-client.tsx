@@ -15,7 +15,7 @@ export function CombosClient() {
   const categories = combosData as ComboCategory[];
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [sizeIndex, setSizeIndex] = useState(1); // Default to M (20px)
+  const [sizeIndex, setSizeIndex] = useState(3); // Default to XL (32px)
   const currentSize = FANCY_TEXT_SIZE_PRESETS[sizeIndex];
 
   const filteredCategories = useMemo(() => {

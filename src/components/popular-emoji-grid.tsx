@@ -16,7 +16,7 @@ interface PopularEmojiGridProps {
 }
 
 export function PopularEmojiGrid({ emojis }: PopularEmojiGridProps) {
-  const [sizeIndex, setSizeIndex] = useState(2); // Default to "L"
+  const [sizeIndex, setSizeIndex] = useState(3); // Default to "XL"
   const currentSize = POPULAR_SIZE_PRESETS[sizeIndex];
 
   return (

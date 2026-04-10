@@ -22,7 +22,7 @@ export function SymbolsClient() {
   const categories = symbolsData as SymbolCategory[];
   const [activeCategory, setActiveCategory] = useState<string>(categories[0]?.name || "");
   const [searchQuery, setSearchQuery] = useState("");
-  const [sizeIndex, setSizeIndex] = useState(1); // Default to M
+  const [sizeIndex, setSizeIndex] = useState(3); // Default to XL
   const currentSize = COMMON_SIZE_PRESETS[sizeIndex];
 
   const displayedSymbols = useMemo(() => {
