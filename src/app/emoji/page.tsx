@@ -14,13 +14,6 @@ export default function EmojiPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold mb-1">Emoji Copy & Paste</h1>
-        <p className="text-sm text-muted-foreground">
-          Click any emoji to copy it to your clipboard. {emojis.length.toLocaleString()} emojis available.
-        </p>
-      </div>
-
       <EmojiGrid emojis={emojis} categories={categories} />
     </div>
   );

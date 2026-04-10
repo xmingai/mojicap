@@ -16,6 +16,18 @@ export function FancyTextClient() {
 
   return (
     <div className="space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 -mb-2">
+        <div>
+          <h1 className="text-2xl font-bold mb-1">Fancy Text Generator</h1>
+          <p className="text-sm text-muted-foreground">
+            Type your text below and copy any style. Works on Instagram, Twitter, Discord, and more.
+          </p>
+        </div>
+        <div className="shrink-0 mt-2 sm:mt-0">
+          <SizeSlider sizeIndex={sizeIndex} setSizeIndex={setSizeIndex} presets={FANCY_TEXT_SIZE_PRESETS} />
+        </div>
+      </div>
+
       {/* Input */}
       <Input
         type="text"
@@ -28,7 +40,6 @@ export function FancyTextClient() {
 
       <div className="flex items-center justify-between px-1">
         <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Results</h2>
-        <SizeSlider sizeIndex={sizeIndex} setSizeIndex={setSizeIndex} presets={FANCY_TEXT_SIZE_PRESETS} />
       </div>
 
       {/* Results */}

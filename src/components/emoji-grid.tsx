@@ -51,6 +51,18 @@ export function EmojiGrid({ emojis, categories }: EmojiGridProps) {
 
   return (
     <div className="space-y-4">
+      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-bold mb-1">Emoji Copy & Paste</h1>
+          <p className="text-sm text-muted-foreground">
+            Click any emoji to copy it to your clipboard. {emojis.length.toLocaleString()} emojis available.
+          </p>
+        </div>
+        <div className="shrink-0 mt-2 sm:mt-0">
+          <SizeSlider sizeIndex={sizeIndex} setSizeIndex={setSizeIndex} />
+        </div>
+      </div>
+
       <SearchBar
         value={searchQuery}
         onChange={(v) => {
@@ -60,21 +72,16 @@ export function EmojiGrid({ emojis, categories }: EmojiGridProps) {
         placeholder="Search emojis... (e.g. fire, heart, smile)"
       />
 
-      <div className="flex items-center justify-between">
-        {!searchQuery ? (
-          <CategoryTabs
-            categories={categories}
-            activeCategory={activeCategory}
-            onSelect={(slug) => {
-              setActiveCategory(slug);
-              setSearchQuery("");
-            }}
-          />
-        ) : (
-          <div /> // Placeholder for flex spacing
-        )}
-        <SizeSlider sizeIndex={sizeIndex} setSizeIndex={setSizeIndex} />
-      </div>
+      {!searchQuery && (
+        <CategoryTabs
+          categories={categories}
+          activeCategory={activeCategory}
+          onSelect={(slug) => {
+            setActiveCategory(slug);
+            setSearchQuery("");
+          }}
+        />
+      )}
 
       {/* Recent */}
       {!searchQuery && !activeCategory && recent.length > 0 && (

@@ -43,6 +43,18 @@ export function CombosClient() {
 
   return (
     <div className="space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 -mb-2">
+        <div>
+          <h1 className="text-2xl font-bold mb-1">Emoji Combos & Kaomoji</h1>
+          <p className="text-sm text-muted-foreground">
+            Curated emoji combinations and text faces. Click to copy.
+          </p>
+        </div>
+        <div className="shrink-0 mt-2 sm:mt-0">
+          <SizeSlider sizeIndex={sizeIndex} setSizeIndex={setSizeIndex} presets={FANCY_TEXT_SIZE_PRESETS} />
+        </div>
+      </div>
+
       <SearchBar
         value={searchQuery}
         onChange={(v) => {
@@ -52,10 +64,9 @@ export function CombosClient() {
         placeholder="Search combos... (e.g. love, party, aesthetic)"
       />
 
-      {/* Category filter and Size Slider */}
-      <div className="flex items-center justify-between">
-        <div className="flex flex-wrap gap-1">
-          <button
+      {/* Category filter */}
+      <div className="flex flex-wrap gap-1">
+        <button
           onClick={() => {
             setActiveCategory(null);
             setSearchQuery("");
@@ -86,8 +97,6 @@ export function CombosClient() {
             {cat.icon} {cat.category}
           </button>
         ))}
-        </div>
-        <SizeSlider sizeIndex={sizeIndex} setSizeIndex={setSizeIndex} presets={FANCY_TEXT_SIZE_PRESETS} />
       </div>
 
       {/* Combos */}
