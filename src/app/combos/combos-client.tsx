@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import combosData from "@/data/combos-data.json";
 import { copyToClipboard } from "@/lib/clipboard";
 import { SearchBar } from "@/components/search-bar";
+import { SizeSlider, FANCY_TEXT_SIZE_PRESETS } from "@/components/size-slider";
 import { cn } from "@/lib/utils";
 import { Copy } from "lucide-react";
 
@@ -14,6 +15,8 @@ export function CombosClient() {
   const categories = combosData as ComboCategory[];
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [sizeIndex, setSizeIndex] = useState(1); // Default to M (20px)
+  const currentSize = FANCY_TEXT_SIZE_PRESETS[sizeIndex];
 
   const filteredCategories = useMemo(() => {
     if (searchQuery) {
@@ -49,9 +52,10 @@ export function CombosClient() {
         placeholder="Search combos... (e.g. love, party, aesthetic)"
       />
 
-      {/* Category filter */}
-      <div className="flex flex-wrap gap-1">
-        <button
+      {/* Category filter and Size Slider */}
+      <div className="flex items-center justify-between">
+        <div className="flex flex-wrap gap-1">
+          <button
           onClick={() => {
             setActiveCategory(null);
             setSearchQuery("");
@@ -82,6 +86,8 @@ export function CombosClient() {
             {cat.icon} {cat.category}
           </button>
         ))}
+        </div>
+        <SizeSlider sizeIndex={sizeIndex} setSizeIndex={setSizeIndex} presets={FANCY_TEXT_SIZE_PRESETS} />
       </div>
 
       {/* Combos */}
@@ -95,11 +101,11 @@ export function CombosClient() {
               <button
                 key={combo.name}
                 onClick={() => copyToClipboard(combo.combo, combo.name)}
-                className="group flex items-center justify-between gap-3 p-4 rounded-xl border border-border/50 hover:border-border hover:bg-muted/50 transition-all cursor-copy text-left"
+                className="group flex items-center justify-between gap-3 p-4 rounded-xl border border-border/50 hover:border-border hover:bg-muted/50 transition-all cursor-pointer text-left"
               >
                 <div className="min-w-0">
                   <p className="text-xs text-muted-foreground mb-1.5">{combo.name}</p>
-                  <p className="text-xl tracking-wide truncate">{combo.combo}</p>
+                  <p className="tracking-wide truncate" style={{ fontSize: `${currentSize.value}px` }}>{combo.combo}</p>
                 </div>
                 <Copy className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
               </button>

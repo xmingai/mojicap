@@ -12,14 +12,20 @@ import {
 interface EmojiHoverCardProps {
   emoji: Emoji;
   onCopy: (emoji: Emoji) => void;
+  sizeValue?: number;
 }
 
-export function EmojiHoverCard({ emoji, onCopy }: EmojiHoverCardProps) {
+export function EmojiHoverCard({ emoji, onCopy, sizeValue }: EmojiHoverCardProps) {
   return (
     <HoverCard>
       <HoverCardTrigger
         onClick={() => onCopy(emoji)}
-        className="group relative flex items-center justify-center text-2xl sm:text-3xl p-2 rounded-lg hover:bg-muted transition-all active:scale-90 cursor-pointer"
+        className="group relative flex items-center justify-center rounded-lg hover:bg-muted transition-all active:scale-90 cursor-pointer"
+        style={sizeValue ? { 
+          fontSize: `${sizeValue}px`, 
+          padding: `${Math.max(4, sizeValue * 0.2)}px`,
+          lineHeight: 1.1 
+        } : { fontSize: "1.875rem", padding: "0.5rem" }} // Default to roughly text-3xl p-2
       >
         <span className="group-hover:scale-110 transition-transform">
           {emoji.emoji}
@@ -45,7 +51,7 @@ export function EmojiHoverCard({ emoji, onCopy }: EmojiHoverCardProps) {
         {/* Action buttons */}
         <div className="flex gap-2">
           <button 
-            className="flex-1 inline-flex items-center justify-center h-8 px-3 text-xs font-medium rounded-md border border-border bg-background hover:bg-muted transition-colors cursor-copy"
+            className="flex-1 inline-flex items-center justify-center h-8 px-3 text-xs font-medium rounded-md border border-border bg-background hover:bg-muted transition-colors cursor-pointer"
             onClick={(e) => {
               e.stopPropagation();
               onCopy(emoji);

@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Minus, Plus } from "lucide-react";
 import { copyToClipboard } from "@/lib/clipboard";
+import { SizeSlider, SizePreset } from "@/components/size-slider";
 
-const SIZE_PRESETS = [
+const POPULAR_SIZE_PRESETS: SizePreset[] = [
   { label: "S", value: 28 },
   { label: "M", value: 36 },
   { label: "L", value: 44 },
@@ -17,46 +17,12 @@ interface PopularEmojiGridProps {
 
 export function PopularEmojiGrid({ emojis }: PopularEmojiGridProps) {
   const [sizeIndex, setSizeIndex] = useState(2); // Default to "L"
-  const currentSize = SIZE_PRESETS[sizeIndex];
+  const currentSize = POPULAR_SIZE_PRESETS[sizeIndex];
 
   return (
     <div className="space-y-3">
       {/* Size control bar */}
-      <div className="flex items-center gap-2">
-        <button
-          onClick={() => setSizeIndex((i) => Math.max(0, i - 1))}
-          disabled={sizeIndex === 0}
-          className="p-1.5 rounded-lg hover:bg-muted disabled:opacity-30 transition-colors"
-          aria-label="Smaller"
-        >
-          <Minus className="h-3.5 w-3.5" />
-        </button>
-
-        <div className="flex gap-1">
-          {SIZE_PRESETS.map((preset, i) => (
-            <button
-              key={preset.label}
-              onClick={() => setSizeIndex(i)}
-              className={`px-2.5 py-1 text-xs font-medium rounded-md transition-all ${
-                i === sizeIndex
-                  ? "bg-foreground text-background shadow-sm"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
-              }`}
-            >
-              {preset.label}
-            </button>
-          ))}
-        </div>
-
-        <button
-          onClick={() => setSizeIndex((i) => Math.min(SIZE_PRESETS.length - 1, i + 1))}
-          disabled={sizeIndex === SIZE_PRESETS.length - 1}
-          className="p-1.5 rounded-lg hover:bg-muted disabled:opacity-30 transition-colors"
-          aria-label="Larger"
-        >
-          <Plus className="h-3.5 w-3.5" />
-        </button>
-      </div>
+      <SizeSlider sizeIndex={sizeIndex} setSizeIndex={setSizeIndex} presets={POPULAR_SIZE_PRESETS} />
 
       {/* Emoji grid */}
       <div className="flex flex-wrap gap-1">

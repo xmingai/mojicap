@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import symbolsData from "@/data/symbols-data.json";
 import { copyToClipboard } from "@/lib/clipboard";
 import { SearchBar } from "@/components/search-bar";
+import { SizeSlider, COMMON_SIZE_PRESETS } from "@/components/size-slider";
 import { cn } from "@/lib/utils";
 import {
   Tooltip,
@@ -21,6 +22,8 @@ export function SymbolsClient() {
   const categories = symbolsData as SymbolCategory[];
   const [activeCategory, setActiveCategory] = useState<string>(categories[0]?.name || "");
   const [searchQuery, setSearchQuery] = useState("");
+  const [sizeIndex, setSizeIndex] = useState(1); // Default to M
+  const currentSize = COMMON_SIZE_PRESETS[sizeIndex];
 
   const displayedSymbols = useMemo(() => {
     if (searchQuery) {
@@ -96,17 +99,23 @@ export function SymbolsClient() {
 
         {/* Symbol grid */}
         <div className="flex-1">
-          {searchQuery && (
-            <p className="text-xs text-muted-foreground mb-3">
-              {displayedSymbols.length} results for &quot;{searchQuery}&quot;
-            </p>
-          )}
+          <div className="flex items-center justify-between mb-3">
+            {searchQuery ? (
+              <p className="text-xs text-muted-foreground">
+                {displayedSymbols.length} results for &quot;{searchQuery}&quot;
+              </p>
+            ) : (
+              <div /> // Placeholder
+            )}
+            <SizeSlider sizeIndex={sizeIndex} setSizeIndex={setSizeIndex} />
+          </div>
           <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 gap-1">
             {displayedSymbols.map(({ symbol }, i) => (
               <Tooltip key={`${symbol}-${i}`}>
                 <TooltipTrigger
                   onClick={() => copyToClipboard(symbol)}
-                  className="flex items-center justify-center text-2xl p-3 rounded-lg hover:bg-muted transition-all active:scale-90 cursor-copy aspect-square"
+                  className="flex items-center justify-center rounded-lg hover:bg-muted transition-all active:scale-90 cursor-pointer aspect-square"
+                  style={{ fontSize: `${currentSize.value}px` }}
                 >
                   {symbol}
                 </TooltipTrigger>

@@ -10,6 +10,7 @@ import { CategoryTabs } from "@/components/category-tabs";
 import { SelectionBar } from "@/components/selection-bar";
 import { useRecent } from "@/hooks/use-recent";
 import { EmojiHoverCard } from "@/components/emoji-hover-card";
+import { SizeSlider, COMMON_SIZE_PRESETS } from "@/components/size-slider";
 
 interface EmojiGridProps {
   emojis: Emoji[];
@@ -21,6 +22,8 @@ export function EmojiGrid({ emojis, categories }: EmojiGridProps) {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [selected, setSelected] = useState<string[]>([]);
   const { recent, addRecent } = useRecent();
+  const [sizeIndex, setSizeIndex] = useState(1); // Default to M for grid
+  const currentSize = COMMON_SIZE_PRESETS[sizeIndex];
 
   const filteredEmojis = useMemo(() => {
     let result = emojis;
@@ -57,16 +60,21 @@ export function EmojiGrid({ emojis, categories }: EmojiGridProps) {
         placeholder="Search emojis... (e.g. fire, heart, smile)"
       />
 
-      {!searchQuery && (
-        <CategoryTabs
-          categories={categories}
-          activeCategory={activeCategory}
-          onSelect={(slug) => {
-            setActiveCategory(slug);
-            setSearchQuery("");
-          }}
-        />
-      )}
+      <div className="flex items-center justify-between">
+        {!searchQuery ? (
+          <CategoryTabs
+            categories={categories}
+            activeCategory={activeCategory}
+            onSelect={(slug) => {
+              setActiveCategory(slug);
+              setSearchQuery("");
+            }}
+          />
+        ) : (
+          <div /> // Placeholder for flex spacing
+        )}
+        <SizeSlider sizeIndex={sizeIndex} setSizeIndex={setSizeIndex} />
+      </div>
 
       {/* Recent */}
       {!searchQuery && !activeCategory && recent.length > 0 && (
@@ -79,7 +87,12 @@ export function EmojiGrid({ emojis, categories }: EmojiGridProps) {
               <button
                 key={`${emoji}-${i}`}
                 onClick={() => copyToClipboard(emoji)}
-                className="text-2xl p-1.5 rounded-lg hover:bg-muted transition-colors active:scale-90"
+                className="rounded-lg hover:bg-muted transition-colors active:scale-90"
+                style={{ 
+                  fontSize: `${currentSize.value}px`, 
+                  padding: `${Math.max(4, currentSize.value * 0.2)}px`,
+                  lineHeight: 1.1 
+                }}
               >
                 {emoji}
               </button>
@@ -95,6 +108,7 @@ export function EmojiGrid({ emojis, categories }: EmojiGridProps) {
             key={emoji.id} 
             emoji={emoji} 
             onCopy={handleCopy} 
+            sizeValue={currentSize.value}
           />
         ))}
       </div>
