@@ -1,0 +1,178 @@
+[
+  {
+    "unicode": "U+200B",
+    "name": "Zero Width Space (ZWSP)",
+    "char": "​",
+    "description": "The most common invisible character. Used to bypass word filters, create blank names in ames, or control line breaks.",
+    "compatibility": ["Discord", "Twitter", "Instagram", "Most Games"],
+    "slug": "zero-width-space"
+  },
+  {
+    "unicode": "U+2800",
+    "name": "Braille Pattern Blank",
+    "char": "⠀",
+    "description": "An empty space character from the Braille alphabet. It acts as a solid space and is widely used for creating blank usernames in games like Among Us, PUBG, and Free Fire.",
+    "compatibility": ["Among Us", "PUBG", "Free Fire", "Social Media"],
+    "slug": "braille-pattern-blank"
+  },
+  {
+    "unicode": "U+200C",
+    "name": "Zero Width Non-Joiner (ZWNJ)",
+    "char": "‌",
+    "description": "Used to place two characters next to each other without forming a ligature.",
+    "compatibility": ["Web", "Text Editors"],
+    "slug": "zero-width-non-joiner"
+  },
+  {
+    "unicode": "U+200D",
+    "name": "Zero Width Joiner (ZWJ)",
+    "char": "‍",
+    "description": "Used to combine multiple emoji into a single composite emoji, or to force ligatures.",
+    "compatibility": ["Web", "Emoji Parsers"],
+    "slug": "zero-width-joiner"
+  },
+  {
+    "unicode": "U+00A0",
+    "name": "Non-Breaking Space (NBSP)",
+    "char": " ",
+    "description": "A standard space that prevents an automatic line break at its position. Useful in HTML.",
+    "compatibility": ["HTML", "Word Processors"],
+    "slug": "non-breaking-space"
+  },
+  {
+    "unicode": "U+202D",
+    "name": "Left-To-Right Override",
+    "char": "‭",
+    "description": "Forces the following characters to be treated as left-to-right text.",
+    "compatibility": ["Text Editors", "Messaging Apps"],
+    "slug": "left-to-right-override"
+  },
+  {
+    "unicode": "U+202E",
+    "name": "Right-To-Left Override",
+    "char": "‮",
+    "description": "Forces the following characters to be treated as right-to-left text. It actually reverses the text visually!",
+    "compatibility": ["Text Editors", "Messaging Apps"],
+    "slug": "right-to-left-override"
+  },
+  {
+    "unicode": "U+3164",
+    "name": "Hangul Filler",
+    "char": "ㅤ",
+    "description": "A popular empty character from the Korean alphabet. Used heavily in mobile games and Discord formatting to create large blank gaps.",
+    "compatibility": ["Discord", "Mobile Games", "TikTok"],
+    "slug": "hangul-filler"
+  },
+  {
+    "unicode": "U+180E",
+    "name": "Mongolian Vowel Separator",
+    "char": "᠎",
+    "description": "Originally an invisible character used in Mongolian text. Note: It may render as a tofu block on some very old systems.",
+    "compatibility": ["Limited"],
+    "slug": "mongolian-vowel-separator"
+  },
+  {
+    "unicode": "U+2000",
+    "name": "En Quad",
+    "char": " ",
+    "description": "A space equal in width to exactly one 'n' / 1/2 of an em.",
+    "compatibility": ["Design Software", "Web"],
+    "slug": "en-quad"
+  },
+  {
+    "unicode": "U+2001",
+    "name": "Em Quad",
+    "char": " ",
+    "description": "A space equal to the full point size of a font (an 'm' width).",
+    "compatibility": ["Design Software", "Web"],
+    "slug": "em-quad"
+  },
+  {
+    "unicode": "U+2002",
+    "name": "En Space",
+    "char": " ",
+    "description": "Equivalent to an En Quad.",
+    "compatibility": ["Design Software", "Web"],
+    "slug": "en-space"
+  },
+  {
+    "unicode": "U+2003",
+    "name": "Em Space",
+    "char": " ",
+    "description": "Equivalent to an Em Quad.",
+    "compatibility": ["Design Software", "Web"],
+    "slug": "em-space"
+  },
+  {
+    "unicode": "U+2004",
+    "name": "Three-Per-Em Space",
+    "char": " ",
+    "description": "A space 1/3 of an em wide.",
+    "compatibility": ["Web"],
+    "slug": "three-per-em-space"
+  },
+  {
+    "unicode": "U+2005",
+    "name": "Four-Per-Em Space",
+    "char": " ",
+    "description": "A space 1/4 of an em wide.",
+    "compatibility": ["Web"],
+    "slug": "four-per-em-space"
+  },
+  {
+    "unicode": "U+2006",
+    "name": "Six-Per-Em Space",
+    "char": " ",
+    "description": "A space 1/6 of an em wide.",
+    "compatibility": ["Web"],
+    "slug": "six-per-em-space"
+  },
+  {
+    "unicode": "U+2007",
+    "name": "Figure Space",
+    "char": " ",
+    "description": "A space equal to the width of a digit in fonts with fixed-width numerals.",
+    "compatibility": ["Spreadsheets", "Math Typesetting"],
+    "slug": "figure-space"
+  },
+  {
+    "unicode": "U+2008",
+    "name": "Punctuation Space",
+    "char": " ",
+    "description": "A space equal to the width of a narrow punctuation mark (like a period or comma).",
+    "compatibility": ["Web", "Design Software"],
+    "slug": "punctuation-space"
+  },
+  {
+    "unicode": "U+2009",
+    "name": "Thin Space",
+    "char": " ",
+    "description": "A narrow space, often used inside nested quotes or around dashes.",
+    "compatibility": ["Web", "Typography"],
+    "slug": "thin-space"
+  },
+  {
+    "unicode": "U+200A",
+    "name": "Hair Space",
+    "char": " ",
+    "description": "The narrowest standard space available.",
+    "compatibility": ["Web", "Typography"],
+    "slug": "hair-space"
+  },
+  {
+    "unicode": "U+2060",
+    "name": "Word Joiner",
+    "char": "⁠",
+    "description": "Prevents line-breaks where they would otherwise occur.",
+    "compatibility": ["Web"],
+    "slug": "word-joiner"
+  },
+  {
+    "unicode": "U+FEFF",
+    "name": "Zero Width No-Break Space",
+    "char": "﻿",
+    "description": "Also known as a Byte Order Mark (BOM). Used rarely as a zero-width space.",
+    "compatibility": ["File Encoding", "Legacy Systems"],
+    "slug": "zero-width-no-break-space"
+  }
+]

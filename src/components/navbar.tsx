@@ -11,8 +11,13 @@ import { cn } from "@/lib/utils";
 const NAV_LINKS = [
   { href: "/emoji", label: "Emoji", icon: "😀" },
   { href: "/symbols", label: "Symbols", icon: "★" },
-  { href: "/fancy-text", label: "Fancy Text", icon: "𝓐" },
+  { href: "/fancy-text", label: "Fonts", icon: "𝓐" },
   { href: "/combos", label: "Combos", icon: "🎭" },
+  { href: "/kaomoji", label: "Kaomoji", icon: "(·ω·)" },
+  { href: "/dividers", label: "Lines", icon: "───" },
+  { href: "/invisible", label: "Invisible", icon: "⠀" },
+  { href: "/braille", label: "Braille", icon: "⠓" },
+  { href: "/ascii-art", label: "Art", icon: "╱╲" },
 ];
 
 export function Navbar() {
@@ -28,8 +33,8 @@ export function Navbar() {
           <span>EmojiKit</span>
         </Link>
 
-        {/* Nav Links - Desktop */}
-        <nav className="hidden md:flex items-center gap-1">
+        {/* Nav Links - Desktop (Horizontal Scroll if needed) */}
+        <nav className="hidden lg:flex items-center gap-0.5 overflow-x-auto scrollbar-none max-w-[65%]">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
@@ -41,8 +46,8 @@ export function Navbar() {
                   : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
               )}
             >
-              <span className="mr-1.5">{link.icon}</span>
-              {link.label}
+              <span className="mr-1.5 opacity-80">{link.icon}</span>
+              <span className="whitespace-nowrap">{link.label}</span>
             </Link>
           ))}
         </nav>
@@ -62,8 +67,8 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Nav Links - Mobile */}
-      <nav className="flex md:hidden items-center gap-1 px-4 pb-2 overflow-x-auto scrollbar-none">
+      {/* Nav Links - Mobile/Tablet */}
+      <nav className="flex lg:hidden items-center gap-1 px-4 pb-2 pt-1 border-t border-border/20 overflow-x-auto scrollbar-none">
         {NAV_LINKS.map((link) => (
           <Link
             key={link.href}
@@ -75,8 +80,8 @@ export function Navbar() {
                 : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
             )}
           >
-            <span className="mr-1">{link.icon}</span>
-            {link.label}
+            <span className="mr-1 opacity-80">{link.icon}</span>
+            <span className="whitespace-nowrap">{link.label}</span>
           </Link>
         ))}
       </nav>
