@@ -10,6 +10,7 @@ import { ScrollToTop } from "@/components/scroll-to-top";
 import { I18nProvider } from "@/i18n/context";
 import { locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "../globals.css";
 
 const inter = Inter({
@@ -123,6 +124,7 @@ export default async function LocaleLayout({
             </TooltipProvider>
           </I18nProvider>
         </ThemeProvider>
+        {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />}
       </body>
     </html>
   );
