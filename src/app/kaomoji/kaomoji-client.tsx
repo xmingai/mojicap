@@ -15,7 +15,7 @@ export function KaomojiClient() {
   const categories = kaomojiData as Category[];
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [sizeIndex, setSizeIndex] = useState(3); // Default to XL
+  const [sizeIndex, setSizeIndex] = useState(2); // Default to L
   const currentSize = FANCY_TEXT_SIZE_PRESETS[sizeIndex];
 
   const filteredCategories = useMemo(() => {

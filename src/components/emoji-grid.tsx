@@ -22,7 +22,7 @@ export function EmojiGrid({ emojis, categories }: EmojiGridProps) {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [selected, setSelected] = useState<string[]>([]);
   const { recent, addRecent } = useRecent();
-  const [sizeIndex, setSizeIndex] = useState(3); // Default to XL
+  const [sizeIndex, setSizeIndex] = useState(2); // Default to L
   const currentSize = COMMON_SIZE_PRESETS[sizeIndex];
 
   const filteredEmojis = useMemo(() => {

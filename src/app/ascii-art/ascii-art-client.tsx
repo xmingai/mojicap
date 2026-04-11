@@ -15,7 +15,7 @@ export function AsciiArtClient() {
   const categories = asciiData as Category[];
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [sizeIndex, setSizeIndex] = useState(1); // Default to M for art
+  const [sizeIndex, setSizeIndex] = useState(2); // Default to L
   const currentSize = FANCY_TEXT_SIZE_PRESETS[sizeIndex];
 
   const filteredCategories = useMemo(() => {
