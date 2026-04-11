@@ -8,8 +8,8 @@ import { SizeSlider, FANCY_TEXT_SIZE_PRESETS } from "@/components/size-slider";
 import { cn } from "@/lib/utils";
 import { Copy } from "lucide-react";
 
-type Combo = { name: string; combo: string };
-type ComboCategory = { category: string; icon: string; combos: Combo[] };
+type Combo = { name: string; emoji: string; keywords?: string[] };
+type ComboCategory = { id: string; name: string; icon: string; combos: Combo[] };
 
 export function CombosClient() {
   const categories = combosData as ComboCategory[];
@@ -27,15 +27,16 @@ export function CombosClient() {
           combos: cat.combos.filter(
             (c) =>
               c.name.toLowerCase().includes(q) ||
-              c.combo.toLowerCase().includes(q) ||
-              cat.category.toLowerCase().includes(q)
+              c.emoji.toLowerCase().includes(q) ||
+              cat.name.toLowerCase().includes(q) ||
+              (c.keywords && c.keywords.some(k => k.toLowerCase().includes(q)))
           ),
         }))
         .filter((cat) => cat.combos.length > 0);
     }
 
     if (activeCategory) {
-      return categories.filter((c) => c.category === activeCategory);
+      return categories.filter((c) => c.name === activeCategory);
     }
 
     return categories;
@@ -82,39 +83,39 @@ export function CombosClient() {
         </button>
         {categories.map((cat) => (
           <button
-            key={cat.category}
+            key={cat.id}
             onClick={() => {
-              setActiveCategory(cat.category);
+              setActiveCategory(cat.name);
               setSearchQuery("");
             }}
             className={cn(
               "px-3 py-1.5 rounded-lg text-sm font-medium transition-all",
-              activeCategory === cat.category
+              activeCategory === cat.name
                 ? "bg-foreground text-background"
                 : "text-muted-foreground hover:text-foreground hover:bg-muted"
             )}
           >
-            {cat.icon} {cat.category}
+            {cat.icon} {cat.name}
           </button>
         ))}
       </div>
 
       {/* Combos */}
       {filteredCategories.map((cat) => (
-        <div key={cat.category}>
+        <div key={cat.id}>
           <h2 className="text-lg font-semibold mb-3">
-            {cat.icon} {cat.category}
+            {cat.icon} {cat.name}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
-            {cat.combos.map((combo) => (
+            {cat.combos.map((combo, idx) => (
               <button
-                key={combo.name}
-                onClick={() => copyToClipboard(combo.combo, combo.name)}
+                key={`${combo.name}-${idx}`}
+                onClick={() => copyToClipboard(combo.emoji, combo.name)}
                 className="group flex items-center justify-between gap-3 p-4 rounded-xl border border-border/50 hover:border-border hover:bg-muted/50 transition-all cursor-pointer text-left"
               >
                 <div className="min-w-0">
                   <p className="text-xs text-muted-foreground mb-1.5">{combo.name}</p>
-                  <p className="tracking-wide truncate" style={{ fontSize: `${currentSize.value}px` }}>{combo.combo}</p>
+                  <p className="tracking-wide truncate" style={{ fontSize: `${currentSize.value}px` }}>{combo.emoji}</p>
                 </div>
                 <Copy className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
               </button>

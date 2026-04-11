@@ -8,8 +8,8 @@ import { SizeSlider, FANCY_TEXT_SIZE_PRESETS } from "@/components/size-slider";
 import { cn } from "@/lib/utils";
 import { Copy } from "lucide-react";
 
-type Kaomoji = { text: string };
-type Category = { category: string; icon: string; slug: string; kaomojis: Kaomoji[] };
+type Kaomoji = { char: string; name: string };
+type Category = { id: string; name: string; icon: string; kaomojis: Kaomoji[] };
 
 export function KaomojiClient() {
   const categories = kaomojiData as Category[];
@@ -26,15 +26,15 @@ export function KaomojiClient() {
           ...cat,
           kaomojis: cat.kaomojis.filter(
             (k) =>
-              k.text.toLowerCase().includes(q) ||
-              cat.category.toLowerCase().includes(q)
+              k.char.toLowerCase().includes(q) ||
+              cat.name.toLowerCase().includes(q)
           ),
         }))
         .filter((cat) => cat.kaomojis.length > 0);
     }
 
     if (activeCategory) {
-      return categories.filter((c) => c.category === activeCategory);
+      return categories.filter((c) => c.name === activeCategory);
     }
 
     return categories;
@@ -81,37 +81,37 @@ export function KaomojiClient() {
         </button>
         {categories.map((cat) => (
           <button
-            key={cat.category}
+            key={cat.id}
             onClick={() => {
-              setActiveCategory(cat.category);
+              setActiveCategory(cat.name);
               setSearchQuery("");
             }}
             className={cn(
               "px-3 py-1.5 rounded-lg text-sm font-medium transition-all",
-              activeCategory === cat.category
+              activeCategory === cat.name
                 ? "bg-foreground text-background"
                 : "text-muted-foreground hover:text-foreground hover:bg-muted"
             )}
           >
-            {cat.icon} {cat.category}
+            {cat.icon} {cat.name}
           </button>
         ))}
       </div>
 
       {/* Combos */}
       {filteredCategories.map((cat) => (
-        <div key={cat.category}>
+        <div key={cat.id}>
           <h2 className="text-lg font-semibold mb-3">
-            {cat.icon} {cat.category}
+            {cat.icon} {cat.name}
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
             {cat.kaomojis.map((k, i) => (
               <button
                 key={i}
-                onClick={() => copyToClipboard(k.text, "Kaomoji")}
+                onClick={() => copyToClipboard(k.char, k.name)}
                 className="group flex flex-col items-center justify-center p-4 rounded-xl border border-border/50 hover:border-border hover:bg-muted/50 transition-all cursor-pointer text-center relative overflow-hidden"
               >
-                <div className="tracking-wide" style={{ fontSize: `${currentSize.value}px` }}>{k.text}</div>
+                <div className="tracking-wide" style={{ fontSize: `${currentSize.value}px` }}>{k.char}</div>
               </button>
             ))}
           </div>

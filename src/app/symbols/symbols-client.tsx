@@ -12,10 +12,12 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
+type SymbolObj = { char: string; name: string };
 type SymbolCategory = {
+  id: string;
   name: string;
-  icon: string;
-  symbols: string[];
+  icon?: string;
+  symbols: SymbolObj[];
 };
 
 export function SymbolsClient() {
@@ -32,15 +34,15 @@ export function SymbolsClient() {
       const results: { category: string; symbol: string }[] = [];
       for (const cat of categories) {
         for (const sym of cat.symbols) {
-          if (cat.name.toLowerCase().includes(q) || sym.includes(q)) {
-            results.push({ category: cat.name, symbol: sym });
+          if (cat.name.toLowerCase().includes(q) || sym.char.includes(q)) {
+            results.push({ category: cat.name, symbol: sym.char });
           }
         }
       }
       return results;
     }
     const cat = categories.find((c) => c.name === activeCategory);
-    return cat ? cat.symbols.map((s) => ({ category: cat.name, symbol: s })) : [];
+    return cat ? cat.symbols.map((s) => ({ category: cat.name, symbol: s.char })) : [];
   }, [categories, activeCategory, searchQuery]);
 
   return (
@@ -81,7 +83,7 @@ export function SymbolsClient() {
                   : "text-muted-foreground hover:text-foreground hover:bg-muted"
               )}
             >
-              <span className="text-base">{cat.icon}</span>
+              {cat.icon && <span className="text-base">{cat.icon}</span>}
               {cat.name}
               <span className="ml-auto text-xs opacity-60">{cat.symbols.length}</span>
             </button>
@@ -104,7 +106,7 @@ export function SymbolsClient() {
                   : "text-muted-foreground hover:bg-muted"
               )}
             >
-              {cat.icon} {cat.name}
+              {cat.icon && <span>{cat.icon} </span>}{cat.name}
             </button>
           ))}
         </div>
