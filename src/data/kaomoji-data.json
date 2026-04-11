@@ -1,7 +1,7 @@
 [
   {
     "id": 0,
-    "category": "Smile (开心)",
+    "category": "Smile",
     "icon": "😀",
     "slug": "smile",
     "kaomojis": [
@@ -93,7 +93,7 @@
   },
   {
     "id": 1,
-    "category": "Laugh (大笑)",
+    "category": "Laugh",
     "icon": "😆",
     "slug": "laugh",
     "kaomojis": [
@@ -125,7 +125,7 @@
   },
   {
     "id": 2,
-    "category": "Cry (哭泣)",
+    "category": "Cry",
     "icon": "😢",
     "slug": "cry",
     "kaomojis": [
@@ -160,7 +160,7 @@
   },
   {
     "id": 3,
-    "category": "Anger (生气)",
+    "category": "Anger",
     "icon": "😡",
     "slug": "anger",
     "kaomojis": [
@@ -186,7 +186,7 @@
   },
   {
     "id": 4,
-    "category": "Greeting (问候)",
+    "category": "Greeting",
     "icon": "👋",
     "slug": "greeting",
     "kaomojis": [
@@ -212,7 +212,7 @@
   },
   {
     "id": 5,
-    "category": "Love (喜爱)",
+    "category": "Love",
     "icon": "😍",
     "slug": "love",
     "kaomojis": [
@@ -241,7 +241,7 @@
   },
   {
     "id": 6,
-    "category": "Cat (猫猫)",
+    "category": "Cat",
     "icon": "🐱",
     "slug": "cat",
     "kaomojis": [
@@ -273,7 +273,7 @@
   },
   {
     "id": 7,
-    "category": "Bear (熊只)",
+    "category": "Bear",
     "icon": "🐻",
     "slug": "bear",
     "kaomojis": [
@@ -305,7 +305,7 @@
   },
   {
     "id": 8,
-    "category": "Dog (狗狗)",
+    "category": "Dog",
     "icon": "🐶",
     "slug": "dog",
     "kaomojis": [
@@ -337,7 +337,7 @@
   },
   {
     "id": 9,
-    "category": "Magic (魔法)",
+    "category": "Magic",
     "icon": "✨",
     "slug": "magic",
     "kaomojis": [

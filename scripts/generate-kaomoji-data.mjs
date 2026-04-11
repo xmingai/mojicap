@@ -20,16 +20,16 @@ const raw = {
 };
 
 const MAPPING = {
-  smile: { icon: "😀", name: "Smile (开心)" },
-  laugh: { icon: "😆", name: "Laugh (大笑)" },
-  cry: { icon: "😢", name: "Cry (哭泣)" },
-  anger: { icon: "😡", name: "Anger (生气)" },
-  greeting: { icon: "👋", name: "Greeting (问候)" },
-  love: { icon: "😍", name: "Love (喜爱)" },
-  cat: { icon: "🐱", name: "Cat (猫猫)" },
-  bear: { icon: "🐻", name: "Bear (熊只)" },
-  dog: { icon: "🐶", name: "Dog (狗狗)" },
-  magic: { icon: "✨", name: "Magic (魔法)" }
+  smile: { icon: "😀", name: "Smile" },
+  laugh: { icon: "😆", name: "Laugh" },
+  cry: { icon: "😢", name: "Cry" },
+  anger: { icon: "😡", name: "Anger" },
+  greeting: { icon: "👋", name: "Greeting" },
+  love: { icon: "😍", name: "Love" },
+  cat: { icon: "🐱", name: "Cat" },
+  bear: { icon: "🐻", name: "Bear" },
+  dog: { icon: "🐶", name: "Dog" },
+  magic: { icon: "✨", name: "Magic" }
 };
 
 async function main() {
