@@ -13,11 +13,12 @@ interface Props {
   params: Promise<{ locale: string; slug: string }>;
 }
 
+// Only pre-render the default locale (en) at build time.
+// Other locales are generated on-demand via ISR at first visit, then cached.
+// This cuts build from ~22,700 pages to ~3,800 pages (10min → ~2min).
 export async function generateStaticParams() {
   const slugs = getAllSlugs();
-  return locales.flatMap((locale) =>
-    slugs.map((slug) => ({ locale, slug }))
-  );
+  return slugs.map((slug) => ({ locale: "en", slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
