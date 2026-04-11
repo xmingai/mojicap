@@ -223,5 +223,15 @@
     "Lines": "선",
     "Arrows": "화살표",
     "Sparkles": "반짝임"
+  },
+  "comboNames": {
+    "Aesthetic Vibe": "감성 분위기",
+    "Nature & Cottagecore Vibe": "자연 & 코티지코어",
+    "Space & Cyber Vibe": "우주 & 사이버펑크",
+    "Food & Cafe Vibe": "음식 & 카페",
+    "Love & Valentines Vibe": "사랑 & 발렌타인",
+    "Animals & Pets Vibe": "동물 & 반려동물",
+    "Fantasy & Magic Vibe": "판타지 & 마법",
+    "Holidays Vibe": "명절 분위기"
   }
 }

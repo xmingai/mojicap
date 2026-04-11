@@ -223,5 +223,15 @@
     "Lines": "線",
     "Arrows": "矢印",
     "Sparkles": "キラキラ"
+  },
+  "comboNames": {
+    "Aesthetic Vibe": "美的雰囲気",
+    "Nature & Cottagecore Vibe": "自然とコテージコア",
+    "Space & Cyber Vibe": "宇宙とサイバー",
+    "Food & Cafe Vibe": "食事とカフェ",
+    "Love & Valentines Vibe": "愛とバレンタイン",
+    "Animals & Pets Vibe": "動物とペット",
+    "Fantasy & Magic Vibe": "ファンタジーと魔法",
+    "Holidays Vibe": "休日の雰囲気"
   }
 }

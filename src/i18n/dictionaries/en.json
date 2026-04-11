@@ -223,5 +223,15 @@
     "Lines": "Lines",
     "Arrows": "Arrows",
     "Sparkles": "Sparkles"
+  },
+  "comboNames": {
+    "Aesthetic Vibe": "Aesthetic Vibe",
+    "Nature & Cottagecore Vibe": "Nature & Cottagecore Vibe",
+    "Space & Cyber Vibe": "Space & Cyber Vibe",
+    "Food & Cafe Vibe": "Food & Cafe Vibe",
+    "Love & Valentines Vibe": "Love & Valentines Vibe",
+    "Animals & Pets Vibe": "Animals & Pets Vibe",
+    "Fantasy & Magic Vibe": "Fantasy & Magic Vibe",
+    "Holidays Vibe": "Holidays Vibe"
   }
 }

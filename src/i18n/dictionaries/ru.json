@@ -223,5 +223,15 @@
     "Lines": "Линии",
     "Arrows": "Стрелки",
     "Sparkles": "Искорки"
+  },
+  "comboNames": {
+    "Aesthetic Vibe": "Эстетическая Атмосфера",
+    "Nature & Cottagecore Vibe": "Природа и Коттеджкор",
+    "Space & Cyber Vibe": "Космос и Киберпанк",
+    "Food & Cafe Vibe": "Еда и Кафе",
+    "Love & Valentines Vibe": "Любовь и День святого Валентина",
+    "Animals & Pets Vibe": "Животные и Питомцы",
+    "Fantasy & Magic Vibe": "Фэнтези и Магия",
+    "Holidays Vibe": "Праздничная Атмосфера"
   }
 }

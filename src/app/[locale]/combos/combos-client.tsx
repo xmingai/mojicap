@@ -26,13 +26,16 @@ export function CombosClient() {
       return categories
         .map((cat) => ({
           ...cat,
-          combos: cat.combos.filter(
-            (c) =>
+          combos: cat.combos.filter((c) => {
+            const translatedName = dict.comboNames?.[c.name as keyof typeof dict.comboNames] || c.name;
+            return (
+              translatedName.toLowerCase().includes(q) ||
               c.name.toLowerCase().includes(q) ||
               c.emoji.toLowerCase().includes(q) ||
               cat.name.toLowerCase().includes(q) ||
               (c.keywords && c.keywords.some(k => k.toLowerCase().includes(q)))
-          ),
+            );
+          }),
         }))
         .filter((cat) => cat.combos.length > 0);
     }
@@ -109,11 +112,11 @@ export function CombosClient() {
             {cat.combos.map((combo, idx) => (
               <button
                 key={`${combo.name}-${idx}`}
-                onClick={() => copyToClipboard(combo.emoji, combo.name)}
+                onClick={() => copyToClipboard(combo.emoji, dict.comboNames?.[combo.name as keyof typeof dict.comboNames] || combo.name)}
                 className="group flex items-center justify-between gap-3 p-4 rounded-xl border border-border/50 hover:border-border hover:bg-muted/50 transition-all cursor-pointer text-left"
               >
                 <div className="min-w-0">
-                  <p className="text-xs text-muted-foreground mb-1.5">{combo.name}</p>
+                  <p className="text-xs text-muted-foreground mb-1.5">{dict.comboNames?.[combo.name as keyof typeof dict.comboNames] || combo.name}</p>
                   <p className="tracking-wide truncate" style={{ fontSize: `${currentSize.value}px` }}>{combo.emoji}</p>
                 </div>
                 <Copy className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />

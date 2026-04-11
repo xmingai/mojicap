@@ -223,5 +223,15 @@
     "Lines": "线条",
     "Arrows": "箭头",
     "Sparkles": "闪亮"
+  },
+  "comboNames": {
+    "Aesthetic Vibe": "唯美氛围",
+    "Nature & Cottagecore Vibe": "自然与田园风",
+    "Space & Cyber Vibe": "太空与赛博风",
+    "Food & Cafe Vibe": "美食与咖啡店",
+    "Love & Valentines Vibe": "爱与情人节",
+    "Animals & Pets Vibe": "动物与宠物",
+    "Fantasy & Magic Vibe": "奇幻与魔法",
+    "Holidays Vibe": "节日氛围"
   }
 }
