@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllSlugs, getEmojiBySlug, getRelatedEmojis } from "@/lib/emoji";
+import { getAllSlugs, getEmojiBySlug, getRelatedEmojis, getSkinToneVariants } from "@/lib/emoji";
 import { CopyButton } from "./copy-button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -38,6 +38,7 @@ export default async function EmojiDetailPage({ params }: Props) {
   if (!emoji) notFound();
 
   const related = getRelatedEmojis(emoji, 20);
+  const skinToneVariants = getSkinToneVariants(emoji);
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
@@ -85,6 +86,16 @@ export default async function EmojiDetailPage({ params }: Props) {
         <InfoBlock title="Skin Tone Support">
           <span className="text-sm">{emoji.skinToneSupport ? "✅ Yes" : "❌ No"}</span>
         </InfoBlock>
+
+        <InfoBlock title="Emoji Version">
+          <Badge variant="secondary" className="text-xs">
+            {emoji.emojiVersion} · {emoji.year}
+          </Badge>
+        </InfoBlock>
+
+        <InfoBlock title="Subgroup">
+          <span className="text-sm">{emoji.subgroup}</span>
+        </InfoBlock>
       </div>
 
       {/* Keywords */}
@@ -98,6 +109,35 @@ export default async function EmojiDetailPage({ params }: Props) {
           ))}
         </div>
       </div>
+
+      {/* Skin Tone Variants */}
+      {skinToneVariants.length > 0 && (
+        <>
+          <Separator className="my-8" />
+          <div className="mb-8">
+            <h2 className="text-lg font-semibold mb-4">Skin Tone Variants</h2>
+            <div className="flex flex-wrap gap-2">
+              <Link
+                href={`/emoji/${emoji.slug}`}
+                className="text-4xl p-3 rounded-xl bg-muted/50 border border-border/50"
+                title={emoji.name}
+              >
+                {emoji.emoji}
+              </Link>
+              {skinToneVariants.map((v) => (
+                <Link
+                  key={v.id}
+                  href={`/emoji/${v.slug}`}
+                  className="text-4xl p-3 rounded-xl hover:bg-muted transition-all"
+                  title={v.name}
+                >
+                  {v.emoji}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
 
       <Separator className="my-8" />
 

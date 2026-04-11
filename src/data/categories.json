@@ -1,28 +1,28 @@
 [
   {
-    "slug": "smileys_emotion",
+    "slug": "smileys-emotion",
     "name": "Smileys & Emotion",
-    "icon": "📦"
+    "icon": "😀"
   },
   {
-    "slug": "people_body",
+    "slug": "people-body",
     "name": "People & Body",
-    "icon": "📦"
+    "icon": "👋"
   },
   {
-    "slug": "animals_nature",
+    "slug": "animals-nature",
     "name": "Animals & Nature",
-    "icon": "📦"
+    "icon": "🐻"
   },
   {
-    "slug": "food_drink",
+    "slug": "food-drink",
     "name": "Food & Drink",
-    "icon": "📦"
+    "icon": "🍔"
   },
   {
-    "slug": "travel_places",
+    "slug": "travel-places",
     "name": "Travel & Places",
-    "icon": "📦"
+    "icon": "🚗"
   },
   {
     "slug": "activities",
