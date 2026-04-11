@@ -4,7 +4,7 @@
   </a>
 
   <h1>⚡ MojiCap</h1>
-  <p><strong>The fastest, SEO-optimized Emoji, Symbols & Kaomoji Tool Matrix</strong></p>
+  <p><strong>A lightning-fast, minimal Emoji, Symbols & Kaomoji toolkit.</strong></p>
   
   <a href="https://www.mojicap.com" target="_blank">
     <img src="https://img.shields.io/badge/Live_Demo-mojicap.com-000000?style=for-the-badge&logo=vercel" alt="Live Demo" />
@@ -15,9 +15,9 @@
 
 ## 🌟 Overview
 
-[MojiCap](https://www.mojicap.com) is an open-source, ultra-fast web application built to be your ultimate hub for text, symbols, and emojis. Designed entirely with a "Search Engine Optimization (SEO) First" mindset, MojiCap employs Next.js App Router (SSR & SSG) out-of-the-box to ensure lightning-fast indexing and performance on search engines like Google and Bing.
+[MojiCap](https://www.mojicap.com) is an open-source, ultra-fast web application built to be your ultimate hub for text, symbols, and emojis. Designed with minimalism and speed in mind, MojiCap employs Next.js App Router to ensure lightning-fast performance across all devices.
 
-If you are looking for an architectural benchmark on how to build a **Multi-lingual (i18n), high-traffic SEO tool matrix**, this repository holds the answer.
+If you are looking for a clean, modern benchmark on how to build a **Multi-lingual (i18n), high-performance utility application**, this repository provides a ready-to-use template.
 
 ## ✨ Features
 
@@ -26,17 +26,13 @@ If you are looking for an architectural benchmark on how to build a **Multi-ling
 - **ʕ•ᴥ•ʔ Kaomoji Hub**: Over 3,000 Japanese style text emoticons. [Preview](https://www.mojicap.com/kaomoji)
 - **🎀 Aesthetic Combos**: Curated combinations of emojis for TikTok & Instagram bio. [Preview](https://www.mojicap.com/combos)
 - **𝓕𝓪𝓷𝓬𝔂 𝓣𝓮𝔁𝓽**: Convert default latin character sets to gothic, cursive, and bold mathematical variants. [Preview](https://www.mojicap.com/fancy-text)
-- **💯 Hardcore SEO Architecture**: 
-  - Dynamic `JSON-LD` (FAQPage & Breadcrumbs) injected per-component.
-  - Zero-JS required for initial crawl (Fully server-rendered).
-  - Clean URL prefixing for 6 languages (`/en`, `/zh`, `/ja`, `/ko`, `/es`, `/ru`).
+- **🌍 Full Localization**: Clean URL routing and complete language support across 6 locales (`/en`, `/zh`, `/ja`, `/ko`, `/es`, `/ru`).
 
 ## 🛠 Tech Stack
 
 - **Framework**: [Next.js 15 (App Router)](https://nextjs.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **SEO & Structure**: Next.js Metadata API, `next-sitemap`, IndexNow API integration.
-- **Analytics**: `@next/third-parties/google` (GA4 integration without JS blocking)
+- **Localization**: Next.js i18n routing
 - **Deployment**: [Vercel](https://vercel.com)
 
 ## 🏃‍♂️ Getting Started
@@ -62,15 +58,15 @@ If you are looking for an architectural benchmark on how to build a **Multi-ling
 
 # 🇨🇳 中文说明 (Chinese)
 
-[MojiCap](https://www.mojicap.com) 是一套完全基于开源代码构建的极限极速全能文本工具库。提供超过 **3700+ Emoji**、**1800+ 特殊符号**以及庞大的**颜文字(Kaomoji)**库的一键复制体验。
+[MojiCap](https://www.mojicap.com) 是一套极简、极速的全能文本工具库。提供超过 **3700+ Emoji**、**1800+ 特殊符号**以及庞大的**颜文字(Kaomoji)**库的一键复制体验。
 
-本项目的一个关键核心在于 **“SEO 统治级架构”**的实验与落地：
+本项目致力于打造最纯粹的用户体验，无任何弹窗广告或复杂的注册流程：
 
-*   **真正的多语言路由矩阵**：摒弃有损爬虫的客户端重定向，使用了坚如磐石的路径前缀 (`/zh/`, `/ja/` 等) 来分配 6 大语种。
-*   **富文本卡片利器**：全页面级别的自动化 `FAQPage` 和 `BreadcrumbList` 结构化数据 (JSON-LD) 注入，强行占领 Google 等搜索页的视口面积。
-*   **SSR / SSG 渲染屏障**：由于使用了 Next.js App Router 渲染机制实现纯文本输出，它彻底杜绝了依靠 JS 渲染而导致的爬虫“空壳白屏”灾难。
+*   **真正的多语言路由架构**：完整支持 6 大语种（中、英、日、韩、西、俄），使用原生的路径前缀 (`/zh/`, `/ja/` 等) 实现极速切换。
+*   **极致的渲染性能**：基于 Next.js App Router 渲染机制实现输出，拒绝客户端过载，秒开响应。
+*   **纯粹的工具属性**：内置海量特殊字符，点击即刻复制，完美适配小红书、抖音、微信圈子及海外社交媒体排版需求。
 
-对于需要参考出海搭建“**工具型 SEO 站群矩阵**”的开发者而言，这里的代码相当于一份开箱即用的白帽 SEO 最优解参考指南。
+对于需要参考如何使用 Next.js 极速搭建“**多语言出海工具站**”的开发者而言，这套开源代码是一份极佳的基础参考指南。
 
 **👉 访问国内中文首页：[MojiCap 中文版](https://www.mojicap.com/zh)**
 
