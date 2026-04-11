@@ -1,4 +1,5 @@
 "use client";
+import { useDict } from "@/i18n/context";
 
 import { useState, useMemo } from "react";
 import kaomojiData from "@/data/kaomoji-data.json";
@@ -12,6 +13,7 @@ type Kaomoji = { char: string; name: string };
 type Category = { id: string; name: string; icon: string; kaomojis: Kaomoji[] };
 
 export function KaomojiClient() {
+  const dict = useDict();
   const categories = kaomojiData as Category[];
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -44,7 +46,7 @@ export function KaomojiClient() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold mb-1">Kaomoji — Japanese Emoticons</h1>
+          <h1 className="text-2xl font-bold mb-1">{dict.kaomoji.title}</h1>
         </div>
         <div className="shrink-0 mt-2 sm:mt-0">
           <SizeSlider sizeIndex={sizeIndex} setSizeIndex={setSizeIndex} presets={FANCY_TEXT_SIZE_PRESETS} />

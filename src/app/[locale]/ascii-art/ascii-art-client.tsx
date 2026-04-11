@@ -1,4 +1,5 @@
 "use client";
+import { useDict } from "@/i18n/context";
 
 import { useState, useMemo } from "react";
 import asciiData from "@/data/ascii-art-data.json";
@@ -12,6 +13,7 @@ type Art = { content: string };
 type Category = { category: string; art: Art[] };
 
 export function AsciiArtClient() {
+  const dict = useDict();
   const categories = asciiData as Category[];
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -44,7 +46,7 @@ export function AsciiArtClient() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold mb-1">ASCII Art / Text Images</h1>
+          <h1 className="text-2xl font-bold mb-1">{dict.asciiArt.title}</h1>
 
         </div>
         <div className="shrink-0 mt-2 sm:mt-0">

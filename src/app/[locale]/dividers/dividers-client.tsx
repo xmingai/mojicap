@@ -1,4 +1,5 @@
 "use client";
+import { useDict } from "@/i18n/context";
 
 import { useState, useMemo } from "react";
 import dividersData from "@/data/dividers-data.json";
@@ -12,6 +13,7 @@ type Divider = { divider: string };
 type Category = { category: string; dividers: Divider[] };
 
 export function DividersClient() {
+  const dict = useDict();
   const categories = dividersData as Category[];
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -44,7 +46,7 @@ export function DividersClient() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold mb-1">Text Dividers & Borders</h1>
+          <h1 className="text-2xl font-bold mb-1">{dict.dividers.title}</h1>
 
         </div>
         <div className="shrink-0 mt-2 sm:mt-0">

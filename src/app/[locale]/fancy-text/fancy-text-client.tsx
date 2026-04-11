@@ -1,4 +1,5 @@
 "use client";
+import { useDict } from "@/i18n/context";
 
 import { useState, useMemo } from "react";
 import { transformAllFonts } from "@/lib/font-transform";
@@ -8,6 +9,7 @@ import { SizeSlider, FANCY_TEXT_SIZE_PRESETS } from "@/components/size-slider";
 import { Copy } from "lucide-react";
 
 export function FancyTextClient() {
+  const dict = useDict();
   const [text, setText] = useState("Hello World");
   const [sizeIndex, setSizeIndex] = useState(2); // Default to L (32px)
   const currentSize = FANCY_TEXT_SIZE_PRESETS[sizeIndex];
@@ -18,7 +20,7 @@ export function FancyTextClient() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold mb-1">Fancy Text Generator</h1>
+          <h1 className="text-2xl font-bold mb-1">{dict.fancyText.title}</h1>
         </div>
         <div className="shrink-0 mt-2 sm:mt-0">
           <SizeSlider sizeIndex={sizeIndex} setSizeIndex={setSizeIndex} presets={FANCY_TEXT_SIZE_PRESETS} />

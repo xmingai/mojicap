@@ -1,4 +1,5 @@
 "use client";
+import { useDict } from "@/i18n/context";
 
 import invisibleData from "@/data/invisible-data.json";
 import { copyToClipboard } from "@/lib/clipboard";
@@ -15,6 +16,7 @@ type InvisibleChar = {
 };
 
 export function InvisibleClient() {
+  const dict = useDict();
   const characters = invisibleData as InvisibleChar[];
   const [testText, setTestText] = useState("");
 
@@ -22,7 +24,7 @@ export function InvisibleClient() {
     <div className="space-y-8">
       <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold mb-1">Invisible Characters & Blank Text</h1>
+          <h1 className="text-2xl font-bold mb-1">{dict.invisible.title}</h1>
         </div>
       </div>
 

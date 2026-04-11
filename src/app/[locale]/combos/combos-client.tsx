@@ -1,4 +1,5 @@
 "use client";
+import { useDict } from "@/i18n/context";
 
 import { useState, useMemo } from "react";
 import combosData from "@/data/combos-data.json";
@@ -12,6 +13,7 @@ type Combo = { name: string; emoji: string; keywords?: string[] };
 type ComboCategory = { id: string; name: string; icon: string; combos: Combo[] };
 
 export function CombosClient() {
+  const dict = useDict();
   const categories = combosData as ComboCategory[];
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -46,7 +48,7 @@ export function CombosClient() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold mb-1">Emoji Combos & Kaomoji</h1>
+          <h1 className="text-2xl font-bold mb-1">{dict.combos.title}</h1>
         </div>
         <div className="shrink-0 mt-2 sm:mt-0">
           <SizeSlider sizeIndex={sizeIndex} setSizeIndex={setSizeIndex} presets={FANCY_TEXT_SIZE_PRESETS} />
