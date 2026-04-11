@@ -64,9 +64,39 @@ export default async function EmojiDetailPage({ params }: Props) {
   const skinToneVariants = getSkinToneVariants(emoji);
   const t = dict.emoji;
   const prefix = locale === "en" ? "" : `/${locale}`;
+  const baseUrl = `https://www.mojicap.com${prefix}`;
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": `${baseUrl}` || "https://www.mojicap.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": t.allEmojis || "All Emojis",
+        "item": `${baseUrl}/emoji`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": localName,
+        "item": `${baseUrl}/emoji/${slug}`
+      }
+    ]
+  };
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
       {/* Back */}
       <Link
         href={`${prefix}/emoji`}

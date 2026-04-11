@@ -88,9 +88,29 @@ export default async function LocaleLayout({
   }
 
   const dict = await getDictionary(locale as Locale);
+  const prefix = locale === "en" ? "" : `/${locale}`;
+  const baseUrl = `https://www.mojicap.com${prefix}`;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "MojiCap",
+    "url": "https://www.mojicap.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.mojicap.com/emoji?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
 
   return (
     <html lang={locale} suppressHydrationWarning className={`${inter.variable} h-full`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col font-sans antialiased">
         <ThemeProvider>
           <I18nProvider locale={locale as Locale} dict={dict}>
