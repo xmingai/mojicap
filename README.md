@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://www.mojicap.com">
-    <img width="150" src="https://raw.githubusercontent.com/xmingai/mojicap/main/public/icon.png" alt="MojiCap Logo">
+    <img width="150" src="https://raw.githubusercontent.com/xmingai/mojicap/main/public/logo.png" alt="MojiCap Logo">
   </a>
 
   <h1>⚡ MojiCap</h1>
