@@ -1,9 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Copy } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { ArrowRight, Copy, Loader2 } from "lucide-react";
 import type { Emoji } from "@/lib/emoji";
-import { useDict } from "@/i18n/context";
+import { useDict, useLocale } from "@/i18n/context";
+import { defaultLocale } from "@/i18n/config";
 import {
   HoverCard,
   HoverCardContent,
@@ -18,6 +21,10 @@ interface EmojiHoverCardProps {
 
 export function EmojiHoverCard({ emoji, onCopy, sizeValue }: EmojiHoverCardProps) {
   const dict = useDict();
+  const locale = useLocale();
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const prefix = locale === defaultLocale ? "" : `/${locale}`;
   return (
     <HoverCard>
       <HoverCardTrigger
@@ -62,14 +69,22 @@ export function EmojiHoverCard({ emoji, onCopy, sizeValue }: EmojiHoverCardProps
             <Copy className="mr-1.5 h-3 w-3" />
             {dict.common.copy}
           </button>
-          <Link 
-            href={`/emoji/${emoji.slug}`}
-            className="flex-1 inline-flex items-center justify-center h-8 px-3 text-xs font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-            onClick={(e) => e.stopPropagation()}
+          <button 
+            className="flex-1 inline-flex items-center justify-center h-8 px-3 text-xs font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsLoading(true);
+              router.push(`${prefix}/emoji/${emoji.slug}`);
+            }}
+            disabled={isLoading}
           >
             {dict.common.details}
-            <ArrowRight className="ml-1 h-3 w-3" />
-          </Link>
+            {isLoading ? (
+              <Loader2 className="ml-1 h-3 w-3 animate-spin" />
+            ) : (
+              <ArrowRight className="ml-1 h-3 w-3" />
+            )}
+          </button>
         </div>
       </HoverCardContent>
     </HoverCard>
