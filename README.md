@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://www.mojicap.com">
-    <img width="150" src="https://raw.githubusercontent.com/xmingai/emojikit/main/public/icon.png" alt="MojiCap Logo">
+    <img width="150" src="https://raw.githubusercontent.com/xmingai/mojicap/main/public/icon.png" alt="MojiCap Logo">
   </a>
 
   <h1>⚡ MojiCap</h1>
@@ -43,8 +43,8 @@ If you are looking for an architectural benchmark on how to build a **Multi-ling
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/xmingai/emojikit.git
-   cd emojikit
+   git clone https://github.com/xmingai/mojicap.git
+   cd mojicap
    ```
 2. Install dependencies
    ```bash
