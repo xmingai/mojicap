@@ -7,7 +7,6 @@ export async function copyToClipboard(text: string, label?: string) {
     await navigator.clipboard.writeText(text);
     toast.success(`Copied ${label || text}`, {
       duration: 1500,
-      position: "bottom-center",
     });
     return true;
   } catch {
@@ -22,7 +21,6 @@ export async function copyToClipboard(text: string, label?: string) {
     document.body.removeChild(textarea);
     toast.success(`Copied ${label || text}`, {
       duration: 1500,
-      position: "bottom-center",
     });
     return true;
   }
