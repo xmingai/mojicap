@@ -65,12 +65,21 @@ const TRENDING_COMBOS = [
   { name: "Sad Hours", combo: "😢💔🥺😞🌧" },
 ];
 
-const EXTRA_MODULES = [
-  { href: "/kaomoji", title: "Kaomoji", desc: "Japanese Emoticons", icon: "(·ω·)" },
-  { href: "/dividers", title: "Text Dividers", desc: "Aesthetic borders", icon: "───" },
-  { href: "/invisible", title: "Invisible Characters", desc: "Blank text & ZWSP", icon: "⠀" },
-  { href: "/braille", title: "Braille & Morse", desc: "Translate text to dots", icon: "⠓" },
-  { href: "/ascii-art", title: "ASCII Art", desc: "Retro text pictures", icon: "╱╲" },
+const PREVIEW_KAOMOJI = [
+  { name: "Table Flip", text: "(╯°□°)╯︵ ┻━┻" },
+  { name: "Sparkles", text: "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧" },
+  { name: "Bear", text: "ʕ•ᴥ•ʔ" },
+  { name: "Fight", text: "(ง'̀-'́)ง" },
+];
+
+const PREVIEW_DIVIDERS = [
+  { name: "Stars", text: "────── ⋆⋅☆⋅⋆ ──────" },
+  { name: "Flowers", text: "⋆┈┈｡ﾟ❃ུ۪ ❀ུ۪ ❁ུ۪ ❃ུ۪ ❀ུ۪ ﾟ｡┈┈⋆" },
+];
+
+const PREVIEW_ASCII_ART = [
+  { name: "Sniper", text: "︻デ═一" },
+  { name: "Spider", text: "/╲/\\╭ºoº╮/\\╱\\" },
 ];
 
 export default function HomePage() {
@@ -152,23 +161,80 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Explore More Tools */}
-      <section className="mt-16">
+      {/* Kaomoji Preview */}
+      <section className="mb-16">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-semibold">🚀 Explore More Tools</h2>
+          <h2 className="text-xl font-semibold">(·ω·) Popular Kaomoji</h2>
+          <Link
+            href="/kaomoji"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+          >
+            View all <ArrowRight className="h-3 w-3" />
+          </Link>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-          {EXTRA_MODULES.map((mod) => (
-            <Link
-              key={mod.href}
-              href={mod.href}
-              className="flex flex-col items-center justify-center p-4 rounded-xl border border-border/50 bg-card hover:bg-muted/50 hover:border-border transition-all group text-center"
-            >
-              <span className="text-2xl mb-2 group-hover:scale-110 transition-transform">{mod.icon}</span>
-              <p className="font-semibold text-sm">{mod.title}</p>
-              <p className="text-[10px] text-muted-foreground mt-1 opacity-80">{mod.desc}</p>
-            </Link>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {PREVIEW_KAOMOJI.map((k) => (
+            <ComboButton key={k.name} name={k.name} combo={k.text} />
           ))}
+        </div>
+      </section>
+
+      {/* Dividers Preview */}
+      <section className="mb-16">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl font-semibold">─── Aesthetic Dividers</h2>
+          <Link
+            href="/dividers"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+          >
+            View all <ArrowRight className="h-3 w-3" />
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {PREVIEW_DIVIDERS.map((d) => (
+            <ComboButton key={d.name} name={d.name} combo={d.text} />
+          ))}
+        </div>
+      </section>
+
+      {/* ASCII Art Preview */}
+      <section className="mb-16">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl font-semibold">╱╲ One-Line ASCII Art</h2>
+          <Link
+            href="/ascii-art"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+          >
+            View all <ArrowRight className="h-3 w-3" />
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {PREVIEW_ASCII_ART.map((a) => (
+            <ComboButton key={a.name} name={a.name} combo={a.text} />
+          ))}
+        </div>
+      </section>
+
+      {/* Utility Preview (Invisible & Braille) */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-semibold">⠀ Invisible Characters</h2>
+            <Link href="/invisible" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
+              View all <ArrowRight className="h-3 w-3" />
+            </Link>
+          </div>
+          <ComboButton name="Zero Width Space (ZWSP)" combo="[​]" />
+          <p className="text-xs text-muted-foreground mt-2 px-1">Use to bypass filters or create blank names in games.</p>
+        </div>
+        <div>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-semibold">⠓ Braille Translator</h2>
+            <Link href="/braille" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
+              Try it <ArrowRight className="h-3 w-3" />
+            </Link>
+          </div>
+          <ComboButton name="Hello World" combo="⠓⠑⠇⠇⠕⠀⠺⠕⠗⠇⠙" />
         </div>
       </section>
     </div>
