@@ -54,10 +54,11 @@ export function middleware(request: NextRequest) {
     return NextResponse.rewrite(newUrl);
   }
 
-  // For non-default locales: redirect to locale-prefixed URL
+  // For non-default locales: rewrite (not redirect) to preserve clean URLs
+  // This prevents Google from seeing 302 redirects on sitemap-declared URLs
   const newUrl = new URL(`/${locale}${pathname}`, request.url);
   newUrl.search = request.nextUrl.search;
-  return NextResponse.redirect(newUrl);
+  return NextResponse.rewrite(newUrl);
 }
 
 export const config = {

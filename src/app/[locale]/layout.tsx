@@ -66,9 +66,9 @@ export async function generateMetadata({
       follow: true,
     },
     alternates: {
-      canonical: prefix || "/",
+      canonical: `https://www.mojicap.com${prefix || "/"}`,
       languages: Object.fromEntries(
-        locales.map((l) => [l, l === "en" ? "/" : `/${l}`])
+        locales.map((l) => [l, `https://www.mojicap.com${l === "en" ? "/" : `/${l}`}`])
       ),
     },
   };

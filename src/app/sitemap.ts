@@ -18,6 +18,15 @@ const TOOL_PATHS = [
   { path: "/terms", changeFrequency: "yearly" as const, priority: 0.3 },
 ];
 
+/** Build hreflang alternates map for a given path */
+function buildAlternates(path: string) {
+  return {
+    languages: Object.fromEntries(
+      locales.map((l) => [l, `${BASE_URL}${l === "en" ? "" : `/${l}`}${path}`])
+    ),
+  };
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const emojis = getAllEmojis();
   const now = new Date();
@@ -32,6 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly",
       priority: locale === "en" ? 1.0 : 0.9,
+      alternates: buildAlternates("/"),
     });
   }
 
@@ -44,6 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: now,
         changeFrequency: tool.changeFrequency,
         priority: locale === "en" ? tool.priority : tool.priority - 0.1,
+        alternates: buildAlternates(tool.path),
       });
     }
   }
@@ -57,6 +68,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: now,
         changeFrequency: "monthly",
         priority: locale === "en" ? 0.6 : 0.5,
+        alternates: buildAlternates(`/emoji/${emoji.slug}`),
       });
     }
   }

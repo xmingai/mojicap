@@ -39,9 +39,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: `Copy the ${localName} emoji ${emoji.emoji}. Unicode: ${emoji.unicode}`,
     },
     alternates: {
-      canonical: `${prefix}/emoji/${slug}`,
+      canonical: `https://www.mojicap.com${prefix}/emoji/${slug}`,
       languages: Object.fromEntries(
-        locales.map((l) => [l, l === "en" ? `/emoji/${slug}` : `/${l}/emoji/${slug}`])
+        locales.map((l) => [l, `https://www.mojicap.com${l === "en" ? "" : `/${l}`}/emoji/${slug}`])
       ),
     },
   };
