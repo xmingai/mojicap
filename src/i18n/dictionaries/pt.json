@@ -379,5 +379,30 @@
     "section2List4": "Utility Tools: Need to translate Morse code, generate invisible characters, or create ASCII art? We have dedicated tools for that, all entirely free and client-side.",
     "section3Title": "Por que usar Unicode?",
     "section3Desc": "Unlike traditional fonts (.ttf or .otf files) that need to be installed on a device to be visible, our text generators use specific ranges of the Unicode character standard. This means the styles are inherently baked into the characters themselves. As long as a website or app supports Unicode (which almost all modern platforms do), your styled text will appear exactly as generated, no matter who is viewing it."
+  },
+  "textToolSeo": {
+    "q1": "O que é o Gerador de {toolName}?",
+    "p1_1": "Gera {desc}. Nosso gerador usa o padrão Unicode para converter sua entrada de teclado padrão nessas formas de caracteres especiais.",
+    "p1_2": "Esses símbolos podem ser copiados e colados diretamente em qualquer plataforma que suporte Unicode, incluindo Instagram, Twitter, Facebook, TikTok e até caixas de chat de jogos.",
+    "q2": "Essas são fontes reais?",
+    "p2_1": "Não, não são fontes reais como as que você instala no seu computador. São essencialmente símbolos especiais mapeados na tabela de caracteres Unicode.",
+    "p2_2": "Por serem símbolos de texto simples, você pode copiá-los e colá-los livremente nas redes sociais e sites. Se fossem fontes reais, outras pessoas não poderiam vê-las sem ter a fonte instalada."
+  },
+  "textToolsDesc": {
+    "fancy-text": "estilos de texto elegantes, legais e estéticos",
+    "glitch-text": "texto glitch, texto zalgo e texto assustador",
+    "vaporwave-text": "texto vaporwave estético",
+    "tiny-text": "texto minúsculo sobrescrito e subscrito",
+    "morse-code": "código morse com pontos e traços",
+    "cursive-text": "estilos de texto cursivos e manuscritos",
+    "old-english-text": "estilos de texto gótico, fraktur e inglês antigo",
+    "bold-text": "estilos de texto em negrito e grossos",
+    "italic-text": "estilos de texto inclinados e itálicos",
+    "bubble-text": "texto entre bolhas ou círculos",
+    "square-text": "texto entre colchetes ou caixas",
+    "upside-down-text": "texto virado e de cabeça para baixo",
+    "strikethrough-text": "texto com uma linha riscada",
+    "leet-speak": "texto hacker leet speak (1337)",
+    "weird-text": "estilos de texto estranhos, loucos e caóticos"
   }
 }

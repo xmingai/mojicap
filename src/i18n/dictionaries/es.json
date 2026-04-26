@@ -379,5 +379,30 @@
     "section2List4": "Herramientas de utilidad: ¿Necesitas traducir código Morse, generar caracteres invisibles o crear arte ASCII? Tenemos herramientas dedicadas para eso, todas completamente gratuitas y del lado del cliente.",
     "section3Title": "¿Por qué usar Unicode?",
     "section3Desc": "A diferencia de las fuentes tradicionales (archivos .ttf u .otf) que deben instalarse en un dispositivo para ser visibles, nuestros generadores de texto utilizan rangos específicos del estándar de caracteres Unicode. Esto significa que los estilos están inherentemente incorporados en los propios caracteres. Siempre que un sitio web o aplicación admita Unicode (lo que hacen casi todas las plataformas modernas), tu texto estilizado aparecerá exactamente como se generó, sin importar quién lo esté viendo."
+  },
+  "textToolSeo": {
+    "q1": "¿Qué es el Generador de {toolName}?",
+    "p1_1": "Genera {desc}. Nuestro generador utiliza el estándar Unicode para convertir la entrada de su teclado estándar en estas formas de caracteres especiales.",
+    "p1_2": "Estos símbolos se pueden copiar y pegar directamente en cualquier plataforma que admita Unicode, incluidos Instagram, Twitter, Facebook, TikTok e incluso en cajas de chat de juegos.",
+    "q2": "¿Son estas fuentes reales?",
+    "p2_1": "No, estas no son fuentes reales como las que instala en su computadora. Son esencialmente símbolos especiales mapeados en la tabla de caracteres Unicode.",
+    "p2_2": "Debido a que son símbolos de texto sin formato, puede copiarlos y pegarlos libremente en varias plataformas de redes sociales y sitios web. Si fueran fuentes reales, otras personas no podrían verlas a menos que tuvieran exactamente la misma fuente instalada."
+  },
+  "textToolsDesc": {
+    "fancy-text": "estilos de texto elegantes, geniales y estéticos",
+    "glitch-text": "texto glitch, texto zalgo y texto espeluznante",
+    "vaporwave-text": "texto vaporwave estético y de ancho completo",
+    "tiny-text": "texto pequeño en superíndice y subíndice",
+    "morse-code": "código morse con puntos y rayas",
+    "cursive-text": "estilos de texto cursivos y manuscritos",
+    "old-english-text": "estilos de texto gótico, fraktur y de inglés antiguo",
+    "bold-text": "estilos de texto en negrita y gruesos",
+    "italic-text": "estilos de texto inclinados y en cursiva",
+    "bubble-text": "texto encerrado en burbujas o círculos",
+    "square-text": "texto encerrado en corchetes o cuadros",
+    "upside-down-text": "texto volteado y al revés",
+    "strikethrough-text": "texto con una línea tachada",
+    "leet-speak": "texto hacker leet speak (1337)",
+    "weird-text": "estilos de texto extraños, locos y caóticos"
   }
 }
