@@ -27,37 +27,46 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-xl font-semibold text-foreground">2. Analytics and Tracking</h2>
+          <h2 className="text-xl font-semibold text-foreground">2. Cookies and Advertising (Google AdSense)</h2>
           <p>
-            To understand how our website is performing and discover which tools are most useful to our visitors, we use privacy-friendly web analytics. These analytics platforms only collect standard, anonymous metadata, such as:
+            We use third-party advertising companies, including Google, to serve ads when you visit our website. These companies may use cookies to serve ads based on your prior visits to our website or other websites.
+          </p>
+          <p>
+            Specifically, Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to our site and/or other sites on the Internet.
           </p>
           <ul className="list-disc pl-6 space-y-1">
-            <li>Pages visited</li>
-            <li>Browser type and operating system</li>
-            <li>Referring website</li>
-            <li>Non-precise geographic location (e.g., country level)</li>
+            <li>Third party vendors, including Google, use cookies to serve ads based on a user's prior visits to your website or other websites.</li>
+            <li>Google's use of advertising cookies enables it and its partners to serve ads to your users based on their visit to your sites and/or other sites on the Internet.</li>
+            <li>Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Google Ads Settings</a>.</li>
           </ul>
           <p>
-            We do not use tracking tools for advertising profiling or targeted marketing.
+            Alternatively, you can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.aboutads.info</a>.
           </p>
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-xl font-semibold text-foreground">3. Third-Party Links</h2>
+          <h2 className="text-xl font-semibold text-foreground">3. Analytics</h2>
+          <p>
+            To understand how our website is performing and discover which tools are most useful to our visitors, we use privacy-friendly web analytics. These analytics platforms only collect standard, anonymous metadata, such as pages visited, browser type, and non-precise geographic location. We do not use tracking tools for advertising profiling outside of the standard AdSense integration.
+          </p>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-xl font-semibold text-foreground">4. Third-Party Links</h2>
           <p>
             Our website may contain links to third-party websites or services that are not owned or controlled by MojiCap. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third party websites.
           </p>
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-xl font-semibold text-foreground">4. Changes to This Policy</h2>
+          <h2 className="text-xl font-semibold text-foreground">5. Changes to This Policy</h2>
           <p>
             We may update our Privacy Policy from time to time. Any changes will be reflected on this page with an updated "Last updated" date. We encourage you to review this Privacy Policy periodically for any changes.
           </p>
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-xl font-semibold text-foreground">5. Contact Us</h2>
+          <h2 className="text-xl font-semibold text-foreground">6. Contact Us</h2>
           <p>
             If you have any questions or concerns about our Privacy Policy or data handling practices, please contact us via our main project repository on GitHub.
           </p>

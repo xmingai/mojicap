@@ -147,8 +147,8 @@
   },
   "fancyText": {
     "title": "おしゃれフォント生成",
-    "metaTitle": "おしゃれフォント生成 — 20+種類のクールフォント",
-    "metaDesc": "テキストをおしゃれフォントに変換。筆記体、太字、斜体など20+種類。",
+    "metaTitle": "おしゃれフォント生成 (𝓬𝓸𝓹𝔂 𝖆𝖓𝖉 𝓹𝓪𝓼𝓽𝓮) — 20+種類のクールフォント",
+    "metaDesc": "テキストをおしゃれフォントに変換。InstagramやTikTokに 𝓬𝓸𝓹𝔂 𝖆𝖓𝖉 𝓹𝓪𝓼𝓽𝓮 (コピペ) で即座に使える。筆記体、太字、斜体など20+種類。",
     "inputPlaceholder": "ここにテキストを入力...",
     "faqTitle": "よくある質問 (FAQ)",
     "faq": [
@@ -164,7 +164,32 @@
         "q": "相手にも同じように見えますか？",
         "a": "はい！画像ではなく文字そのものが違うため、送信相手にも全く同じおしゃれな文字が表示されます。"
       }
-    ]
+    ],
+    "seoArticle": {
+      "sections": [
+        {
+          "title": "おしゃれフォントの生成 (Generating Fancy Text)",
+          "paragraphs": [
+            "おしゃれなフォントを生成して、InstagramのプロフィールやTikTokのコメント欄にコピー＆ペースト（コピペ）しようとしているかもしれません。でも、どうやってテキストのフォントを変えているのか不思議に思ったことはありませんか？これはハッキングの一種なのでしょうか？本当に「フォント」そのものをコピーしているのでしょうか？",
+            "実は違います。このジェネレーターは「フォント」を変えているのではなく「特殊な記号」を生成しているのです。これは、何千もの異なる記号や文字を規定する世界標準規格である「Unicode（ユニコード）」の仕組みを利用しています。電子機器で表示されるほぼすべての文字は、このUnicodeで定義されています。"
+          ]
+        },
+        {
+          "title": "フォントジェネレーター (Unicodeを利用したテキスト記号)",
+          "paragraphs": [
+            "Unicodeに収録されている何十万もの記号の中には、標準のアルファベットに似た文字やそのバリエーションが存在します。例えば、「hello」という単語を「𝖍𝖊𝖑𝖑𝖔」というおしゃれな文字に変換することができますが、これらは単なる特定のUnicode記号の集まりにすぎません。",
+            "このようなおしゃれな文字は、Unicodeの規格の中に散らばっています。したがって、おしゃれな文字の変換ツールを作るには、これらの記号を見つけ出し、通常のアルファベットとリンクさせるだけでよいのです。"
+          ]
+        },
+        {
+          "title": "コピー＆ペースト (Copy and Paste)",
+          "paragraphs": [
+            "テキストを特殊な記号に変換した後は、これらの「フォント」をほとんどのウェブサイトやアプリに簡単にコピー＆ペーストできます。Instagram、TikTok、Twitter (X)、Facebookなどでクリエイティブな投稿を作ったり、Steamで個性を出したり、友達に可愛いメッセージを送るのに最適です。",
+            "唯一の例外は、貼り付け先のアプリやサイトが特定のUnicode文字に対応していない場合です。その場合、ブラウザが文字を表示しようとして「四角い箱（文字化け）」が表示されることがあります。これは翻訳ツールのエラーではなく、単にそのサイトのフォントがその文字をサポートしていないことを意味します。"
+          ]
+        }
+      ]
+    }
   },
   "combos": {
     "title": "絵文字コンボ",
@@ -246,7 +271,9 @@
     "asciiArt": "AAアート",
     "copyright": "© {year} MojiCap. すべての絵文字の著作権はそれぞれの所有者に帰属します。",
     "privacy": "プライバシー",
-    "terms": "利用規約"
+    "terms": "利用規約",
+    "company": "コミュニティ",
+    "about": "概要"
   },
   "common": {
     "copied": "{text} をコピーしました",
@@ -323,5 +350,23 @@
     "Animals & Pets Vibe": "動物とペット",
     "Fantasy & Magic Vibe": "ファンタジーと魔法",
     "Holidays Vibe": "休日の雰囲気"
+  },
+  "textToolsNav": {
+    "title": "テキストジェネレーター",
+    "fancyText": "装飾テキスト",
+    "glitchText": "グリッチテキスト",
+    "vaporwaveText": "ヴェイパーウェイヴ",
+    "tinyText": "ミニテキスト",
+    "morseCode": "モールス信号",
+    "cursiveText": "Cursive Text",
+    "oldEnglishText": "Old English",
+    "boldText": "Bold Text",
+    "italicText": "Italic Text",
+    "bubbleText": "Bubble Text",
+    "squareText": "Square Text",
+    "upsideDownText": "Upside Down",
+    "strikethroughText": "Strikethrough",
+    "leetSpeak": "Leet Speak",
+    "weirdText": "Weird Text"
   }
 }

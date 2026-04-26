@@ -147,8 +147,8 @@
   },
   "fancyText": {
     "title": "Generador de Texto Elegante",
-    "metaTitle": "Generador de Texto Elegante — 20+ Estilos de Fuente",
-    "metaDesc": "Transforma tu texto en fuentes elegantes. 20+ estilos incluyendo cursiva, negrita, itálica y más.",
+    "metaTitle": "Generador de Texto Elegante (𝓬𝓸𝓹𝔂 𝖆𝖓𝖉 𝓹𝓪𝓼𝓽𝓮) — 20+ Estilos de Fuente",
+    "metaDesc": "Transforma tu texto en fuentes elegantes. 𝓬𝓸𝓹𝔂 𝖆𝖓𝖉 𝓹𝓪𝓼𝓽𝓮 para Instagram, TikTok y Discord al instante. 20+ estilos incluyendo cursiva, negrita e itálica.",
     "inputPlaceholder": "Escribe tu texto aquí...",
     "faqTitle": "Preguntas Frecuentes (FAQ)",
     "faq": [
@@ -164,7 +164,32 @@
         "q": "¿Solo funciona con letras en inglés?",
         "a": "Principalmente sí. La transformación de letras con estilo solo está disponible en la norma Unicode para el alfabeto y los números, no para caracteres con tilde o acentos marcados."
       }
-    ]
+    ],
+    "seoArticle": {
+      "sections": [
+        {
+          "title": "Generar Texto Elegante (Generating Fancy Text)",
+          "paragraphs": [
+            "Tal vez acabas de generar un texto elegante y estás listo para copiarlo y pegarlo en los comentarios de videos divertidos o en tu biografía de Instagram. Pero, ¿alguna vez te has preguntado cómo es posible cambiar la fuente de tu texto? ¿Es algún tipo de hack? ¿Estás copiando y pegando una fuente real?",
+            "La respuesta es en realidad no: en lugar de generar fuentes elegantes, este convertidor crea símbolos elegantes. La explicación comienza con Unicode, un estándar de la industria que especifica miles de símbolos y caracteres diferentes. Casi todo el texto que ves en tus dispositivos electrónicos está definido por este estándar Unicode."
+          ]
+        },
+        {
+          "title": "Generador de Fuentes (Símbolos de texto usando Unicode)",
+          "paragraphs": [
+            "Entre los cientos de miles de símbolos en las especificaciones Unicode hay caracteres que se asemejan o son variaciones del alfabeto estándar. Por ejemplo, podemos tomar la palabra \"hello\" y convertir sus caracteres en las letras elegantes \"𝖍𝖊𝖑𝖑𝖔\", que son simplemente un conjunto de símbolos Unicode específicos.",
+            "Estos conjuntos de letras elegantes están dispersos por toda la especificación Unicode. Por lo tanto, para crear un traductor de texto elegante, solo es cuestión de encontrar estas letras coincidentes y vincularlas a sus equivalentes alfabéticos normales."
+          ]
+        },
+        {
+          "title": "Copiar y Pegar (Copy and Paste)",
+          "paragraphs": [
+            "Después de generar tus símbolos de texto elegantes, puedes copiar y pegar fácilmente estas \"fuentes\" en la mayoría de los sitios web y aplicaciones. Puedes usarlo para crear una publicación de aspecto creativo en Instagram, TikTok, Facebook, Tumblr o Twitter, o simplemente para enviar mensajes llenos de texto hermoso a tus amigos.",
+            "La única excepción es si el destino donde pegas el texto no soporta ciertos caracteres Unicode. En ese caso, es posible que veas una \"caja\" genérica donde el navegador intenta renderizar una letra elegante. Esto no significa que haya un error con el traductor, simplemente significa que la fuente específica del sitio web no soporta ese carácter en particular."
+          ]
+        }
+      ]
+    }
   },
   "combos": {
     "title": "Combos de Emojis",
@@ -246,7 +271,9 @@
     "asciiArt": "Arte ASCII",
     "copyright": "© {year} MojiCap. Todos los derechos de autor de los emojis pertenecen a sus respectivos propietarios.",
     "privacy": "Privacidad",
-    "terms": "Términos"
+    "terms": "Términos",
+    "company": "Comunidad",
+    "about": "Acerca de"
   },
   "common": {
     "copied": "{text} copiado",
@@ -323,5 +350,23 @@
     "Animals & Pets Vibe": "Estilo Animales y Mascotas",
     "Fantasy & Magic Vibe": "Estilo Fantasía y Magia",
     "Holidays Vibe": "Estilo Festivo"
+  },
+  "textToolsNav": {
+    "title": "Generadores de Texto",
+    "fancyText": "Texto Elegante",
+    "glitchText": "Texto Glitch",
+    "vaporwaveText": "Vaporwave",
+    "tinyText": "Texto Pequeño",
+    "morseCode": "Código Morse",
+    "cursiveText": "Cursive Text",
+    "oldEnglishText": "Old English",
+    "boldText": "Bold Text",
+    "italicText": "Italic Text",
+    "bubbleText": "Bubble Text",
+    "squareText": "Square Text",
+    "upsideDownText": "Upside Down",
+    "strikethroughText": "Strikethrough",
+    "leetSpeak": "Leet Speak",
+    "weirdText": "Weird Text"
   }
 }

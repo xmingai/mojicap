@@ -147,8 +147,8 @@
   },
   "fancyText": {
     "title": "Fancy Text Generator",
-    "metaTitle": "Fancy Text Generator — 20+ Cool Font Styles",
-    "metaDesc": "Transform your text into fancy fonts. 20+ styles including cursive, bold, italic, and more.",
+    "metaTitle": "Fancy Text Generator (𝓬𝓸𝓹𝔂 𝖆𝖓𝖉 𝓹𝓪𝓼𝓽𝓮) — 20+ Cool Fonts",
+    "metaDesc": "Transform your normal text into cool, aesthetic, and fancy fonts. 𝓬𝓸𝓹𝔂 𝖆𝖓𝖉 𝓹𝓪𝓼𝓽𝓮 to Instagram, TikTok, Discord, and Twitter instantly. 20+ styles including cursive, bold, and italic.",
     "inputPlaceholder": "Type your text here...",
     "faqTitle": "FAQ: frequently asked questions",
     "faq": [
@@ -164,7 +164,32 @@
         "q": "Is the generated text readable by screen readers?",
         "a": "While most modern screen readers can interpret standard unicode characters, heavy use of mathematical fancy text might be difficult for accessibility. Use it creatively but sparingly."
       }
-    ]
+    ],
+    "seoArticle": {
+      "sections": [
+        {
+          "title": "Generating Fancy Text",
+          "paragraphs": [
+            "So perhaps you've generated some fancy text and are ready to copy and paste it into the comments section of funny cat videos or your Instagram bio. But perhaps you're wondering how it's even possible to change the font of your text? Is it some sort of hack? Are you copying and pasting an actual font?",
+            "The answer is actually no—rather than generating fancy fonts, this converter creates fancy symbols. The explanation starts with Unicode, an industry standard that specifies thousands of different symbols and characters. All the text you see on your electronic devices is likely specified by the Unicode standard."
+          ]
+        },
+        {
+          "title": "Font Generator (Text Symbols Using Unicode)",
+          "paragraphs": [
+            "Among the hundreds of thousands of symbols in the Unicode specifications are characters that resemble or are variations of the standard alphabet. For example, we can take the word \"hello\" and convert its characters into the fancy letters \"𝖍𝖊𝖑𝖑𝖔\", which are simply a set of specific Unicode symbols.",
+            "These sets of fancy letters are scattered throughout the Unicode specification. To create a fancy text translator, it's just a matter of finding these matching letters and linking them to their normal alphabetical equivalents."
+          ]
+        },
+        {
+          "title": "Copy and Paste",
+          "paragraphs": [
+            "After generating your fancy text symbols, you can easily copy and paste these \"fonts\" to most websites and apps. You can use it to create a creative-looking Instagram, TikTok, Facebook, Tumblr, or Twitter post, or just for sending messages full of beautiful text to your friends.",
+            "The only exception is if your paste destination doesn't support certain Unicode characters. In that case, you might see a generic \"box\" where the browser tries to render a fancy letter. This doesn't mean there's an error with the translator—it just means the website's specific font doesn't support that character."
+          ]
+        }
+      ]
+    }
   },
   "combos": {
     "title": "Emoji Combos",
@@ -246,7 +271,9 @@
     "asciiArt": "ASCII Art",
     "copyright": "© {year} MojiCap. All emoji copyrights belong to their respective owners.",
     "privacy": "Privacy",
-    "terms": "Terms"
+    "terms": "Terms",
+    "company": "Community",
+    "about": "About"
   },
   "common": {
     "copied": "Copied {text}",
@@ -323,5 +350,23 @@
     "Animals & Pets Vibe": "Animals & Pets Vibe",
     "Fantasy & Magic Vibe": "Fantasy & Magic Vibe",
     "Holidays Vibe": "Holidays Vibe"
+  },
+  "textToolsNav": {
+    "title": "Text Generators",
+    "fancyText": "Fancy Text",
+    "glitchText": "Glitch Text",
+    "vaporwaveText": "Vaporwave",
+    "tinyText": "Tiny Text",
+    "morseCode": "Morse Code",
+    "cursiveText": "Cursive Text",
+    "oldEnglishText": "Old English",
+    "boldText": "Bold Text",
+    "italicText": "Italic Text",
+    "bubbleText": "Bubble Text",
+    "squareText": "Square Text",
+    "upsideDownText": "Upside Down",
+    "strikethroughText": "Strikethrough",
+    "leetSpeak": "Leet Speak",
+    "weirdText": "Weird Text"
   }
 }

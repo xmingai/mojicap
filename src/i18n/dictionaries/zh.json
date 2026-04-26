@@ -146,8 +146,8 @@
   },
   "fancyText": {
     "title": "花体文字生成器",
-    "metaTitle": "花体文字生成器 — 20+ 种酷炫字体风格",
-    "metaDesc": "将文字转换为花体字。提供 20+ 种风格，包括手写体、粗体、斜体等。",
+    "metaTitle": "花体文字生成器 (𝓬𝓸𝓹𝔂 𝖆𝖓𝖉 𝓹𝓪𝓼𝓽𝓮) — 一键复制 20+ 种英文字体",
+    "metaDesc": "将你的普通英文转换为酷炫的花体文字。𝓬𝓸𝓹𝔂 𝖆𝖓𝖉 𝓹𝓪𝓼𝓽𝓮 一键复制粘贴到小红书、微信、Instagram 和 TikTok 等全平台。提供 20+ 种风格，包括手写体、粗体、斜体等。",
     "inputPlaceholder": "在此输入文字...",
     "faqTitle": "常见问题解答 (FAQ)",
     "faq": [
@@ -163,7 +163,32 @@
         "q": "发出的花体字别人也能看到吗？",
         "a": "是的，这是真实的字符而不是本地字体的自娱自乐，所以任何收到你消息的人看到的都是一样的花体效果。"
       }
-    ]
+    ],
+    "seoArticle": {
+      "sections": [
+        {
+          "title": "如何生成花体文字 (Generating Fancy Text)",
+          "paragraphs": [
+            "也许你刚刚生成了一些很酷的花体字，准备把它们复制粘贴到搞笑视频的评论区或者你的 Instagram 简介里。但你可能会好奇：改变文本字体是怎么做到的？这是一种黑客技术吗？你复制粘贴的真的是一种“字体”吗？",
+            "答案其实是否定的——这个生成器并没有生成真正的字体，而是创造了“花式符号”。这一切都要从 Unicode（统一码）说起。Unicode 是一项行业标准，它为成千上万种不同的符号和字符制定了规范。你在电子设备上看到的所有字符，基本都是由 Unicode 标准定义的。"
+          ]
+        },
+        {
+          "title": "基于 Unicode 符号的字体生成器",
+          "paragraphs": [
+            "在 Unicode 规范的数十万个符号中，有一些字符碰巧与标准字母长得很像，或者是标准字母的变体。例如，我们可以把“hello”这个词转换成花体字母“𝖍𝖊𝖑𝖑𝖔”，而这些花体字母实际上只是一组特定的 Unicode 符号。",
+            "这些各种各样的花体字母散落在 Unicode 规范的各个角落。因此，要创建一个花体字转换器，我们只需要把这些对应的符号找出来，并将它们与普通的英文字母建立映射关系即可。"
+          ]
+        },
+        {
+          "title": "一键复制粘贴 (Copy and Paste)",
+          "paragraphs": [
+            "生成你想要的花式文本符号后，你可以轻松地将这些“字体”复制粘贴到绝大多数的网站和应用中。你可以用它来制作极具创意的 Instagram、TikTok、Facebook、Twitter 帖子，也可以在玩游戏（如 Steam）时彰显个性，或者只是给朋友发送漂亮的个性化消息。",
+            "唯一的例外是，如果你粘贴的平台不支持某些 Unicode 字符，你可能会看到一个通用的“方块（豆腐块）”或者问号。这并不意味着翻译器出错了，只是说明该网站或应用所使用的字体库没有包含这个特殊字符。"
+          ]
+        }
+      ]
+    }
   },
   "combos": {
     "title": "Emoji 组合",
@@ -245,7 +270,9 @@
     "asciiArt": "ASCII 字符画",
     "copyright": "© {year} MojiCap. 所有表情符号版权归其各自所有者所有。",
     "privacy": "隐私政策",
-    "terms": "使用条款"
+    "terms": "使用条款",
+    "company": "社区",
+    "about": "关于"
   },
   "common": {
     "copied": "已复制 {text}",
@@ -322,5 +349,23 @@
     "Animals & Pets Vibe": "动物与宠物",
     "Fantasy & Magic Vibe": "奇幻与魔法",
     "Holidays Vibe": "节日氛围"
+  },
+  "textToolsNav": {
+    "title": "文本生成器",
+    "fancyText": "花体文字",
+    "glitchText": "乱码文字",
+    "vaporwaveText": "蒸汽波",
+    "tinyText": "迷你文字",
+    "morseCode": "摩斯密码",
+    "cursiveText": "花体手写",
+    "oldEnglishText": "古英语",
+    "boldText": "粗体文字",
+    "italicText": "斜体文字",
+    "bubbleText": "气泡文字",
+    "squareText": "方块文字",
+    "upsideDownText": "倒立文字",
+    "strikethroughText": "删除线文字",
+    "leetSpeak": "黑客语",
+    "weirdText": "怪异文字"
   }
 }

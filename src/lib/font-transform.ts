@@ -186,16 +186,22 @@ export function transformText(text: string, fontSlug: string): string {
   if (fontSlug === "slash-through") {
     return [...text].map((c) => c + "\u0338").join("");
   }
-  if (fontSlug === "zalgo") {
+  if (fontSlug.startsWith("zalgo")) {
+    const level = fontSlug === "zalgo-1" ? 1 : fontSlug === "zalgo-3" ? 3 : 2;
     const zalgoUp = ["\u030d","\u030e","\u0304","\u0305","\u033f","\u0311","\u0306","\u0310","\u0352","\u0351","\u0308","\u0309"];
     const zalgoDown = ["\u0316","\u0317","\u0318","\u0319","\u031c","\u031d","\u031e","\u031f","\u0320","\u0324","\u0325","\u0326"];
     const zalgoMid = ["\u0315","\u031b","\u0340","\u0341","\u0358","\u0321","\u0322","\u0327","\u0328","\u0334","\u0335","\u0336"];
+    
     return [...text].map((c, i) => {
       if (c === " ") return c;
-      const u = zalgoUp[(i * 3 + 1) % zalgoUp.length];
-      const d = zalgoDown[(i * 5 + 2) % zalgoDown.length];
-      const m = zalgoMid[(i * 7 + 3) % zalgoMid.length];
-      return c + u + m + d;
+      let result = c;
+      const upCount = level * 2;
+      const midCount = level;
+      const downCount = level * 2;
+      for(let j=0; j<upCount; j++) result += zalgoUp[(i * 3 + j) % zalgoUp.length];
+      for(let j=0; j<midCount; j++) result += zalgoMid[(i * 5 + j) % zalgoMid.length];
+      for(let j=0; j<downCount; j++) result += zalgoDown[(i * 7 + j) % zalgoDown.length];
+      return result;
     }).join("");
   }
 
@@ -208,4 +214,114 @@ export function transformAllFonts(text: string): { name: string; slug: string; r
     slug: font.slug,
     result: transformText(text, font.slug),
   }));
+}
+
+const morseCodeMap: Record<string, string> = {
+  "a": ".-", "b": "-...", "c": "-.-.", "d": "-..", "e": ".", "f": "..-.", "g": "--.", "h": "....",
+  "i": "..", "j": ".---", "k": "-.-", "l": ".-..", "m": "--", "n": "-.", "o": "---", "p": ".--.",
+  "q": "--.-", "r": ".-.", "s": "...", "t": "-", "u": "..-", "v": "...-", "w": ".--", "x": "-..-",
+  "y": "-.--", "z": "--..", "1": ".----", "2": "..---", "3": "...--", "4": "....-", "5": ".....",
+  "6": "-....", "7": "--...", "8": "---..", "9": "----.", "0": "-----", ",": "--..--", ".": ".-.-.-",
+  "?": "..--..", "/": "-..-.", "-": "-....-", "(": "-.--.", ")": "-.--.-", " ": "/"
+};
+
+export function getToolResults(text: string, toolMode: string): { name: string; slug: string; result: string }[] {
+  if (toolMode === 'morse-code') {
+    return [{ 
+      name: "Morse Code", 
+      slug: "morse", 
+      result: text.toLowerCase().split('').map(c => morseCodeMap[c] || c).join(' ')
+    }];
+  }
+  
+  if (toolMode === 'glitch-text') {
+    return [
+      { name: "Glitch Level 1 (Mild)", slug: "glitch-1", result: transformText(text, "zalgo-1") },
+      { name: "Glitch Level 2 (Creepy)", slug: "glitch-2", result: transformText(text, "zalgo-2") },
+      { name: "Glitch Level 3 (Zalgo)", slug: "glitch-3", result: transformText(text, "zalgo-3") },
+      { name: "Slash Through", slug: "slash-through", result: transformText(text, "slash-through") },
+    ];
+  }
+  
+  if (toolMode === 'vaporwave-text') {
+    return [
+      { name: "Vaporwave (Fullwidth)", slug: "fullwidth", result: transformText(text, "fullwidth") },
+      { name: "Faux Cyrillic", slug: "faux-cyrillic", result: transformText(text, "faux-cyrillic") },
+      { name: "Small Caps", slug: "small-caps", result: transformText(text, "small-caps") },
+    ];
+  }
+  
+  if (toolMode === 'tiny-text') {
+    return [
+      { name: "Superscript", slug: "superscript", result: transformText(text, "superscript") },
+      { name: "Subscript", slug: "subscript", result: transformText(text, "subscript") },
+      { name: "Small Caps", slug: "small-caps", result: transformText(text, "small-caps") },
+    ];
+  }
+
+  
+  if (toolMode === 'cursive-text') {
+    return [
+      { name: "Cursive Script", slug: "script", result: transformText(text, "script") },
+      { name: "Bold Cursive", slug: "bold-script", result: transformText(text, "bold-script") },
+    ];
+  }
+  if (toolMode === 'old-english-text') {
+    return [
+      { name: "Old English", slug: "fraktur", result: transformText(text, "fraktur") },
+      { name: "Bold Old English", slug: "bold-fraktur", result: transformText(text, "bold-fraktur") },
+    ];
+  }
+  if (toolMode === 'bold-text') {
+    return [
+      { name: "Bold", slug: "bold", result: transformText(text, "bold") },
+      { name: "Sans Bold", slug: "sans-bold", result: transformText(text, "sans-bold") },
+      { name: "Bold Italic", slug: "bold-italic", result: transformText(text, "bold-italic") },
+      { name: "Sans Bold Italic", slug: "sans-bold-italic", result: transformText(text, "sans-bold-italic") },
+    ];
+  }
+  if (toolMode === 'italic-text') {
+    return [
+      { name: "Italic", slug: "italic", result: transformText(text, "italic") },
+      { name: "Sans Italic", slug: "sans-italic", result: transformText(text, "sans-italic") },
+      { name: "Bold Italic", slug: "bold-italic", result: transformText(text, "bold-italic") },
+    ];
+  }
+  if (toolMode === 'bubble-text') {
+    return [
+      { name: "Bubble (Circled)", slug: "circled", result: transformText(text, "circled") },
+    ];
+  }
+  if (toolMode === 'square-text') {
+    return [
+      { name: "Squared", slug: "squared", result: transformText(text, "squared") },
+      { name: "Negative Squared", slug: "negative-squared", result: transformText(text, "negative-squared") },
+    ];
+  }
+  if (toolMode === 'upside-down-text') {
+    return [
+      { name: "Upside Down", slug: "upside-down", result: transformText(text, "upside-down") },
+    ];
+  }
+  if (toolMode === 'strikethrough-text') {
+    return [
+      { name: "Strikethrough", slug: "strikethrough", result: transformText(text, "strikethrough") },
+      { name: "Slash Through", slug: "slash-through", result: transformText(text, "slash-through") },
+    ];
+  }
+  if (toolMode === 'leet-speak') {
+    return [
+      { name: "L33t Speak", slug: "l33t", result: transformText(text, "l33t") },
+    ];
+  }
+  if (toolMode === 'weird-text') {
+    return [
+      { name: "Double-Struck", slug: "double-struck", result: transformText(text, "double-struck") },
+      { name: "Faux Cyrillic", slug: "faux-cyrillic", result: transformText(text, "faux-cyrillic") },
+      { name: "Zalgo (Creepy)", slug: "glitch-2", result: transformText(text, "zalgo-2") },
+    ];
+  }
+
+  // fallback to all
+  return transformAllFonts(text);
 }
