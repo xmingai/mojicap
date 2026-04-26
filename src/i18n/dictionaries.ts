@@ -8,6 +8,8 @@ const dictionaries = {
   ko: () => import("./dictionaries/ko.json").then((m) => m.default),
   es: () => import("./dictionaries/es.json").then((m) => m.default),
   ru: () => import("./dictionaries/ru.json").then((m) => m.default),
+  fr: () => import("./dictionaries/fr.json").then((m) => m.default),
+  pt: () => import("./dictionaries/pt.json").then((m) => m.default),
 };
 
 export type Dictionary = Awaited<ReturnType<(typeof dictionaries)["en"]>>;
@@ -23,8 +25,10 @@ import ja from "./dictionaries/ja.json";
 import ko from "./dictionaries/ko.json";
 import es from "./dictionaries/es.json";
 import ru from "./dictionaries/ru.json";
+import fr from "./dictionaries/fr.json";
+import pt from "./dictionaries/pt.json";
 
-const syncDictionaries: Record<Locale, Dictionary> = { en, zh, ja, ko, es, ru };
+const syncDictionaries: Record<Locale, Dictionary> = { en, zh, ja, ko, es, ru, fr, pt };
 
 export function getDictionarySync(locale: Locale): Dictionary {
   return syncDictionaries[locale] || syncDictionaries.en;
