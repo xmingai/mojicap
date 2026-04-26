@@ -1,16 +1,16 @@
 'use client';
 import Link from 'next/link';
 import { usePathname, useParams } from 'next/navigation';
+import { useRef, useEffect, useCallback } from 'react';
 import { cn } from '@/lib/utils';
 import { useDict } from '@/i18n/context';
-
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 export function TextToolsTabs() {
   const pathname = usePathname();
   const params = useParams();
   const locale = params.locale as string;
   const dict = useDict();
+  const activeRef = useRef<HTMLAnchorElement>(null);
   
   const tabs = [
     { name: dict.textToolsNav.fancyText, path: `/${locale}/fancy-text` },
@@ -30,9 +30,15 @@ export function TextToolsTabs() {
     { name: dict.textToolsNav.weirdText, path: `/${locale}/weird-text` },
   ];
 
+  useEffect(() => {
+    if (activeRef.current) {
+      activeRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  }, [pathname]);
+
   return (
     <div className="mb-10 pb-6 border-b border-border/40">
-      <ScrollArea className="w-full whitespace-nowrap">
+      <div className="w-full overflow-x-auto scrollbar-none">
         <div className="flex w-max space-x-2 p-1 mx-auto">
           {tabs.map(tab => {
             const isActive = pathname === tab.path || pathname === tab.path + '/';
@@ -40,6 +46,7 @@ export function TextToolsTabs() {
               <Link 
                 key={tab.path} 
                 href={tab.path}
+                ref={isActive ? activeRef : undefined}
                 className={cn(
                   "px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 shrink-0",
                   isActive 
@@ -52,8 +59,8 @@ export function TextToolsTabs() {
             )
           })}
         </div>
-        <ScrollBar orientation="horizontal" className="invisible" />
-      </ScrollArea>
+      </div>
     </div>
   )
 }
+
