@@ -386,7 +386,9 @@
     "p1_2": "Ces symboles peuvent être copiés et collés directement sur n'importe quelle plateforme prenant en charge Unicode, y compris Instagram, Twitter, Facebook, TikTok et même les chats de jeux.",
     "q2": "S'agit-il de vraies polices ?",
     "p2_1": "Non, ce ne sont pas de vraies polices comme celles que vous installez sur votre ordinateur. Ce sont essentiellement des symboles spéciaux de la table des caractères Unicode.",
-    "p2_2": "Parce qu'il s'agit de symboles de texte brut, vous pouvez les copier et les coller librement sur les réseaux sociaux. Si c'étaient de vraies polices, d'autres personnes ne pourraient pas les voir sans les avoir installées."
+    "p2_2": "Parce qu'il s'agit de symboles de texte brut, vous pouvez les copier et les coller librement sur les réseaux sociaux. Si c'étaient de vraies polices, d'autres personnes ne pourraient pas les voir sans les avoir installées.",
+    "h1": "Générateur de {toolName}",
+    "descPrefix": "Génère {desc}."
   },
   "textToolsDesc": {
     "fancy-text": "des styles de texte fantaisistes, cool et esthétiques",

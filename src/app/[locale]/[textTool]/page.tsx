@@ -39,13 +39,16 @@ export async function generateMetadata({
   const dict = await getDictionary(locale as Locale);
   const camelKey = kebabToCamel(textTool);
   
-  // Safe fallback to English for dictionary values if type is incomplete
+  const seo = dict.textToolSeo as any;
   const toolName = (dict.textToolsNav as Record<string, string>)[camelKey] || textTool;
   const toolDesc = (dict.textToolsDesc as Record<string, string>)[textTool] || "";
   
+  const h1 = seo.h1.replace("{toolName}", toolName);
+  const desc = seo.descPrefix.replace("{desc}", toolDesc);
+  
   return {
-    title: `${toolName} Generator`,
-    description: toolDesc ? `Generate ${toolDesc}.` : "Convert and transform your text.",
+    title: h1,
+    description: desc || "Convert and transform your text.",
   };
 }
 
@@ -66,6 +69,8 @@ export default async function SpecificToolPage({
   
   // Format the SEO strings using the dictionary templates
   const seo = dict.textToolSeo as any;
+  const h1 = seo.h1.replace("{toolName}", toolName);
+  const desc = seo.descPrefix.replace("{desc}", toolDesc);
   const q1 = seo.q1.replace("{toolName}", toolName);
   const p1_1 = seo.p1_1.replace("{desc}", toolDesc);
 
@@ -75,10 +80,10 @@ export default async function SpecificToolPage({
       
       <div className="space-y-4 text-center mb-10">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-          {toolName} Generator
+          {h1}
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Generate {toolDesc}.
+          {desc}
         </p>
       </div>
 

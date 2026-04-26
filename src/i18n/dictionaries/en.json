@@ -386,7 +386,9 @@
     "p1_2": "These symbols can be copied and pasted directly into any platform that supports Unicode, including Instagram, Twitter, Facebook, TikTok, and even in-game chat boxes.",
     "q2": "Are these actual fonts?",
     "p2_1": "No, these are not actual fonts like the ones you install on your computer. They are essentially special symbols mapped out in the Unicode character table.",
-    "p2_2": "Because they are plain text symbols, you can freely copy and paste them across various social media platforms and websites. If they were actual fonts, other people wouldn't be able to see them unless they had the exact same font installed on their device."
+    "p2_2": "Because they are plain text symbols, you can freely copy and paste them across various social media platforms and websites. If they were actual fonts, other people wouldn't be able to see them unless they had the exact same font installed on their device.",
+    "h1": "{toolName} Generator",
+    "descPrefix": "Generate {desc}."
   },
   "textToolsDesc": {
     "fancy-text": "fancy, cool, and aesthetic text styles",

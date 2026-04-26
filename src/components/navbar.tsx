@@ -25,8 +25,8 @@ export function Navbar() {
 
   const MAIN_LINKS = [
     { href: `${prefix}/emoji`, label: dict.nav.emoji, icon: "😀" },
-    { href: `${prefix}/symbols`, label: dict.nav.symbols, icon: "★" },
     { href: `${prefix}/fancy-text`, label: dict.nav.fonts, icon: "𝓐" },
+    { href: `${prefix}/symbols`, label: dict.nav.symbols, icon: "★" },
     { href: `${prefix}/combos`, label: dict.nav.combos, icon: "🎭" },
   ];
 

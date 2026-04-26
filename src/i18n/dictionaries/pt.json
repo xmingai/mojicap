@@ -386,7 +386,9 @@
     "p1_2": "Esses símbolos podem ser copiados e colados diretamente em qualquer plataforma que suporte Unicode, incluindo Instagram, Twitter, Facebook, TikTok e até caixas de chat de jogos.",
     "q2": "Essas são fontes reais?",
     "p2_1": "Não, não são fontes reais como as que você instala no seu computador. São essencialmente símbolos especiais mapeados na tabela de caracteres Unicode.",
-    "p2_2": "Por serem símbolos de texto simples, você pode copiá-los e colá-los livremente nas redes sociais e sites. Se fossem fontes reais, outras pessoas não poderiam vê-las sem ter a fonte instalada."
+    "p2_2": "Por serem símbolos de texto simples, você pode copiá-los e colá-los livremente nas redes sociais e sites. Se fossem fontes reais, outras pessoas não poderiam vê-las sem ter a fonte instalada.",
+    "h1": "Gerador de {toolName}",
+    "descPrefix": "Gera {desc}."
   },
   "textToolsDesc": {
     "fancy-text": "estilos de texto elegantes, legais e estéticos",
