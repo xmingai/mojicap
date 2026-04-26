@@ -1,0 +1,383 @@
+{
+  "meta": {
+    "title": "MojiCap — Copiar e Colar Emojis, Símbolos e Texto Elegante",
+    "description": "A ferramenta de emoji mais rápida e bonita da web. Copie e cole emojis, símbolos especiais, textos elegantes e combos de emojis instantaneamente."
+  },
+  "nav": {
+    "emoji": "Emoji",
+    "symbols": "Símbolos",
+    "fonts": "Fontes",
+    "combos": "Combos",
+    "kaomoji": "Kaomoji",
+    "lines": "Linhas",
+    "invisible": "Invisível",
+    "braille": "Braille",
+    "art": "Art",
+    "more": "Mais",
+    "toggleTheme": "Alternar tema",
+    "bookmarkTip": "or drag to Bookmarks to save ✨"
+  },
+  "home": {
+    "heroTitle": "Copy & Paste",
+    "heroSubtitle": "The fastest emoji, symbols, and fancy text tool on the web.",
+    "moduleEmoji": "Emoji",
+    "moduleEmojiDesc": "3,700+ emojis",
+    "moduleSymbols": "Symbols",
+    "moduleSymbolsDesc": "1,800+ special characters",
+    "moduleFancyText": "Fancy Text",
+    "moduleFancyTextDesc": "20+ font styles",
+    "moduleCombos": "Combos",
+    "moduleCombosDesc": "1,100+ combinations",
+    "popularEmojis": "Popular Emojis",
+    "trendingCombos": "Trending Combos",
+    "popularKaomoji": "Popular Kaomoji",
+    "aestheticDividers": "Aesthetic Dividers",
+    "oneLineAsciiArt": "One-Line ASCII Art",
+    "invisibleCharacters": "Invisible Characters",
+    "brailleTranslator": "Braille Translator",
+    "viewAll": "View all",
+    "tryIt": "Try it",
+    "invisibleHint": "Use to bypass filters or create blank names in games.",
+    "typewriterWords": [
+      "Instantly",
+      "Easily",
+      "Anywhere",
+      "Quickly",
+      "Effortlessly"
+    ],
+    "preview_coquette": "Coquette",
+    "preview_summerVibes": "Summer Vibes",
+    "preview_darkAcademia": "Dark Academia",
+    "preview_party": "Party",
+    "preview_natureCore": "Nature Core",
+    "preview_sadHours": "Sad Hours",
+    "preview_tableFlip": "Table Flip",
+    "preview_sparkles": "Sparkles",
+    "preview_bear": "Bear",
+    "preview_fight": "Fight",
+    "preview_stars": "Stars",
+    "preview_flowers": "Flowers",
+    "preview_sniper": "Sniper",
+    "preview_spider": "Spider",
+    "preview_zwspName": "Zero Width Space (ZWSP)",
+    "preview_helloWorld": "Hello World",
+    "faqTitle": "FAQ: frequently asked questions",
+    "faq": [
+      {
+        "q": "What is MojiCap?",
+        "a": "MojiCap is a completely free, lightning-fast platform that allows you to instantly copy and paste emojis, special symbols, text art, and fancy fonts to any device or application."
+      },
+      {
+        "q": "Do I need to download an app or keyboard?",
+        "a": "No! MojiCap works entirely in your browser. There is no software to install or sign-up required. Just tap to copy."
+      },
+      {
+        "q": "Are these emojis free to use?",
+        "a": "Yes, 100% free! You can use everything you copy from our site on Instagram, Twitter, TikTok, Discord, and messaging apps."
+      }
+    ]
+  },
+  "emoji": {
+    "title": "Emoji Copy & Paste",
+    "metaTitle": "Emoji Copy & Paste — All 3,700+ Emojis (Unicode 16.0)",
+    "metaDesc": "Browse and copy all 3,700+ emojis including skin tone variants. Full Unicode 16.0 support.",
+    "clickToCopy": "Click any emoji to copy it to your clipboard.",
+    "emojisAvailable": "{count} emojis available (Unicode 16.0).",
+    "searchPlaceholder": "Search emojis... (e.g. fire, heart, smile)",
+    "byCategory": "By Category",
+    "byVersion": "By Version / Era",
+    "shown": "shown",
+    "allVersions": "All Versions",
+    "emojiIntro": "emojis introduced in this version",
+    "recentlyUsed": "Recently Used",
+    "noResults": "No emojis found for",
+    "category": "Category",
+    "unicode": "Unicode",
+    "shortcode": "Shortcode",
+    "skinToneSupport": "Skin Tone Support",
+    "skinToneYes": "✅ Yes",
+    "skinToneNo": "❌ No",
+    "emojiVersion": "Emoji Version",
+    "subgroup": "Subgroup",
+    "keywords": "Keywords",
+    "skinToneVariants": "Skin Tone Variants",
+    "relatedEmojis": "Related Emojis",
+    "allEmojis": "All Emojis",
+    "copyEmoji": "Copy Emoji",
+    "copied": "Copied!",
+    "meaning": "Meaning & Description",
+    "faqTitle": "FAQ: frequently asked questions",
+    "faq": [
+      {
+        "q": "How do I copy these emojis?",
+        "a": "Simply click on any emoji you like, and it will be instantly copied to your clipboard. You can then paste it anywhere!"
+      },
+      {
+        "q": "Do these emojis work on all devices?",
+        "a": "Yes, our emojis use standard Unicode 16.0 characters, which are supported across iOS, Android, Windows, macOS, and most major social platforms."
+      },
+      {
+        "q": "How do I search for a specific emoji?",
+        "a": "Use the search bar at the top of the emoji list to find exactly what you are looking for using keywords or shortcodes."
+      }
+    ]
+  },
+  "symbols": {
+    "title": "Special Symbols & Characters",
+    "metaTitle": "Special Symbols — Copy & Paste 1,800+ Unicode Symbols",
+    "metaDesc": "Copy and paste 1,800+ special symbols including arrows, stars, math symbols, and more.",
+    "clickToCopy": "Click to copy any symbol to clipboard.",
+    "searchPlaceholder": "Search symbols... (e.g. arrow, heart, star)",
+    "noResults": "No symbols found",
+    "faqTitle": "FAQ: frequently asked questions",
+    "faq": [
+      {
+        "q": "What are special symbols?",
+        "a": "Special symbols are Unicode characters like stars (★), arrows (→), and math operators (∑) that are not typically found on a standard keyboard."
+      },
+      {
+        "q": "Can I use these symbols in my bio or username?",
+        "a": "Absolutely! These special text symbols are perfect for decorating your Instagram bio, Twitter name, Discord status, or in-game nicknames."
+      },
+      {
+        "q": "Are these symbols images or text?",
+        "a": "They are 100% plain text characters. This means you can copy and paste them into any text field, document, or messaging app."
+      }
+    ]
+  },
+  "fancyText": {
+    "title": "Fancy Text Generator",
+    "metaTitle": "Fancy Text Generator (𝓬𝓸𝓹𝔂 𝖆𝖓𝖉 𝓹𝓪𝓼𝓽𝓮) — 20+ Cool Fonts",
+    "metaDesc": "Transform your normal text into cool, aesthetic, and fancy fonts. 𝓬𝓸𝓹𝔂 𝖆𝖓𝖉 𝓹𝓪𝓼𝓽𝓮 to Instagram, TikTok, Discord, and Twitter instantly. 20+ styles including cursive, bold, and italic.",
+    "inputPlaceholder": "Type your text here...",
+    "faqTitle": "FAQ: frequently asked questions",
+    "faq": [
+      {
+        "q": "How does the fancy text generator work?",
+        "a": "It converts your normal text into mathematical alphanumeric symbols that look like different fonts (such as cursive or gothic), but are actually just special Unicode characters."
+      },
+      {
+        "q": "Can I use fancy text on Instagram?",
+        "a": "Yes! Many Instagram users use our fancy text tool to make their bio stand out using bold, italic, or cursive text."
+      },
+      {
+        "q": "Is the generated text readable by screen readers?",
+        "a": "While most modern screen readers can interpret standard unicode characters, heavy use of mathematical fancy text might be difficult for accessibility. Use it creatively but sparingly."
+      }
+    ],
+    "seoArticle": {
+      "sections": [
+        {
+          "title": "Generating Fancy Text",
+          "paragraphs": [
+            "So perhaps you've generated some fancy text and are ready to copy and paste it into the comments section of funny cat videos or your Instagram bio. But perhaps you're wondering how it's even possible to change the font of your text? Is it some sort of hack? Are you copying and pasting an actual font?",
+            "The answer is actually no—rather than generating fancy fonts, this converter creates fancy symbols. The explanation starts with Unicode, an industry standard that specifies thousands of different symbols and characters. All the text you see on your electronic devices is likely specified by the Unicode standard."
+          ]
+        },
+        {
+          "title": "Font Generator (Text Symbols Using Unicode)",
+          "paragraphs": [
+            "Among the hundreds of thousands of symbols in the Unicode specifications are characters that resemble or are variations of the standard alphabet. For example, we can take the word \"hello\" and convert its characters into the fancy letters \"𝖍𝖊𝖑𝖑𝖔\", which are simply a set of specific Unicode symbols.",
+            "These sets of fancy letters are scattered throughout the Unicode specification. To create a fancy text translator, it's just a matter of finding these matching letters and linking them to their normal alphabetical equivalents."
+          ]
+        },
+        {
+          "title": "Copy and Paste",
+          "paragraphs": [
+            "After generating your fancy text symbols, you can easily copy and paste these \"fonts\" to most websites and apps. You can use it to create a creative-looking Instagram, TikTok, Facebook, Tumblr, or Twitter post, or just for sending messages full of beautiful text to your friends.",
+            "The only exception is if your paste destination doesn't support certain Unicode characters. In that case, you might see a generic \"box\" where the browser tries to render a fancy letter. This doesn't mean there's an error with the translator—it just means the website's specific font doesn't support that character."
+          ]
+        }
+      ]
+    }
+  },
+  "combos": {
+    "title": "Emoji Combos",
+    "metaTitle": "Emoji Combos — 1,100+ Copy & Paste Combinations",
+    "metaDesc": "Browse and copy 1,100+ emoji combos for your bio, posts, and messages.",
+    "clickToCopy": "Click to copy any combo.",
+    "searchPlaceholder": "Search combos... (e.g. love, party, aesthetic)",
+    "noResults": "No combos found for",
+    "faqTitle": "FAQ: frequently asked questions",
+    "faq": [
+      {
+        "q": "What is an emoji combo?",
+        "a": "An emoji combo is a creative combination of multiple standard emojis to convey a specific aesthetic, mood, or idea (like 🎀🌷🫧 for coquette)."
+      },
+      {
+        "q": "Where can I use emoji combinations?",
+        "a": "Emoji combos are incredibly popular on TikTok, Instagram captions, Twitter, and personal blogs to create a distinct visual vibe."
+      },
+      {
+        "q": "Can I copy the entire combo at once?",
+        "a": "Yes, clicking the copy button next to any combo will instantly copy the entire sequence of emojis to your clipboard."
+      }
+    ]
+  },
+  "kaomoji": {
+    "title": "Kaomoji & Japanese Emoticons",
+    "metaTitle": "Kaomoji — 2,000+ Japanese Emoticons Copy & Paste",
+    "metaDesc": "Browse and copy 2,000+ kaomoji and Japanese-style emoticons.",
+    "clickToCopy": "Click to copy any kaomoji.",
+    "searchPlaceholder": "Search kaomoji... (e.g. smile, sad, table flip)",
+    "noResults": "No kaomoji found for",
+    "faqTitle": "FAQ: frequently asked questions",
+    "faq": [
+      {
+        "q": "What is Kaomoji?",
+        "a": "Kaomoji (顔文字) is a popular Japanese emoticon style made up of Japanese characters and grammar punctuations, used to express emotion in texting and cyber communication."
+      },
+      {
+        "q": "What is the difference between Kaomoji and Emojis?",
+        "a": "Emojis are graphic symbols and pictures, whereas Kaomoji are text-based ascii art faces that you don't need a special keyboard to type if you copy them here."
+      },
+      {
+        "q": "Do Kaomoji work on Discord and Reddit?",
+        "a": "Yes, since they are standard text characters, they render perfectly on almost all modern forums, games, and messaging platforms."
+      }
+    ]
+  },
+  "dividers": {
+    "title": "Text Dividers & Line Art"
+  },
+  "invisible": {
+    "title": "Invisible Characters",
+    "testArea": "Test Area",
+    "testAreaDesc": "Paste your invisible character between the brackets below to test its width."
+  },
+  "braille": {
+    "title": "Braille Translator",
+    "braille": "Braille",
+    "morseCode": "Morse Code",
+    "inputPlaceholder": "Type something here..."
+  },
+  "asciiArt": {
+    "title": "ASCII Art",
+    "searchPlaceholder": "Search ASCII art... (e.g. weapons, bear, multi-line)",
+    "noResults": "No ASCII art found for"
+  },
+  "footer": {
+    "description": "The fastest and most beautiful emoji tool on the web. Instantly copy emojis, symbols, and text art.",
+    "tools": "Ferramentas",
+    "moreTools": "Mais ferramentas",
+    "emojiCopyPaste": "Emoji Copy & Paste",
+    "specialSymbols": "Special Symbols",
+    "fancyTextGenerator": "Fancy Text Generator",
+    "emojiCombos": "Emoji Combos",
+    "kaomojiEmoticons": "Kaomoji / Emoticons",
+    "textDividers": "Text Dividers",
+    "invisibleCharacters": "Invisible Characters",
+    "brailleTranslator": "Braille Translator",
+    "asciiArt": "ASCII Art",
+    "copyright": "© {year} MojiCap. All emoji copyrights belong to their respective owners.",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "company": "Comunidade",
+    "about": "Sobre"
+  },
+  "common": {
+    "copied": "Copied {text}",
+    "copyToClipboard": "Copy to clipboard",
+    "search": "Search",
+    "all": "All",
+    "copy": "Copy",
+    "details": "Details",
+    "results": "Results",
+    "resultsFor": "{count} results for \"{query}\"",
+    "noResults": "No results found for \"{query}\"",
+    "clickToCopy": "Click to copy",
+    "typeHere": "Type your text here...",
+    "pasteHere": "Paste here...",
+    "worksOn": "Works on:"
+  },
+  "categories": {
+    "Smileys & Emotion": "Smileys & Emotion",
+    "People & Body": "People & Body",
+    "Animals & Nature": "Animals & Nature",
+    "Food & Drink": "Food & Drink",
+    "Travel & Places": "Travel & Places",
+    "Activities": "Activities",
+    "Objects": "Objects",
+    "Symbols": "Symbols",
+    "Flags": "Flags",
+    "Math Operators": "Math Operators",
+    "Logic & Advanced Math": "Logic & Advanced Math",
+    "Technical": "Technical",
+    "Box Drawing": "Box Drawing",
+    "Block Elements": "Block Elements",
+    "Geometric": "Geometric",
+    "Misc Symbols": "Misc Symbols",
+    "Dingbats": "Dingbats",
+    "Misc Arrows": "Misc Arrows",
+    "Braille Extended": "Braille Extended",
+    "Arrows A": "Arrows A",
+    "Joy & Happy": "Joy & Happy",
+    "Sad & Crying": "Sad & Crying",
+    "Angry & Table Flip": "Angry & Table Flip",
+    "Love & Cute": "Love & Cute",
+    "Animals (Cats, Bears, Dogs)": "Animals (Cats, Bears, Dogs)",
+    "Magic & Combat": "Magic & Combat",
+    "Lenny & Lenny Faces": "Lenny & Lenny Faces",
+    "Aesthetic": "Aesthetic",
+    "Nature & Cottagecore": "Nature & Cottagecore",
+    "Space & Cyber": "Space & Cyber",
+    "Food & Cafe": "Food & Cafe",
+    "Love & Valentines": "Love & Valentines",
+    "Animals & Pets": "Animals & Pets",
+    "Fantasy & Magic": "Fantasy & Magic",
+    "Holidays": "Holidays",
+    "Weapons": "Weapons",
+    "Animals": "Animals",
+    "Faces": "Faces",
+    "Music": "Music",
+    "One Line Magic": "One Line Magic",
+    "Lenny Faces": "Lenny Faces",
+    "Multi-line": "Multi-line",
+    "Stars": "Stars",
+    "Hearts": "Hearts",
+    "Flowers": "Flowers",
+    "Borders": "Borders",
+    "Lines": "Lines",
+    "Arrows": "Arrows",
+    "Sparkles": "Sparkles"
+  },
+  "comboNames": {
+    "Aesthetic Vibe": "Aesthetic Vibe",
+    "Nature & Cottagecore Vibe": "Nature & Cottagecore Vibe",
+    "Space & Cyber Vibe": "Space & Cyber Vibe",
+    "Food & Cafe Vibe": "Food & Cafe Vibe",
+    "Love & Valentines Vibe": "Love & Valentines Vibe",
+    "Animals & Pets Vibe": "Animals & Pets Vibe",
+    "Fantasy & Magic Vibe": "Fantasy & Magic Vibe",
+    "Holidays Vibe": "Holidays Vibe"
+  },
+  "textToolsNav": {
+    "title": "Text Generators",
+    "fancyText": "Fancy Text",
+    "glitchText": "Glitch Text",
+    "vaporwaveText": "Vaporwave",
+    "tinyText": "Tiny Text",
+    "morseCode": "Morse Code",
+    "cursiveText": "Cursive Text",
+    "oldEnglishText": "Old English",
+    "boldText": "Bold Text",
+    "italicText": "Italic Text",
+    "bubbleText": "Bubble Text",
+    "squareText": "Square Text",
+    "upsideDownText": "Upside Down",
+    "strikethroughText": "Strikethrough",
+    "leetSpeak": "Leet Speak",
+    "weirdText": "Weird Text"
+  },
+  "aboutPage": {
+    "section1Title": "O que é MojiCap?",
+    "section1Desc": "MojiCap is a comprehensive suite of text styling tools and symbol generators designed for the modern internet. Our goal is to make it incredibly easy to copy, paste, and express yourself with unique typography across any platform—whether it's Discord, TikTok, Instagram, Twitter, or your favorite online games.",
+    "section2Title": "O que oferecemos?",
+    "section2List1": "Text Generators: From Vaporwave and Glitch text to Cursive and Old English, our text transformers instantly convert your standard input into aesthetic Unicode characters that can be pasted anywhere.",
+    "section2List2": "Emoji & Kaomoji: Access thousands of neatly categorized standard emojis, cute Japanese text emoticons (Kaomoji), and creative emoji combos perfect for social media bios.",
+    "section2List3": "Special Symbols: A curated library of arrows, stars, math symbols, bullet points, and aesthetic dividers to make your profiles stand out.",
+    "section2List4": "Utility Tools: Need to translate Morse code, generate invisible characters, or create ASCII art? We have dedicated tools for that, all entirely free and client-side.",
+    "section3Title": "Por que usar Unicode?",
+    "section3Desc": "Unlike traditional fonts (.ttf or .otf files) that need to be installed on a device to be visible, our text generators use specific ranges of the Unicode character standard. This means the styles are inherently baked into the characters themselves. As long as a website or app supports Unicode (which almost all modern platforms do), your styled text will appear exactly as generated, no matter who is viewing it."
+  }
+}
