@@ -368,5 +368,16 @@
     "strikethroughText": "Strikethrough",
     "leetSpeak": "Leet Speak",
     "weirdText": "Weird Text"
+  },
+  "aboutPage": {
+    "section1Title": "¿Qué es MojiCap?",
+    "section1Desc": "MojiCap es un conjunto completo de herramientas de estilo de texto y generadores de símbolos diseñados para el internet moderno. Nuestro objetivo es hacer que sea increíblemente fácil copiar, pegar y expresarte con una tipografía única en cualquier plataforma, ya sea Discord, TikTok, Instagram, Twitter o tus juegos en línea favoritos.",
+    "section2Title": "¿Qué ofrecemos?",
+    "section2List1": "Generadores de texto: Desde texto Vaporwave y Glitch hasta cursiva y Old English, nuestros transformadores de texto convierten instantáneamente tu entrada estándar en caracteres Unicode estéticos que se pueden pegar en cualquier lugar.",
+    "section2List2": "Emoji y Kaomoji: Accede a miles de emojis estándar cuidadosamente categorizados, lindos emoticones de texto japoneses (Kaomoji) y combinaciones creativas de emojis perfectos para las biografías de las redes sociales.",
+    "section2List3": "Símbolos especiales: Una biblioteca seleccionada de flechas, estrellas, símbolos matemáticos, viñetas y divisores estéticos para que tus perfiles se destaquen.",
+    "section2List4": "Herramientas de utilidad: ¿Necesitas traducir código Morse, generar caracteres invisibles o crear arte ASCII? Tenemos herramientas dedicadas para eso, todas completamente gratuitas y del lado del cliente.",
+    "section3Title": "¿Por qué usar Unicode?",
+    "section3Desc": "A diferencia de las fuentes tradicionales (archivos .ttf u .otf) que deben instalarse en un dispositivo para ser visibles, nuestros generadores de texto utilizan rangos específicos del estándar de caracteres Unicode. Esto significa que los estilos están inherentemente incorporados en los propios caracteres. Siempre que un sitio web o aplicación admita Unicode (lo que hacen casi todas las plataformas modernas), tu texto estilizado aparecerá exactamente como se generó, sin importar quién lo esté viendo."
   }
 }

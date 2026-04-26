@@ -31,26 +31,26 @@ export default async function AboutPage({
       
       <div className="prose prose-neutral dark:prose-invert max-w-none space-y-8">
         <section className="bg-muted/30 p-8 rounded-2xl border border-border/50">
-          <h2 className="text-2xl font-bold mt-0 mb-4">What is MojiCap?</h2>
+          <h2 className="text-2xl font-bold mt-0 mb-4">{dict.aboutPage.section1Title}</h2>
           <p className="text-muted-foreground leading-relaxed">
-            MojiCap is a comprehensive suite of text styling tools and symbol generators designed for the modern internet. Our goal is to make it incredibly easy to copy, paste, and express yourself with unique typography across any platform—whether it's Discord, TikTok, Instagram, Twitter, or your favorite online games.
+            {dict.aboutPage.section1Desc}
           </p>
         </section>
 
         <section className="bg-muted/30 p-8 rounded-2xl border border-border/50">
-          <h2 className="text-2xl font-bold mt-0 mb-4">What Do We Offer?</h2>
+          <h2 className="text-2xl font-bold mt-0 mb-4">{dict.aboutPage.section2Title}</h2>
           <ul className="space-y-3 text-muted-foreground list-disc list-inside">
-            <li><strong>Text Generators:</strong> From Vaporwave and Glitch text to Cursive and Old English, our text transformers instantly convert your standard input into aesthetic Unicode characters that can be pasted anywhere.</li>
-            <li><strong>Emoji & Kaomoji:</strong> Access thousands of neatly categorized standard emojis, cute Japanese text emoticons (Kaomoji), and creative emoji combos perfect for social media bios.</li>
-            <li><strong>Special Symbols:</strong> A curated library of arrows, stars, math symbols, bullet points, and aesthetic dividers to make your profiles stand out.</li>
-            <li><strong>Utility Tools:</strong> Need to translate Morse code, generate invisible characters, or create ASCII art? We have dedicated tools for that, all entirely free and client-side.</li>
+            <li>{dict.aboutPage.section2List1}</li>
+            <li>{dict.aboutPage.section2List2}</li>
+            <li>{dict.aboutPage.section2List3}</li>
+            <li>{dict.aboutPage.section2List4}</li>
           </ul>
         </section>
 
         <section className="bg-muted/30 p-8 rounded-2xl border border-border/50">
-          <h2 className="text-2xl font-bold mt-0 mb-4">Why Use Unicode?</h2>
+          <h2 className="text-2xl font-bold mt-0 mb-4">{dict.aboutPage.section3Title}</h2>
           <p className="text-muted-foreground leading-relaxed">
-            Unlike traditional fonts (.ttf or .otf files) that need to be installed on a device to be visible, our text generators use specific ranges of the Unicode character standard. This means the <em>styles</em> are inherently baked into the characters themselves. As long as a website or app supports Unicode (which almost all modern platforms do), your styled text will appear exactly as generated, no matter who is viewing it.
+            {dict.aboutPage.section3Desc}
           </p>
         </section>
       </div>
