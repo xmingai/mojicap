@@ -66,6 +66,7 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Skip Next internals, API routes and anything with a file extension (sitemap.xml, robots.txt, images…)
-  matcher: ["/((?!_next|api|.*\\..*).*)"],
+  // Skip Next internals, Vercel platform paths (/_vercel/insights analytics beacon),
+  // API routes and anything with a file extension (sitemap.xml, robots.txt, images…)
+  matcher: ["/((?!_next|_vercel|api|.*\\..*).*)"],
 };
