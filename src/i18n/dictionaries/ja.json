@@ -415,5 +415,27 @@
     "title": "ページが見つかりません",
     "description": "お探しのページは存在しないか、移動されました。",
     "backHome": "ホームに戻る"
+  },
+  "ads": {
+    "vormly": {
+      "eyebrow": "MojiCap × Vormly AI",
+      "offer": "🎁 3日間無料トライアル · 200クレジット進呈",
+      "endsIn": "残り",
+      "day": "日",
+      "ctaBanner": "受け取る →",
+      "ctaPopup": "3日間トライアル + 200クレジットを受け取る",
+      "fine": "MojiCap公式おすすめ · 特典は{date}まで",
+      "close": "閉じる",
+      "b": {
+        "banner": "Seedance・Veo・Kling・Grok Videoをひとつの場所で。登録で3日間トライアル + 200クレジット。",
+        "title": "主要なAI動画モデルをひとつのワークスペースで",
+        "body": "MojiCap × Vormly AIが、Seedance、Veo、Kling、Grok Video、Midjourneyをひとつにまとめました。"
+      },
+      "c": {
+        "banner": "MojiCapユーザー限定：3日間トライアル + 200クレジット。",
+        "title": "MojiCap × Vormly AI",
+        "body": "MojiCapユーザーにおすすめのAI制作スイート：画像・動画・音楽をまとめて生成。"
+      }
+    }
   }
 }
