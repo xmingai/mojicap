@@ -2,7 +2,6 @@
 
 import { toast } from "sonner";
 import { track } from "@vercel/analytics";
-import { COPY_EVENT } from "@/lib/ads";
 
 /**
  * Track copy events in Google Analytics.
@@ -11,9 +10,6 @@ import { COPY_EVENT } from "@/lib/ads";
 function trackCopyEvent(text: string, label?: string) {
   // Vercel Web Analytics custom event (no-ops outside the browser / when not enabled).
   track("copy", { label: label || text, text });
-  if (typeof window !== "undefined") {
-    window.dispatchEvent(new CustomEvent(COPY_EVENT, { detail: { text } }));
-  }
 
   if (typeof window !== "undefined" && window.gtag) {
     // GA4 "value" must be numeric, so the copied glyph goes in event_label / item_id.

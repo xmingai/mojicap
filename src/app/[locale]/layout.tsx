@@ -113,8 +113,10 @@ export default async function LocaleLayout({
         <ThemeProvider>
           <I18nProvider locale={locale as Locale} dict={dict}>
             <TooltipProvider>
-              <VormlyBanner />
-              <Navbar />
+              <div className="sticky top-0 z-50">
+                <VormlyBanner />
+                <Navbar />
+              </div>
               <main className="flex-1">{children}</main>
               <Footer />
               <ScrollToTop />

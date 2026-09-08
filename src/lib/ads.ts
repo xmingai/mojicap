@@ -8,9 +8,6 @@
 
 export type AdPlacement = "top_banner" | "corner_popup";
 
-/** Fired on window after a successful copy; the popup uses it as its trigger. */
-export const COPY_EVENT = "mojicap:copied";
-
 export const VORMLY_AD = {
   enabled: true,
   /** Fixed campaign deadline. Every visitor counts down to the same instant. */
@@ -20,9 +17,8 @@ export const VORMLY_AD = {
   popupDismissDays: 7,
   /** Days to keep the popup hidden after the visitor clicks its CTA. */
   popupClickDays: 30,
-  /** Popup timing: shortly after the first copy, or a fallback if they never copy. */
-  popupAfterCopyMs: 1500,
-  popupFallbackMs: 20000,
+  /** Popup appears this long after the page loads (time-based only; not tied to any user action). */
+  popupDelayMs: 5000,
   /** Route prefixes (locale-free) where no promotion is shown. */
   excludedRoutes: ["/privacy", "/terms", "/about"],
   /** Copy variants in the A/B test. Each visitor is assigned one at random and keeps it. */
