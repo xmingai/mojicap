@@ -120,7 +120,11 @@
         "q": "¿Qué hago si veo cuadritos vacíos?",
         "a": "Si ves un cuadrado en lugar de un emoji, significa que el software de tu dispositivo está desactualizado y necesita descargar la nueva fuente."
       }
-    ]
+    ],
+    "detailTitle": "{emoji} Emoji {name} — Copiar y Pegar",
+    "detailDesc": "Copia el emoji {name} {emoji}. Conoce su significado, código Unicode ({unicode}) y emojis relacionados.",
+    "detailOgTitle": "{emoji} Emoji {name}",
+    "detailOgDesc": "Copia el emoji {name} {emoji}. Unicode: {unicode}"
   },
   "symbols": {
     "title": "Símbolos Especiales y Caracteres",
@@ -406,5 +410,10 @@
     "strikethrough-text": "texto con una línea tachada",
     "leet-speak": "texto hacker leet speak (1337)",
     "weird-text": "estilos de texto extraños, locos y caóticos"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe o se ha movido.",
+    "backHome": "Volver al inicio"
   }
 }

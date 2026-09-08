@@ -6,7 +6,7 @@ import asciiData from "@/data/ascii-art-data.json";
 import { copyToClipboard } from "@/lib/clipboard";
 import { SearchBar } from "@/components/search-bar";
 import { SizeSlider, FANCY_TEXT_SIZE_PRESETS } from "@/components/size-slider";
-import { cn } from "@/lib/utils";
+import { CategoryFilterBar } from "@/components/category-filter-bar";
 import { Copy } from "lucide-react";
 
 type Art = { content: string };
@@ -64,39 +64,14 @@ export function AsciiArtClient() {
       />
 
       {/* Category filter */}
-      <div className="flex flex-wrap gap-1">
-        <button
-          onClick={() => {
-            setActiveCategory(null);
-            setSearchQuery("");
-          }}
-          className={cn(
-            "px-3 py-1.5 rounded-lg text-sm font-medium transition-all",
-            activeCategory === null && !searchQuery
-              ? "bg-foreground text-background"
-              : "text-muted-foreground hover:text-foreground hover:bg-muted"
-          )}
-        >
-          {dict.common.all}
-        </button>
-        {categories.map((cat) => (
-          <button
-            key={cat.category}
-            onClick={() => {
-              setActiveCategory(cat.category);
-              setSearchQuery("");
-            }}
-            className={cn(
-              "px-3 py-1.5 rounded-lg text-sm font-medium transition-all",
-              activeCategory === cat.category
-                ? "bg-foreground text-background"
-                : "text-muted-foreground hover:text-foreground hover:bg-muted"
-            )}
-          >
-            {dict.categories?.[cat.category as keyof typeof dict.categories] || cat.category}
-          </button>
-        ))}
-      </div>
+      <CategoryFilterBar
+        categories={categories.map((c) => ({ key: c.category, name: c.category }))}
+        activeKey={searchQuery ? null : activeCategory}
+        onSelect={(key) => {
+          setActiveCategory(key);
+          setSearchQuery("");
+        }}
+      />
 
       {/* Art */}
       <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">

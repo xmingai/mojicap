@@ -5,6 +5,10 @@ import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { useDict, useLocale } from "@/i18n/context";
 import { defaultLocale } from "@/i18n/config";
+import { TEXT_TOOLS } from "@/lib/tool-routes";
+
+// First six text tools, matching the previous hand-written footer list.
+const FOOTER_TEXT_TOOLS = TEXT_TOOLS.slice(0, 6);
 
 export function Footer() {
   const dict = useDict();
@@ -38,12 +42,13 @@ export function Footer() {
             <div className="space-y-3">
               <h4 className="font-semibold text-foreground">{dict.textToolsNav.title}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link href={`${prefix}/fancy-text`} className="hover:text-foreground hover:underline transition-colors">{dict.textToolsNav.fancyText}</Link></li>
-                <li><Link href={`${prefix}/glitch-text`} className="hover:text-foreground hover:underline transition-colors">{dict.textToolsNav.glitchText}</Link></li>
-                <li><Link href={`${prefix}/vaporwave-text`} className="hover:text-foreground hover:underline transition-colors">{dict.textToolsNav.vaporwaveText}</Link></li>
-                <li><Link href={`${prefix}/tiny-text`} className="hover:text-foreground hover:underline transition-colors">{dict.textToolsNav.tinyText}</Link></li>
-                <li><Link href={`${prefix}/morse-code`} className="hover:text-foreground hover:underline transition-colors">{dict.textToolsNav.morseCode}</Link></li>
-                <li><Link href={`${prefix}/cursive-text`} className="hover:text-foreground hover:underline transition-colors">{dict.textToolsNav.cursiveText}</Link></li>
+                {FOOTER_TEXT_TOOLS.map((tool) => (
+                  <li key={tool.slug}>
+                    <Link href={`${prefix}/${tool.slug}`} className="hover:text-foreground hover:underline transition-colors">
+                      {dict.textToolsNav[tool.navKey]}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
             

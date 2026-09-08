@@ -12,35 +12,29 @@ export function TypewriterText({ words }: TypewriterTextProps) {
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    // Fallback if words is somehow empty
     if (!words || words.length === 0) return;
     const currentWord = words[wordIndex] || words[0];
-    let timeout: NodeJS.Timeout;
+    let timeout: ReturnType<typeof setTimeout>;
 
     if (isDeleting) {
       if (text === "") {
-        setIsDeleting(false);
-        setWordIndex((prev) => (prev + 1) % words.length);
-        timeout = setTimeout(() => {}, 500); // Pause before typing next word
-      } else {
+        // Finished deleting: pause, then advance to the next word.
         timeout = setTimeout(() => {
-          setText(text.slice(0, -1));
-        }, 50); // Deletion speed
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % words.length);
+        }, 500);
+      } else {
+        timeout = setTimeout(() => setText(text.slice(0, -1)), 50);
       }
+    } else if (text === currentWord) {
+      // Fully typed: hold, then start deleting.
+      timeout = setTimeout(() => setIsDeleting(true), 2000);
     } else {
-      if (text === currentWord) {
-        timeout = setTimeout(() => {
-          setIsDeleting(true);
-        }, 2000); // Pause after typing full word
-      } else {
-        timeout = setTimeout(() => {
-          setText(currentWord.slice(0, text.length + 1));
-        }, 100); // Typing speed
-      }
+      timeout = setTimeout(() => setText(currentWord.slice(0, text.length + 1)), 100);
     }
 
     return () => clearTimeout(timeout);
-  }, [text, isDeleting, wordIndex]);
+  }, [text, isDeleting, wordIndex, words]);
 
   return (
     <span className="inline-block min-w-[180px] text-left text-primary">

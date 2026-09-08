@@ -1,11 +1,24 @@
 import type { NextConfig } from "next";
 
+// Baseline security headers. CSP is intentionally omitted: the app injects
+// inline JSON-LD <script> tags and loads Google Analytics, which a strict CSP
+// would break without a nonce pipeline (not available with this static setup).
+const securityHeaders = [
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "X-Frame-Options", value: "SAMEORIGIN" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "X-DNS-Prefetch-Control", value: "on" },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), browsing-topics=()" },
+  { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+];
+
 const nextConfig: NextConfig = {
-  // Use default Vercel deployment (supports sitemap/robots generation)
-  // For static export, uncomment: output: "export",
   trailingSlash: true,
   images: {
     unoptimized: true,
+  },
+  async headers() {
+    return [{ source: "/:path*", headers: securityHeaders }];
   },
 };
 

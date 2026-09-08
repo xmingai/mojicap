@@ -10,6 +10,8 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { cn } from "@/lib/utils";
 import { useDict, useLocale } from "@/i18n/context";
 import { locales, localeNames, localeFlags, defaultLocale, type Locale } from "@/i18n/config";
+import { pathWithoutLocale } from "@/lib/seo";
+import { writeCookie } from "@/lib/cookies";
 import { useState, useRef, useEffect } from "react";
 
 export function Navbar() {
@@ -22,6 +24,11 @@ export function Navbar() {
   const langRef = useRef<HTMLDivElement>(null);
 
   const prefix = locale === defaultLocale ? "" : `/${locale}`;
+  const currentRoute = pathWithoutLocale(pathname);
+  const isActiveLink = (href: string) => {
+    const route = pathWithoutLocale(href);
+    return currentRoute === route || currentRoute.startsWith(`${route}/`);
+  };
 
   const MAIN_LINKS = [
     { href: `${prefix}/emoji`, label: dict.nav.emoji, icon: "😀" },
@@ -50,23 +57,12 @@ export function Navbar() {
   }, []);
 
   function switchLocale(newLocale: Locale) {
-    // Remove current locale prefix, add new one
-    let path = pathname;
-    // Strip current locale prefix
-    for (const l of locales) {
-      if (path.startsWith(`/${l}/`)) {
-        path = path.slice(`/${l}`.length);
-        break;
-      }
-      if (path === `/${l}`) {
-        path = "/";
-        break;
-      }
-    }
-    const newPath = newLocale === defaultLocale ? (path || "/") : `/${newLocale}${path || "/"}`;
+    const route = pathWithoutLocale(pathname);
+    const path = route === "/" ? "/" : `${route}/`;
+    const newPath = newLocale === defaultLocale ? path : `/${newLocale}${path}`;
 
-    // Set cookie for middleware
-    document.cookie = `NEXT_LOCALE=${newLocale};path=/;max-age=31536000`;
+    // Remember the explicit choice so the proxy can honour it on unprefixed URLs.
+    writeCookie("NEXT_LOCALE", newLocale, 31536000);
     setLangOpen(false);
     router.push(newPath);
   }
@@ -95,7 +91,7 @@ export function Navbar() {
               href={link.href}
               className={cn(
                 "px-3 py-1.5 rounded-lg text-sm font-medium transition-colors",
-                pathname.startsWith(link.href)
+                isActiveLink(link.href)
                   ? "bg-foreground/10 text-foreground"
                   : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
               )}
@@ -109,7 +105,7 @@ export function Navbar() {
           <div className="relative group">
             <button className={cn(
               "flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors",
-              MORE_LINKS.some(l => pathname.startsWith(l.href))
+              MORE_LINKS.some(l => isActiveLink(l.href))
                 ? "bg-foreground/10 text-foreground"
                 : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
             )}>
@@ -124,7 +120,7 @@ export function Navbar() {
                   href={link.href}
                   className={cn(
                     "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-muted",
-                    pathname.startsWith(link.href) ? "bg-muted text-foreground" : "text-muted-foreground hover:text-foreground"
+                    isActiveLink(link.href) ? "bg-muted text-foreground" : "text-muted-foreground hover:text-foreground"
                   )}
                 >
                   <span className="opacity-80 w-5 text-center">{link.icon}</span>
@@ -192,7 +188,7 @@ export function Navbar() {
             href={link.href}
             className={cn(
               "shrink-0 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors",
-              pathname.startsWith(link.href)
+              isActiveLink(link.href)
                 ? "bg-foreground/10 text-foreground"
                 : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
             )}

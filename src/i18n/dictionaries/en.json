@@ -120,7 +120,11 @@
         "q": "How do I search for a specific emoji?",
         "a": "Use the search bar at the top of the emoji list to find exactly what you are looking for using keywords or shortcodes."
       }
-    ]
+    ],
+    "detailTitle": "{emoji} {name} Emoji — Copy & Paste",
+    "detailDesc": "Copy the {name} emoji {emoji}. Learn its meaning, Unicode ({unicode}), and find related emojis.",
+    "detailOgTitle": "{emoji} {name} Emoji",
+    "detailOgDesc": "Copy the {name} emoji {emoji}. Unicode: {unicode}"
   },
   "symbols": {
     "title": "Special Symbols & Characters",
@@ -406,5 +410,10 @@
     "strikethrough-text": "text with a line crossed through it",
     "leet-speak": "hacker leet speak (1337) text",
     "weird-text": "weird, crazy, and chaotic text styles"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has moved.",
+    "backHome": "Back to home"
   }
 }

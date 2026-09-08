@@ -36,6 +36,19 @@ export function getAllEmojis(): Emoji[] {
   return emojiData as Emoji[];
 }
 
+/**
+ * Minimal emoji shape the client grid needs to render a cell + hover card.
+ * Dropping keywords/meaning/etc. cuts the initial /emoji payload from ~3.4MB to a fraction;
+ * the full dataset is lazy-loaded on the client only for search and version browsing.
+ */
+export type EmojiLite = Pick<Emoji, "id" | "emoji" | "name" | "slug" | "groupSlug" | "unicode">;
+
+export function getBaseEmojisLite(): EmojiLite[] {
+  return (emojiData as Emoji[])
+    .filter((e) => !e.skinToneVariant)
+    .map((e) => ({ id: e.id, emoji: e.emoji, name: e.name, slug: e.slug, groupSlug: e.groupSlug, unicode: e.unicode }));
+}
+
 /** Get only base emojis (no skin tone variants) for the main grid */
 export function getBaseEmojis(): Emoji[] {
   return (emojiData as Emoji[]).filter((e) => !e.skinToneVariant);

@@ -11,6 +11,8 @@ export function useRecent() {
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
+      // One-time hydration from localStorage after mount (localStorage is unavailable during SSR).
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       if (stored) setRecent(JSON.parse(stored));
     } catch {}
   }, []);

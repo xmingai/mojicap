@@ -251,8 +251,8 @@ export function HomeClient({ dict, locale }: HomeClientProps) {
       </section>
 
       {/* FAQ Section */}
-      {t.faq && (t.faq as any[]).length > 0 && (
-        <FAQSection title={t.faqTitle as string} faqs={t.faq as any} />
+      {t.faq && t.faq.length > 0 && (
+        <FAQSection title={t.faqTitle} faqs={t.faq} />
       )}
     </div>
   );

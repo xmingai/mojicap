@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { FancyTextClient } from "./fancy-text-client";
 import { getDictionary } from "@/i18n/dictionaries";
 import { type Locale } from "@/i18n/config";
+import { buildAlternates } from "@/lib/seo";
 import { TextToolsTabs } from "./text-tools-tabs";
 
 export async function generateMetadata({
@@ -14,6 +15,7 @@ export async function generateMetadata({
   return {
     title: dict.fancyText.metaTitle || dict.fancyText.title,
     description: dict.fancyText.metaDesc,
+    alternates: buildAlternates(locale as Locale, "/fancy-text"),
   };
 }
 
@@ -41,11 +43,11 @@ export default async function FancyTextPage({
       {/* SEO Article inspired by LingoJam strategy */}
       {dict.fancyText.seoArticle && (
         <article className="mt-16 max-w-4xl mx-auto space-y-10 text-muted-foreground bg-muted/30 p-8 rounded-2xl border border-border/50">
-          {(dict.fancyText.seoArticle as any).sections.map((section: any, index: number) => (
+          {dict.fancyText.seoArticle.sections.map((section, index) => (
             <section key={index} className="space-y-4">
               <h2 className="text-2xl font-bold text-foreground tracking-tight">{section.title}</h2>
               <div className="space-y-4 text-base leading-relaxed">
-                {section.paragraphs.map((p: string, i: number) => (
+                {section.paragraphs.map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}
               </div>

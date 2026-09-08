@@ -119,7 +119,11 @@
         "q": "有些 Emoji 显示为方块怎么办？",
         "a": "如果显示为方块或乱码，说明您当前使用的设备系统版本较旧，尚未包含最新的 Unicode 字体更新。"
       }
-    ]
+    ],
+    "detailTitle": "{emoji} {name} Emoji — 复制粘贴",
+    "detailDesc": "复制 {name} 表情 {emoji}。了解它的含义、Unicode 编码（{unicode}）以及相关表情。",
+    "detailOgTitle": "{emoji} {name} 表情",
+    "detailOgDesc": "复制 {name} 表情 {emoji}。Unicode：{unicode}"
   },
   "symbols": {
     "title": "特殊符号 & 字符",
@@ -405,5 +409,10 @@
     "strikethrough-text": "带有删除线的文本",
     "leet-speak": "黑客火星文 (1337) 文本",
     "weird-text": "奇怪、疯狂且混乱的文本样式"
+  },
+  "notFound": {
+    "title": "页面未找到",
+    "description": "你要找的页面不存在或已被移动。",
+    "backHome": "返回首页"
   }
 }

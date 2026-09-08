@@ -8,10 +8,11 @@ import { toast } from "sonner";
  */
 function trackCopyEvent(text: string, label?: string) {
   if (typeof window !== "undefined" && window.gtag) {
+    // GA4 "value" must be numeric, so the copied glyph goes in event_label / item_id.
     window.gtag("event", "copy_emoji", {
       event_category: "engagement",
       event_label: label || text,
-      value: text,
+      item_id: text,
       content_type: "emoji",
     });
   }

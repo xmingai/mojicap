@@ -1,7 +1,19 @@
-export const metadata = {
-  title: "Terms of Service | MojiCap",
-  description: "Terms and conditions of using MojiCap web application interfaces and tools.",
-};
+import type { Metadata } from "next";
+import { type Locale } from "@/i18n/config";
+import { buildAlternates } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return {
+    title: "Terms of Service | MojiCap",
+    description: "Terms and conditions of using MojiCap web application interfaces and tools.",
+    alternates: buildAlternates(locale as Locale, "/terms"),
+  };
+}
 
 export default function TermsPage() {
   return (
@@ -27,9 +39,9 @@ export default function TermsPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-xl font-semibold text-foreground">2. "As Is" Disclaimer</h2>
+          <h2 className="text-xl font-semibold text-foreground">2. &ldquo;As Is&rdquo; Disclaimer</h2>
           <p>
-            MojiCap is provided on an "AS IS" and "AS AVAILABLE" basis. We make no representations or warranties of any kind, express or implied, as to the operation of the services, the accuracy of the tools, or the information and content included within it. 
+            MojiCap is provided on an &ldquo;AS IS&rdquo; and &ldquo;AS AVAILABLE&rdquo; basis. We make no representations or warranties of any kind, express or implied, as to the operation of the services, the accuracy of the tools, or the information and content included within it. 
           </p>
           <p>
             We do not warrant that the service will be uninterrupted, secure, or completely error-free. Data generated (such as text combinations, translated strings, and code snippets) are for utility purposes and users are responsible for verifying their appropriateness and correctness.
@@ -49,7 +61,7 @@ export default function TermsPage() {
         <section className="space-y-3">
           <h2 className="text-xl font-semibold text-foreground">4. Intellectual Property</h2>
           <p>
-            The original website design, UI components, code structure, and written content are the intellectual property of MojiCap unless otherwise specified. Standard Unicode emojis and standard text symbols belong to their respective standard bodies or foundries. Free usage of our output content does not imply ownership of the website's source code or brand assets.
+            The original website design, UI components, code structure, and written content are the intellectual property of MojiCap unless otherwise specified. Standard Unicode emojis and standard text symbols belong to their respective standard bodies or foundries. Free usage of our output content does not imply ownership of the website&apos;s source code or brand assets.
           </p>
         </section>
 

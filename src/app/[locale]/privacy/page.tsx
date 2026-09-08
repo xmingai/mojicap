@@ -1,7 +1,19 @@
-export const metadata = {
-  title: "Privacy Policy | MojiCap",
-  description: "Learn how MojiCap protects your privacy. We process text locally and do not store personal data.",
-};
+import type { Metadata } from "next";
+import { type Locale } from "@/i18n/config";
+import { buildAlternates } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return {
+    title: "Privacy Policy | MojiCap",
+    description: "Learn how MojiCap protects your privacy. We process text locally and do not store personal data.",
+    alternates: buildAlternates(locale as Locale, "/privacy"),
+  };
+}
 
 export default function PrivacyPage() {
   return (
@@ -22,7 +34,7 @@ export default function PrivacyPage() {
             MojiCap is designed as a client-side web application. When you copy emojis, use the text generators, or translate Braille, <strong>all text processing happens locally within your web browser</strong>. We do not transmit your input text or copied content to our servers.
           </p>
           <p>
-            We use your browser's Local Storage to save specific preferences (such as your chosen display theme, and your "Recently Used" emojis). This data never leaves your device and is not accessible by us.
+            We use your browser&apos;s Local Storage to save specific preferences (such as your chosen display theme, and your &ldquo;Recently Used&rdquo; emojis). This data never leaves your device and is not accessible by us.
           </p>
         </section>
 
@@ -32,15 +44,15 @@ export default function PrivacyPage() {
             We use third-party advertising companies, including Google, to serve ads when you visit our website. These companies may use cookies to serve ads based on your prior visits to our website or other websites.
           </p>
           <p>
-            Specifically, Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to our site and/or other sites on the Internet.
+            Specifically, Google&apos;s use of advertising cookies enables it and its partners to serve ads to you based on your visit to our site and/or other sites on the Internet.
           </p>
           <ul className="list-disc pl-6 space-y-1">
-            <li>Third party vendors, including Google, use cookies to serve ads based on a user's prior visits to your website or other websites.</li>
-            <li>Google's use of advertising cookies enables it and its partners to serve ads to your users based on their visit to your sites and/or other sites on the Internet.</li>
+            <li>Third party vendors, including Google, use cookies to serve ads based on a user&apos;s prior visits to your website or other websites.</li>
+            <li>Google&apos;s use of advertising cookies enables it and its partners to serve ads to your users based on their visit to your sites and/or other sites on the Internet.</li>
             <li>Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Google Ads Settings</a>.</li>
           </ul>
           <p>
-            Alternatively, you can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.aboutads.info</a>.
+            Alternatively, you can opt out of a third-party vendor&apos;s use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.aboutads.info</a>.
           </p>
         </section>
 
@@ -61,7 +73,7 @@ export default function PrivacyPage() {
         <section className="space-y-3">
           <h2 className="text-xl font-semibold text-foreground">5. Changes to This Policy</h2>
           <p>
-            We may update our Privacy Policy from time to time. Any changes will be reflected on this page with an updated "Last updated" date. We encourage you to review this Privacy Policy periodically for any changes.
+            We may update our Privacy Policy from time to time. Any changes will be reflected on this page with an updated &ldquo;Last updated&rdquo; date. We encourage you to review this Privacy Policy periodically for any changes.
           </p>
         </section>
 

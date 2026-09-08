@@ -120,7 +120,11 @@
         "q": "원하는 이모지를 쉽게 찾는 방법이 있나요?",
         "a": "상단의 검색창을 사용하면 짧은 키워드만으로 원하는 이모지를 빠르게 찾을 수 있습니다."
       }
-    ]
+    ],
+    "detailTitle": "{emoji} {name} 이모지 — 복사 & 붙여넣기",
+    "detailDesc": "{name} 이모지 {emoji}를 복사하세요. 의미와 유니코드({unicode}), 관련 이모지를 확인하세요.",
+    "detailOgTitle": "{emoji} {name} 이모지",
+    "detailOgDesc": "{name} 이모지 {emoji}를 복사하세요. 유니코드: {unicode}"
   },
   "symbols": {
     "title": "특수문자 & 기호",
@@ -406,5 +410,10 @@
     "strikethrough-text": "취소선이 그어진 텍스트",
     "leet-speak": "해커 리트 스피크(1337) 텍스트",
     "weird-text": "기이하고 미치광이 같은 혼란스러운 텍스트 스타일"
+  },
+  "notFound": {
+    "title": "페이지를 찾을 수 없습니다",
+    "description": "찾으시는 페이지가 없거나 이동되었습니다.",
+    "backHome": "홈으로 돌아가기"
   }
 }
