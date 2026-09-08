@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-interface FAQItem {
+export interface FAQItem {
   q: string;
   a: string;
 }
