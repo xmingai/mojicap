@@ -7,6 +7,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { ScrollToTop } from "@/components/scroll-to-top";
+import { VormlyBanner } from "@/components/ads/vormly-banner";
+import { VormlyPopup } from "@/components/ads/vormly-popup";
 import { I18nProvider } from "@/i18n/context";
 import { locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -111,11 +113,13 @@ export default async function LocaleLayout({
         <ThemeProvider>
           <I18nProvider locale={locale as Locale} dict={dict}>
             <TooltipProvider>
+              <VormlyBanner />
               <Navbar />
               <main className="flex-1">{children}</main>
               <Footer />
               <ScrollToTop />
               <Toaster />
+              <VormlyPopup />
             </TooltipProvider>
           </I18nProvider>
         </ThemeProvider>

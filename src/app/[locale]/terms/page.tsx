@@ -9,7 +9,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return {
-    title: "Terms of Service | MojiCap",
+    title: "Terms of Service",
     description: "Terms and conditions of using MojiCap web application interfaces and tools.",
     alternates: buildAlternates(locale as Locale, "/terms"),
   };

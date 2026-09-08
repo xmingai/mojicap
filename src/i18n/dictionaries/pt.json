@@ -415,5 +415,27 @@
     "title": "Página não encontrada",
     "description": "A página que você procura não existe ou foi movida.",
     "backHome": "Voltar ao início"
+  },
+  "ads": {
+    "vormly": {
+      "eyebrow": "MojiCap × Vormly AI",
+      "offer": "🎁 Teste grátis de 3 dias · 200 créditos",
+      "endsIn": "Termina em",
+      "day": "d",
+      "ctaBanner": "Resgatar →",
+      "ctaPopup": "Resgatar 3 dias de teste + 200 créditos",
+      "fine": "Recomendado pelo MojiCap · Oferta válida até {date}",
+      "close": "Fechar",
+      "b": {
+        "banner": "Seedance, Veo, Kling e Grok Video em um só lugar. Cadastre-se e ganhe 3 dias de teste + 200 créditos.",
+        "title": "Todos os principais modelos de vídeo com IA em um só espaço",
+        "body": "MojiCap × Vormly AI reúne Seedance, Veo, Kling, Grok Video e Midjourney."
+      },
+      "c": {
+        "banner": "3 dias de teste + 200 créditos grátis para usuários do MojiCap.",
+        "title": "MojiCap × Vormly AI",
+        "body": "O conjunto de criação com IA que recomendamos aos usuários do MojiCap: imagens, vídeo e música em um só lugar."
+      }
+    }
   }
 }

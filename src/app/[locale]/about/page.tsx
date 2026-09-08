@@ -11,7 +11,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const dict = await getDictionary(locale as Locale);
   return {
-    title: `${dict.footer.about} | MojiCap`,
+    title: dict.footer.about,
     description: dict.footer.description,
     alternates: buildAlternates(locale as Locale, "/about"),
   };

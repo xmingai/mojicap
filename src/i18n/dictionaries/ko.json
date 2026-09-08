@@ -415,5 +415,27 @@
     "title": "페이지를 찾을 수 없습니다",
     "description": "찾으시는 페이지가 없거나 이동되었습니다.",
     "backHome": "홈으로 돌아가기"
+  },
+  "ads": {
+    "vormly": {
+      "eyebrow": "MojiCap × Vormly AI",
+      "offer": "🎁 3일 무료 체험 · 200 크레딧 증정",
+      "endsIn": "남은 기간",
+      "day": "일",
+      "ctaBanner": "받기 →",
+      "ctaPopup": "3일 체험 + 200 크레딧 받기",
+      "fine": "MojiCap 공식 추천 · 혜택은 {date}까지",
+      "close": "닫기",
+      "b": {
+        "banner": "Seedance, Veo, Kling, Grok Video를 한곳에서. 가입 시 3일 체험 + 200 크레딧.",
+        "title": "주요 AI 영상 모델을 하나의 작업 공간에서",
+        "body": "MojiCap × Vormly AI가 Seedance, Veo, Kling, Grok Video, Midjourney를 한데 모았습니다."
+      },
+      "c": {
+        "banner": "MojiCap 사용자 전용 3일 체험 + 200 크레딧.",
+        "title": "MojiCap × Vormly AI",
+        "body": "MojiCap 사용자에게 추천하는 AI 제작 도구: 이미지, 영상, 음악을 한곳에서 생성."
+      }
+    }
   }
 }

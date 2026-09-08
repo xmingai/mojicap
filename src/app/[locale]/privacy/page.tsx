@@ -9,7 +9,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return {
-    title: "Privacy Policy | MojiCap",
+    title: "Privacy Policy",
     description: "Learn how MojiCap protects your privacy. We process text locally and do not store personal data.",
     alternates: buildAlternates(locale as Locale, "/privacy"),
   };

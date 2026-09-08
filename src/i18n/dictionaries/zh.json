@@ -414,5 +414,27 @@
     "title": "页面未找到",
     "description": "你要找的页面不存在或已被移动。",
     "backHome": "返回首页"
+  },
+  "ads": {
+    "vormly": {
+      "eyebrow": "MojiCap 联合 Vormly AI",
+      "offer": "🎁 3 天免费试用 · 赠 200 积分",
+      "endsIn": "还剩",
+      "day": "天",
+      "ctaBanner": "领取 →",
+      "ctaPopup": "领取 3 天试用 + 200 积分",
+      "fine": "MojiCap 官方推荐 · 优惠截止 {date}",
+      "close": "关闭",
+      "b": {
+        "banner": "Seedance、Veo、Kling、Grok Video 一站可用，注册送 3 天试用 + 200 积分。",
+        "title": "一个账号，所有主流 AI 视频模型",
+        "body": "MojiCap 联合 Vormly AI，把 Seedance、Veo、Kling、Grok Video、Midjourney 放进同一个工作台。"
+      },
+      "c": {
+        "banner": "MojiCap 用户专享 3 天试用 + 200 积分。",
+        "title": "MojiCap 联合 Vormly AI",
+        "body": "为 MojiCap 用户推荐的 AI 创作工具：图片、视频、音乐，一站生成。"
+      }
+    }
   }
 }
