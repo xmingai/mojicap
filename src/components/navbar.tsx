@@ -68,7 +68,7 @@ export function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/20 dark:border-white/10 bg-background/40 backdrop-blur-2xl backdrop-saturate-150 shadow-sm">
+    <header className="border-b border-white/20 dark:border-white/10 bg-background/40 backdrop-blur-2xl backdrop-saturate-150 shadow-sm">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
         {/* Logo */}
         <Tooltip>

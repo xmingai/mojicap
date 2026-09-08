@@ -419,7 +419,6 @@
   "ads": {
     "vormly": {
       "eyebrow": "MojiCap × Vormly AI",
-      "offer": "🎁 3-day free trial · 200 free credits",
       "endsIn": "Ends in",
       "day": "d",
       "ctaBanner": "Claim →",
@@ -433,7 +432,7 @@
       },
       "c": {
         "banner": "3-day trial + 200 free credits for MojiCap users.",
-        "title": "MojiCap × Vormly AI",
+        "title": "A perk for MojiCap users",
         "body": "The AI creation suite we recommend to MojiCap users: images, video and music in one place."
       }
     }

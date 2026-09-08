@@ -70,7 +70,7 @@ export function VormlyBanner() {
     <div
       role="region"
       aria-label={t.eyebrow}
-      className="relative flex min-h-10 items-center justify-center gap-3 border-b border-sky-200/70 bg-sky-50 px-11 py-2 text-[13.5px] text-sky-950 dark:border-sky-900/60 dark:bg-[#13233a] dark:text-sky-100"
+      className="relative flex min-h-10 items-center justify-center gap-3 border-b border-border/60 bg-muted px-11 py-2 text-[13.5px] text-foreground"
     >
       {copy && (
         <>
@@ -80,7 +80,7 @@ export function VormlyBanner() {
               {[hours, minutes, seconds].map((n, i) => (
                 <span key={i} className="inline-flex gap-0.5">
                   {i > 0 && <b className="opacity-60">:</b>}
-                  <span className="min-w-5 rounded bg-background px-1 text-center text-foreground">{pad(n)}</span>
+                  <span className="min-w-5 rounded bg-foreground px-1 text-center text-background">{pad(n)}</span>
                 </span>
               ))}
             </span>
@@ -94,7 +94,7 @@ export function VormlyBanner() {
             target="_blank"
             rel="noopener"
             onClick={() => ready && trackAd("ad_click", PLACEMENT, ready.variant)}
-            className="whitespace-nowrap font-semibold underline underline-offset-[3px]"
+            className="whitespace-nowrap font-semibold underline decoration-foreground/40 underline-offset-[3px] hover:decoration-foreground"
           >
             {t.ctaBanner}
           </a>

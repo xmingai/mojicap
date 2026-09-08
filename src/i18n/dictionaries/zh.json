@@ -418,7 +418,6 @@
   "ads": {
     "vormly": {
       "eyebrow": "MojiCap 联合 Vormly AI",
-      "offer": "🎁 3 天免费试用 · 赠 200 积分",
       "endsIn": "还剩",
       "day": "天",
       "ctaBanner": "领取 →",
@@ -432,7 +431,7 @@
       },
       "c": {
         "banner": "MojiCap 用户专享 3 天试用 + 200 积分。",
-        "title": "MojiCap 联合 Vormly AI",
+        "title": "MojiCap 用户专享福利",
         "body": "为 MojiCap 用户推荐的 AI 创作工具：图片、视频、音乐，一站生成。"
       }
     }

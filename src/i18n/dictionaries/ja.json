@@ -419,7 +419,6 @@
   "ads": {
     "vormly": {
       "eyebrow": "MojiCap × Vormly AI",
-      "offer": "🎁 3日間無料トライアル · 200クレジット進呈",
       "endsIn": "残り",
       "day": "日",
       "ctaBanner": "受け取る →",
@@ -433,7 +432,7 @@
       },
       "c": {
         "banner": "MojiCapユーザー限定：3日間トライアル + 200クレジット。",
-        "title": "MojiCap × Vormly AI",
+        "title": "MojiCapユーザー限定特典",
         "body": "MojiCapユーザーにおすすめのAI制作スイート：画像・動画・音楽をまとめて生成。"
       }
     }

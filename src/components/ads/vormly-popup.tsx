@@ -8,7 +8,6 @@ import { useDict, useLocale } from "@/i18n/context";
 import { pathWithoutLocale } from "@/lib/seo";
 import {
   VORMLY_AD,
-  COPY_EVENT,
   vormlyUrl,
   isExcludedRoute,
   isDismissed,
@@ -25,9 +24,9 @@ const MODELS = ["Seedance", "Veo", "Kling", "Grok Video", "Midjourney", "Suno"];
 /**
  * Bottom-right promotion card for the Vormly sister site.
  *
- * Appears shortly after the visitor's first copy (or after a fallback delay),
- * at most once per session, never full-screen. Closing hides it for a week;
- * clicking the CTA hides it for a month.
+ * Appears a few seconds after the page loads (time-based only, so it never sits
+ * between the visitor and a copy), at most once per session, never full-screen.
+ * Closing hides it for a week; clicking the CTA hides it for a month.
  */
 export function VormlyPopup() {
   const dict = useDict();
@@ -43,28 +42,15 @@ export function VormlyPopup() {
       if (sessionStorage.getItem(VORMLY_AD.storageKeys.popupSession)) return;
     } catch {}
 
-    let timer: ReturnType<typeof setTimeout> | null = null;
-    let shown = false;
-    const show = () => {
-      if (shown) return;
-      shown = true;
+    const timer = setTimeout(() => {
       const variant = getAssignedVariant();
       try {
         sessionStorage.setItem(VORMLY_AD.storageKeys.popupSession, "1");
       } catch {}
       setOpen({ variant });
       trackAd("ad_impression", PLACEMENT, variant);
-    };
-    const onCopy = () => {
-      if (timer) clearTimeout(timer);
-      timer = setTimeout(show, VORMLY_AD.popupAfterCopyMs);
-    };
-    window.addEventListener(COPY_EVENT, onCopy);
-    timer = setTimeout(show, VORMLY_AD.popupFallbackMs);
-    return () => {
-      window.removeEventListener(COPY_EVENT, onCopy);
-      if (timer) clearTimeout(timer);
-    };
+    }, VORMLY_AD.popupDelayMs);
+    return () => clearTimeout(timer);
   }, [excluded]);
 
   useEffect(() => {
@@ -81,8 +67,6 @@ export function VormlyPopup() {
 
   const t = dict.ads.vormly;
   const copy = t[open.variant];
-  // Same whole-day count as the banner countdown (floor), never shown as 0.
-  const daysLeft = Math.max(1, Math.floor((offerEndsAtMs() - Date.now()) / 864e5));
   const endDate = new Intl.DateTimeFormat(locale, { month: "short", day: "numeric" }).format(offerEndsAtMs());
 
   function dismiss() {
@@ -110,13 +94,12 @@ export function VormlyPopup() {
       >
         <X className="h-4 w-4" />
       </button>
-      <div className="relative flex h-24 flex-col justify-end bg-gradient-to-r from-[#14365e] to-[#2f6bb0] p-4 text-white sm:h-28">
-        <div className="absolute left-4 top-3 flex items-center gap-2">
+      <div className="relative flex h-20 items-center bg-zinc-900 px-4 text-white dark:bg-zinc-800">
+        <div className="flex items-center gap-2">
           <Image src="/logo.png" alt="MojiCap" width={22} height={22} className="rounded-md" />
           <span className="text-[13px] font-bold opacity-80">×</span>
           <Image src="/brand/vormly-logotype-white.svg" alt="Vormly AI" width={86} height={20} className="h-5 w-auto" />
         </div>
-        <div className="text-[11px] font-bold uppercase tracking-[.14em] opacity-85">{t.eyebrow}</div>
       </div>
       <div className="grid gap-2.5 p-4">
         <h3 id="vormly-popup-title" className="text-balance text-lg font-bold leading-tight">
@@ -130,18 +113,12 @@ export function VormlyPopup() {
             </span>
           ))}
         </div>
-        <div className="flex items-center gap-2 rounded-lg bg-sky-500/10 px-3 py-2 text-[13px] font-semibold">
-          <span className="min-w-0 leading-snug">{t.offer}</span>
-          <span className="ml-auto shrink-0 whitespace-nowrap text-[11.5px] font-medium tabular-nums text-muted-foreground">
-            {t.endsIn} {daysLeft}{t.day}
-          </span>
-        </div>
         <a
           href={vormlyUrl(PLACEMENT)}
           target="_blank"
           rel="noopener"
           onClick={clickCta}
-          className="mt-0.5 block rounded-xl bg-[#1f5fbf] px-4 py-2.5 text-center font-semibold text-white transition hover:bg-[#1a52a6]"
+          className="mt-0.5 block rounded-xl bg-foreground px-4 py-2.5 text-center font-semibold text-background transition hover:bg-foreground/90"
         >
           {t.ctaPopup}
         </a>
