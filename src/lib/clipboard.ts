@@ -1,12 +1,16 @@
 "use client";
 
 import { toast } from "sonner";
+import { track } from "@vercel/analytics";
 
 /**
  * Track copy events in Google Analytics.
  * Only fires if gtag is loaded (NEXT_PUBLIC_GA_ID is set).
  */
 function trackCopyEvent(text: string, label?: string) {
+  // Vercel Web Analytics custom event (no-ops outside the browser / when not enabled).
+  track("copy", { label: label || text, text });
+
   if (typeof window !== "undefined" && window.gtag) {
     // GA4 "value" must be numeric, so the copied glyph goes in event_label / item_id.
     window.gtag("event", "copy_emoji", {
