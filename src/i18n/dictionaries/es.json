@@ -277,7 +277,8 @@
     "privacy": "Privacidad",
     "terms": "Términos",
     "company": "Comunidad",
-    "about": "Acerca de"
+    "about": "Acerca de",
+    "sponsoredBy": "Patrocinado por {brand}"
   },
   "common": {
     "copied": "{text} copiado",
@@ -423,7 +424,7 @@
       "day": "d",
       "ctaBanner": "Obtener →",
       "ctaPopup": "Obtener prueba de 3 días + 200 créditos",
-      "fine": "Recomendado por MojiCap · La oferta termina el {date}",
+      "fine": "Recomendado por MojiCap",
       "close": "Cerrar",
       "b": {
         "banner": "Seedance, Veo, Kling y Grok Video en un solo lugar. Regístrate y recibe 3 días de prueba + 200 créditos.",

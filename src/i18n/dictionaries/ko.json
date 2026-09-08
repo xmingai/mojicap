@@ -277,7 +277,8 @@
     "privacy": "개인정보",
     "terms": "이용약관",
     "company": "커뮤니티",
-    "about": "소개"
+    "about": "소개",
+    "sponsoredBy": "{brand} 후원"
   },
   "common": {
     "copied": "{text} 복사됨",
@@ -423,7 +424,7 @@
       "day": "일",
       "ctaBanner": "받기 →",
       "ctaPopup": "3일 체험 + 200 크레딧 받기",
-      "fine": "MojiCap 공식 추천 · 혜택은 {date}까지",
+      "fine": "MojiCap 공식 추천",
       "close": "닫기",
       "b": {
         "banner": "Seedance, Veo, Kling, Grok Video를 한곳에서. 가입 시 3일 체험 + 200 크레딧.",
