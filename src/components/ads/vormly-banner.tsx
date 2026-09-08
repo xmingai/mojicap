@@ -75,8 +75,8 @@ export function VormlyBanner() {
       {copy && (
         <>
           {showClock && (
-            <span className="hidden items-center gap-0.5 font-semibold tabular-nums sm:inline-flex" aria-live="off">
-              <span className="mr-1">{t.endsIn} {days}{t.day}</span>
+            <span className="hidden shrink-0 items-center gap-0.5 whitespace-nowrap font-semibold tabular-nums sm:inline-flex" aria-live="off">
+              <span className="mr-1 whitespace-nowrap">{t.endsIn} {days}{t.day}</span>
               {[hours, minutes, seconds].map((n, i) => (
                 <span key={i} className="inline-flex gap-0.5">
                   {i > 0 && <b className="opacity-60">:</b>}

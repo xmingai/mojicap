@@ -48,4 +48,6 @@ test("dismissal expiry and countdown split", () => {
   assert.deepEqual(splitCountdown(2 * 864e5 + 3 * 3600e3 + 4 * 60e3 + 5000), { days: 2, hours: 3, minutes: 4, seconds: 5 });
   assert.deepEqual(splitCountdown(-5), { days: 0, hours: 0, minutes: 0, seconds: 0 });
   assert.deepEqual(VORMLY_AD.variants, ["b", "c"]);
+  assert.equal(VORMLY_AD.bannerDismissDays, 0.5); // banner comes back 12h after being closed
+  assert.equal(dismissalExpiry(VORMLY_AD.bannerDismissDays, now), now + 12 * 3600e3);
 });

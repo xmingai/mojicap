@@ -15,8 +15,8 @@ export const VORMLY_AD = {
   enabled: true,
   /** Fixed campaign deadline. Every visitor counts down to the same instant. */
   offerEndsAt: "2026-09-22T23:59:59+08:00",
-  /** Days to keep a unit hidden after the visitor closes it. */
-  bannerDismissDays: 3,
+  /** How long a unit stays hidden after the visitor closes it (in days; 0.5 = 12 hours). */
+  bannerDismissDays: 0.5,
   popupDismissDays: 7,
   /** Days to keep the popup hidden after the visitor clicks its CTA. */
   popupClickDays: 30,
