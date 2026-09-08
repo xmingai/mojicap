@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { getAllEmojis, getBaseEmojis, getCategories, getEmojiVersions } from "@/lib/emoji";
+import { getBaseEmojisLite, getCategories, getEmojiVersions } from "@/lib/emoji";
 import { EmojiGrid } from "@/components/emoji-grid";
 import { FAQSection } from "@/components/faq-section";
 import { getDictionary } from "@/i18n/dictionaries";
 import { type Locale } from "@/i18n/config";
+import { buildAlternates } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -15,6 +16,7 @@ export async function generateMetadata({
   return {
     title: dict.emoji.metaTitle,
     description: dict.emoji.metaDesc,
+    alternates: buildAlternates(locale as Locale, "/emoji"),
   };
 }
 
@@ -25,16 +27,15 @@ export default async function EmojiPage({
 }) {
   const { locale } = await params;
   const dict = await getDictionary(locale as Locale);
-  const allEmojis = getAllEmojis();
-  const baseEmojis = getBaseEmojis();
+  const baseEmojis = getBaseEmojisLite();
   const categories = getCategories();
   const versions = getEmojiVersions();
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <EmojiGrid emojis={baseEmojis} allEmojis={allEmojis} categories={categories} versions={versions} />
+      <EmojiGrid emojis={baseEmojis} categories={categories} versions={versions} />
       {dict.emoji.faq && dict.emoji.faq.length > 0 && (
-        <FAQSection title={dict.emoji.faqTitle as string} faqs={dict.emoji.faq as any} />
+        <FAQSection title={dict.emoji.faqTitle} faqs={dict.emoji.faq} />
       )}
     </div>
   );

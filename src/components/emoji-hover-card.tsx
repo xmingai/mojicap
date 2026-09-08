@@ -1,10 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { ArrowRight, Copy, Loader2 } from "lucide-react";
-import type { Emoji } from "@/lib/emoji";
+import type { EmojiLite } from "@/lib/emoji";
 import { useDict, useLocale } from "@/i18n/context";
 import { defaultLocale } from "@/i18n/config";
 import {
@@ -14,8 +13,8 @@ import {
 } from "@/components/ui/hover-card";
 
 interface EmojiHoverCardProps {
-  emoji: Emoji;
-  onCopy: (emoji: Emoji) => void;
+  emoji: EmojiLite;
+  onCopy: (emoji: EmojiLite) => void;
   sizeValue?: number;
 }
 
