@@ -26,11 +26,11 @@ If you are looking for a clean, modern benchmark on how to build a **Multi-lingu
 - **ʕ•ᴥ•ʔ Kaomoji Hub**: Over 3,000 Japanese style text emoticons. [Preview](https://www.mojicap.com/kaomoji)
 - **🎀 Aesthetic Combos**: Curated combinations of emojis for TikTok & Instagram bio. [Preview](https://www.mojicap.com/combos)
 - **𝓕𝓪𝓷𝓬𝔂 𝓣𝓮𝔁𝓽**: Convert default latin character sets to gothic, cursive, and bold mathematical variants. [Preview](https://www.mojicap.com/fancy-text)
-- **🌍 Full Localization**: Clean URL routing and complete language support across 6 locales (`/en`, `/zh`, `/ja`, `/ko`, `/es`, `/ru`).
+- **🌍 Full Localization**: Clean URL routing and UI localization across 8 locales (`/en`, `/zh`, `/ja`, `/ko`, `/es`, `/ru`, `/fr`, `/pt`).
 
 ## 🛠 Tech Stack
 
-- **Framework**: [Next.js 15 (App Router)](https://nextjs.org/)
+- **Framework**: [Next.js 16 (App Router)](https://nextjs.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Localization**: Next.js i18n routing
 - **Deployment**: [Vercel](https://vercel.com)
@@ -52,6 +52,9 @@ If you are looking for a clean, modern benchmark on how to build a **Multi-lingu
    ```
 4. Open [http://localhost:3000](http://localhost:3000)
 
+> Requires Node.js 22 (see `.nvmrc`). Run `npm run typecheck`, `npm run lint`, and `npm test` before pushing; CI runs all four checks plus the build.
+
+
 ---
 
 <br />
@@ -62,7 +65,7 @@ If you are looking for a clean, modern benchmark on how to build a **Multi-lingu
 
 本项目致力于打造最纯粹的用户体验，无任何弹窗广告或复杂的注册流程：
 
-*   **真正的多语言路由架构**：完整支持 6 大语种（中、英、日、韩、西、俄），使用原生的路径前缀 (`/zh/`, `/ja/` 等) 实现极速切换。
+*   **真正的多语言路由架构**：完整支持 8 大语种（中、英、日、韩、西、俄、法、葡），使用原生的路径前缀 (`/zh/`, `/ja/` 等) 实现极速切换。
 *   **极致的渲染性能**：基于 Next.js App Router 渲染机制实现输出，拒绝客户端过载，秒开响应。
 *   **纯粹的工具属性**：内置海量特殊字符，点击即刻复制，完美适配小红书、抖音、微信圈子及海外社交媒体排版需求。
 

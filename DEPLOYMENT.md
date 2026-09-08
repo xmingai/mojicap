@@ -2,7 +2,7 @@
 
 ## 线上地址
 
-- **生产环境**: https://emojikit-five.vercel.app
+- **生产环境**: https://www.mojicap.com （Vercel + Cloudflare 代理）
 - **Vercel 项目**: truiosacer543-9368s-projects/emojikit（网页端管理）
 - **GitHub 仓库**: https://github.com/xmingai/emojikit
 
@@ -26,7 +26,7 @@ Push 后 Vercel 会自动拉取代码 → 构建 → 部署到生产环境，无
 
 ```bash
 export PATH="$HOME/.nvm/versions/node/v22.22.2/bin:$PATH"
-cd /Users/sgx/Desktop/Social/Dev/emojikit
+cd <项目根目录>
 vercel --prod --yes --archive=tgz
 ```
 
