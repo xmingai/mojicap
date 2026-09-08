@@ -4,7 +4,6 @@ import { useDict } from "@/i18n/context";
 import { useState, useMemo } from "react";
 import { getToolResults } from "@/lib/font-transform";
 import { copyToClipboard } from "@/lib/clipboard";
-import { Input } from "@/components/ui/input";
 import { SizeSlider, FANCY_TEXT_SIZE_PRESETS } from "@/components/size-slider";
 import { Copy } from "lucide-react";
 
