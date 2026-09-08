@@ -2,17 +2,6 @@
 
 import { copyToClipboard } from "@/lib/clipboard";
 
-export function EmojiButton({ emoji }: { emoji: string }) {
-  return (
-    <button
-      className="text-3xl p-2 rounded-xl hover:bg-muted transition-all active:scale-90 cursor-pointer"
-      onClick={() => copyToClipboard(emoji)}
-    >
-      {emoji}
-    </button>
-  );
-}
-
 export function ComboButton({ name, combo }: { name: string; combo: string }) {
   return (
     <button

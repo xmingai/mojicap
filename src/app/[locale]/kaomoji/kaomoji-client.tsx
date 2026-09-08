@@ -6,8 +6,7 @@ import kaomojiData from "@/data/kaomoji-data.json";
 import { copyToClipboard } from "@/lib/clipboard";
 import { SearchBar } from "@/components/search-bar";
 import { SizeSlider, FANCY_TEXT_SIZE_PRESETS } from "@/components/size-slider";
-import { cn } from "@/lib/utils";
-import { Copy } from "lucide-react";
+import { CategoryFilterBar } from "@/components/category-filter-bar";
 
 type Kaomoji = { char: string; name: string };
 type Category = { id: string; name: string; icon: string; kaomojis: Kaomoji[] };
@@ -63,39 +62,14 @@ export function KaomojiClient() {
       />
 
       {/* Category filter */}
-      <div className="flex flex-wrap gap-1">
-        <button
-          onClick={() => {
-            setActiveCategory(null);
-            setSearchQuery("");
-          }}
-          className={cn(
-            "px-3 py-1.5 rounded-lg text-sm font-medium transition-all",
-            activeCategory === null && !searchQuery
-              ? "bg-foreground text-background"
-              : "text-muted-foreground hover:text-foreground hover:bg-muted"
-          )}
-        >
-          {dict.common.all}
-        </button>
-        {categories.map((cat) => (
-          <button
-            key={cat.id}
-            onClick={() => {
-              setActiveCategory(cat.name);
-              setSearchQuery("");
-            }}
-            className={cn(
-              "px-3 py-1.5 rounded-lg text-sm font-medium transition-all",
-              activeCategory === cat.name
-                ? "bg-foreground text-background"
-                : "text-muted-foreground hover:text-foreground hover:bg-muted"
-            )}
-          >
-            {cat.icon} {dict.categories?.[cat.name as keyof typeof dict.categories] || cat.name}
-          </button>
-        ))}
-      </div>
+      <CategoryFilterBar
+        categories={categories.map((c) => ({ key: c.name, name: c.name, icon: c.icon }))}
+        activeKey={searchQuery ? null : activeCategory}
+        onSelect={(key) => {
+          setActiveCategory(key);
+          setSearchQuery("");
+        }}
+      />
 
       {/* Combos */}
       {filteredCategories.map((cat) => (
