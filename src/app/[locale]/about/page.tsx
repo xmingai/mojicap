@@ -1,4 +1,5 @@
 import { type Locale } from "@/i18n/config";
+import { buildAlternates } from "@/lib/seo";
 import { getDictionary } from "@/i18n/dictionaries";
 import { Metadata } from "next";
 
@@ -12,6 +13,7 @@ export async function generateMetadata({
   return {
     title: `${dict.footer.about} | MojiCap`,
     description: dict.footer.description,
+    alternates: buildAlternates(locale as Locale, "/about"),
   };
 }
 

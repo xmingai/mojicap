@@ -10,6 +10,7 @@ import { ScrollToTop } from "@/components/scroll-to-top";
 import { I18nProvider } from "@/i18n/context";
 import { locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { SITE_URL } from "@/lib/seo";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "../globals.css";
 
@@ -30,10 +31,8 @@ export async function generateMetadata({
   const { locale } = await params;
   const dict = await getDictionary(locale as Locale);
 
-  const prefix = locale === "en" ? "" : `/${locale}`;
-
   return {
-    metadataBase: new URL("https://www.mojicap.com"),
+    metadataBase: new URL(SITE_URL),
     title: {
       default: dict.meta.title,
       template: "%s | MojiCap",
@@ -65,12 +64,9 @@ export async function generateMetadata({
       index: true,
       follow: true,
     },
-    alternates: {
-      canonical: `https://www.mojicap.com${prefix || "/"}`,
-      languages: Object.fromEntries(
-        locales.map((l) => [l, `https://www.mojicap.com${l === "en" ? "/" : `/${l}`}`])
-      ),
-    },
+    // No `alternates` here on purpose: Next.js replaces that object wholesale,
+    // so a layout-level canonical would be inherited by every page. Each page
+    // sets its own via buildAlternates() in src/lib/seo.ts.
   };
 }
 
@@ -89,17 +85,15 @@ export default async function LocaleLayout({
   }
 
   const dict = await getDictionary(locale as Locale);
-  const prefix = locale === "en" ? "" : `/${locale}`;
-  const baseUrl = `https://www.mojicap.com${prefix}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "MojiCap",
-    "url": "https://www.mojicap.com/",
+    "url": `${SITE_URL}/`,
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://www.mojicap.com/emoji?q={search_term_string}",
+      "target": `${SITE_URL}/emoji/?q={search_term_string}`,
       "query-input": "required name=search_term_string"
     }
   };

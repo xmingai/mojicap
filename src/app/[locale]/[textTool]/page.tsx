@@ -3,15 +3,9 @@ import { notFound } from "next/navigation";
 import { FancyTextClient } from "../fancy-text/fancy-text-client";
 import { getDictionary } from "@/i18n/dictionaries";
 import { type Locale } from "@/i18n/config";
-import { FAQSection } from "@/components/faq-section";
+import { buildAlternates } from "@/lib/seo";
 import { TextToolsTabs } from "../fancy-text/text-tools-tabs";
-
-const tools = [
-  "glitch-text", "vaporwave-text", "tiny-text", "morse-code", 
-  "cursive-text", "old-english-text", "bold-text", "italic-text", 
-  "bubble-text", "square-text", "upside-down-text", "strikethrough-text", 
-  "leet-speak", "weird-text"
-] as const;
+import { DYNAMIC_TEXT_TOOL_SLUGS, isDynamicTextTool } from "@/lib/tool-routes";
 
 function kebabToCamel(str: string) {
   return str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
@@ -19,13 +13,9 @@ function kebabToCamel(str: string) {
 
 export async function generateStaticParams() {
   const { locales } = await import("@/i18n/config");
-  const params = [];
-  for (const locale of locales) {
-    for (const textTool of tools) {
-      params.push({ locale, textTool });
-    }
-  }
-  return params;
+  return locales.flatMap((locale) =>
+    DYNAMIC_TEXT_TOOL_SLUGS.map((textTool) => ({ locale, textTool }))
+  );
 }
 
 export async function generateMetadata({
@@ -34,12 +24,12 @@ export async function generateMetadata({
   params: Promise<{ locale: string, textTool: string }>;
 }): Promise<Metadata> {
   const { locale, textTool } = await params;
-  if (!tools.includes(textTool as any)) return {};
+  if (!isDynamicTextTool(textTool)) return {};
   
   const dict = await getDictionary(locale as Locale);
   const camelKey = kebabToCamel(textTool);
   
-  const seo = dict.textToolSeo as any;
+  const seo = dict.textToolSeo;
   const toolName = (dict.textToolsNav as Record<string, string>)[camelKey] || textTool;
   const toolDesc = (dict.textToolsDesc as Record<string, string>)[textTool] || "";
   
@@ -49,6 +39,7 @@ export async function generateMetadata({
   return {
     title: h1,
     description: desc || "Convert and transform your text.",
+    alternates: buildAlternates(locale as Locale, `/${textTool}`),
   };
 }
 
@@ -58,7 +49,7 @@ export default async function SpecificToolPage({
   params: Promise<{ locale: string, textTool: string }>;
 }) {
   const { locale, textTool } = await params;
-  if (!tools.includes(textTool as any)) return notFound();
+  if (!isDynamicTextTool(textTool)) return notFound();
   
   const dict = await getDictionary(locale as Locale);
   const camelKey = kebabToCamel(textTool);
@@ -68,7 +59,7 @@ export default async function SpecificToolPage({
   const toolDesc = (dict.textToolsDesc as Record<string, string>)[textTool] || "";
   
   // Format the SEO strings using the dictionary templates
-  const seo = dict.textToolSeo as any;
+  const seo = dict.textToolSeo;
   const h1 = seo.h1.replace("{toolName}", toolName);
   const desc = seo.descPrefix.replace("{desc}", toolDesc);
   const q1 = seo.q1.replace("{toolName}", toolName);
