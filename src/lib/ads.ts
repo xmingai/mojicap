@@ -14,9 +14,9 @@ export const VORMLY_AD = {
   offerEndsAt: "2026-09-22T23:59:59+08:00",
   /** How long a unit stays hidden after the visitor closes it (in days; 0.5 = 12 hours). */
   bannerDismissDays: 0.5,
-  popupDismissDays: 7,
-  /** Days to keep the popup hidden after the visitor clicks its CTA. */
-  popupClickDays: 30,
+  popupDismissDays: 1,
+  /** Days to keep the popup hidden after the visitor clicks its CTA (also 24h). */
+  popupClickDays: 1,
   /** Popup appears this long after the page loads (time-based only; not tied to any user action). */
   popupDelayMs: 5000,
   /** Route prefixes (locale-free) where no promotion is shown. */
