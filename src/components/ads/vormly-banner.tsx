@@ -8,16 +8,14 @@ import { pathWithoutLocale } from "@/lib/seo";
 import {
   VORMLY_AD,
   vormlyUrl,
-  isOfferActive,
   isExcludedRoute,
   isDismissed,
   rememberDismissal,
-  offerEndsAtMs,
-  splitCountdown,
   getAssignedVariant,
   type AdVariant,
 } from "@/lib/ads";
 import { trackAd } from "./track";
+import { OfferCountdown } from "./offer-countdown";
 
 const PLACEMENT = "top_banner" as const;
 
@@ -33,7 +31,6 @@ export function VormlyBanner() {
   const pathname = usePathname();
   const excluded = isExcludedRoute(pathWithoutLocale(pathname));
   const [ready, setReady] = useState<{ visible: boolean; variant: AdVariant } | null>(null);
-  const [now, setNow] = useState(() => Date.now());
 
   useEffect(() => {
     if (!VORMLY_AD.enabled || excluded) return;
@@ -45,20 +42,11 @@ export function VormlyBanner() {
     if (visible) trackAd("ad_impression", PLACEMENT, variant);
   }, [excluded]);
 
-  useEffect(() => {
-    if (!ready?.visible || !isOfferActive()) return;
-    const id = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(id);
-  }, [ready?.visible]);
-
   if (!VORMLY_AD.enabled || excluded) return null;
   if (ready && !ready.visible) return null;
 
   const t = dict.ads.vormly;
   const copy = ready ? t[ready.variant] : null;
-  const showClock = isOfferActive(now);
-  const { days, hours, minutes, seconds } = splitCountdown(offerEndsAtMs() - now);
-  const pad = (n: number) => String(n).padStart(2, "0");
 
   const dismiss = () => {
     rememberDismissal(VORMLY_AD.storageKeys.banner, VORMLY_AD.bannerDismissDays);
@@ -74,17 +62,7 @@ export function VormlyBanner() {
     >
       {copy && (
         <>
-          {showClock && (
-            <span className="hidden shrink-0 items-center gap-0.5 whitespace-nowrap font-semibold tabular-nums sm:inline-flex" aria-live="off">
-              <span className="mr-1 whitespace-nowrap">{t.endsIn} {days}{t.day}</span>
-              {[hours, minutes, seconds].map((n, i) => (
-                <span key={i} className="inline-flex gap-0.5">
-                  {i > 0 && <b className="opacity-60">:</b>}
-                  <span className="min-w-5 rounded bg-foreground px-1 text-center text-background">{pad(n)}</span>
-                </span>
-              ))}
-            </span>
-          )}
+          <OfferCountdown className="hidden sm:inline-flex" />
           <span className="text-balance">
             <strong className="font-semibold">{t.eyebrow}</strong>
             <span className="hidden sm:inline">：{copy.banner}</span>

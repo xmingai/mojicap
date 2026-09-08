@@ -277,7 +277,8 @@
     "privacy": "プライバシー",
     "terms": "利用規約",
     "company": "コミュニティ",
-    "about": "概要"
+    "about": "概要",
+    "sponsoredBy": "{brand} の提供"
   },
   "common": {
     "copied": "{text} をコピーしました",
@@ -423,7 +424,7 @@
       "day": "日",
       "ctaBanner": "受け取る →",
       "ctaPopup": "3日間トライアル + 200クレジットを受け取る",
-      "fine": "MojiCap公式おすすめ · 特典は{date}まで",
+      "fine": "MojiCap公式おすすめ",
       "close": "閉じる",
       "b": {
         "banner": "Seedance・Veo・Kling・Grok Videoをひとつの場所で。登録で3日間トライアル + 200クレジット。",

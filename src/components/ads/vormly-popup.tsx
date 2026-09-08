@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { X } from "lucide-react";
-import { useDict, useLocale } from "@/i18n/context";
+import { useDict } from "@/i18n/context";
 import { pathWithoutLocale } from "@/lib/seo";
 import {
   VORMLY_AD,
@@ -12,11 +12,11 @@ import {
   isExcludedRoute,
   isDismissed,
   rememberDismissal,
-  offerEndsAtMs,
   getAssignedVariant,
   type AdVariant,
 } from "@/lib/ads";
 import { trackAd } from "./track";
+import { OfferCountdown } from "./offer-countdown";
 
 const PLACEMENT = "corner_popup" as const;
 const MODELS = ["Seedance", "Veo", "Kling", "Grok Video", "Midjourney", "Suno"];
@@ -30,7 +30,6 @@ const MODELS = ["Seedance", "Veo", "Kling", "Grok Video", "Midjourney", "Suno"];
  */
 export function VormlyPopup() {
   const dict = useDict();
-  const locale = useLocale();
   const pathname = usePathname();
   const excluded = isExcludedRoute(pathWithoutLocale(pathname));
   const [open, setOpen] = useState<{ variant: AdVariant } | null>(null);
@@ -67,7 +66,6 @@ export function VormlyPopup() {
 
   const t = dict.ads.vormly;
   const copy = t[open.variant];
-  const endDate = new Intl.DateTimeFormat(locale, { month: "short", day: "numeric" }).format(offerEndsAtMs());
 
   function dismiss() {
     rememberDismissal(VORMLY_AD.storageKeys.popup, VORMLY_AD.popupDismissDays);
@@ -113,6 +111,9 @@ export function VormlyPopup() {
             </span>
           ))}
         </div>
+        <div className="flex justify-center rounded-lg bg-muted px-3 py-2 text-[13px]">
+          <OfferCountdown />
+        </div>
         <a
           href={vormlyUrl(PLACEMENT)}
           target="_blank"
@@ -122,7 +123,7 @@ export function VormlyPopup() {
         >
           {t.ctaPopup}
         </a>
-        <div className="text-center text-[11px] text-muted-foreground">{t.fine.replace("{date}", endDate)}</div>
+        <div className="text-center text-[11px] text-muted-foreground">{t.fine}</div>
       </div>
     </div>
   );

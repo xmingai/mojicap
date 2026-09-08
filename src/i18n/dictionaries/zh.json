@@ -276,7 +276,8 @@
     "privacy": "隐私政策",
     "terms": "使用条款",
     "company": "社区",
-    "about": "关于"
+    "about": "关于",
+    "sponsoredBy": "赞助 by {brand}"
   },
   "common": {
     "copied": "已复制 {text}",
@@ -422,7 +423,7 @@
       "day": "天",
       "ctaBanner": "领取 →",
       "ctaPopup": "领取 3 天试用 + 200 积分",
-      "fine": "MojiCap 官方推荐 · 优惠截止 {date}",
+      "fine": "MojiCap 官方推荐",
       "close": "关闭",
       "b": {
         "banner": "Seedance、Veo、Kling、Grok Video 一站可用，注册送 3 天试用 + 200 积分。",
