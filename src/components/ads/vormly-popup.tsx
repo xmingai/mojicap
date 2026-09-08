@@ -67,8 +67,6 @@ export function VormlyPopup() {
 
   const t = dict.ads.vormly;
   const copy = t[open.variant];
-  // Same whole-day count as the banner countdown (floor), never shown as 0.
-  const daysLeft = Math.max(1, Math.floor((offerEndsAtMs() - Date.now()) / 864e5));
   const endDate = new Intl.DateTimeFormat(locale, { month: "short", day: "numeric" }).format(offerEndsAtMs());
 
   function dismiss() {
@@ -114,12 +112,6 @@ export function VormlyPopup() {
               {m}
             </span>
           ))}
-        </div>
-        <div className="flex items-center gap-2 rounded-lg bg-muted px-3 py-2 text-[13px] font-semibold">
-          <span className="min-w-0 leading-snug">{t.offer}</span>
-          <span className="ml-auto shrink-0 whitespace-nowrap text-[11.5px] font-medium tabular-nums text-muted-foreground">
-            {t.endsIn} {daysLeft}{t.day}
-          </span>
         </div>
         <a
           href={vormlyUrl(PLACEMENT)}
