@@ -8,7 +8,8 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { ArrowLeft } from "lucide-react";
 import { getDictionary } from "@/i18n/dictionaries";
-import { locales, type Locale } from "@/i18n/config";
+import { type Locale } from "@/i18n/config";
+import { absoluteUrl, buildAlternates } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>;
@@ -27,23 +28,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const emoji = getEmojiBySlug(slug);
   if (!emoji) return { title: "Emoji Not Found" };
 
-  const prefix = locale === "en" ? "" : `/${locale}`;
+  const dict = await getDictionary(locale as Locale);
   const i18n = getEmojiTranslation(slug, locale as Locale);
   const localName = i18n?.name || emoji.name;
+  const fill = (tpl: string) =>
+    tpl.replace("{emoji}", emoji.emoji).replace("{name}", localName).replace("{unicode}", emoji.unicode);
 
   return {
-    title: `${emoji.emoji} ${localName} Emoji — Copy & Paste`,
-    description: `Copy the ${localName} emoji ${emoji.emoji}. Learn its meaning, Unicode code (${emoji.unicode}), and find related emojis.`,
+    title: fill(dict.emoji.detailTitle),
+    description: fill(dict.emoji.detailDesc),
     openGraph: {
-      title: `${emoji.emoji} ${localName} Emoji`,
-      description: `Copy the ${localName} emoji ${emoji.emoji}. Unicode: ${emoji.unicode}`,
+      title: fill(dict.emoji.detailOgTitle),
+      description: fill(dict.emoji.detailOgDesc),
     },
-    alternates: {
-      canonical: `https://www.mojicap.com${prefix}/emoji/${slug}`,
-      languages: Object.fromEntries(
-        locales.map((l) => [l, `https://www.mojicap.com${l === "en" ? "" : `/${l}`}/emoji/${slug}`])
-      ),
-    },
+    alternates: buildAlternates(locale as Locale, `/emoji/${slug}`),
   };
 }
 
@@ -64,7 +62,6 @@ export default async function EmojiDetailPage({ params }: Props) {
   const skinToneVariants = getSkinToneVariants(emoji);
   const t = dict.emoji;
   const prefix = locale === "en" ? "" : `/${locale}`;
-  const baseUrl = `https://www.mojicap.com${prefix}`;
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
@@ -74,19 +71,19 @@ export default async function EmojiDetailPage({ params }: Props) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": `${baseUrl}` || "https://www.mojicap.com/"
+        "item": absoluteUrl(locale as Locale, "/")
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": t.allEmojis || "All Emojis",
-        "item": `${baseUrl}/emoji`
+        "item": absoluteUrl(locale as Locale, "/emoji")
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": localName,
-        "item": `${baseUrl}/emoji/${slug}`
+        "item": absoluteUrl(locale as Locale, `/emoji/${slug}`)
       }
     ]
   };
@@ -129,7 +126,7 @@ export default async function EmojiDetailPage({ params }: Props) {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
         <InfoBlock title={t.category}>
           <Link
-            href={`${prefix}/emoji?category=${emoji.groupSlug}`}
+            href={`${prefix}/emoji/?category=${emoji.groupSlug}`}
             className="text-sm hover:underline"
           >
             {localGroupName}

@@ -120,7 +120,11 @@
         "q": "検索はどうやればいいですか？",
         "a": "上部の検索バーを使って、キーワードを入力すると、一瞬で目当ての絵文字を見つけることができます。"
       }
-    ]
+    ],
+    "detailTitle": "{emoji} {name} 絵文字 — コピー＆ペースト",
+    "detailDesc": "{name} の絵文字 {emoji} をコピー。意味やUnicode（{unicode}）、関連絵文字も確認できます。",
+    "detailOgTitle": "{emoji} {name} 絵文字",
+    "detailOgDesc": "{name} の絵文字 {emoji} をコピー。Unicode：{unicode}"
   },
   "symbols": {
     "title": "特殊記号 & 文字",
@@ -406,5 +410,10 @@
     "strikethrough-text": "取り消し線の入ったテキスト",
     "leet-speak": "ハッカーのリートスピーク（1337）テキスト",
     "weird-text": "奇妙でクレイジーなカオスなテキストスタイル"
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "description": "お探しのページは存在しないか、移動されました。",
+    "backHome": "ホームに戻る"
   }
 }
