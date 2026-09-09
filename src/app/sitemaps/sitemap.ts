@@ -29,6 +29,15 @@ const TOOL_PATHS: { path: string; changeFrequency: "weekly" | "monthly" | "yearl
   { path: "/terms", changeFrequency: "yearly", priority: 0.3 },
 ];
 
+/**
+ * Sitemap priorities must be plain one-decimal numbers. Subtracting in binary
+ * floating point gives 0.8 - 0.1 = 0.7000000000000001, which is in range but
+ * reads as a malformed value to any sitemap validator.
+ */
+function priority(value: number): number {
+  return Math.round(value * 10) / 10;
+}
+
 // No lastModified: a build-time "now" on every URL tells crawlers nothing useful.
 export default async function sitemap({ id }: { id: Promise<string> }): Promise<MetadataRoute.Sitemap> {
   const index = Number(await id);
@@ -48,7 +57,7 @@ export default async function sitemap({ id }: { id: Promise<string> }): Promise<
         entries.push({
           url: absoluteUrl(locale, tool.path),
           changeFrequency: tool.changeFrequency,
-          priority: locale === "en" ? tool.priority : tool.priority - 0.1,
+          priority: locale === "en" ? tool.priority : priority(tool.priority - 0.1),
           alternates: { languages: hreflangLanguages(tool.path) },
         });
       }
