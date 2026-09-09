@@ -8,7 +8,9 @@ interface TypewriterTextProps {
 
 export function TypewriterText({ words }: TypewriterTextProps) {
   const [wordIndex, setWordIndex] = useState(0);
-  const [text, setText] = useState("");
+  // Start on the full first word so the server-rendered <h1> is a complete
+  // sentence for crawlers; the animation then deletes it and cycles on.
+  const [text, setText] = useState(() => words?.[0] ?? "");
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
@@ -37,9 +39,10 @@ export function TypewriterText({ words }: TypewriterTextProps) {
   }, [text, isDeleting, wordIndex, words]);
 
   return (
-    <span className="inline-block min-w-[180px] text-left text-primary">
+    // The caret is a CSS pseudo-element, not text, so it never becomes part of
+    // the heading that search engines and screen readers read.
+    <span className="inline-block min-w-[180px] text-left text-primary after:animate-pulse after:font-light after:opacity-70 after:content-['|']">
       {text}
-      <span className="animate-pulse font-light opacity-70">|</span>
     </span>
   );
 }

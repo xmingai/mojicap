@@ -70,6 +70,16 @@ export function getEmojisByGroup(groupSlug: string): Emoji[] {
   return (emojiData as Emoji[]).filter((e) => e.groupSlug === groupSlug);
 }
 
+/**
+ * The base (non-variant) emoji a skin-tone variant belongs to.
+ * Variant names are "<base>: <tone…>", so the part before the colon is the base name.
+ */
+export function getBaseEmojiOf(emoji: Emoji): Emoji | undefined {
+  if (!emoji.skinToneVariant) return undefined;
+  const baseName = emoji.name.split(":")[0];
+  return (emojiData as Emoji[]).find((e) => !e.skinToneVariant && e.name === baseName);
+}
+
 /** Get skin tone variants of a base emoji */
 export function getSkinToneVariants(emoji: Emoji): Emoji[] {
   if (!emoji.skinToneSupport) return [];

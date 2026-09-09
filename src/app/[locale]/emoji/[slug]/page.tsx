@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllSlugs, getEmojiBySlug, getRelatedEmojis, getSkinToneVariants } from "@/lib/emoji";
+import { getAllSlugs, getBaseEmojiOf, getEmojiBySlug, getRelatedEmojis, getSkinToneVariants } from "@/lib/emoji";
 import { getEmojiTranslation } from "@/lib/emoji-i18n";
 import { CopyButton } from "./copy-button";
 import { Badge } from "@/components/ui/badge";
@@ -9,7 +9,7 @@ import { Separator } from "@/components/ui/separator";
 import { ArrowLeft } from "lucide-react";
 import { getDictionary } from "@/i18n/dictionaries";
 import { type Locale } from "@/i18n/config";
-import { absoluteUrl, buildAlternates } from "@/lib/seo";
+import { absoluteUrl, buildAlternates, buildDuplicateAlternates } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>;
@@ -30,9 +30,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const dict = await getDictionary(locale as Locale);
   const i18n = getEmojiTranslation(slug, locale as Locale);
-  const localName = i18n?.name || emoji.name;
+  // The i18n name drops the ": light skin tone" suffix for many variants, which
+  // would make every tone of an emoji share one title. Fall back to the raw
+  // Unicode name (which always carries the suffix) for variants.
+  const localName = emoji.skinToneVariant ? emoji.name : i18n?.name || emoji.name;
   const fill = (tpl: string) =>
     tpl.replace("{emoji}", emoji.emoji).replace("{name}", localName).replace("{unicode}", emoji.unicode);
+
+  // A skin-tone variant is a near-duplicate of its base emoji: same meaning,
+  // same keywords, same related list. Canonicalise it to the base page so link
+  // signals consolidate there instead of splitting across six near-identical URLs.
+  const base = getBaseEmojiOf(emoji);
+  const alternates = base
+    ? buildDuplicateAlternates(locale as Locale, `/emoji/${base.slug}`)
+    : buildAlternates(locale as Locale, `/emoji/${slug}`);
 
   return {
     title: fill(dict.emoji.detailTitle),
@@ -41,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: fill(dict.emoji.detailOgTitle),
       description: fill(dict.emoji.detailOgDesc),
     },
-    alternates: buildAlternates(locale as Locale, `/emoji/${slug}`),
+    alternates,
   };
 }
 
@@ -53,7 +64,9 @@ export default async function EmojiDetailPage({ params }: Props) {
   if (!emoji) notFound();
 
   const i18n = getEmojiTranslation(slug, locale as Locale);
-  const localName = i18n?.name || emoji.name;
+  // Same rule as in generateMetadata: variants keep their full Unicode name so
+  // the heading distinguishes them from the base emoji.
+  const localName = emoji.skinToneVariant ? emoji.name : i18n?.name || emoji.name;
   const localKeywords = i18n?.keywords || emoji.keywords;
   const localMeaning = i18n?.meaning || emoji.meaning;
   const localGroupName = i18n?.groupName || emoji.group;

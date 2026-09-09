@@ -10,7 +10,12 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return { alternates: buildAlternates(locale as Locale, "/") };
+  const dict = await getDictionary(locale as Locale);
+  return {
+    openGraph: { title: dict.meta.title, description: dict.meta.description },
+    twitter: { title: dict.meta.title, description: dict.meta.description },
+    alternates: buildAlternates(locale as Locale, "/"),
+  };
 }
 
 export default async function HomePage({

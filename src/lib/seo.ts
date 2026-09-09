@@ -45,6 +45,15 @@ export function hreflangLanguages(path = "/"): Record<string, string> {
 }
 
 /**
+ * `alternates` for a page that is a near-duplicate of another page (e.g. an emoji
+ * skin-tone variant): point the canonical at the preferred URL and emit no
+ * hreflang, since only a canonical page should declare a language cluster.
+ */
+export function buildDuplicateAlternates(locale: Locale, canonicalPath: string) {
+  return { canonical: absoluteUrl(locale, canonicalPath) };
+}
+
+/**
  * `alternates` block for generateMetadata. Every page must call this itself:
  * Next.js replaces `alternates` as a whole object, so a layout-level canonical
  * would otherwise be inherited verbatim by every child page.
