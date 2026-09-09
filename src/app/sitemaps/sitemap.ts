@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getAllEmojis } from "@/lib/emoji";
+import { getBaseEmojis } from "@/lib/emoji";
 import { locales } from "@/i18n/config";
 import { absoluteUrl, hreflangLanguages } from "@/lib/seo";
 import { TEXT_TOOLS } from "@/lib/tool-routes";
@@ -59,7 +59,9 @@ export default async function sitemap({ id }: { id: Promise<string> }): Promise<
   const locale = locales[index - 1];
   if (!locale) return [];
 
-  return getAllEmojis().map((emoji) => {
+  // Skin-tone variants canonicalise to their base emoji, so listing them here
+  // would advertise ~1,875 non-canonical URLs per locale and waste crawl budget.
+  return getBaseEmojis().map((emoji) => {
     const path = `/emoji/${emoji.slug}`;
     return {
       url: absoluteUrl(locale, path),
