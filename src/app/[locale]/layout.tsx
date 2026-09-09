@@ -41,27 +41,19 @@ export async function generateMetadata({
       template: "%s | MojiCap",
     },
     description: dict.meta.description,
-    keywords: [
-      "emoji",
-      "emoji copy paste",
-      "emoji keyboard",
-      "special symbols",
-      "fancy text generator",
-      "emoji combos",
-      "unicode symbols",
-      "text symbols",
-    ],
+    // No `keywords`: Google has ignored the meta keywords tag since 2009, and a
+    // single site-wide list only publishes the keyword strategy to competitors.
     openGraph: {
-      title: dict.meta.title,
-      description: dict.meta.description,
+      // No `title`/`description` here on purpose — Next.js would apply them to
+      // every child page, so each page's own title would never reach og:title.
+      // Pages set their own; the site name and type are safe to inherit.
       type: "website",
       locale: locale,
       siteName: "MojiCap",
     },
     twitter: {
+      // Card type only; per-page title/description come from each page's metadata.
       card: "summary_large_image",
-      title: dict.meta.title,
-      description: dict.meta.description,
     },
     robots: {
       index: true,
