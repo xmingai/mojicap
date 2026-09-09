@@ -393,7 +393,7 @@
     "p2_1": "No, estas no son fuentes reales como las que instala en su computadora. Son esencialmente símbolos especiales mapeados en la tabla de caracteres Unicode.",
     "p2_2": "Debido a que son símbolos de texto sin formato, puede copiarlos y pegarlos libremente en varias plataformas de redes sociales y sitios web. Si fueran fuentes reales, otras personas no podrían verlas a menos que tuvieran exactamente la misma fuente instalada.",
     "h1": "Generador de {toolName}",
-    "descPrefix": "Genera {desc}."
+    "descPrefix": "Genera {desc}. Generador online gratuito: escribe tu texto, cópialo y pégalo en Instagram, TikTok o Discord."
   },
   "textToolsDesc": {
     "fancy-text": "estilos de texto elegantes, geniales y estéticos",
