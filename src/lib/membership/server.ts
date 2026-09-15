@@ -4,7 +4,7 @@
 
 import { getDB } from "../db";
 import { getSessionUser } from "../auth";
-import { membershipBackendReady } from "./config";
+import { membershipBackendReady } from "./config-server";
 import { accessUntil, isMemberNow } from "./entitlement";
 import { getMembership } from "./process-event";
 

@@ -15,7 +15,8 @@
     "art": "Art",
     "more": "More",
     "toggleTheme": "Toggle theme",
-    "bookmarkTip": "or drag to Bookmarks to save ✨"
+    "bookmarkTip": "or drag to Bookmarks to save ✨",
+    "account": "Account"
   },
   "home": {
     "heroTitle": "Copy & Paste",
@@ -278,7 +279,8 @@
     "terms": "Terms",
     "company": "Community",
     "about": "About",
-    "sponsoredBy": "Sponsored by {brand}"
+    "sponsoredBy": "Sponsored by {brand}",
+    "plus": "MojiCap Plus"
   },
   "common": {
     "copied": "Copied {text}",
@@ -437,5 +439,162 @@
         "body": "The AI creation suite we recommend to MojiCap users: images, video and music in one place."
       }
     }
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "close": "Close",
+    "title": "Sign in to MojiCap",
+    "subtitle": "We'll email you a 6-digit code. No password needed.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "sendCode": "Send code",
+    "sending": "Sending…",
+    "codeLabel": "6-digit code",
+    "codeSentTo": "We sent a code to {email}.",
+    "verify": "Sign in",
+    "verifying": "Signing in…",
+    "resend": "Resend code",
+    "resendIn": "Resend in {seconds}s",
+    "changeEmail": "Use a different email",
+    "google": "Continue with Google",
+    "or": "or",
+    "errorEmail": "Enter a valid email address.",
+    "errorCode": "That code didn't work. Check it and try again.",
+    "errorRate": "Too many attempts. Wait a minute and try again.",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "legal": "By continuing you agree to the Terms and Privacy Policy.",
+    "signedIn": "Signed in",
+    "signedOut": "Signed out"
+  },
+  "plus": {
+    "name": "MojiCap Plus",
+    "badge": "Plus",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "save": "Save {percent}%",
+    "perMonth": "/month",
+    "perYear": "/year",
+    "yearlyEquivalent": "About {price}/month",
+    "cta": "Get Plus",
+    "ctaLoading": "Opening checkout…",
+    "pricingSubtitle": "MojiCap stays free. Plus is for people who use it every day.",
+    "metaTitle": "MojiCap Plus Pricing",
+    "metaDesc": "MojiCap Plus syncs your favorite emoji across devices and adds premium fancy fonts, bulk copy and custom combos. $2.99 a month or $19.99 a year.",
+    "benefits": {
+      "sync": {
+        "title": "Sync favorites and recents",
+        "desc": "Your favorite and recently used emoji follow you to every device."
+      },
+      "fonts": {
+        "title": "Premium fancy fonts",
+        "desc": "Extra text styles such as 🅝🅔🅖🅐🅣🅘🅥🅔 and ✧sparkle✧."
+      },
+      "bulk": {
+        "title": "Bulk copy and custom combos",
+        "desc": "Pick several emoji at once, copy them together and save your own combos."
+      },
+      "noPromo": {
+        "title": "No promotions",
+        "desc": "Browse without the top banner and pop-up promotions."
+      }
+    },
+    "fineprint": "Cancel anytime. Payments are processed by Waffo.",
+    "memberTitle": "You're on Plus",
+    "manage": "Manage subscription",
+    "upsell": {
+      "sync": {
+        "title": "Sync across your devices",
+        "desc": "Plus keeps your favorites and recently used emoji the same on every device."
+      },
+      "fonts": {
+        "title": "Unlock premium fonts",
+        "desc": "This style is part of Plus, along with every other premium font."
+      },
+      "bulk": {
+        "title": "Copy many emoji at once",
+        "desc": "Plus lets you select several emoji, copy them together and save them as your own combo."
+      },
+      "alsoIncluded": "Also in Plus",
+      "priceFrom": "From {price} a month",
+      "seePlans": "See plans",
+      "notNow": "Not now"
+    },
+    "checkoutError": "Couldn't open checkout. Please try again.",
+    "checkoutUnavailable": "Checkout isn't available yet.",
+    "faqTitle": "Questions about Plus",
+    "faq": [
+      {
+        "q": "What stays free?",
+        "a": "Everything you use today: every emoji, symbol, kaomoji and fancy font, plus favorites on this device. Plus only adds new features."
+      },
+      {
+        "q": "Can I cancel anytime?",
+        "a": "Yes. Cancel from your account page and Plus stays active until the end of the period you paid for. It won't renew."
+      },
+      {
+        "q": "How am I charged?",
+        "a": "Waffo processes the payment as merchant of record, so taxes are included and your card details never reach MojiCap."
+      },
+      {
+        "q": "Can I switch between monthly and yearly?",
+        "a": "Cancel your current plan and choose the other one when it ends. Your favorites and combos stay in your account."
+      }
+    ]
+  },
+  "account": {
+    "title": "Account",
+    "metaTitle": "Account",
+    "signInPrompt": "Sign in to manage MojiCap Plus and sync your emoji.",
+    "signedInAs": "Signed in as",
+    "plan": "Plan",
+    "free": "Free",
+    "active": "Renews on {date}",
+    "canceling": "Ends on {date}. It won't renew.",
+    "pastDue": "Your last payment failed. Update your payment method to keep Plus.",
+    "resume": "Keep my subscription",
+    "cancel": "Cancel subscription",
+    "cancelTitle": "Cancel MojiCap Plus?",
+    "cancelDesc": "You keep Plus until {date}. After that your account returns to Free.",
+    "cancelConfirm": "Cancel subscription",
+    "keep": "Keep Plus",
+    "billing": "Billing and receipts",
+    "upgrade": "Upgrade to Plus",
+    "activating": "Payment received. Activating Plus…",
+    "activated": "Welcome to MojiCap Plus.",
+    "activationSlow": "This is taking longer than usual. Your payment is safe; refresh in a minute.",
+    "cancelDone": "Cancellation received.",
+    "resumeDone": "Your subscription will renew.",
+    "actionError": "That didn't work. Please try again."
+  },
+  "favorites": {
+    "title": "Favorites",
+    "add": "Add to favorites",
+    "remove": "Remove from favorites",
+    "added": "Added to favorites",
+    "removed": "Removed from favorites",
+    "synced": "Synced across your devices",
+    "syncUpsell": "Sync across devices"
+  },
+  "selection": {
+    "select": "Select",
+    "done": "Done",
+    "selected": "{count} selected",
+    "copy": "Copy",
+    "save": "Save as combo",
+    "namePlaceholder": "Name this combo",
+    "saveConfirm": "Save",
+    "saved": "Saved to My combos",
+    "clear": "Clear",
+    "hint": "Tap emoji to add them"
+  },
+  "myCombos": {
+    "title": "My combos",
+    "empty": "Select emoji on the Emoji page and save them as a combo.",
+    "delete": "Delete",
+    "deleted": "Combo deleted"
+  },
+  "premiumFonts": {
+    "locked": "Premium style, part of Plus"
   }
 }

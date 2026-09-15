@@ -1,5 +1,5 @@
 import { getAuth } from "@/lib/auth";
-import { membershipBackendReady } from "@/lib/membership/config";
+import { membershipBackendReady } from "@/lib/membership/config-server";
 
 function unavailable() {
   return Response.json({ error: "Accounts are not enabled" }, { status: 503 });

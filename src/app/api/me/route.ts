@@ -1,5 +1,5 @@
 import { getSessionUser, googleSignInAvailable } from "@/lib/auth";
-import { membershipBackendReady } from "@/lib/membership/config";
+import { membershipBackendReady } from "@/lib/membership/config-server";
 import { json, membershipSummary } from "@/lib/membership/server";
 
 /** Current account + entitlement. Read by the client after mount so static pages stay static. */

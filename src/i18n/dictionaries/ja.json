@@ -15,7 +15,8 @@
     "art": "AA",
     "more": "もっと",
     "toggleTheme": "テーマ切替",
-    "bookmarkTip": "またはブックマークにドラッグして保存 ✨"
+    "bookmarkTip": "またはブックマークにドラッグして保存 ✨",
+    "account": "アカウント"
   },
   "home": {
     "heroTitle": "コピー＆ペースト",
@@ -278,7 +279,8 @@
     "terms": "利用規約",
     "company": "コミュニティ",
     "about": "概要",
-    "sponsoredBy": "{brand} の提供"
+    "sponsoredBy": "{brand} の提供",
+    "plus": "MojiCap Plus"
   },
   "common": {
     "copied": "{text} をコピーしました",
@@ -437,5 +439,162 @@
         "body": "MojiCapユーザーにおすすめのAI制作スイート：画像・動画・音楽をまとめて生成。"
       }
     }
+  },
+  "auth": {
+    "signIn": "ログイン",
+    "signOut": "ログアウト",
+    "close": "閉じる",
+    "title": "MojiCap にログイン",
+    "subtitle": "6 桁のコードをメールでお送りします。パスワードは不要です。",
+    "emailLabel": "メールアドレス",
+    "emailPlaceholder": "you@example.com",
+    "sendCode": "コードを送信",
+    "sending": "送信中…",
+    "codeLabel": "6 桁のコード",
+    "codeSentTo": "{email} にコードを送信しました。",
+    "verify": "ログイン",
+    "verifying": "ログイン中…",
+    "resend": "コードを再送信",
+    "resendIn": "{seconds} 秒後に再送信できます",
+    "changeEmail": "別のメールアドレスを使う",
+    "google": "Google で続ける",
+    "or": "または",
+    "errorEmail": "有効なメールアドレスを入力してください。",
+    "errorCode": "コードが正しくありません。確認してもう一度お試しください。",
+    "errorRate": "試行回数が多すぎます。1 分ほど待ってからお試しください。",
+    "errorGeneric": "問題が発生しました。もう一度お試しください。",
+    "legal": "続行すると、利用規約とプライバシーポリシーに同意したことになります。",
+    "signedIn": "ログインしました",
+    "signedOut": "ログアウトしました"
+  },
+  "plus": {
+    "name": "MojiCap Plus",
+    "badge": "Plus",
+    "monthly": "月払い",
+    "yearly": "年払い",
+    "save": "{percent}% お得",
+    "perMonth": "/月",
+    "perYear": "/年",
+    "yearlyEquivalent": "月あたり約 {price}",
+    "cta": "Plus に登録",
+    "ctaLoading": "決済ページを開いています…",
+    "pricingSubtitle": "MojiCap はずっと無料です。Plus は毎日使う人のためのプランです。",
+    "metaTitle": "MojiCap Plus の料金",
+    "metaDesc": "MojiCap Plus なら、お気に入りの絵文字をデバイス間で同期し、プレミアムフォント、一括コピー、カスタムコンボも使えます。月額 $2.99、年額 $19.99。",
+    "benefits": {
+      "sync": {
+        "title": "お気に入りと履歴を同期",
+        "desc": "お気に入りや最近使った絵文字が、どのデバイスでも同じになります。"
+      },
+      "fonts": {
+        "title": "プレミアムフォント",
+        "desc": "🅝🅔🅖🅐🅣🅘🅥🅔 や ✧sparkle✧ などの追加スタイル。"
+      },
+      "bulk": {
+        "title": "一括コピーとカスタムコンボ",
+        "desc": "複数の絵文字をまとめて選んでコピーし、自分のコンボとして保存できます。"
+      },
+      "noPromo": {
+        "title": "プロモーションなし",
+        "desc": "上部バナーやポップアップのプロモーションが表示されません。"
+      }
+    },
+    "fineprint": "いつでも解約できます。決済は Waffo が処理します。",
+    "memberTitle": "Plus をご利用中です",
+    "manage": "サブスクリプションを管理",
+    "upsell": {
+      "sync": {
+        "title": "すべてのデバイスで同期",
+        "desc": "Plus なら、お気に入りと最近使った絵文字がどのデバイスでも同じになります。"
+      },
+      "fonts": {
+        "title": "プレミアムフォントを解放",
+        "desc": "このスタイルは Plus に含まれ、すべてのプレミアムフォントが使えます。"
+      },
+      "bulk": {
+        "title": "複数の絵文字をまとめてコピー",
+        "desc": "Plus なら複数の絵文字を選んでまとめてコピーし、コンボとして保存できます。"
+      },
+      "alsoIncluded": "Plus にはほかにも",
+      "priceFrom": "月額 {price} から",
+      "seePlans": "プランを見る",
+      "notNow": "今はしない"
+    },
+    "checkoutError": "決済ページを開けませんでした。もう一度お試しください。",
+    "checkoutUnavailable": "決済はまだご利用いただけません。",
+    "faqTitle": "Plus についてのよくある質問",
+    "faq": [
+      {
+        "q": "無料のままの機能は？",
+        "a": "今お使いの機能すべてです。絵文字、記号、顔文字、装飾フォント、この端末でのお気に入りは無料のまま。Plus は新機能を追加するだけです。"
+      },
+      {
+        "q": "いつでも解約できますか？",
+        "a": "はい。アカウントページから解約すると、支払い済みの期間の終わりまで Plus が使え、その後は更新されません。"
+      },
+      {
+        "q": "支払いはどのように行われますか？",
+        "a": "Waffo が販売者として決済を処理します。税込み価格で、カード情報が MojiCap に届くことはありません。"
+      },
+      {
+        "q": "月払いと年払いを切り替えられますか？",
+        "a": "現在のプランを解約し、期間終了後にもう一方を選んでください。お気に入りとコンボはアカウントに残ります。"
+      }
+    ]
+  },
+  "account": {
+    "title": "アカウント",
+    "metaTitle": "アカウント",
+    "signInPrompt": "ログインすると MojiCap Plus の管理と絵文字の同期ができます。",
+    "signedInAs": "ログイン中",
+    "plan": "プラン",
+    "free": "無料",
+    "active": "{date} に更新されます",
+    "canceling": "{date} に終了し、更新されません。",
+    "pastDue": "前回の支払いに失敗しました。Plus を続けるには支払い方法を更新してください。",
+    "resume": "サブスクリプションを続ける",
+    "cancel": "サブスクリプションを解約",
+    "cancelTitle": "MojiCap Plus を解約しますか？",
+    "cancelDesc": "{date} まで Plus を利用でき、その後は無料プランに戻ります。",
+    "cancelConfirm": "解約する",
+    "keep": "Plus を続ける",
+    "billing": "請求と領収書",
+    "upgrade": "Plus にアップグレード",
+    "activating": "お支払いを確認しました。Plus を有効にしています…",
+    "activated": "MojiCap Plus へようこそ。",
+    "activationSlow": "通常より時間がかかっています。お支払いは安全です。1 分ほどしてから再読み込みしてください。",
+    "cancelDone": "解約を受け付けました。",
+    "resumeDone": "サブスクリプションは更新されます。",
+    "actionError": "うまくいきませんでした。もう一度お試しください。"
+  },
+  "favorites": {
+    "title": "お気に入り",
+    "add": "お気に入りに追加",
+    "remove": "お気に入りから削除",
+    "added": "お気に入りに追加しました",
+    "removed": "お気に入りから削除しました",
+    "synced": "デバイス間で同期中",
+    "syncUpsell": "デバイス間で同期"
+  },
+  "selection": {
+    "select": "選択",
+    "done": "完了",
+    "selected": "{count} 個選択中",
+    "copy": "コピー",
+    "save": "コンボとして保存",
+    "namePlaceholder": "コンボの名前",
+    "saveConfirm": "保存",
+    "saved": "マイコンボに保存しました",
+    "clear": "クリア",
+    "hint": "絵文字をタップして追加"
+  },
+  "myCombos": {
+    "title": "マイコンボ",
+    "empty": "絵文字ページで絵文字を選んで、コンボとして保存できます。",
+    "delete": "削除",
+    "deleted": "コンボを削除しました"
+  },
+  "premiumFonts": {
+    "locked": "プレミアムスタイル（Plus）"
   }
 }

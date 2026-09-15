@@ -15,7 +15,8 @@
     "art": "Arte",
     "more": "Más",
     "toggleTheme": "Cambiar tema",
-    "bookmarkTip": "o arrastra a Marcadores para guardar ✨"
+    "bookmarkTip": "o arrastra a Marcadores para guardar ✨",
+    "account": "Cuenta"
   },
   "home": {
     "heroTitle": "Copiar y Pegar",
@@ -278,7 +279,8 @@
     "terms": "Términos",
     "company": "Comunidad",
     "about": "Acerca de",
-    "sponsoredBy": "Patrocinado por {brand}"
+    "sponsoredBy": "Patrocinado por {brand}",
+    "plus": "MojiCap Plus"
   },
   "common": {
     "copied": "{text} copiado",
@@ -437,5 +439,162 @@
         "body": "La suite de creación con IA que recomendamos a los usuarios de MojiCap: imágenes, vídeo y música en un solo lugar."
       }
     }
+  },
+  "auth": {
+    "signIn": "Iniciar sesión",
+    "signOut": "Cerrar sesión",
+    "close": "Cerrar",
+    "title": "Inicia sesión en MojiCap",
+    "subtitle": "Te enviaremos un código de 6 dígitos por correo. Sin contraseña.",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "tu@ejemplo.com",
+    "sendCode": "Enviar código",
+    "sending": "Enviando…",
+    "codeLabel": "Código de 6 dígitos",
+    "codeSentTo": "Enviamos un código a {email}.",
+    "verify": "Iniciar sesión",
+    "verifying": "Iniciando sesión…",
+    "resend": "Reenviar código",
+    "resendIn": "Reenviar en {seconds} s",
+    "changeEmail": "Usar otro correo",
+    "google": "Continuar con Google",
+    "or": "o",
+    "errorEmail": "Introduce un correo electrónico válido.",
+    "errorCode": "Ese código no funcionó. Revísalo e inténtalo de nuevo.",
+    "errorRate": "Demasiados intentos. Espera un minuto y vuelve a intentarlo.",
+    "errorGeneric": "Algo salió mal. Inténtalo de nuevo.",
+    "legal": "Al continuar aceptas los Términos y la Política de privacidad.",
+    "signedIn": "Sesión iniciada",
+    "signedOut": "Sesión cerrada"
+  },
+  "plus": {
+    "name": "MojiCap Plus",
+    "badge": "Plus",
+    "monthly": "Mensual",
+    "yearly": "Anual",
+    "save": "Ahorra {percent}%",
+    "perMonth": "/mes",
+    "perYear": "/año",
+    "yearlyEquivalent": "Unos {price}/mes",
+    "cta": "Obtener Plus",
+    "ctaLoading": "Abriendo el pago…",
+    "pricingSubtitle": "MojiCap sigue siendo gratis. Plus es para quienes lo usan a diario.",
+    "metaTitle": "Precios de MojiCap Plus",
+    "metaDesc": "MojiCap Plus sincroniza tus emojis favoritos entre dispositivos y añade fuentes premium, copia en bloque y combos propios. $2.99 al mes o $19.99 al año.",
+    "benefits": {
+      "sync": {
+        "title": "Sincroniza favoritos y recientes",
+        "desc": "Tus emojis favoritos y usados recientemente te acompañan en todos tus dispositivos."
+      },
+      "fonts": {
+        "title": "Fuentes premium",
+        "desc": "Estilos de texto extra como 🅝🅔🅖🅐🅣🅘🅥🅔 y ✧sparkle✧."
+      },
+      "bulk": {
+        "title": "Copia en bloque y combos propios",
+        "desc": "Elige varios emojis a la vez, cópialos juntos y guárdalos como tus combos."
+      },
+      "noPromo": {
+        "title": "Sin promociones",
+        "desc": "Navega sin el banner superior ni las promociones emergentes."
+      }
+    },
+    "fineprint": "Cancela cuando quieras. Los pagos los procesa Waffo.",
+    "memberTitle": "Tienes Plus",
+    "manage": "Gestionar suscripción",
+    "upsell": {
+      "sync": {
+        "title": "Sincroniza entre dispositivos",
+        "desc": "Con Plus, tus favoritos y emojis recientes son los mismos en todos tus dispositivos."
+      },
+      "fonts": {
+        "title": "Desbloquea fuentes premium",
+        "desc": "Este estilo forma parte de Plus, junto con todas las demás fuentes premium."
+      },
+      "bulk": {
+        "title": "Copia varios emojis a la vez",
+        "desc": "Con Plus puedes seleccionar varios emojis, copiarlos juntos y guardarlos como combo."
+      },
+      "alsoIncluded": "También en Plus",
+      "priceFrom": "Desde {price} al mes",
+      "seePlans": "Ver planes",
+      "notNow": "Ahora no"
+    },
+    "checkoutError": "No se pudo abrir el pago. Inténtalo de nuevo.",
+    "checkoutUnavailable": "El pago aún no está disponible.",
+    "faqTitle": "Preguntas sobre Plus",
+    "faq": [
+      {
+        "q": "¿Qué sigue siendo gratis?",
+        "a": "Todo lo que usas hoy: todos los emojis, símbolos, kaomojis y fuentes decorativas, además de los favoritos en este dispositivo. Plus solo añade funciones nuevas."
+      },
+      {
+        "q": "¿Puedo cancelar cuando quiera?",
+        "a": "Sí. Cancela desde tu cuenta y Plus seguirá activo hasta el final del periodo pagado. No se renovará."
+      },
+      {
+        "q": "¿Cómo se me cobra?",
+        "a": "Waffo procesa el pago como vendedor oficial, así que los impuestos están incluidos y los datos de tu tarjeta nunca llegan a MojiCap."
+      },
+      {
+        "q": "¿Puedo cambiar entre mensual y anual?",
+        "a": "Cancela tu plan actual y elige el otro cuando termine. Tus favoritos y combos se quedan en tu cuenta."
+      }
+    ]
+  },
+  "account": {
+    "title": "Cuenta",
+    "metaTitle": "Cuenta",
+    "signInPrompt": "Inicia sesión para gestionar MojiCap Plus y sincronizar tus emojis.",
+    "signedInAs": "Sesión iniciada como",
+    "plan": "Plan",
+    "free": "Gratis",
+    "active": "Se renueva el {date}",
+    "canceling": "Termina el {date}. No se renovará.",
+    "pastDue": "Tu último pago falló. Actualiza tu método de pago para mantener Plus.",
+    "resume": "Mantener mi suscripción",
+    "cancel": "Cancelar suscripción",
+    "cancelTitle": "¿Cancelar MojiCap Plus?",
+    "cancelDesc": "Conservas Plus hasta el {date}. Después tu cuenta vuelve al plan gratuito.",
+    "cancelConfirm": "Cancelar suscripción",
+    "keep": "Mantener Plus",
+    "billing": "Facturación y recibos",
+    "upgrade": "Pasar a Plus",
+    "activating": "Pago recibido. Activando Plus…",
+    "activated": "Te damos la bienvenida a MojiCap Plus.",
+    "activationSlow": "Está tardando más de lo habitual. Tu pago está a salvo; recarga en un minuto.",
+    "cancelDone": "Cancelación recibida.",
+    "resumeDone": "Tu suscripción se renovará.",
+    "actionError": "No funcionó. Inténtalo de nuevo."
+  },
+  "favorites": {
+    "title": "Favoritos",
+    "add": "Añadir a favoritos",
+    "remove": "Quitar de favoritos",
+    "added": "Añadido a favoritos",
+    "removed": "Quitado de favoritos",
+    "synced": "Sincronizado en tus dispositivos",
+    "syncUpsell": "Sincronizar entre dispositivos"
+  },
+  "selection": {
+    "select": "Seleccionar",
+    "done": "Listo",
+    "selected": "{count} seleccionados",
+    "copy": "Copiar",
+    "save": "Guardar como combo",
+    "namePlaceholder": "Nombre del combo",
+    "saveConfirm": "Guardar",
+    "saved": "Guardado en Mis combos",
+    "clear": "Borrar",
+    "hint": "Toca emojis para añadirlos"
+  },
+  "myCombos": {
+    "title": "Mis combos",
+    "empty": "Selecciona emojis en la página de Emoji y guárdalos como combo.",
+    "delete": "Eliminar",
+    "deleted": "Combo eliminado"
+  },
+  "premiumFonts": {
+    "locked": "Estilo premium, incluido en Plus"
   }
 }
