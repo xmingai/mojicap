@@ -12,6 +12,7 @@ import { useDict, useLocale } from "@/i18n/context";
 import { locales, localeNames, localeFlags, defaultLocale, type Locale } from "@/i18n/config";
 import { pathWithoutLocale } from "@/lib/seo";
 import { writeCookie } from "@/lib/cookies";
+import { AccountButton } from "@/components/membership/account-button";
 import { useState, useRef, useEffect } from "react";
 
 export function Navbar() {
@@ -165,6 +166,8 @@ export function Navbar() {
               </div>
             )}
           </div>
+
+          <AccountButton />
 
           {/* Theme Toggle */}
           <Button

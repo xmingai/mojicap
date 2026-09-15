@@ -20,7 +20,7 @@ export const VORMLY_AD = {
   /** Popup appears this long after the page loads (time-based only; not tied to any user action). */
   popupDelayMs: 5000,
   /** Route prefixes (locale-free) where no promotion is shown. */
-  excludedRoutes: ["/privacy", "/terms", "/about"],
+  excludedRoutes: ["/privacy", "/terms", "/about", "/pricing", "/account"],
   /** Copy variants in the A/B test. Each visitor is assigned one at random and keeps it. */
   variants: ["b", "c"] as const,
   storageKeys: {

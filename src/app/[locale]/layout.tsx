@@ -9,6 +9,7 @@ import { Footer } from "@/components/footer";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { VormlyBanner } from "@/components/ads/vormly-banner";
 import { VormlyPopup } from "@/components/ads/vormly-popup";
+import { MembershipProvider } from "@/components/membership/membership-provider";
 import { I18nProvider } from "@/i18n/context";
 import { locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -104,6 +105,7 @@ export default async function LocaleLayout({
       <body className="min-h-full flex flex-col font-sans antialiased">
         <ThemeProvider>
           <I18nProvider locale={locale as Locale} dict={dict}>
+            <MembershipProvider>
             <TooltipProvider>
               <div className="sticky top-0 z-50">
                 <VormlyBanner />
@@ -115,6 +117,7 @@ export default async function LocaleLayout({
               <Toaster />
               <VormlyPopup />
             </TooltipProvider>
+            </MembershipProvider>
           </I18nProvider>
         </ThemeProvider>
         {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />}

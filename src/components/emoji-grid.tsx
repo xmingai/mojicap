@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo, useCallback, useEffect, useRef } from "react";
-import { Loader2 } from "lucide-react";
+import { Cloud, CloudCheck, Loader2, SquareCheckBig } from "lucide-react";
 import type { Emoji, EmojiLite, Category, EmojiVersion } from "@/lib/emoji";
 import { copyToClipboard } from "@/lib/clipboard";
 import { searchEmojis } from "@/lib/search";
@@ -9,6 +9,11 @@ import { SearchBar } from "@/components/search-bar";
 import { SearchParamsInit } from "@/components/search-params-init";
 import { CategoryTabs } from "@/components/category-tabs";
 import { useRecent } from "@/hooks/use-recent";
+import { useFavorites } from "@/hooks/use-favorites";
+import { MEMBERSHIP_UI_ENABLED } from "@/lib/membership/config";
+import { useMembership } from "@/components/membership/membership-provider";
+import { PlusBadge } from "@/components/membership/plus-badge";
+import { SelectionBar } from "@/components/membership/selection-bar";
 import { EmojiHoverCard } from "@/components/emoji-hover-card";
 import { SizeSlider, COMMON_SIZE_PRESETS } from "@/components/size-slider";
 import { cn } from "@/lib/utils";
@@ -28,6 +33,10 @@ export function EmojiGrid({ emojis, categories, versions }: EmojiGridProps) {
   const [activeVersion, setActiveVersion] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>("category");
   const { recent, addRecent } = useRecent();
+  const { favorites } = useFavorites();
+  const { me, openUpsell } = useMembership();
+  const [selectMode, setSelectMode] = useState(false);
+  const [selected, setSelected] = useState<string[]>([]);
   const [sizeIndex, setSizeIndex] = useState(2);
   const currentSize = COMMON_SIZE_PRESETS[sizeIndex];
   const dict = useDict();
@@ -78,11 +87,60 @@ export function EmojiGrid({ emojis, categories, versions }: EmojiGridProps) {
 
   const handleCopy = useCallback(
     (emoji: EmojiLite) => {
+      if (selectMode) {
+        setSelected((prev) => (prev.includes(emoji.emoji) ? prev.filter((e) => e !== emoji.emoji) : [...prev, emoji.emoji]));
+        return;
+      }
       copyToClipboard(emoji.emoji, emoji.name);
       addRecent(emoji.emoji);
     },
-    [addRecent]
+    [addRecent, selectMode]
   );
+
+  const toggleSelectMode = () => {
+    if (!me.isMember) {
+      openUpsell("bulk");
+      return;
+    }
+    setSelectMode((on) => !on);
+    setSelected([]);
+  };
+
+  // Plus syncs favorites and recents; say so once, on the first list shown.
+  const syncHint = MEMBERSHIP_UI_ENABLED ? (
+    me.isMember ? (
+      <span className="inline-flex items-center gap-1 normal-case tracking-normal" title={dict.favorites.synced}>
+        <CloudCheck className="h-3.5 w-3.5" aria-label={dict.favorites.synced} />
+      </span>
+    ) : (
+      <button
+        type="button"
+        onClick={() => openUpsell("sync")}
+        className="inline-flex items-center gap-1.5 normal-case tracking-normal text-muted-foreground transition hover:text-foreground"
+      >
+        <Cloud className="h-3.5 w-3.5" />
+        {dict.favorites.syncUpsell}
+        <PlusBadge label={dict.plus.badge} />
+      </button>
+    )
+  ) : null;
+
+  const listButton = (emoji: string, i: number) => (
+    <button
+      key={`${emoji}-${i}`}
+      onClick={() => copyToClipboard(emoji)}
+      className="rounded-lg hover:bg-muted transition-colors active:scale-90"
+      style={{
+        fontSize: `${currentSize.value}px`,
+        padding: `${Math.max(4, currentSize.value * 0.2)}px`,
+        lineHeight: 1.1,
+      }}
+    >
+      {emoji}
+    </button>
+  );
+  const showLists = !searchQuery && viewMode === "category" && !activeCategory;
+  const showFavorites = MEMBERSHIP_UI_ENABLED && showLists && favorites.length > 0;
 
   // Deep links: /emoji/?q=heart (site-search JSON-LD) and /emoji/?category=food-drink (detail pages)
   const applySearchParams = useCallback(
@@ -163,6 +221,21 @@ export function EmojiGrid({ emojis, categories, versions }: EmojiGridProps) {
           <span className="text-xs text-muted-foreground ml-2">
             {filteredEmojis.length.toLocaleString()} {t.shown}
           </span>
+          {MEMBERSHIP_UI_ENABLED && (
+            <button
+              type="button"
+              aria-pressed={selectMode}
+              onClick={toggleSelectMode}
+              className={cn(
+                "ml-auto inline-flex h-8 items-center gap-1.5 rounded-lg px-3 text-sm font-medium transition",
+                selectMode ? "bg-foreground text-background" : "text-muted-foreground hover:bg-muted hover:text-foreground",
+              )}
+            >
+              <SquareCheckBig className="h-4 w-4" />
+              {selectMode ? dict.selection.done : dict.selection.select}
+              {!me.isMember && <PlusBadge label={dict.plus.badge} />}
+            </button>
+          )}
         </div>
       )}
 
@@ -230,28 +303,25 @@ export function EmojiGrid({ emojis, categories, versions }: EmojiGridProps) {
         </div>
       )}
 
-      {/* Recent */}
-      {!searchQuery && viewMode === "category" && !activeCategory && recent.length > 0 && (
+      {/* Favorites */}
+      {showFavorites && (
         <div className="space-y-2">
-          <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-            {t.recentlyUsed}
+          <h3 className="flex items-center gap-3 text-xs font-medium text-muted-foreground uppercase tracking-wider">
+            {dict.favorites.title}
+            {syncHint}
           </h3>
-          <div className="flex flex-wrap gap-1">
-            {recent.slice(0, 20).map((emoji, i) => (
-              <button
-                key={`${emoji}-${i}`}
-                onClick={() => copyToClipboard(emoji)}
-                className="rounded-lg hover:bg-muted transition-colors active:scale-90"
-                style={{
-                  fontSize: `${currentSize.value}px`,
-                  padding: `${Math.max(4, currentSize.value * 0.2)}px`,
-                  lineHeight: 1.1,
-                }}
-              >
-                {emoji}
-              </button>
-            ))}
-          </div>
+          <div className="flex flex-wrap gap-1">{favorites.slice(0, 40).map(listButton)}</div>
+        </div>
+      )}
+
+      {/* Recent */}
+      {showLists && recent.length > 0 && (
+        <div className="space-y-2">
+          <h3 className="flex items-center gap-3 text-xs font-medium text-muted-foreground uppercase tracking-wider">
+            {t.recentlyUsed}
+            {!showFavorites && syncHint}
+          </h3>
+          <div className="flex flex-wrap gap-1">{recent.slice(0, 20).map(listButton)}</div>
         </div>
       )}
 
@@ -271,6 +341,8 @@ export function EmojiGrid({ emojis, categories, versions }: EmojiGridProps) {
               emoji={emoji}
               onCopy={handleCopy}
               sizeValue={currentSize.value}
+              selectMode={selectMode}
+              selected={selectMode && selected.includes(emoji.emoji)}
             />
           ))}
         </div>
@@ -281,6 +353,17 @@ export function EmojiGrid({ emojis, categories, versions }: EmojiGridProps) {
           <p className="text-4xl mb-3">🔍</p>
           <p className="text-sm">{t.noResults} &quot;{searchQuery}&quot;</p>
         </div>
+      )}
+
+      {selectMode && (
+        <SelectionBar
+          selected={selected}
+          onClear={() => setSelected([])}
+          onDone={() => {
+            setSelectMode(false);
+            setSelected([]);
+          }}
+        />
       )}
     </div>
   );

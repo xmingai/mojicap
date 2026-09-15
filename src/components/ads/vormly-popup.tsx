@@ -16,6 +16,8 @@ import {
   type AdVariant,
 } from "@/lib/ads";
 import { trackAd } from "./track";
+import { useMembership } from "@/components/membership/membership-provider";
+import { MEMBERSHIP_UI_ENABLED } from "@/lib/membership/config";
 import { OfferCountdown } from "./offer-countdown";
 
 const PLACEMENT = "corner_popup" as const;
@@ -26,16 +28,20 @@ const MODELS = ["Seedance", "Veo", "Kling", "Grok Video", "Midjourney", "Suno"];
  *
  * Appears a few seconds after the page loads (time-based only, so it never sits
  * between the visitor and a copy), at most once per session, never full-screen.
- * Closing hides it for a week; clicking the CTA hides it for a month.
+ * Closing it or clicking the CTA hides it for 24 hours.
  */
 export function VormlyPopup() {
   const dict = useDict();
   const pathname = usePathname();
-  const excluded = isExcludedRoute(pathWithoutLocale(pathname));
+  // "No promotions" is a Plus benefit.
+  // Wait for the account check so a member is never shown (or counted as seeing) a promotion.
+  const { me, ready: membershipReady } = useMembership();
+  const pending = MEMBERSHIP_UI_ENABLED && !membershipReady;
+  const excluded = isExcludedRoute(pathWithoutLocale(pathname)) || me.isMember;
   const [open, setOpen] = useState<{ variant: AdVariant } | null>(null);
 
   useEffect(() => {
-    if (!VORMLY_AD.enabled || excluded) return;
+    if (!VORMLY_AD.enabled || excluded || pending) return;
     if (isDismissed(VORMLY_AD.storageKeys.popup)) return;
     try {
       if (sessionStorage.getItem(VORMLY_AD.storageKeys.popupSession)) return;
@@ -50,7 +56,7 @@ export function VormlyPopup() {
       trackAd("ad_impression", PLACEMENT, variant);
     }, VORMLY_AD.popupDelayMs);
     return () => clearTimeout(timer);
-  }, [excluded]);
+  }, [excluded, pending]);
 
   useEffect(() => {
     if (!open) return;
@@ -62,7 +68,7 @@ export function VormlyPopup() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
-  if (!open) return null;
+  if (!open || excluded) return null;
 
   const t = dict.ads.vormly;
   const copy = t[open.variant];

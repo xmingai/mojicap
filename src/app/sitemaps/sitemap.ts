@@ -3,6 +3,7 @@ import { getBaseEmojis } from "@/lib/emoji";
 import { locales } from "@/i18n/config";
 import { absoluteUrl, hreflangLanguages } from "@/lib/seo";
 import { TEXT_TOOLS } from "@/lib/tool-routes";
+import { MEMBERSHIP_UI_ENABLED } from "@/lib/membership/config";
 
 /**
  * Split sitemaps (Google caps a single file at 50,000 URLs / 50 MB):
@@ -24,6 +25,8 @@ const TOOL_PATHS: { path: string; changeFrequency: "weekly" | "monthly" | "yearl
   { path: "/invisible", changeFrequency: "monthly", priority: 0.7 },
   { path: "/braille", changeFrequency: "monthly", priority: 0.7 },
   { path: "/ascii-art", changeFrequency: "monthly", priority: 0.7 },
+  // /pricing exists only while membership is switched on; /account is private and never listed.
+  ...(MEMBERSHIP_UI_ENABLED ? [{ path: "/pricing", changeFrequency: "monthly" as const, priority: 0.6 }] : []),
   { path: "/about", changeFrequency: "yearly", priority: 0.6 },
   { path: "/privacy", changeFrequency: "yearly", priority: 0.3 },
   { path: "/terms", changeFrequency: "yearly", priority: 0.3 },

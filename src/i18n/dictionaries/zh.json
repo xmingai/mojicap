@@ -15,7 +15,8 @@
     "art": "字符画",
     "more": "更多",
     "toggleTheme": "切换主题",
-    "bookmarkTip": "或拖到书签栏收藏 ✨"
+    "bookmarkTip": "或拖到书签栏收藏 ✨",
+    "account": "账户"
   },
   "home": {
     "heroTitle": "一键复制粘贴",
@@ -277,7 +278,8 @@
     "terms": "使用条款",
     "company": "社区",
     "about": "关于",
-    "sponsoredBy": "赞助 by {brand}"
+    "sponsoredBy": "赞助 by {brand}",
+    "plus": "MojiCap Plus"
   },
   "common": {
     "copied": "已复制 {text}",
@@ -436,5 +438,162 @@
         "body": "为 MojiCap 用户推荐的 AI 创作工具：图片、视频、音乐，一站生成。"
       }
     }
+  },
+  "auth": {
+    "signIn": "登录",
+    "signOut": "退出登录",
+    "close": "关闭",
+    "title": "登录 MojiCap",
+    "subtitle": "我们会把 6 位验证码发到你的邮箱，无需密码。",
+    "emailLabel": "邮箱",
+    "emailPlaceholder": "you@example.com",
+    "sendCode": "发送验证码",
+    "sending": "发送中…",
+    "codeLabel": "6 位验证码",
+    "codeSentTo": "验证码已发送至 {email}。",
+    "verify": "登录",
+    "verifying": "登录中…",
+    "resend": "重新发送",
+    "resendIn": "{seconds} 秒后可重发",
+    "changeEmail": "换一个邮箱",
+    "google": "使用 Google 继续",
+    "or": "或",
+    "errorEmail": "请输入有效的邮箱地址。",
+    "errorCode": "验证码不正确，请检查后重试。",
+    "errorRate": "尝试次数过多，请稍等一分钟再试。",
+    "errorGeneric": "出了点问题，请重试。",
+    "legal": "继续即表示你同意服务条款和隐私政策。",
+    "signedIn": "已登录",
+    "signedOut": "已退出登录"
+  },
+  "plus": {
+    "name": "MojiCap Plus",
+    "badge": "Plus",
+    "monthly": "月付",
+    "yearly": "年付",
+    "save": "省 {percent}%",
+    "perMonth": "/月",
+    "perYear": "/年",
+    "yearlyEquivalent": "约合 {price}/月",
+    "cta": "开通 Plus",
+    "ctaLoading": "正在打开支付页…",
+    "pricingSubtitle": "MojiCap 始终免费。Plus 为每天都在用的你而准备。",
+    "metaTitle": "MojiCap Plus 价格",
+    "metaDesc": "MojiCap Plus 可跨设备同步收藏的表情，并解锁高级花体字、批量复制和自定义组合。每月 $2.99，或每年 $19.99。",
+    "benefits": {
+      "sync": {
+        "title": "同步收藏和最近使用",
+        "desc": "收藏和最近用过的表情，在每台设备上都一样。"
+      },
+      "fonts": {
+        "title": "高级花体字",
+        "desc": "额外的文字样式，比如 🅝🅔🅖🅐🅣🅘🅥🅔 和 ✧sparkle✧。"
+      },
+      "bulk": {
+        "title": "批量复制与自定义组合",
+        "desc": "一次选多个表情一起复制，并保存成你自己的组合。"
+      },
+      "noPromo": {
+        "title": "无推广内容",
+        "desc": "浏览时不再出现顶部横条和弹窗推广。"
+      }
+    },
+    "fineprint": "随时可取消。付款由 Waffo 处理。",
+    "memberTitle": "你已开通 Plus",
+    "manage": "管理订阅",
+    "upsell": {
+      "sync": {
+        "title": "在所有设备间同步",
+        "desc": "开通 Plus 后，收藏和最近使用的表情在每台设备上保持一致。"
+      },
+      "fonts": {
+        "title": "解锁高级字体",
+        "desc": "这个样式属于 Plus，开通后所有高级字体都能用。"
+      },
+      "bulk": {
+        "title": "一次复制多个表情",
+        "desc": "开通 Plus 后可以多选表情一起复制，并保存为自己的组合。"
+      },
+      "alsoIncluded": "Plus 还包括",
+      "priceFrom": "每月 {price} 起",
+      "seePlans": "查看方案",
+      "notNow": "暂不需要"
+    },
+    "checkoutError": "无法打开支付页，请重试。",
+    "checkoutUnavailable": "支付暂未开放。",
+    "faqTitle": "关于 Plus 的常见问题",
+    "faq": [
+      {
+        "q": "哪些功能仍然免费？",
+        "a": "你现在用的所有功能：全部表情、符号、颜文字和花体字，以及本机收藏。Plus 只是在此基础上增加新功能。"
+      },
+      {
+        "q": "可以随时取消吗？",
+        "a": "可以。在账户页取消后，Plus 会一直有效到已付费周期结束，之后不再续费。"
+      },
+      {
+        "q": "如何扣费？",
+        "a": "由 Waffo 作为销售方处理付款，价格已含税，你的银行卡信息不会经过 MojiCap。"
+      },
+      {
+        "q": "可以在月付和年付之间切换吗？",
+        "a": "先取消当前方案，到期后再选择另一种。你的收藏和组合都会保留在账户里。"
+      }
+    ]
+  },
+  "account": {
+    "title": "账户",
+    "metaTitle": "账户",
+    "signInPrompt": "登录后可管理 MojiCap Plus 并同步你的表情。",
+    "signedInAs": "当前账号",
+    "plan": "方案",
+    "free": "免费版",
+    "active": "将于 {date} 续费",
+    "canceling": "将于 {date} 到期，不再续费。",
+    "pastDue": "上次扣款失败。请更新付款方式以继续使用 Plus。",
+    "resume": "保留订阅",
+    "cancel": "取消订阅",
+    "cancelTitle": "确定取消 MojiCap Plus？",
+    "cancelDesc": "Plus 会保留到 {date}，之后账户恢复为免费版。",
+    "cancelConfirm": "取消订阅",
+    "keep": "保留 Plus",
+    "billing": "账单与收据",
+    "upgrade": "升级到 Plus",
+    "activating": "已收到付款，正在开通 Plus…",
+    "activated": "欢迎加入 MojiCap Plus。",
+    "activationSlow": "开通比平时慢一些。你的付款是安全的，请稍后刷新页面。",
+    "cancelDone": "已提交取消。",
+    "resumeDone": "订阅将继续续费。",
+    "actionError": "操作未成功，请重试。"
+  },
+  "favorites": {
+    "title": "收藏",
+    "add": "加入收藏",
+    "remove": "取消收藏",
+    "added": "已加入收藏",
+    "removed": "已取消收藏",
+    "synced": "已在你的设备间同步",
+    "syncUpsell": "跨设备同步"
+  },
+  "selection": {
+    "select": "多选",
+    "done": "完成",
+    "selected": "已选 {count} 个",
+    "copy": "复制",
+    "save": "保存为组合",
+    "namePlaceholder": "给组合起个名字",
+    "saveConfirm": "保存",
+    "saved": "已保存到我的组合",
+    "clear": "清空",
+    "hint": "点击表情即可加入"
+  },
+  "myCombos": {
+    "title": "我的组合",
+    "empty": "在表情页多选表情，即可保存成组合。",
+    "delete": "删除",
+    "deleted": "组合已删除"
+  },
+  "premiumFonts": {
+    "locked": "高级样式，属于 Plus"
   }
 }

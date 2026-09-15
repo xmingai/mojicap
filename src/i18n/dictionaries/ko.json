@@ -15,7 +15,8 @@
     "art": "아트",
     "more": "더보기",
     "toggleTheme": "테마 전환",
-    "bookmarkTip": "또는 북마크 바로 드래그하여 저장 ✨"
+    "bookmarkTip": "또는 북마크 바로 드래그하여 저장 ✨",
+    "account": "계정"
   },
   "home": {
     "heroTitle": "복사 & 붙여넣기",
@@ -278,7 +279,8 @@
     "terms": "이용약관",
     "company": "커뮤니티",
     "about": "소개",
-    "sponsoredBy": "{brand} 후원"
+    "sponsoredBy": "{brand} 후원",
+    "plus": "MojiCap Plus"
   },
   "common": {
     "copied": "{text} 복사됨",
@@ -437,5 +439,162 @@
         "body": "MojiCap 사용자에게 추천하는 AI 제작 도구: 이미지, 영상, 음악을 한곳에서 생성."
       }
     }
+  },
+  "auth": {
+    "signIn": "로그인",
+    "signOut": "로그아웃",
+    "close": "닫기",
+    "title": "MojiCap 로그인",
+    "subtitle": "6자리 코드를 이메일로 보내 드립니다. 비밀번호는 필요 없습니다.",
+    "emailLabel": "이메일",
+    "emailPlaceholder": "you@example.com",
+    "sendCode": "코드 보내기",
+    "sending": "보내는 중…",
+    "codeLabel": "6자리 코드",
+    "codeSentTo": "{email}(으)로 코드를 보냈습니다.",
+    "verify": "로그인",
+    "verifying": "로그인 중…",
+    "resend": "코드 다시 보내기",
+    "resendIn": "{seconds}초 후 다시 보내기",
+    "changeEmail": "다른 이메일 사용",
+    "google": "Google로 계속하기",
+    "or": "또는",
+    "errorEmail": "올바른 이메일 주소를 입력하세요.",
+    "errorCode": "코드가 올바르지 않습니다. 확인 후 다시 시도하세요.",
+    "errorRate": "시도 횟수가 너무 많습니다. 1분 후 다시 시도하세요.",
+    "errorGeneric": "문제가 발생했습니다. 다시 시도하세요.",
+    "legal": "계속하면 이용약관과 개인정보처리방침에 동의하게 됩니다.",
+    "signedIn": "로그인되었습니다",
+    "signedOut": "로그아웃되었습니다"
+  },
+  "plus": {
+    "name": "MojiCap Plus",
+    "badge": "Plus",
+    "monthly": "월간",
+    "yearly": "연간",
+    "save": "{percent}% 절약",
+    "perMonth": "/월",
+    "perYear": "/년",
+    "yearlyEquivalent": "월 약 {price}",
+    "cta": "Plus 시작하기",
+    "ctaLoading": "결제 페이지를 여는 중…",
+    "pricingSubtitle": "MojiCap은 계속 무료입니다. Plus는 매일 사용하는 분을 위한 요금제입니다.",
+    "metaTitle": "MojiCap Plus 요금",
+    "metaDesc": "MojiCap Plus로 즐겨찾기한 이모지를 기기 간에 동기화하고 프리미엄 폰트, 일괄 복사, 사용자 조합을 사용하세요. 월 $2.99 또는 연 $19.99.",
+    "benefits": {
+      "sync": {
+        "title": "즐겨찾기와 최근 사용 동기화",
+        "desc": "즐겨찾기와 최근 사용한 이모지가 모든 기기에서 똑같이 보입니다."
+      },
+      "fonts": {
+        "title": "프리미엄 폰트",
+        "desc": "🅝🅔🅖🅐🅣🅘🅥🅔, ✧sparkle✧ 같은 추가 텍스트 스타일."
+      },
+      "bulk": {
+        "title": "일괄 복사와 사용자 조합",
+        "desc": "여러 이모지를 한 번에 골라 복사하고 나만의 조합으로 저장하세요."
+      },
+      "noPromo": {
+        "title": "프로모션 없음",
+        "desc": "상단 배너와 팝업 프로모션 없이 이용하세요."
+      }
+    },
+    "fineprint": "언제든지 해지할 수 있습니다. 결제는 Waffo가 처리합니다.",
+    "memberTitle": "Plus 이용 중입니다",
+    "manage": "구독 관리",
+    "upsell": {
+      "sync": {
+        "title": "모든 기기에서 동기화",
+        "desc": "Plus를 이용하면 즐겨찾기와 최근 사용한 이모지가 모든 기기에서 같게 유지됩니다."
+      },
+      "fonts": {
+        "title": "프리미엄 폰트 잠금 해제",
+        "desc": "이 스타일은 Plus에 포함되며, 모든 프리미엄 폰트를 사용할 수 있습니다."
+      },
+      "bulk": {
+        "title": "여러 이모지를 한 번에 복사",
+        "desc": "Plus를 이용하면 여러 이모지를 골라 함께 복사하고 조합으로 저장할 수 있습니다."
+      },
+      "alsoIncluded": "Plus에 함께 포함",
+      "priceFrom": "월 {price}부터",
+      "seePlans": "요금제 보기",
+      "notNow": "나중에"
+    },
+    "checkoutError": "결제 페이지를 열 수 없습니다. 다시 시도하세요.",
+    "checkoutUnavailable": "아직 결제를 이용할 수 없습니다.",
+    "faqTitle": "Plus 자주 묻는 질문",
+    "faq": [
+      {
+        "q": "무료로 계속 쓸 수 있는 기능은?",
+        "a": "지금 쓰는 모든 기능입니다. 이모지, 기호, 이모티콘, 꾸밈 폰트, 이 기기의 즐겨찾기는 계속 무료이며 Plus는 새 기능만 추가합니다."
+      },
+      {
+        "q": "언제든지 해지할 수 있나요?",
+        "a": "네. 계정 페이지에서 해지하면 결제한 기간이 끝날 때까지 Plus가 유지되고 이후에는 갱신되지 않습니다."
+      },
+      {
+        "q": "결제는 어떻게 되나요?",
+        "a": "Waffo가 판매자로서 결제를 처리합니다. 세금이 포함된 가격이며 카드 정보는 MojiCap에 전달되지 않습니다."
+      },
+      {
+        "q": "월간과 연간을 바꿀 수 있나요?",
+        "a": "현재 요금제를 해지하고 기간이 끝나면 다른 요금제를 선택하세요. 즐겨찾기와 조합은 계정에 남아 있습니다."
+      }
+    ]
+  },
+  "account": {
+    "title": "계정",
+    "metaTitle": "계정",
+    "signInPrompt": "로그인하면 MojiCap Plus를 관리하고 이모지를 동기화할 수 있습니다.",
+    "signedInAs": "로그인 계정",
+    "plan": "요금제",
+    "free": "무료",
+    "active": "{date}에 갱신됩니다",
+    "canceling": "{date}에 종료되며 갱신되지 않습니다.",
+    "pastDue": "지난 결제에 실패했습니다. Plus를 유지하려면 결제 수단을 업데이트하세요.",
+    "resume": "구독 유지하기",
+    "cancel": "구독 해지",
+    "cancelTitle": "MojiCap Plus를 해지할까요?",
+    "cancelDesc": "{date}까지 Plus를 이용할 수 있으며, 이후 무료 요금제로 돌아갑니다.",
+    "cancelConfirm": "구독 해지",
+    "keep": "Plus 유지",
+    "billing": "결제 내역과 영수증",
+    "upgrade": "Plus로 업그레이드",
+    "activating": "결제가 확인되었습니다. Plus를 활성화하는 중…",
+    "activated": "MojiCap Plus에 오신 것을 환영합니다.",
+    "activationSlow": "평소보다 오래 걸리고 있습니다. 결제는 안전하니 1분 후 새로고침하세요.",
+    "cancelDone": "해지가 접수되었습니다.",
+    "resumeDone": "구독이 계속 갱신됩니다.",
+    "actionError": "처리하지 못했습니다. 다시 시도하세요."
+  },
+  "favorites": {
+    "title": "즐겨찾기",
+    "add": "즐겨찾기에 추가",
+    "remove": "즐겨찾기에서 삭제",
+    "added": "즐겨찾기에 추가했습니다",
+    "removed": "즐겨찾기에서 삭제했습니다",
+    "synced": "모든 기기에서 동기화됨",
+    "syncUpsell": "기기 간 동기화"
+  },
+  "selection": {
+    "select": "선택",
+    "done": "완료",
+    "selected": "{count}개 선택됨",
+    "copy": "복사",
+    "save": "조합으로 저장",
+    "namePlaceholder": "조합 이름",
+    "saveConfirm": "저장",
+    "saved": "내 조합에 저장했습니다",
+    "clear": "지우기",
+    "hint": "이모지를 탭해서 추가하세요"
+  },
+  "myCombos": {
+    "title": "내 조합",
+    "empty": "이모지 페이지에서 이모지를 골라 조합으로 저장하세요.",
+    "delete": "삭제",
+    "deleted": "조합을 삭제했습니다"
+  },
+  "premiumFonts": {
+    "locked": "프리미엄 스타일 (Plus)"
   }
 }

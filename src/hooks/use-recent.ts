@@ -1,31 +1,12 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-
-const STORAGE_KEY = "mojicap-recent";
-const MAX_RECENT = 50;
+import { useCallback, useSyncExternalStore } from "react";
+import { recentList } from "@/lib/local-list";
 
 export function useRecent() {
-  const [recent, setRecent] = useState<string[]>([]);
-
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      // One-time hydration from localStorage after mount (localStorage is unavailable during SSR).
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      if (stored) setRecent(JSON.parse(stored));
-    } catch {}
-  }, []);
-
+  const recent = useSyncExternalStore(recentList.subscribe, recentList.get, recentList.getServerSnapshot);
   const addRecent = useCallback((emoji: string) => {
-    setRecent((prev) => {
-      const next = [emoji, ...prev.filter((e) => e !== emoji)].slice(0, MAX_RECENT);
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-      } catch {}
-      return next;
-    });
+    recentList.set([emoji, ...recentList.get().filter((e) => e !== emoji)]);
   }, []);
-
   return { recent, addRecent };
 }

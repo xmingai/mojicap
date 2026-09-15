@@ -15,7 +15,8 @@
     "art": "Art",
     "more": "Plus",
     "toggleTheme": "Basculer le thème",
-    "bookmarkTip": "ou glissez vers les favoris pour enregistrer ✨"
+    "bookmarkTip": "ou glissez vers les favoris pour enregistrer ✨",
+    "account": "Compte"
   },
   "home": {
     "heroTitle": "Copier-Coller",
@@ -278,7 +279,8 @@
     "terms": "Conditions",
     "company": "Communauté",
     "about": "À propos",
-    "sponsoredBy": "Sponsorisé par {brand}"
+    "sponsoredBy": "Sponsorisé par {brand}",
+    "plus": "MojiCap Plus"
   },
   "common": {
     "copied": "{text} copié",
@@ -437,5 +439,162 @@
         "body": "La suite de création IA que nous recommandons aux utilisateurs de MojiCap : images, vidéo et musique au même endroit."
       }
     }
+  },
+  "auth": {
+    "signIn": "Se connecter",
+    "signOut": "Se déconnecter",
+    "close": "Fermer",
+    "title": "Connexion à MojiCap",
+    "subtitle": "Nous vous envoyons un code à 6 chiffres par e-mail. Aucun mot de passe.",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "vous@exemple.com",
+    "sendCode": "Envoyer le code",
+    "sending": "Envoi…",
+    "codeLabel": "Code à 6 chiffres",
+    "codeSentTo": "Nous avons envoyé un code à {email}.",
+    "verify": "Se connecter",
+    "verifying": "Connexion…",
+    "resend": "Renvoyer le code",
+    "resendIn": "Renvoyer dans {seconds} s",
+    "changeEmail": "Utiliser une autre adresse",
+    "google": "Continuer avec Google",
+    "or": "ou",
+    "errorEmail": "Saisissez une adresse e-mail valide.",
+    "errorCode": "Ce code ne fonctionne pas. Vérifiez-le et réessayez.",
+    "errorRate": "Trop de tentatives. Patientez une minute et réessayez.",
+    "errorGeneric": "Une erreur s'est produite. Réessayez.",
+    "legal": "En continuant, vous acceptez les Conditions et la Politique de confidentialité.",
+    "signedIn": "Connecté",
+    "signedOut": "Déconnecté"
+  },
+  "plus": {
+    "name": "MojiCap Plus",
+    "badge": "Plus",
+    "monthly": "Mensuel",
+    "yearly": "Annuel",
+    "save": "Économisez {percent} %",
+    "perMonth": "/mois",
+    "perYear": "/an",
+    "yearlyEquivalent": "Environ {price}/mois",
+    "cta": "Passer à Plus",
+    "ctaLoading": "Ouverture du paiement…",
+    "pricingSubtitle": "MojiCap reste gratuit. Plus s'adresse à ceux qui l'utilisent tous les jours.",
+    "metaTitle": "Tarifs de MojiCap Plus",
+    "metaDesc": "MojiCap Plus synchronise vos emojis favoris sur tous vos appareils et ajoute des polices premium, la copie groupée et des combos personnalisés. 2,99 $ par mois ou 19,99 $ par an.",
+    "benefits": {
+      "sync": {
+        "title": "Favoris et récents synchronisés",
+        "desc": "Vos emojis favoris et récents vous suivent sur tous vos appareils."
+      },
+      "fonts": {
+        "title": "Polices premium",
+        "desc": "Des styles de texte en plus, comme 🅝🅔🅖🅐🅣🅘🅥🅔 et ✧sparkle✧."
+      },
+      "bulk": {
+        "title": "Copie groupée et combos perso",
+        "desc": "Choisissez plusieurs emojis, copiez-les ensemble et enregistrez vos propres combos."
+      },
+      "noPromo": {
+        "title": "Sans promotions",
+        "desc": "Naviguez sans le bandeau du haut ni les promotions en pop-up."
+      }
+    },
+    "fineprint": "Résiliable à tout moment. Les paiements sont traités par Waffo.",
+    "memberTitle": "Vous êtes abonné à Plus",
+    "manage": "Gérer l'abonnement",
+    "upsell": {
+      "sync": {
+        "title": "Synchronisez vos appareils",
+        "desc": "Avec Plus, vos favoris et emojis récents sont identiques sur chaque appareil."
+      },
+      "fonts": {
+        "title": "Débloquez les polices premium",
+        "desc": "Ce style fait partie de Plus, avec toutes les autres polices premium."
+      },
+      "bulk": {
+        "title": "Copiez plusieurs emojis à la fois",
+        "desc": "Avec Plus, sélectionnez plusieurs emojis, copiez-les ensemble et enregistrez-les en combo."
+      },
+      "alsoIncluded": "Également dans Plus",
+      "priceFrom": "À partir de {price} par mois",
+      "seePlans": "Voir les offres",
+      "notNow": "Plus tard"
+    },
+    "checkoutError": "Impossible d'ouvrir le paiement. Réessayez.",
+    "checkoutUnavailable": "Le paiement n'est pas encore disponible.",
+    "faqTitle": "Questions sur Plus",
+    "faq": [
+      {
+        "q": "Qu'est-ce qui reste gratuit ?",
+        "a": "Tout ce que vous utilisez aujourd'hui : emojis, symboles, kaomojis et polices fantaisie, ainsi que les favoris sur cet appareil. Plus ajoute seulement de nouvelles fonctions."
+      },
+      {
+        "q": "Puis-je résilier à tout moment ?",
+        "a": "Oui. Résiliez depuis votre compte et Plus reste actif jusqu'à la fin de la période payée. Il ne sera pas renouvelé."
+      },
+      {
+        "q": "Comment suis-je facturé ?",
+        "a": "Waffo traite le paiement en tant que vendeur officiel : les taxes sont incluses et vos données bancaires ne passent jamais par MojiCap."
+      },
+      {
+        "q": "Puis-je passer du mensuel à l'annuel ?",
+        "a": "Résiliez votre offre actuelle et choisissez l'autre à son terme. Vos favoris et combos restent dans votre compte."
+      }
+    ]
+  },
+  "account": {
+    "title": "Compte",
+    "metaTitle": "Compte",
+    "signInPrompt": "Connectez-vous pour gérer MojiCap Plus et synchroniser vos emojis.",
+    "signedInAs": "Connecté en tant que",
+    "plan": "Offre",
+    "free": "Gratuit",
+    "active": "Renouvellement le {date}",
+    "canceling": "Se termine le {date}. Pas de renouvellement.",
+    "pastDue": "Votre dernier paiement a échoué. Mettez à jour votre moyen de paiement pour garder Plus.",
+    "resume": "Garder mon abonnement",
+    "cancel": "Résilier l'abonnement",
+    "cancelTitle": "Résilier MojiCap Plus ?",
+    "cancelDesc": "Vous gardez Plus jusqu'au {date}. Ensuite, votre compte repasse en Gratuit.",
+    "cancelConfirm": "Résilier l'abonnement",
+    "keep": "Garder Plus",
+    "billing": "Facturation et reçus",
+    "upgrade": "Passer à Plus",
+    "activating": "Paiement reçu. Activation de Plus…",
+    "activated": "Bienvenue dans MojiCap Plus.",
+    "activationSlow": "C'est plus long que d'habitude. Votre paiement est en sécurité ; actualisez dans une minute.",
+    "cancelDone": "Résiliation enregistrée.",
+    "resumeDone": "Votre abonnement sera renouvelé.",
+    "actionError": "Cela n'a pas fonctionné. Réessayez."
+  },
+  "favorites": {
+    "title": "Favoris",
+    "add": "Ajouter aux favoris",
+    "remove": "Retirer des favoris",
+    "added": "Ajouté aux favoris",
+    "removed": "Retiré des favoris",
+    "synced": "Synchronisé sur vos appareils",
+    "syncUpsell": "Synchroniser entre appareils"
+  },
+  "selection": {
+    "select": "Sélectionner",
+    "done": "Terminé",
+    "selected": "{count} sélectionné(s)",
+    "copy": "Copier",
+    "save": "Enregistrer en combo",
+    "namePlaceholder": "Nom du combo",
+    "saveConfirm": "Enregistrer",
+    "saved": "Enregistré dans Mes combos",
+    "clear": "Effacer",
+    "hint": "Touchez des emojis pour les ajouter"
+  },
+  "myCombos": {
+    "title": "Mes combos",
+    "empty": "Sélectionnez des emojis sur la page Emoji et enregistrez-les en combo.",
+    "delete": "Supprimer",
+    "deleted": "Combo supprimé"
+  },
+  "premiumFonts": {
+    "locked": "Style premium, inclus dans Plus"
   }
 }
