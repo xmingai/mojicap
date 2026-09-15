@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { type Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 import { buildAlternates } from "@/lib/seo";
 import { AsciiArtClient } from "./ascii-art-client";
 
@@ -9,10 +10,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const dict = await getDictionary(locale as Locale);
   return {
-    title: "ASCII Art — Text Art Copy & Paste",
-    description:
-      "Copy and paste large text pictures, one-line ascii weapons, animals, and retro text art for comments and chat.",
+    title: dict.asciiArt.metaTitle,
+    description: dict.asciiArt.metaDesc,
     alternates: buildAlternates(locale as Locale, "/ascii-art"),
   };
 }

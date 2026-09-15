@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "MojiCap — Copier et coller des Emojis, Symboles et Textes Fantaisistes",
-    "description": "L'outil d'émoji le plus rapide et le plus beau du web. Copiez et collez des émojis, des symboles spéciaux, des textes fantaisistes et des combos d'émojis instantanément."
+    "title": "MojiCap — Symboles et emojis à copier-coller, texte stylé",
+    "description": "Emoji copier coller sur iPhone ou PC : 3 700+ emojis, symboles cœur et étoile, texte stylé, kaomoji et combos aesthetic. Un clic pour copier, sans appli."
   },
   "nav": {
     "emoji": "Emoji",
@@ -80,8 +80,8 @@
   },
   "emoji": {
     "title": "Emojis à Copier-Coller",
-    "metaTitle": "Emojis à copier-coller — Tous les 3 700+ emojis (Unicode 16.0)",
-    "metaDesc": "Parcourez et copiez plus de 3 700 emojis, y compris les variantes de teinte. Prise en charge complète d'Unicode 16.0.",
+    "metaTitle": "Liste des emojis à copier-coller — 3 700+ emojis",
+    "metaDesc": "Emoji copier coller : la liste complète des 3 700+ emojis avec nom, signification et teintes de peau. Unicode 16.0, sur iPhone, Android et ordinateur, gratuit.",
     "clickToCopy": "Cliquez sur un emoji pour le copier dans le presse-papiers.",
     "emojisAvailable": "{count} emojis disponibles (Unicode 16.0).",
     "searchPlaceholder": "Rechercher des emojis... (ex. feu, cœur, sourire)",
@@ -129,8 +129,8 @@
   },
   "symbols": {
     "title": "Symboles et caractères spéciaux",
-    "metaTitle": "Symboles spéciaux — Copiez-collez plus de 1 800 symboles Unicode",
-    "metaDesc": "Copiez-collez plus de 1 800 symboles spéciaux : flèches, étoiles, symboles mathématiques, et plus.",
+    "metaTitle": "Caractères spéciaux et symboles à copier-coller",
+    "metaDesc": "Plus de 1 800 symboles spéciaux à copier-coller : flèches, étoiles, signes mathématiques, formes géométriques. Caractères spéciaux pour pseudo, bio ou Discord.",
     "clickToCopy": "Cliquez pour copier un symbole.",
     "searchPlaceholder": "Rechercher des symboles... (ex. flèche, cœur, étoile)",
     "noResults": "Aucun symbole trouvé",
@@ -152,8 +152,8 @@
   },
   "fancyText": {
     "title": "Générateur de texte stylisé",
-    "metaTitle": "Générateur de texte stylisé (𝓬𝓸𝓹𝔂 𝖆𝖓𝖉 𝓹𝓪𝓼𝓽𝓮) — 20+ polices cool",
-    "metaDesc": "Transformez votre texte normal en polices cool, esthétiques et stylisées. 𝓬𝓸𝓹𝔂 𝖆𝖓𝖉 𝓹𝓪𝓼𝓽𝓮 vers Instagram, TikTok, Discord et Twitter instantanément. 20+ styles dont cursive, gras et italique.",
+    "metaTitle": "Police stylée — Générateur de texte stylisé",
+    "metaDesc": "Générateur de police d'écriture avec 20+ styles : cursive, gras, gothique, bulle… Police stylée pour pseudo, Instagram, TikTok ou Discord, à copier-coller.",
     "inputPlaceholder": "Saisissez votre texte ici...",
     "faqTitle": "FAQ : questions fréquentes",
     "faq": [
@@ -198,8 +198,8 @@
   },
   "combos": {
     "title": "Combos d'emojis",
-    "metaTitle": "Combos d'emojis — 1 100+ combinaisons à copier-coller",
-    "metaDesc": "Parcourez et copiez plus de 1 100 combos d'emojis pour votre bio, vos posts et vos messages.",
+    "metaTitle": "Combinaison emoji — Combos d'emojis aesthetic",
+    "metaDesc": "Emoji aesthetic à copier-coller : 1 100+ combinaisons pour bio Instagram, légendes et messages, triées par thème : amour, nature, espace, animaux, magie, fêtes.",
     "clickToCopy": "Cliquez pour copier un combo.",
     "searchPlaceholder": "Rechercher des combos... (ex. amour, fête, esthétique)",
     "noResults": "Aucun combo trouvé pour",
@@ -221,8 +221,8 @@
   },
   "kaomoji": {
     "title": "Kaomoji et émoticônes japonaises",
-    "metaTitle": "Kaomoji — 2 000+ émoticônes japonaises à copier-coller",
-    "metaDesc": "Parcourez et copiez plus de 2 000 kaomoji et émoticônes de style japonais.",
+    "metaTitle": "Kaomoji à copier-coller — 2 000+ smileys japonais",
+    "metaDesc": "Plus de 2 000 kaomoji et émoticônes kawaii à copier-coller, par humeur : joie, tristesse, colère et table flip, amour et cute, chats, ours et Lenny face.",
     "clickToCopy": "Cliquez pour copier un kaomoji.",
     "searchPlaceholder": "Rechercher des kaomoji... (ex. sourire, triste, table flip)",
     "noResults": "Aucun kaomoji trouvé pour",
@@ -243,23 +243,31 @@
     ]
   },
   "dividers": {
-    "title": "Séparateurs et art linéaire"
+    "title": "Séparateurs et art linéaire",
+    "metaTitle": "Séparateur de texte aesthetic à copier-coller",
+    "metaDesc": "Séparateurs de texte, lignes décoratives et bordures aesthetic à copier-coller pour mettre en forme vos posts Discord, Notion, Tumblr, Instagram, bio et profil."
   },
   "invisible": {
     "title": "Caractères invisibles",
     "testArea": "Zone de test",
-    "testAreaDesc": "Collez votre caractère invisible entre les crochets ci-dessous pour tester sa largeur."
+    "testAreaDesc": "Collez votre caractère invisible entre les crochets ci-dessous pour tester sa largeur.",
+    "metaTitle": "Caractère invisible pour pseudo à copier-coller",
+    "metaDesc": "22 caractères invisibles à copier-coller : espace de largeur nulle, Hangul U+3164, blanc Braille… Pour un pseudo invisible ou un message vide (selon l'appli)."
   },
   "braille": {
     "title": "Traducteur Braille",
     "braille": "Braille",
     "morseCode": "Code Morse",
-    "inputPlaceholder": "Saisissez quelque chose ici..."
+    "inputPlaceholder": "Saisissez quelque chose ici...",
+    "metaTitle": "Traducteur braille — Texte en braille et morse",
+    "metaDesc": "Traduction braille instantanée : tapez un texte, obtenez le braille lettre par lettre et le code morse. Traducteur braille en ligne gratuit, à copier-coller."
   },
   "asciiArt": {
     "title": "Art ASCII",
     "searchPlaceholder": "Rechercher de l'art ASCII... (ex. armes, ours, multi-lignes)",
-    "noResults": "Aucun art ASCII trouvé pour"
+    "noResults": "Aucun art ASCII trouvé pour",
+    "metaTitle": "ASCII art — Dessin avec caractères spéciaux",
+    "metaDesc": "Dessins avec caractères du clavier à copier-coller : grandes images en texte, art ASCII sur une ligne, animaux et motifs rétro pour Discord ou Twitch."
   },
   "footer": {
     "description": "L'outil d'emojis le plus rapide et le plus beau du web. Copiez instantanément emojis, symboles et art textuel.",
@@ -596,5 +604,63 @@
   },
   "premiumFonts": {
     "locked": "Style premium, inclus dans Plus"
+  },
+  "textToolsMeta": {
+    "glitch-text": {
+      "title": "Générateur de texte glitch — Texte zalgo",
+      "description": "Créez un texte glitch ou zalgo en 3 niveaux, du léger au très effrayant, plus un effet barré. Message glitch à copier-coller sur Discord, TikTok ou Instagram."
+    },
+    "vaporwave-text": {
+      "title": "Texte aesthetic — Générateur de texte vaporwave",
+      "description": "Écriture aesthetic à copier-coller : lettres pleine chasse ａｅｓｔｈｅｔｉｃ, petites capitales ou faux cyrillique. Pour une bio Instagram, TikTok ou Discord."
+    },
+    "tiny-text": {
+      "title": "Petite écriture — Générateur de texte minuscule",
+      "description": "Écrivez en ᵖᵉᵗⁱᵗ : lettres en exposant, en indice ou petites capitales. Petite écriture à copier-coller pour pseudo, bio Instagram ou Discord, sans appli."
+    },
+    "morse-code": {
+      "title": "Traducteur morse — Générateur de code morse",
+      "description": "Traduisez un texte en code morse en direct : lettres, chiffres et ponctuation deviennent points et tirets à copier-coller. Traducteur morse en ligne gratuit."
+    },
+    "cursive-text": {
+      "title": "Police cursive — Générateur d'écriture cursive",
+      "description": "Écriture cursive à copier-coller : lettres manuscrites 𝓬𝓾𝓻𝓼𝓲𝓿𝓮 fines ou en gras. Collez la police cursive dans votre bio Instagram, TikTok ou Discord."
+    },
+    "old-english-text": {
+      "title": "Écriture gothique — Générateur d'ancien anglais",
+      "description": "Générateur d'écriture gothique : texte fraktur 𝔊𝔬𝔱𝔥𝔦𝔮𝔲𝔢 normal ou gras. Police gothique à copier-coller pour pseudo, bio Instagram et posts, gratuit."
+    },
+    "bold-text": {
+      "title": "Texte en gras — Générateur de gras pour LinkedIn",
+      "description": "Écrire en gras sur LinkedIn, Facebook, Instagram ou Discord : 𝐠𝐫𝐚𝐬 avec ou sans empattement et gras italique. Texte en gras en ligne, à copier-coller."
+    },
+    "italic-text": {
+      "title": "Texte en italique — Générateur d'italique",
+      "description": "Écrire en italique sur LinkedIn, Instagram, Messenger ou Facebook : 𝘪𝘵𝘢𝘭𝘪𝘲𝘶𝘦 avec ou sans empattement, et gras italique. À copier-coller, gratuit."
+    },
+    "bubble-text": {
+      "title": "Lettres bulles — Générateur de lettres entourées",
+      "description": "Écrivez en lettres entourées ⓑⓤⓛⓛⓔ : lettres minuscules, majuscules et chiffres dans des cercles. Lettre bulle à copier-coller pour pseudo et bio, gratuit."
+    },
+    "square-text": {
+      "title": "Lettres carrées — Générateur de texte carré",
+      "description": "Mettez chaque lettre dans un carré : 🄲🄰🅁🅁🄴 blanc ou 🅲🅰🆁🆁🅴 noir. Lettres carrées à copier-coller pour vos posts, bio Instagram et pseudo, gratuit."
+    },
+    "upside-down-text": {
+      "title": "Texte à l'envers — Générateur de texte inversé",
+      "description": "Écrire à l'envers : le texte se retourne pendant la saisie, lettre par lettre. Texte à l'envers à copier-coller dans vos messages, bio ou sur WhatsApp, gratuit."
+    },
+    "strikethrough-text": {
+      "title": "Texte barré — Générateur d'écriture barrée",
+      "description": "Écriture barrée en un clic : t̶e̶x̶t̶e̶ barré d'un trait ou d'une barre oblique. Texte barré à copier-coller sur Discord, WhatsApp ou Instagram, sans raccourci."
+    },
+    "leet-speak": {
+      "title": "Générateur de leet speak — Traducteur 1337",
+      "description": "Traducteur leet speak : les lettres deviennent des chiffres comme 4, 3, 1 et 0 (1337 5p34k). Texte hacker à copier-coller sur Discord ou les réseaux, gratuit."
+    },
+    "weird-text": {
+      "title": "Écriture bizarre — Générateur de lettres bizarres",
+      "description": "Texte bizarre à copier-coller : lettres zalgo glitchées, ajourées 𝕓𝕚𝕫𝕒𝕣𝕣𝕖 et faux cyrillique. Écriture bizarre pour Instagram, Discord, Roblox ou TikTok."
+    }
   }
 }

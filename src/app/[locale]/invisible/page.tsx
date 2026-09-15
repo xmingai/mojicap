@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { type Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 import { buildAlternates } from "@/lib/seo";
 import { InvisibleClient } from "./invisible-client";
 
@@ -9,10 +10,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const dict = await getDictionary(locale as Locale);
   return {
-    title: "Invisible Characters — Blank Text Copy & Paste",
-    description:
-      "Copy & paste invisible characters, zero-width spaces, and blank text. Perfect for empty names in Among Us, Discord, PUBG, and more.",
+    title: dict.invisible.metaTitle,
+    description: dict.invisible.metaDesc,
     alternates: buildAlternates(locale as Locale, "/invisible"),
   };
 }

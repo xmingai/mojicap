@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { type Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 import { buildAlternates } from "@/lib/seo";
 import { BrailleClient } from "./braille-client";
 
@@ -9,10 +10,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const dict = await getDictionary(locale as Locale);
   return {
-    title: "Braille & Morse Code Translator — Text to Braille Generator",
-    description:
-      "Convert regular text into Braille dots or Morse code dots and dashes instantly. Copy and paste the results anywhere.",
+    title: dict.braille.metaTitle,
+    description: dict.braille.metaDesc,
     alternates: buildAlternates(locale as Locale, "/braille"),
   };
 }

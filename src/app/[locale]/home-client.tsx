@@ -104,6 +104,7 @@ export function HomeClient({ dict, locale }: HomeClientProps) {
       <section className="text-center mb-16">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
           <span>{t.heroTitle}</span>
+          {/* Whitespace between flex items isn't rendered, but keeps the heading text "Copy & Paste Instantly" for crawlers. */}{" "}
           <TypewriterText words={t.typewriterWords as string[]} />
         </h1>
         <p className="text-lg text-muted-foreground max-w-xl mx-auto">

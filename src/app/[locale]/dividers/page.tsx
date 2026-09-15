@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { type Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 import { buildAlternates } from "@/lib/seo";
 import { DividersClient } from "./dividers-client";
 
@@ -9,10 +10,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const dict = await getDictionary(locale as Locale);
   return {
-    title: "Text Dividers & Borders — Copy & Paste Line Separators",
-    description:
-      "Aesthetic text dividers, line separators, and borders to copy & paste. Perfect for Notion, Tumblr, Amino, Instagram, and Discord formatting.",
+    title: dict.dividers.metaTitle,
+    description: dict.dividers.metaDesc,
     alternates: buildAlternates(locale as Locale, "/dividers"),
   };
 }
