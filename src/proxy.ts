@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { locales, defaultLocale, type Locale } from "@/i18n/config";
 
 /**
- * URL strategy (must stay in sync with src/lib/seo.ts and the sitemap):
+ * URL strategy (must stay in sync with src/lib/seo.ts and src/lib/sitemap.ts):
  *   /emoji/      → English, always. Internally rewritten to /en/emoji/.
  *   /zh/emoji/   → Chinese.
  *   /en/emoji/   → 308 to /emoji/ so the default locale has exactly one URL.

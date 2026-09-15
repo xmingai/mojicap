@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import type { Locale } from "./config";
 
 // Use dynamic imports for code splitting
@@ -15,6 +16,9 @@ const dictionaries = {
 export type Dictionary = Awaited<ReturnType<(typeof dictionaries)["en"]>>;
 
 export async function getDictionary(locale: Locale): Promise<Dictionary> {
+  // The [locale] segment also catches unmatched paths such as /favicon.ico or
+  // /sitemaps/unknown.xml (the proxy skips anything with a dot); answer 404, not 500.
+  if (!Object.hasOwn(dictionaries, locale)) notFound();
   return dictionaries[locale]();
 }
 
