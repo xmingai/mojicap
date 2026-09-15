@@ -5,7 +5,11 @@ import { useState, useMemo } from "react";
 import { getToolResults } from "@/lib/font-transform";
 import { copyToClipboard } from "@/lib/clipboard";
 import { SizeSlider, FANCY_TEXT_SIZE_PRESETS } from "@/components/size-slider";
-import { Copy } from "lucide-react";
+import { Copy, Lock } from "lucide-react";
+import { getPremiumResults } from "@/lib/premium-fonts";
+import { MEMBERSHIP_UI_ENABLED } from "@/lib/membership/config";
+import { useMembership } from "@/components/membership/membership-provider";
+import { PlusBadge } from "@/components/membership/plus-badge";
 
 export function FancyTextClient({ toolMode = 'all' }: { toolMode?: string }) {
   const dict = useDict();
@@ -13,7 +17,13 @@ export function FancyTextClient({ toolMode = 'all' }: { toolMode?: string }) {
   const [sizeIndex, setSizeIndex] = useState(2); // Default to L (32px)
   const currentSize = FANCY_TEXT_SIZE_PRESETS[sizeIndex];
 
+  const { me, openUpsell } = useMembership();
   const results = useMemo(() => getToolResults(text, toolMode), [text, toolMode]);
+  // Plus styles live only on the all-styles page, after the free ones.
+  const premium = useMemo(
+    () => (MEMBERSHIP_UI_ENABLED && toolMode === "all" ? getPremiumResults(text) : []),
+    [text, toolMode],
+  );
 
   return (
     <div className="space-y-6">
@@ -56,6 +66,33 @@ export function FancyTextClient({ toolMode = 'all' }: { toolMode?: string }) {
             </div>
             <div className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
               <Copy className="h-4 w-4 text-muted-foreground" />
+            </div>
+          </button>
+        ))}
+        {premium.map((font) => (
+          <button
+            key={font.slug}
+            onClick={() => (me.isMember ? copyToClipboard(font.result, font.name) : openUpsell("fonts"))}
+            className="group w-full flex items-center justify-between gap-4 p-4 rounded-xl hover:bg-muted transition-all text-left cursor-pointer"
+          >
+            <div className="min-w-0 flex-1">
+              <p className="mb-1 flex items-center gap-2 text-xs text-muted-foreground">
+                {font.name}
+                <PlusBadge label={dict.plus.badge} />
+              </p>
+              <p
+                className={me.isMember ? "whitespace-pre-wrap break-words" : "select-none whitespace-pre-wrap break-words opacity-60"}
+                style={{ fontSize: `${currentSize.value}px` }}
+              >
+                {font.result}
+              </p>
+            </div>
+            <div className={me.isMember ? "shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" : "shrink-0"}>
+              {me.isMember ? (
+                <Copy className="h-4 w-4 text-muted-foreground" />
+              ) : (
+                <Lock className="h-4 w-4 text-muted-foreground" aria-label={dict.premiumFonts.locked} />
+              )}
             </div>
           </button>
         ))}
