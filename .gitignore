@@ -42,3 +42,10 @@ next-env.d.ts
 .env*.local
 .vercel
 状态.md
+
+# local membership database
+/.data/
+
+# Waffo signing key — never commit
+*.pem
+waffo-private*
