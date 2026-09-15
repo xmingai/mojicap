@@ -14,12 +14,16 @@
  *   subscription.canceled           subscription ended
  *   refund.succeeded                money back → revoke now
  *
- * Idempotency: every event id is recorded in billing_event; a redelivery is a
+ * Cancel and resume also apply the status Waffo returns synchronously
+ * (applyProviderStatus), so the account page is right the moment the call
+ * returns; the matching webhook then lands as a no-op.
+ *
+ * Idempotency: every delivery is recorded in billing_event; a redelivery is a
  * no-op. Out-of-order safety: period ends only ever move forward, and events
  * for an older order never touch a newer subscription.
  */
 
-import { eq } from "drizzle-orm";
+import { and, eq, inArray } from "drizzle-orm";
 import type { DB } from "../db";
 import { billingEvent, membership } from "../db/schema";
 import type { MembershipStatus } from "./entitlement";
@@ -73,7 +77,11 @@ export async function processWaffoEvent(
   opts: { now?: Date } = {},
 ): Promise<ProcessResult> {
   const now = opts.now ?? new Date();
-  const eventKey = `waffo:${event.id}`;
+  // Waffo documents event.id as a per-delivery UUID, but test-mode deliveries
+  // carry the business id instead (PAY_… for a charge, ORD_… for every order
+  // lifecycle event), so activated and canceling on one order share it. Type and
+  // event time tell those apart while a retry of the same delivery still matches.
+  const eventKey = `waffo:${event.eventType}:${event.id}:${event.timestamp}`;
 
   return db.transaction(async (tx) => {
     const seen = await tx.select({ id: billingEvent.id }).from(billingEvent).where(eq(billingEvent.id, eventKey)).limit(1);
@@ -221,6 +229,23 @@ export async function processWaffoEvent(
         return record("ignored:event_type");
     }
   });
+}
+
+/**
+ * Record a status Waffo just returned from a cancel or resume call. Only moves
+ * the row for that same order, and only from an expected status, so a late or
+ * stale call can't resurrect an ended subscription. Returns whether it applied.
+ */
+export async function applyProviderStatus(
+  db: DB,
+  params: { userId: string; orderId: string; from: MembershipStatus[]; to: MembershipStatus; now?: Date },
+): Promise<boolean> {
+  const updated = await db
+    .update(membership)
+    .set({ status: params.to, updatedAt: params.now ?? new Date() })
+    .where(and(eq(membership.userId, params.userId), eq(membership.orderId, params.orderId), inArray(membership.status, params.from)))
+    .returning({ userId: membership.userId });
+  return updated.length > 0;
 }
 
 export async function getMembership(db: DB, userId: string): Promise<Row | null> {

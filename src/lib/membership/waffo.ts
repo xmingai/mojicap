@@ -122,21 +122,33 @@ export async function createWaffoCheckout(input: {
 // ── Subscription operations ────────────────────────────────────────────
 
 /** Waffo's only cancellation semantic is "at period end" (active → canceling). */
-export async function cancelWaffoSubscription(orderId: string): Promise<void> {
-  await getWaffoClient().orders.cancelSubscription({ orderId });
-}
-
 /**
- * Withdraw a pending cancellation (canceling → active). Merchant keys can't do
- * this directly — reactivation is a customer action — so mint a session token
- * for the buyerIdentity stamped at checkout and act as the customer.
+ * Cancel and resume both act as the customer, through a session token for the
+ * buyerIdentity stamped at checkout. Reactivation is only a customer action,
+ * and merchant-key calls carry an idempotency key of sha256(merchant + path +
+ * body) that the gateway caches for 24h: a second merchant cancel of the same
+ * order within a day (cancel → resume → cancel) returns the cached "canceling"
+ * and does nothing, so the subscription would quietly renew. Customer-session
+ * calls send no idempotency key.
  */
-export async function resumeWaffoSubscription(orderId: string, userId: string): Promise<void> {
+async function customerSession(userId: string) {
   const client = getWaffoClient();
   const storeId = process.env.WAFFO_STORE_ID?.trim();
   if (!storeId) throw new Error("Missing WAFFO_STORE_ID");
   const { token } = await client.auth.issueSessionToken({ buyerIdentity: userId, storeId });
-  await client.buyer(token).reactivateSubscription({ orderId });
+  return client.buyer(token);
+}
+
+/** Returns the order status Waffo reports after the call ("canceling", or "canceled" if it ended at once). */
+export async function cancelWaffoSubscription(orderId: string, userId: string): Promise<string> {
+  const { status } = await (await customerSession(userId)).cancelSubscription({ orderId });
+  return status;
+}
+
+/** Withdraw a pending cancellation (canceling → active); returns Waffo's resulting status. */
+export async function resumeWaffoSubscription(orderId: string, userId: string): Promise<string> {
+  const { status } = await (await customerSession(userId)).reactivateSubscription({ orderId });
+  return status;
 }
 
 /** Waffo's hosted customer portal (payment method, receipts, invoices). */

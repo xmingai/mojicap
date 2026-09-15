@@ -1,13 +1,12 @@
 import { getDB } from "@/lib/db";
-import { getMembership } from "@/lib/membership/process-event";
+import { applyProviderStatus, getMembership } from "@/lib/membership/process-event";
 import { cancelWaffoSubscription } from "@/lib/membership/waffo";
 import { getPlan } from "@/lib/membership/plans";
 import { json, requireUser } from "@/lib/membership/server";
 
 /**
- * Cancel at period end. The membership row changes when Waffo's
- * `subscription.canceling` webhook arrives, so the account page reflects the
- * provider's truth rather than an optimistic local write.
+ * Cancel at period end. The row takes the status Waffo returns from the call
+ * right away; the `subscription.canceling` webhook that follows is a no-op.
  */
 export async function POST(request: Request) {
   const guard = await requireUser(request);
@@ -21,8 +20,11 @@ export async function POST(request: Request) {
     return json({ error: "No active subscription to cancel", code: "NOT_CANCELLABLE" }, 400);
   }
   try {
-    await cancelWaffoSubscription(row.orderId);
-    return json({ ok: true });
+    const status = await cancelWaffoSubscription(row.orderId, guard.value.id);
+    if (status === "canceling" || status === "canceled") {
+      await applyProviderStatus(getDB(), { userId: guard.value.id, orderId: row.orderId, from: ["active", "past_due"], to: status });
+    }
+    return json({ ok: true, status });
   } catch (error) {
     console.error("[api/subscription/cancel] Waffo cancel failed", error);
     return json({ error: "Could not cancel the subscription", code: "CANCEL_FAILED" }, 502);
