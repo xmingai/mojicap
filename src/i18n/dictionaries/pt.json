@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "MojiCap — Copiar e Colar Emojis, Símbolos e Texto Elegante",
-    "description": "A ferramenta de emoji mais rápida e bonita da web. Copie e cole emojis, símbolos especiais, textos elegantes e combos de emojis instantaneamente."
+    "title": "MojiCap — Emojis e Símbolos para Copiar e Colar",
+    "description": "Emojis para copiar no iPhone, Android e PC: 3.700+ emojis, símbolos para copiar e colar, letras diferentes, kaomoji e combinações aesthetic. Toque e copie."
   },
   "nav": {
     "emoji": "Emoji",
@@ -80,8 +80,8 @@
   },
   "emoji": {
     "title": "Emojis para Copiar e Colar",
-    "metaTitle": "Emojis para copiar e colar — Todos os 3.700+ emojis (Unicode 16.0)",
-    "metaDesc": "Navegue e copie mais de 3.700 emojis, incluindo variantes de tom de pele. Suporte completo ao Unicode 16.0.",
+    "metaTitle": "Emojis para Copiar e Colar — Lista de Emojis",
+    "metaDesc": "Lista completa com 3.700+ emojis para copiar e colar, com nome, significado e tons de pele. Unicode 16.0 no iPhone, Android e PC. Grátis e sem app.",
     "clickToCopy": "Clique em qualquer emoji para copiá-lo para a área de transferência.",
     "emojisAvailable": "{count} emojis disponíveis (Unicode 16.0).",
     "searchPlaceholder": "Pesquisar emojis... (ex. fogo, coração, sorriso)",
@@ -129,8 +129,8 @@
   },
   "symbols": {
     "title": "Símbolos e caracteres especiais",
-    "metaTitle": "Símbolos especiais — Copie e cole mais de 1.800 símbolos Unicode",
-    "metaDesc": "Copie e cole mais de 1.800 símbolos especiais, incluindo setas, estrelas, símbolos matemáticos e mais.",
+    "metaTitle": "Símbolos Especiais para Nick — Copiar e Colar",
+    "metaDesc": "Copie e cole 1.800+ símbolos especiais: setas, estrelas, sinais matemáticos, caixas e formas geométricas. Símbolos para nick de FF, bio e WhatsApp, grátis.",
     "clickToCopy": "Clique para copiar qualquer símbolo.",
     "searchPlaceholder": "Pesquisar símbolos... (ex. seta, coração, estrela)",
     "noResults": "Nenhum símbolo encontrado",
@@ -152,8 +152,8 @@
   },
   "fancyText": {
     "title": "Gerador de texto estiloso",
-    "metaTitle": "Gerador de texto estiloso (𝓬𝓸𝓹𝔂 𝖆𝖓𝖉 𝓹𝓪𝓼𝓽𝓮) — 20+ fontes legais",
-    "metaDesc": "Transforme seu texto normal em fontes legais, estéticas e estilosas. 𝓬𝓸𝓹𝔂 𝖆𝖓𝖉 𝓹𝓪𝓼𝓽𝓮 para Instagram, TikTok, Discord e Twitter instantaneamente. 20+ estilos, incluindo cursiva, negrito e itálico.",
+    "metaTitle": "Letras Diferentes — Gerador de Texto Estiloso",
+    "metaDesc": "Gerador de letras diferentes e bonitas com 20+ estilos: cursivas, negrito, góticas, bolha e mais. Use no nick do FF, no Instagram ou no TikTok. Copie e cole.",
     "inputPlaceholder": "Digite seu texto aqui...",
     "faqTitle": "FAQ: perguntas frequentes",
     "faq": [
@@ -198,8 +198,8 @@
   },
   "combos": {
     "title": "Combos de emojis",
-    "metaTitle": "Combos de emojis — 1.100+ combinações para copiar e colar",
-    "metaDesc": "Navegue e copie mais de 1.100 combos de emojis para sua bio, posts e mensagens.",
+    "metaTitle": "Combinações de Emojis para Bio — Combos Aesthetic",
+    "metaDesc": "Copie e cole 1.100+ combos de emojis aesthetic para bio do Instagram, legendas e mensagens, por tema: amor, natureza, comida, espaço, animais e mais.",
     "clickToCopy": "Clique para copiar qualquer combo.",
     "searchPlaceholder": "Pesquisar combos... (ex. amor, festa, estético)",
     "noResults": "Nenhum combo encontrado para",
@@ -221,8 +221,8 @@
   },
   "kaomoji": {
     "title": "Kaomoji e emoticons japoneses",
-    "metaTitle": "Kaomoji — 2.000+ emoticons japoneses para copiar e colar",
-    "metaDesc": "Navegue e copie mais de 2.000 kaomoji e emoticons de estilo japonês.",
+    "metaTitle": "Kaomoji — Emoticons Japoneses para Copiar e Colar",
+    "metaDesc": "Copie e cole 2.000+ kaomojis por humor: felizes, tristes, com raiva e virando a mesa, amor e cute, gatos e ursos, e rostos Lenny. Toque para copiar, sem app.",
     "clickToCopy": "Clique para copiar qualquer kaomoji.",
     "searchPlaceholder": "Pesquisar kaomoji... (ex. sorriso, triste, table flip)",
     "noResults": "Nenhum kaomoji encontrado para",
@@ -243,23 +243,31 @@
     ]
   },
   "dividers": {
-    "title": "Divisores e arte de linhas"
+    "title": "Divisores e arte de linhas",
+    "metaTitle": "Divisores de Texto e Separadores Aesthetic",
+    "metaDesc": "Divisores de texto para copiar e colar: separadores aesthetic, linhas e bordas para posts, bios e perfis no Discord, Notion, Tumblr, Amino e Instagram."
   },
   "invisible": {
     "title": "Caracteres invisíveis",
     "testArea": "Área de teste",
-    "testAreaDesc": "Cole seu caractere invisível entre os colchetes abaixo para testar sua largura."
+    "testAreaDesc": "Cole seu caractere invisível entre os colchetes abaixo para testar sua largura.",
+    "metaTitle": "Caractere Invisível para Copiar — Nick Invisível",
+    "metaDesc": "Copie um caractere invisível: espaço de largura zero, preenchimento Hangul (U+3164), Braille em branco e mais, para nick invisível e mensagens vazias."
   },
   "braille": {
     "title": "Tradutor de Braille",
     "braille": "Braille",
     "morseCode": "Código Morse",
-    "inputPlaceholder": "Digite algo aqui..."
+    "inputPlaceholder": "Digite algo aqui...",
+    "metaTitle": "Tradutor de Braille Online — Texto para Braille",
+    "metaDesc": "Tradutor braille online: converta texto em pontos do alfabeto braille, letra por letra, e em código morse enquanto digita. Copie e cole o resultado, grátis."
   },
   "asciiArt": {
     "title": "Arte ASCII",
     "searchPlaceholder": "Pesquisar arte ASCII... (ex. armas, urso, multi-linhas)",
-    "noResults": "Nenhuma arte ASCII encontrada para"
+    "noResults": "Nenhuma arte ASCII encontrada para",
+    "metaTitle": "Arte ASCII para Copiar — Desenhos com Símbolos",
+    "metaDesc": "Arte ASCII em texto e desenhos com símbolos para copiar e colar: figuras grandes, arte de uma linha, animais e arte retrô para WhatsApp, Discord e comentários."
   },
   "footer": {
     "description": "A ferramenta de emojis mais rápida e bonita da web. Copie emojis, símbolos e arte em texto instantaneamente.",
@@ -596,5 +604,63 @@
   },
   "premiumFonts": {
     "locked": "Estilo premium, incluído no Plus"
+  },
+  "textToolsMeta": {
+    "glitch-text": {
+      "title": "Gerador de Texto Glitch — Letras Zalgo para Copiar",
+      "description": "Crie texto glitch e letras zalgo em três níveis, do leve ao assustador, ou com barras. Texto glitch para copiar e colar no Discord, TikTok, Instagram e chats."
+    },
+    "vaporwave-text": {
+      "title": "Letras Aesthetic para Copiar — Gerador Vaporwave",
+      "description": "Transforme texto em ａｅｓｔｈｅｔｉｃ: letras vaporwave, versalete ou cirílico falso. Texto aesthetic para copiar e colar na bio do Instagram e no TikTok."
+    },
+    "tiny-text": {
+      "title": "Letras Pequenas — Gerador de Texto Minúsculo",
+      "description": "Crie letras pequenas ᵐⁱⁿⁱ em cima (sobrescrito), embaixo (subscrito) ou em versalete. Letra pequena para copiar e colar no nick do FF e na bio do Instagram."
+    },
+    "morse-code": {
+      "title": "Tradutor e Gerador de Código Morse",
+      "description": "Tradutor de texto para código morse ao digitar: letras, números e pontuação viram pontos e traços (SOS = ... --- ...). Copie e cole grátis, sem cadastro."
+    },
+    "cursive-text": {
+      "title": "Letras Cursivas para Copiar — Gerador de Cursivo",
+      "description": "Escreva em letra cursiva 𝓬𝓾𝓻𝓼𝓲𝓿𝓪 ou cursiva em negrito, com maiúsculas e minúsculas. Copie e cole a letra cursiva na bio do Instagram e no TikTok."
+    },
+    "old-english-text": {
+      "title": "Letra Gótica — Gerador de Inglês Antigo",
+      "description": "Converta texto em letras 𝔤𝔬𝔱𝔦𝔠𝔞𝔰 (fraktur) normais ou em negrito. Letra gótica para copiar e colar em bios, legendas, nicks de jogos e posts. Grátis."
+    },
+    "bold-text": {
+      "title": "Letra em Negrito para Copiar — Gerador de Negrito",
+      "description": "Texto em negrito para LinkedIn, Facebook, Instagram e WhatsApp: letras 𝐧𝐞𝐠𝐫𝐢𝐭𝐨 com serifa, sem serifa ou em negrito e itálico. Copie e cole grátis."
+    },
+    "italic-text": {
+      "title": "Texto em Itálico para Copiar — Gerador de Itálico",
+      "description": "Crie letra itálica 𝘪𝘯𝘤𝘭𝘪𝘯𝘢𝘥𝘢 e negrito itálico, com ou sem serifa. Texto em itálico para copiar e colar no Instagram, WhatsApp e Facebook. Grátis."
+    },
+    "bubble-text": {
+      "title": "Gerador de Letras de Bolha e Letras em Círculos",
+      "description": "Transforme texto em letras de bolha ⓑⓞⓛⓗⓐ: letras e números em círculo para copiar e colar em bios, chats e nicks. Fonte de letras bolha online e grátis."
+    },
+    "square-text": {
+      "title": "Gerador de Letras Quadradas para Copiar",
+      "description": "Coloque letras em quadrados brancos 🅀🅄🄰🄳🅁🄰🄳🄾 ou pretos 🆀🆄🅰🅳🆁🅰🅳🅾. Letras quadradas para copiar e colar em posts, bios e nicks. Grátis."
+    },
+    "upside-down-text": {
+      "title": "Letras de Cabeça para Baixo — Texto Invertido",
+      "description": "Vire letras de cabeça para baixo enquanto digita. Copie e cole o texto invertido no WhatsApp, em bios, comentários e posts. Grátis e sem app."
+    },
+    "strikethrough-text": {
+      "title": "Texto Riscado para Copiar — Gerador de Tachado",
+      "description": "Crie texto r̶i̶s̶c̶a̶d̶o̶ com linha no meio ou com barra. Letra riscada para copiar e colar no Discord, Instagram, WhatsApp ou em apps sem botão de tachado."
+    },
+    "leet-speak": {
+      "title": "Gerador de Leet Speak 1337 — Tradutor Leet",
+      "description": "Tradutor leetspeak: converta texto em leet speak (1337 5p34k), com letras trocadas por números como 4, 3, 1 e 0. Copie e cole o texto hacker onde quiser."
+    },
+    "weird-text": {
+      "title": "Gerador de Letras Estranhas para Copiar",
+      "description": "Crie letras estranhas e assustadoras: zalgo glitch, letras 𝕕𝕦𝕡𝕝𝕒𝕤 e cirílico falso. Letras diferentes para nick, Discord e TikTok. Copie e cole grátis."
+    }
   }
 }

@@ -36,9 +36,12 @@ export async function generateMetadata({
   const h1 = seo.h1.replace("{toolName}", toolName);
   const desc = seo.descPrefix.replace("{desc}", toolDesc);
   
+  // Hand-written per tool from real search queries; the template is only a fallback.
+  const meta = (dict.textToolsMeta as Record<string, { title: string; description: string }>)[textTool];
+
   return {
-    title: h1,
-    description: desc || "Convert and transform your text.",
+    title: meta?.title ?? h1,
+    description: meta?.description ?? desc,
     alternates: buildAlternates(locale as Locale, `/${textTool}`),
   };
 }
