@@ -6,8 +6,8 @@ import { Cloud, Layers, Loader2, Type, EyeOff } from "lucide-react";
 import { useDict, useLocale } from "@/i18n/context";
 import { defaultLocale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
-import { getPlan, yearlySavingsPercent, yearlySavingsUsd, type PlanInterval } from "@/lib/membership/plans";
-import { formatUsd } from "@/lib/membership/format";
+import { planFor, yearlySavings, yearlySavingsPercent, type PlanInterval } from "@/lib/membership/plans";
+import { formatMoney } from "@/lib/membership/format";
 import { useMembership } from "@/components/membership/membership-provider";
 
 const BENEFITS = [
@@ -25,7 +25,9 @@ export function PricingClient() {
   const [interval, setBilling] = useState<PlanInterval>("yearly");
   const prefix = locale === defaultLocale ? "" : `/${locale}`;
 
-  const plan = getPlan(interval === "monthly" ? "plus_monthly" : "plus_yearly")!;
+  // In mainland China these are one-time WeChat purchases; elsewhere card subscriptions.
+  const market = me.market;
+  const plan = planFor(market, interval);
   const pending = checkoutPending === plan.sku;
 
   return (
@@ -54,7 +56,7 @@ export function PricingClient() {
                 {value === "monthly" ? t.monthly : t.yearly}
                 {value === "yearly" && (
                   <span className={cn("text-xs font-semibold", interval === "yearly" ? "text-background/80" : "text-muted-foreground")}>
-                    −{yearlySavingsPercent()}%
+                    −{yearlySavingsPercent(market)}%
                   </span>
                 )}
               </button>
@@ -63,14 +65,14 @@ export function PricingClient() {
 
           <div className="mt-6">
             <p className="flex items-baseline gap-1">
-              <span className="text-5xl font-extrabold tracking-tight tabular-nums">{formatUsd(plan.priceUsd, locale)}</span>
+              <span className="text-5xl font-extrabold tracking-tight tabular-nums">{formatMoney(plan.price, plan.currency, locale)}</span>
               <span className="text-muted-foreground">{interval === "monthly" ? t.perMonth : t.perYear}</span>
             </p>
             <p className="mt-1 h-5 text-sm text-muted-foreground tabular-nums">
               {/* The percentage is already on the Yearly toggle; the per-month price and the money saved are new information. */}
               {interval === "yearly"
-                ? `${t.yearlyEquivalent.replace("{price}", formatUsd(Math.floor((plan.priceUsd / 12) * 100) / 100, locale))} · ${t.saveAmount.replace("{amount}", formatUsd(yearlySavingsUsd(), locale))}`
-                : t.monthlyNote.replace("{percent}", String(yearlySavingsPercent()))}
+                ? `${t.yearlyEquivalent.replace("{price}", formatMoney(Math.floor((plan.price / 12) * 100) / 100, plan.currency, locale))} · ${t.saveAmount.replace("{amount}", formatMoney(yearlySavings(market), plan.currency, locale))}`
+                : t.monthlyNote.replace("{percent}", String(yearlySavingsPercent(market)))}
             </p>
           </div>
 
@@ -95,7 +97,9 @@ export function PricingClient() {
               {pending ? t.ctaLoading : t.cta}
             </button>
           )}
-          <p className="mt-3 text-center text-xs text-muted-foreground">{t.fineprint}</p>
+          <p className="mt-3 text-center text-xs text-muted-foreground">
+            {plan.kind === "onetime" ? `${t.onetimeNote} · ${t.wechatOnly}` : t.fineprint}
+          </p>
         </div>
 
         <ul className="grid gap-5 sm:grid-cols-2 md:gap-6 md:pt-2">

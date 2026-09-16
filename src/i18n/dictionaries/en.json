@@ -566,7 +566,9 @@
       }
     ],
     "saveAmount": "save {amount} a year",
-    "monthlyNote": "Yearly costs {percent}% less"
+    "monthlyNote": "Yearly costs {percent}% less",
+    "onetimeNote": "One payment, no auto-renewal",
+    "wechatOnly": "Pay with WeChat"
   },
   "account": {
     "title": "Account",
@@ -591,7 +593,9 @@
     "activationSlow": "This is taking longer than usual. Your payment is safe; refresh in a minute.",
     "cancelDone": "Cancellation received.",
     "resumeDone": "Your subscription will renew.",
-    "actionError": "That didn't work. Please try again."
+    "actionError": "That didn't work. Please try again.",
+    "expires": "Access until {date}",
+    "renew": "Extend Plus"
   },
   "favorites": {
     "title": "Favorites",

@@ -566,7 +566,9 @@
       }
     ],
     "saveAmount": "年間 {amount} お得",
-    "monthlyNote": "年払いは {percent}% 安くなります"
+    "monthlyNote": "年払いは {percent}% 安くなります",
+    "onetimeNote": "買い切り、自動更新なし",
+    "wechatOnly": "WeChat Pay で支払い"
   },
   "account": {
     "title": "アカウント",
@@ -591,7 +593,9 @@
     "activationSlow": "通常より時間がかかっています。お支払いは安全です。1 分ほどしてから再読み込みしてください。",
     "cancelDone": "解約を受け付けました。",
     "resumeDone": "サブスクリプションは更新されます。",
-    "actionError": "うまくいきませんでした。もう一度お試しください。"
+    "actionError": "うまくいきませんでした。もう一度お試しください。",
+    "expires": "{date} まで利用できます",
+    "renew": "Plus を延長"
   },
   "favorites": {
     "title": "お気に入り",

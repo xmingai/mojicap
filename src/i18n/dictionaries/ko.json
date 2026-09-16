@@ -566,7 +566,9 @@
       }
     ],
     "saveAmount": "연간 {amount} 절약",
-    "monthlyNote": "연간 결제가 {percent}% 저렴합니다"
+    "monthlyNote": "연간 결제가 {percent}% 저렴합니다",
+    "onetimeNote": "1회 결제, 자동 갱신 없음",
+    "wechatOnly": "WeChat Pay로 결제"
   },
   "account": {
     "title": "계정",
@@ -591,7 +593,9 @@
     "activationSlow": "평소보다 오래 걸리고 있습니다. 결제는 안전하니 1분 후 새로고침하세요.",
     "cancelDone": "해지가 접수되었습니다.",
     "resumeDone": "구독이 계속 갱신됩니다.",
-    "actionError": "처리하지 못했습니다. 다시 시도하세요."
+    "actionError": "처리하지 못했습니다. 다시 시도하세요.",
+    "expires": "{date}까지 이용할 수 있습니다",
+    "renew": "Plus 연장하기"
   },
   "favorites": {
     "title": "즐겨찾기",

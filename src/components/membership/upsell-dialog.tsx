@@ -5,8 +5,8 @@ import { Check } from "lucide-react";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { useDict, useLocale } from "@/i18n/context";
 import { defaultLocale } from "@/i18n/config";
-import { getPlan, yearlySavingsPercent } from "@/lib/membership/plans";
-import { formatUsd } from "@/lib/membership/format";
+import { planFor, yearlySavingsPercent } from "@/lib/membership/plans";
+import { formatMoney } from "@/lib/membership/format";
 import { useMembership } from "./membership-provider";
 import { Loader2 } from "lucide-react";
 
@@ -26,8 +26,8 @@ export function UpsellDialog({ feature, onClose }: { feature: UpsellFeature | nu
   const copy = feature ? t.upsell[feature] : null;
   // Yearly first: it is the better deal for the visitor and the better retention
   // for us, so it is the primary button and monthly lives behind "all plans".
-  const yearly = getPlan("plus_yearly")!;
-  const { startCheckout, checkoutPending } = useMembership();
+  const { me, startCheckout, checkoutPending } = useMembership();
+  const yearly = planFor(me.market, "yearly");
   const pending = checkoutPending === yearly.sku;
 
   return (
@@ -56,12 +56,12 @@ export function UpsellDialog({ feature, onClose }: { feature: UpsellFeature | nu
                 {pending && <Loader2 className="h-4 w-4 animate-spin" />}
                 {pending
                   ? t.ctaLoading
-                  : t.upsell.ctaYearly.replace("{price}", formatUsd(yearly.priceUsd, locale))}
+                  : t.upsell.ctaYearly.replace("{price}", formatMoney(yearly.price, yearly.currency, locale))}
               </button>
               <p className="text-center text-xs text-muted-foreground">
                 {t.upsell.yearlyNote
-                  .replace("{price}", formatUsd(Math.floor((yearly.priceUsd / 12) * 100) / 100, locale))
-                  .replace("{percent}", String(yearlySavingsPercent()))}
+                  .replace("{price}", formatMoney(Math.floor((yearly.price / 12) * 100) / 100, yearly.currency, locale))
+                  .replace("{percent}", String(yearlySavingsPercent(me.market)))}
               </p>
               <Link
                 href={`${prefix}/pricing/`}

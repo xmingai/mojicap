@@ -5,6 +5,7 @@
  * SQLite database with fixture events (Waffo signatures can't be forged in a
  * test, so verification stays in the route and everything after it lives here).
  *
+ *   order.completed                 one-time purchase (China/WeChat): adds days
  *   subscription.activated          first cycle; carries the exact period end
  *   subscription.payment_succeeded  every charge incl. renewals; carries the amount
  *   subscription.canceling          cancel requested → access to period end
@@ -55,6 +56,17 @@ function sameOrder(row: Row, data: WaffoEventData): boolean {
   return !row.orderId || !data.orderId || row.orderId === data.orderId;
 }
 
+/**
+ * Did this charge collect at least the plan's list price? Compared in the
+ * plan's own currency — a CNY charge must not be measured against a USD price.
+ */
+function chargeCoversListPrice(data: WaffoEventData): boolean {
+  const expected = listPriceCents(data.sku);
+  if (expected === null) return true;
+  if (data.currency && data.currency !== data.plan.currency) return false;
+  return data.amountCents !== null && data.amountCents >= expected;
+}
+
 export async function processWaffoEvent(
   db: DB,
   event: WaffoEvent,
@@ -100,6 +112,31 @@ export async function processWaffoEvent(
     };
 
     switch (event.eventType) {
+      // A one-time purchase buys days of access: no renewal, no cancelling, and
+      // buying again while still a member stacks on the time already paid for.
+      case "order.completed": {
+        if (data.plan.kind !== "onetime") return record("ignored:event_type");
+        if (!chargeCoversListPrice(data)) return record("ignored:underpaid");
+        const from = row && row.currentPeriodEnd > now && row.status === "active" ? row.currentPeriodEnd : now;
+        const currentPeriodEnd = addDays(from, data.plan.periodDays);
+        if (!row) {
+          await tx.insert(membership).values({
+            userId: data.userId,
+            sku: data.sku,
+            status: "active",
+            provider: "waffo",
+            orderId: data.orderId,
+            currentPeriodEnd,
+            createdAt: now,
+            updatedAt: now,
+          });
+          return record("granted");
+        }
+        const extending = row.currentPeriodEnd > now && row.status === "active";
+        await setStatus("active", { sku: data.sku, orderId: data.orderId ?? row.orderId, currentPeriodEnd });
+        return record(extending ? "extended" : "granted");
+      }
+
       case "subscription.activated":
       case "subscription.payment_succeeded": {
         // We sell no trials; a trial window here was applied by the platform
@@ -107,11 +144,8 @@ export async function processWaffoEvent(
         if (data.looksLikeTrial) return record("ignored:trial");
         // `activated` reports the LIST price, only the charge event reports what
         // was actually collected — so only that one is checked.
-        if (event.eventType === "subscription.payment_succeeded") {
-          const expected = listPriceCents(data.sku);
-          if (expected !== null && (data.amountCents === null || data.amountCents < expected)) {
-            return record("ignored:underpaid");
-          }
+        if (event.eventType === "subscription.payment_succeeded" && !chargeCoversListPrice(data)) {
+          return record("ignored:underpaid");
         }
 
         const periodEnd = data.periodEnd ?? addDays(data.paymentDate ?? now, data.plan.periodDays);

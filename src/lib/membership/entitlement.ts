@@ -3,6 +3,8 @@
  * no second copy of the truth to drift out of sync.
  */
 
+import { getPlan } from "./plans";
+
 export type MembershipStatus = "active" | "canceling" | "past_due" | "canceled" | "refunded";
 
 export type MembershipRow = {
@@ -22,10 +24,12 @@ export const RENEWAL_GRACE_MS = 3 * 86_400_000;
 export function accessUntil(row: MembershipRow | null | undefined): Date | null {
   if (!row) return null;
   const end = row.currentPeriodEnd.getTime();
+  // Nothing renews a one-time purchase, so there is no late renewal to wait for.
+  const renewing = getPlan(row.sku)?.kind !== "onetime";
   switch (row.status) {
     case "active":
     case "past_due":
-      return new Date(end + RENEWAL_GRACE_MS);
+      return new Date(renewing ? end + RENEWAL_GRACE_MS : end);
     // A cancel means "don't renew": access runs to the end of what was paid for.
     case "canceling":
     case "canceled":

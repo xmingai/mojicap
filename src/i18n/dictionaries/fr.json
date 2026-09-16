@@ -566,7 +566,9 @@
       }
     ],
     "saveAmount": "économisez {amount} par an",
-    "monthlyNote": "L'offre annuelle coûte {percent} % de moins"
+    "monthlyNote": "L'offre annuelle coûte {percent} % de moins",
+    "onetimeNote": "Paiement unique, sans renouvellement automatique",
+    "wechatOnly": "Paiement par WeChat Pay"
   },
   "account": {
     "title": "Compte",
@@ -591,7 +593,9 @@
     "activationSlow": "C'est plus long que d'habitude. Votre paiement est en sécurité ; actualisez dans une minute.",
     "cancelDone": "Résiliation enregistrée.",
     "resumeDone": "Votre abonnement sera renouvelé.",
-    "actionError": "Cela n'a pas fonctionné. Réessayez."
+    "actionError": "Cela n'a pas fonctionné. Réessayez.",
+    "expires": "Accès jusqu'au {date}",
+    "renew": "Prolonger Plus"
   },
   "favorites": {
     "title": "Favoris",
