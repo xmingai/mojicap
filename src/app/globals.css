@@ -46,6 +46,15 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Paywall dialog emoji wall: each column holds its list twice, so moving it up
+     by half its height lands exactly where it started. Declared here rather than
+     at the top level, where the dev server drops the keyframes. */
+  --animate-emoji-wall: emoji-wall 24s linear infinite;
+  @keyframes emoji-wall {
+    from { transform: translateY(0); }
+    to { transform: translateY(-50%); }
+  }
 }
 
 :root {
@@ -136,10 +145,4 @@
 }
 .scrollbar-none::-webkit-scrollbar {
   display: none;
-}
-/* Paywall dialog emoji wall: each column holds its list twice, so moving it up by
-   half its height lands exactly where it started. */
-@keyframes emoji-wall {
-  from { transform: translateY(0); }
-  to { transform: translateY(-50%); }
 }
