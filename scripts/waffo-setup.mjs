@@ -58,7 +58,7 @@ if (!WRITE && !PUBLISH && !WEBHOOK_URL) {
   console.log(`Dry run — ${ENV} environment. Nothing is sent to Waffo.\n`);
   for (const plan of PLANS) {
     const existing = WAFFO_PRODUCT_IDS[plan.sku];
-    console.log(`  ${existing ? "=" : "+"} ${plan.sku.padEnd(14)} ${existing || "(new)"} ($${plan.priceUsd}/${plan.interval})`);
+    console.log(`  ${existing ? "=" : "+"} ${plan.sku.padEnd(16)} ${existing || "(new)"} (${plan.price} ${plan.currency}/${plan.interval}${plan.kind === "onetime" ? " one-time" : ""})`);
   }
   console.log("\nPass --write to create/update these products and record their ids.");
   process.exit(0);
