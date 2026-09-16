@@ -288,7 +288,8 @@
     "company": "コミュニティ",
     "about": "概要",
     "sponsoredBy": "{brand} の提供",
-    "plus": "MojiCap Plus"
+    "plus": "MojiCap Plus",
+    "contact": "お問い合わせ"
   },
   "common": {
     "copied": "{text} をコピーしました",
@@ -472,7 +473,7 @@
     "errorCode": "コードが正しくありません。確認してもう一度お試しください。",
     "errorRate": "試行回数が多すぎます。1 分ほど待ってからお試しください。",
     "errorGeneric": "問題が発生しました。もう一度お試しください。",
-    "legal": "続行すると、利用規約とプライバシーポリシーに同意したことになります。",
+    "legal": "続行すると、{terms}と{privacy}に同意したことになります。",
     "signedIn": "ログインしました",
     "signedOut": "ログアウトしました",
     "limit": {
@@ -483,7 +484,11 @@
         "お気に入りを最大 20 件までデバイス間で同期できます",
         "メールのコードでログイン、覚えることはありません"
       ]
-    }
+    },
+    "termsLink": "利用規約",
+    "privacyLink": "プライバシーポリシー",
+    "typoQuestion": "もしかして {email} でしょうか？",
+    "noCode": "コードが届きませんか？迷惑メールフォルダーをご確認いただくか、別のアドレスをお試しください。"
   },
   "plus": {
     "name": "MojiCap Plus",

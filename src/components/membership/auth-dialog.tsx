@@ -3,8 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import { Check, Loader2 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
+import { suggestEmailFix } from "@/lib/email-typo";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
-import { useDict } from "@/i18n/context";
+import Link from "next/link";
+import { useDict, useLocale } from "@/i18n/context";
+import { defaultLocale } from "@/i18n/config";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const RESEND_SECONDS = 60;
@@ -28,9 +31,34 @@ function errorKey(error: { status?: number; code?: string } | null | undefined):
   return "errorGeneric";
 }
 
+/** The agreement line, with the two policies as real links. */
+function LegalLine({ t, prefix }: { t: ReturnType<typeof useDict>["auth"]; prefix: string }) {
+  const link = "underline underline-offset-2 hover:text-foreground";
+  const parts = t.legal.split(/(\{terms\}|\{privacy\})/);
+  return (
+    <p className="text-center text-xs text-muted-foreground">
+      {parts.map((part, i) =>
+        part === "{terms}" ? (
+          <Link key={i} href={`${prefix}/terms/`} target="_blank" className={link}>
+            {t.termsLink}
+          </Link>
+        ) : part === "{privacy}" ? (
+          <Link key={i} href={`${prefix}/privacy/`} target="_blank" className={link}>
+            {t.privacyLink}
+          </Link>
+        ) : (
+          part
+        ),
+      )}
+    </p>
+  );
+}
+
 export function AuthDialog({ open, onOpenChange, reason = null, google, onSignedIn }: Props) {
   const dict = useDict();
   const t = dict.auth;
+  const locale = useLocale();
+  const prefix = locale === defaultLocale ? "" : `/${locale}`;
   const [step, setStep] = useState<"email" | "code">("email");
   const limit = reason === "copies" && step === "email" ? t.limit : null;
   const [email, setEmail] = useState("");
@@ -38,6 +66,8 @@ export function AuthDialog({ open, onOpenChange, reason = null, google, onSigned
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [cooldown, setCooldown] = useState(0);
+  // A code sent to a misspelt domain fails silently, so offer the fix before sending.
+  const [suggestion, setSuggestion] = useState<string | null>(null);
   const codeRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -48,6 +78,7 @@ export function AuthDialog({ open, onOpenChange, reason = null, google, onSigned
 
   const reset = () => {
     setStep("email");
+    setSuggestion(null);
     setCode("");
     setError(null);
     setBusy(false);
@@ -61,6 +92,7 @@ export function AuthDialog({ open, onOpenChange, reason = null, google, onSigned
     }
     setBusy(true);
     setError(null);
+    setSuggestion(null);
     const { error: err } = await authClient.emailOtp.sendVerificationOtp({ email: value, type: "sign-in" });
     setBusy(false);
     if (err) {
@@ -132,11 +164,31 @@ export function AuthDialog({ open, onOpenChange, reason = null, google, onSigned
                 autoComplete="email"
                 autoFocus
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setSuggestion(null);
+                }}
+                onBlur={(e) => setSuggestion(suggestEmailFix(e.target.value))}
                 placeholder={t.emailPlaceholder}
                 className="h-11 rounded-xl border border-border bg-background px-3 text-base outline-none transition focus-visible:ring-2 focus-visible:ring-ring"
               />
             </label>
+            {suggestion && (
+              <p className="text-sm text-muted-foreground">
+                {t.typoQuestion.split("{email}")[0]}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEmail(suggestion);
+                    setSuggestion(null);
+                  }}
+                  className="font-medium text-foreground underline underline-offset-2"
+                >
+                  {suggestion}
+                </button>
+                {t.typoQuestion.split("{email}")[1]}
+              </p>
+            )}
             {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
             <button
               type="submit"
@@ -169,7 +221,7 @@ export function AuthDialog({ open, onOpenChange, reason = null, google, onSigned
                 </button>
               </>
             )}
-            <p className="text-center text-xs text-muted-foreground">{t.legal}</p>
+            <LegalLine t={t} prefix={prefix} />
           </form>
         ) : (
           <form
@@ -205,6 +257,7 @@ export function AuthDialog({ open, onOpenChange, reason = null, google, onSigned
               {busy && <Loader2 className="h-4 w-4 animate-spin" />}
               {busy ? t.verifying : t.verify}
             </button>
+            <p className="text-xs text-muted-foreground">{t.noCode}</p>
             <div className="flex items-center justify-between text-sm">
               <button type="button" onClick={reset} className="text-muted-foreground hover:text-foreground">
                 {t.changeEmail}

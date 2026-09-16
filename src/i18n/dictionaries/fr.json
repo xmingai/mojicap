@@ -288,7 +288,8 @@
     "company": "Communauté",
     "about": "À propos",
     "sponsoredBy": "Sponsorisé par {brand}",
-    "plus": "MojiCap Plus"
+    "plus": "MojiCap Plus",
+    "contact": "Contact"
   },
   "common": {
     "copied": "{text} copié",
@@ -472,7 +473,7 @@
     "errorCode": "Ce code ne fonctionne pas. Vérifiez-le et réessayez.",
     "errorRate": "Trop de tentatives. Patientez une minute et réessayez.",
     "errorGeneric": "Une erreur s'est produite. Réessayez.",
-    "legal": "En continuant, vous acceptez les Conditions et la Politique de confidentialité.",
+    "legal": "En continuant, vous acceptez les {terms} et la {privacy}.",
     "signedIn": "Connecté",
     "signedOut": "Déconnecté",
     "limit": {
@@ -483,7 +484,11 @@
         "Jusqu'à 20 favoris synchronisés sur vos appareils",
         "Connexion avec un code reçu par e-mail, rien à retenir"
       ]
-    }
+    },
+    "termsLink": "Conditions d'utilisation",
+    "privacyLink": "Politique de confidentialité",
+    "typoQuestion": "Vouliez-vous dire {email} ?",
+    "noCode": "Pas de code ? Vérifiez vos spams ou essayez une autre adresse."
   },
   "plus": {
     "name": "MojiCap Plus",

@@ -287,7 +287,8 @@
     "company": "社区",
     "about": "关于",
     "sponsoredBy": "赞助 by {brand}",
-    "plus": "MojiCap Plus"
+    "plus": "MojiCap Plus",
+    "contact": "联系我们"
   },
   "common": {
     "copied": "已复制 {text}",
@@ -471,7 +472,7 @@
     "errorCode": "验证码不正确，请检查后重试。",
     "errorRate": "尝试次数过多，请稍等一分钟再试。",
     "errorGeneric": "出了点问题，请重试。",
-    "legal": "继续即表示你同意服务条款和隐私政策。",
+    "legal": "继续即表示你同意{terms}和{privacy}。",
     "signedIn": "已登录",
     "signedOut": "已退出登录",
     "limit": {
@@ -482,7 +483,11 @@
         "最多 20 个收藏在你的设备间同步",
         "用邮箱验证码登录，不用记密码"
       ]
-    }
+    },
+    "termsLink": "使用条款",
+    "privacyLink": "隐私政策",
+    "typoQuestion": "你是想输入 {email} 吗？",
+    "noCode": "没收到验证码？请查看垃圾邮件文件夹，或换一个邮箱试试。"
   },
   "plus": {
     "name": "MojiCap Plus",
