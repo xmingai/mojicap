@@ -98,7 +98,10 @@ export function PricingClient() {
             </button>
           )}
           <p className="mt-3 text-center text-xs text-muted-foreground">
-            {plan.kind === "onetime" ? `${t.onetimeNote} · ${t.wechatOnly}` : t.fineprint}
+            {plan.kind === "onetime" ? `${t.onetimeNote} · ${t.wechatOnly}` : t.fineprint}{" · "}
+            <Link href={`${prefix}/terms/`} className="underline-offset-4 hover:text-foreground hover:underline">
+              {t.refundLink}
+            </Link>
           </p>
         </div>
 
