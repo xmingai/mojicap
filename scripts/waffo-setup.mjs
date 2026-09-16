@@ -59,23 +59,27 @@ console.log(`Waffo catalog setup — ${ENV} environment, ${PLANS.length} product
 const result = {};
 for (const plan of PLANS) {
   // taxIncluded: Waffo is merchant of record; the advertised price is what the buyer pays.
-  const prices = { USD: { amount: plan.priceUsd.toFixed(2), taxIncluded: true, taxCategory: "saas" } };
-  // No trialDays: MojiCap Plus has no trial.
-  const common = { name: plan.productName, prices, metadata: { sku: plan.sku }, billingPeriod: plan.interval };
+  const prices = { [plan.currency]: { amount: plan.price.toFixed(2), taxIncluded: true, taxCategory: "saas" } };
+  // Subscriptions elsewhere, one-time products in China: Waffo only offers
+  // WeChat Pay on one-time CNY products. No trialDays either way — no trials.
+  const onetime = plan.kind === "onetime";
+  const resource = onetime ? client.onetimeProducts : client.subscriptionProducts;
+  const common = { name: plan.productName, prices, metadata: { sku: plan.sku }, ...(onetime ? {} : { billingPeriod: plan.interval }) };
   const existing = WAFFO_PRODUCT_IDS[plan.sku];
+  const label = `${plan.price} ${plan.currency}/${plan.interval}${onetime ? " one-time" : ""}`;
 
   if (existing) {
-    const { product } = await client.subscriptionProducts.update({ id: existing, ...common });
+    const { product } = await resource.update({ id: existing, ...common });
     result[plan.sku] = product?.id ?? existing;
-    console.log(`  = ${plan.sku.padEnd(14)} ${result[plan.sku]} ($${plan.priceUsd}/${plan.interval})`);
+    console.log(`  = ${plan.sku.padEnd(16)} ${result[plan.sku]} (${label})`);
   } else {
-    const { product } = await client.subscriptionProducts.create({ storeId: STORE_ID, ...common });
+    const { product } = await resource.create({ storeId: STORE_ID, ...common });
     result[plan.sku] = product.id;
-    console.log(`  + ${plan.sku.padEnd(14)} ${product.id} ($${plan.priceUsd}/${plan.interval})`);
+    console.log(`  + ${plan.sku.padEnd(16)} ${product.id} (${label})`);
   }
 
   if (PUBLISH) {
-    await client.subscriptionProducts.publish({ id: result[plan.sku] });
+    await resource.publish({ id: result[plan.sku] });
     console.log("    ↑ published to production");
   }
 }
@@ -86,6 +90,8 @@ if (WEBHOOK_URL) {
     channel: "http",
     url: WEBHOOK_URL,
     events: [
+      // One-time purchases (China/WeChat) report through order.completed only.
+      "order.completed",
       "subscription.activated",
       "subscription.payment_succeeded",
       "subscription.canceling",

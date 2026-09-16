@@ -97,15 +97,16 @@ export async function createWaffoCheckout(input: {
   if (!productId) {
     throw new Error(`No Waffo product for SKU ${input.plan.sku} — run scripts/waffo-setup.mjs --write`);
   }
-  const language = cashierLanguage(input.locale);
+  // Waffo rejects language x currency mismatches, and CNY is only ever sold in China.
+  const language = input.plan.currency === "CNY" ? ("zh-Hans" as const) : cashierLanguage(input.locale);
   const session = await getWaffoClient().checkout.authenticated.create({
     productId,
-    currency: "USD",
+    currency: input.plan.currency,
     buyerIdentity: input.userId,
     ...(input.email ? { buyerEmail: input.email } : {}),
-    // We sell no trials. Say so explicitly: the platform can otherwise apply a
-    // product-level trial to an eligible buyer on its own.
-    withTrial: false,
+    // Trials only exist on subscriptions, and we sell none. Say so explicitly:
+    // the platform can otherwise apply a product-level trial on its own.
+    ...(input.plan.kind === "subscription" ? { withTrial: false } : {}),
     successUrl: input.successUrl,
     ...(language ? { language } : {}),
     metadata: {
@@ -161,6 +162,8 @@ export type WaffoEventData = {
   /** Payment day, the stable anchor for estimating a period when no end is sent. */
   paymentDate: Date | null;
   amountCents: number | null;
+  /** ISO 4217 code the buyer was charged in, for checking the amount against the right list price. */
+  currency: string | null;
   /** Signals that the platform applied a trial we never offered. */
   looksLikeTrial: boolean;
 };
@@ -209,6 +212,7 @@ export function extractWaffoEventData(event: WaffoEvent): WaffoEventData | null 
     periodEnd,
     paymentDate: date(data.paymentDate),
     amountCents: displayAmountToCents(data.amount),
+    currency: str(data.currency)?.toUpperCase() ?? null,
     // PixFlow observed the platform applying product trials unprompted. A trial
     // window is days, a real cycle is a month or a year.
     looksLikeTrial: str(data.orderStatus) === "trialing" || (spanDays !== null && spanDays <= 7),

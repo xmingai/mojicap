@@ -211,25 +211,36 @@ function PlanCard({
             <PlusBadge label={current.interval === "monthly" ? dict.plus.monthly : dict.plus.yearly} />
           </p>
           <p className="mt-1 text-sm text-muted-foreground">
-            {plan.status === "canceling"
+            {current.kind === "onetime"
+              ? t.expires.replace("{date}", formatDate(plan.currentPeriodEnd, locale))
+              : plan.status === "canceling"
               ? t.canceling.replace("{date}", formatDate(plan.currentPeriodEnd, locale))
               : plan.status === "past_due"
                 ? t.pastDue
-                : t.active.replace("{date}", formatDate(plan.currentPeriodEnd, locale))}
+                  : t.active.replace("{date}", formatDate(plan.currentPeriodEnd, locale))}
           </p>
 
+          {/* A one-time purchase has nothing to cancel or manage: it runs out, and
+              buying again simply adds more days. */}
           <div className="mt-5 flex flex-wrap gap-2">
-            {plan.status === "canceling" ? (
+            {current.kind === "onetime" ? (
+              <Link href={`${prefix}/pricing/`} className={`${button} bg-foreground text-background hover:bg-foreground/90`}>
+                {t.renew}
+              </Link>
+            ) : null}
+            {current.kind !== "onetime" && plan.status === "canceling" ? (
               <button type="button" onClick={onResume} disabled={busy !== null} className={`${button} bg-foreground text-background hover:bg-foreground/90`}>
                 {busy === "resume" && <Loader2 className="h-4 w-4 animate-spin" />}
                 {t.resume}
               </button>
             ) : null}
-            <button type="button" onClick={onBilling} disabled={busy !== null} className={`${button} border border-border hover:bg-muted`}>
-              {busy === "billing" ? <Loader2 className="h-4 w-4 animate-spin" /> : <ExternalLink className="h-4 w-4" />}
-              {t.billing}
-            </button>
-            {plan.status === "active" || plan.status === "past_due" ? (
+            {current.kind !== "onetime" ? (
+              <button type="button" onClick={onBilling} disabled={busy !== null} className={`${button} border border-border hover:bg-muted`}>
+                {busy === "billing" ? <Loader2 className="h-4 w-4 animate-spin" /> : <ExternalLink className="h-4 w-4" />}
+                {t.billing}
+              </button>
+            ) : null}
+            {current.kind !== "onetime" && (plan.status === "active" || plan.status === "past_due") ? (
               <button type="button" onClick={onCancel} disabled={busy !== null} className={`${button} text-muted-foreground hover:bg-muted hover:text-foreground`}>
                 {busy === "cancel" && <Loader2 className="h-4 w-4 animate-spin" />}
                 {t.cancel}

@@ -566,7 +566,9 @@
       }
     ],
     "saveAmount": "economize {amount} por ano",
-    "monthlyNote": "O plano anual custa {percent}% menos"
+    "monthlyNote": "O plano anual custa {percent}% menos",
+    "onetimeNote": "Pagamento único, sem renovação automática",
+    "wechatOnly": "Pague com WeChat Pay"
   },
   "account": {
     "title": "Conta",
@@ -591,7 +593,9 @@
     "activationSlow": "Está demorando mais que o normal. Seu pagamento está seguro; atualize em um minuto.",
     "cancelDone": "Cancelamento recebido.",
     "resumeDone": "Sua assinatura será renovada.",
-    "actionError": "Não funcionou. Tente de novo."
+    "actionError": "Não funcionou. Tente de novo.",
+    "expires": "Acesso até {date}",
+    "renew": "Estender o Plus"
   },
   "favorites": {
     "title": "Favoritos",

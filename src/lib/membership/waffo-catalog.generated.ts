@@ -8,6 +8,8 @@
  *     node scripts/waffo-setup.mjs --write
  */
 export const WAFFO_PRODUCT_IDS: Record<string, string> = {
-  plus_monthly: "",
-  plus_yearly: "",
+  plus_monthly: "PROD_186uzVQPL0VATZQFYS9ArA",
+  plus_yearly: "PROD_3wmciRYKhSdgyITruU7RXp",
+  plus_monthly_cn: "PROD_4LljfyiTVxGKbt74IEOPVt",
+  plus_yearly_cn: "PROD_3mqwhYH0oXbaL6AawmNqn7",
 };

@@ -12,7 +12,7 @@ import type { DB } from "../src/lib/db";
 import { processWaffoEvent, getMembership } from "../src/lib/membership/process-event";
 import { isMemberNow, accessUntil, RENEWAL_GRACE_MS } from "../src/lib/membership/entitlement";
 import { displayAmountToCents, extractWaffoEventData, type WaffoEvent } from "../src/lib/membership/waffo";
-import { getPlan, listPriceCents, yearlySavingsPercent, yearlySavingsUsd } from "../src/lib/membership/plans";
+import { getPlan, listPriceCents, plansFor, yearlySavings, yearlySavingsPercent } from "../src/lib/membership/plans";
 
 const DAY = 86_400_000;
 let db: DB;
@@ -47,21 +47,41 @@ function ev(eventType: string, data: Record<string, unknown>, id?: string): Waff
 
 const NOW = new Date("2026-09-15T00:00:00Z");
 
-test("yearly is the cheaper plan, and the saving we advertise is the real one", () => {
-  const monthly = getPlan("plus_monthly")!.priceUsd;
-  const yearly = getPlan("plus_yearly")!.priceUsd;
-  assert.ok(yearly < monthly * 12, "a year of Plus costs less than twelve months");
-  assert.equal(yearlySavingsUsd(), Math.round((monthly * 12 - yearly) * 100) / 100);
-  assert.equal(yearlySavingsUsd(), 15.89);
-  assert.equal(yearlySavingsPercent(), 44);
+test("yearly is the cheaper plan in both markets, and the advertised saving is the real one", () => {
+  for (const market of ["global", "cn"] as const) {
+    const { monthly, yearly } = plansFor(market);
+    assert.equal(monthly.currency, yearly.currency, market);
+    assert.ok(yearly.price < monthly.price * 12, `a year costs less than twelve months (${market})`);
+    assert.equal(yearlySavings(market), Math.round((monthly.price * 12 - yearly.price) * 100) / 100);
+  }
+  assert.equal(yearlySavings("global"), 15.89);
+  assert.equal(yearlySavingsPercent("global"), 44);
+  assert.equal(yearlySavings("cn"), 58.9);
+  assert.equal(yearlySavingsPercent("cn"), 50);
+});
+
+test("China is sold one-time CNY plans, everywhere else a USD subscription", () => {
+  const cn = plansFor("cn");
+  assert.deepEqual([cn.monthly.sku, cn.yearly.sku], ["plus_monthly_cn", "plus_yearly_cn"]);
+  for (const plan of [cn.monthly, cn.yearly]) {
+    assert.equal(plan.kind, "onetime");
+    assert.equal(plan.currency, "CNY");
+  }
+  assert.deepEqual([cn.monthly.price, cn.yearly.price], [9.9, 59.9]);
+  const global = plansFor("global");
+  for (const plan of [global.monthly, global.yearly]) {
+    assert.equal(plan.kind, "subscription");
+    assert.equal(plan.currency, "USD");
+  }
+  assert.equal(listPriceCents("plus_yearly_cn"), 5990);
 });
 
 test("plans: prices, list price cents and yearly saving", () => {
-  assert.equal(getPlan("plus_monthly")?.priceUsd, 2.99);
-  assert.equal(getPlan("plus_yearly")?.priceUsd, 19.99);
+  assert.equal(getPlan("plus_monthly")?.price, 2.99);
+  assert.equal(getPlan("plus_yearly")?.price, 19.99);
   assert.equal(listPriceCents("plus_monthly"), 299);
   assert.equal(listPriceCents("nope"), null);
-  assert.equal(yearlySavingsPercent(), 44);
+  assert.equal(yearlySavingsPercent("global"), 44);
 });
 
 test("amounts: display strings convert without float drift", () => {
@@ -100,6 +120,37 @@ test("redelivered event is a no-op", async () => {
   const e = ev("subscription.payment_succeeded", { amount: "2.99", paymentDate: "2026-09-15" }, "same-id");
   assert.equal((await processWaffoEvent(db, e, { now: NOW })).outcome, "granted");
   assert.equal((await processWaffoEvent(db, e, { now: NOW })).outcome, "duplicate");
+});
+
+test("a one-time purchase grants days, and buying again stacks on what is left", async () => {
+  const cn = (amount: string, id?: string) =>
+    ({ ...ev("order.completed", { orderMetadata: { userId: "u1", sku: "plus_yearly_cn" }, currency: "CNY", amount, orderId: "ORD_CN1" }, id) });
+
+  assert.equal((await processWaffoEvent(db, cn("59.90"), { now: NOW })).outcome, "granted");
+  const first = await getMembership(db, "u1");
+  assert.equal(first?.status, "active");
+  assert.equal(first?.currentPeriodEnd.getTime(), NOW.getTime() + 366 * DAY);
+  // No renewal is coming, so no renewal grace on top.
+  assert.equal(accessUntil(first)?.getTime(), first?.currentPeriodEnd.getTime());
+
+  const later = new Date(NOW.getTime() + 30 * DAY);
+  assert.equal((await processWaffoEvent(db, cn("59.90"), { now: later })).outcome, "extended");
+  const second = await getMembership(db, "u1");
+  assert.equal(second?.currentPeriodEnd.getTime(), first!.currentPeriodEnd.getTime() + 366 * DAY, "days are added, not reset");
+});
+
+test("a one-time purchase is checked against its own currency", async () => {
+  const short = ev("order.completed", { orderMetadata: { userId: "u1", sku: "plus_yearly_cn" }, currency: "CNY", amount: "9.90" }, "cn-short");
+  assert.equal((await processWaffoEvent(db, short, { now: NOW })).outcome, "ignored:underpaid");
+  // 59.90 of the wrong currency is not 59.90 yuan.
+  const wrongCurrency = ev("order.completed", { orderMetadata: { userId: "u1", sku: "plus_yearly_cn" }, currency: "USD", amount: "59.90" }, "cn-usd");
+  assert.equal((await processWaffoEvent(db, wrongCurrency, { now: NOW })).outcome, "ignored:underpaid");
+  assert.equal(await getMembership(db, "u1"), null);
+});
+
+test("order.completed for a subscription SKU is ignored", async () => {
+  const wrongKind = ev("order.completed", { amount: "19.99", orderMetadata: { userId: "u1", sku: "plus_yearly" } }, "onetime-for-sub");
+  assert.equal((await processWaffoEvent(db, wrongKind, { now: NOW })).outcome, "ignored:event_type");
 });
 
 test("a charge below list price never grants", async () => {

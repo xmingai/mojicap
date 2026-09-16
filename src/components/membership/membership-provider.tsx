@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { authClient } from "@/lib/auth-client";
 import { MEMBERSHIP_UI_ENABLED } from "@/lib/membership/config";
+import type { Market } from "@/lib/membership/plans";
 import { useDict, useLocale } from "@/i18n/context";
 import { defaultLocale } from "@/i18n/config";
 import { AuthDialog, type AuthReason } from "./auth-dialog";
@@ -15,6 +16,8 @@ import { configureCopyGate } from "@/lib/copy-gate";
 export type Me = {
   enabled: boolean;
   user: { id: string; email: string; name: string } | null;
+  /** Which price list applies, from the request's country. */
+  market: Market;
   isMember: boolean;
   plan: { sku: string; status: string; currentPeriodEnd: string; accessUntil: string | null } | null;
   google: boolean;
@@ -32,7 +35,7 @@ type MembershipContextValue = {
   checkoutPending: string | null;
 };
 
-const SIGNED_OUT: Me = { enabled: MEMBERSHIP_UI_ENABLED, user: null, isMember: false, plan: null, google: false };
+const SIGNED_OUT: Me = { enabled: MEMBERSHIP_UI_ENABLED, user: null, market: "global", isMember: false, plan: null, google: false };
 const CACHE_KEY = "mojicap-me";
 
 const MembershipContext = createContext<MembershipContextValue | null>(null);
