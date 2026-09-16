@@ -47,6 +47,7 @@ export function AsciiArtClient() {
       <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold mb-1">{dict.asciiArt.title}</h1>
+          <p className="text-sm text-muted-foreground max-w-2xl">{dict.asciiArt.metaDesc}</p>
 
         </div>
         <div className="shrink-0 mt-2 sm:mt-0">

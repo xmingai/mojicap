@@ -30,15 +30,15 @@ export async function generateMetadata({
   const camelKey = kebabToCamel(textTool);
   
   const seo = dict.textToolSeo;
+  const meta = (dict.textToolsMeta as Record<string, { title: string; h1: string; description: string }>)[textTool];
   const toolName = (dict.textToolsNav as Record<string, string>)[camelKey] || textTool;
   const toolDesc = (dict.textToolsDesc as Record<string, string>)[textTool] || "";
   
-  const h1 = seo.h1.replace("{toolName}", toolName);
-  const desc = seo.descPrefix.replace("{desc}", toolDesc);
+  // The hand-written meta (from real search queries) is also what the page shows,
+  // so the title, the H1 and the opening line all say the same thing.
+  const h1 = meta?.h1 ?? seo.h1.replace("{toolName}", toolName);
+  const desc = meta?.description ?? seo.descPrefix.replace("{desc}", toolDesc);
   
-  // Hand-written per tool from real search queries; the template is only a fallback.
-  const meta = (dict.textToolsMeta as Record<string, { title: string; description: string }>)[textTool];
-
   return {
     title: meta?.title ?? h1,
     description: meta?.description ?? desc,
@@ -63,9 +63,13 @@ export default async function SpecificToolPage({
   
   // Format the SEO strings using the dictionary templates
   const seo = dict.textToolSeo;
-  const h1 = seo.h1.replace("{toolName}", toolName);
-  const desc = seo.descPrefix.replace("{desc}", toolDesc);
-  const q1 = seo.q1.replace("{toolName}", toolName);
+  const meta = (dict.textToolsMeta as Record<string, { h1: string; description: string }>)[textTool];
+  // The hand-written meta (from real search queries) is also what the page shows,
+  // so the title, the H1 and the opening line all say the same thing.
+  const h1 = meta?.h1 ?? seo.h1.replace("{toolName}", toolName);
+  const desc = meta?.description ?? seo.descPrefix.replace("{desc}", toolDesc);
+  // With a hand-written H1 the old "{toolName} Generator" phrasing would clash with it.
+  const q1 = meta?.h1 ? seo.q1H1.replace("{h1}", meta.h1) : seo.q1.replace("{toolName}", toolName);
   const p1_1 = seo.p1_1.replace("{desc}", toolDesc);
 
   return (

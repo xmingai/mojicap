@@ -79,7 +79,7 @@
     ]
   },
   "emoji": {
-    "title": "Emoji Copy & Paste",
+    "title": "All Emojis to Copy and Paste",
     "metaTitle": "All Emojis Copy and Paste — 3,700+ Emoji List",
     "metaDesc": "Copy and paste all 3,700+ emojis from one list, with names, meanings and skin tone variants. Full Unicode 16.0 support on iPhone, Android and PC.",
     "clickToCopy": "Click any emoji to copy it to your clipboard.",
@@ -128,7 +128,7 @@
     "detailOgDesc": "Copy the {name} emoji {emoji}. Unicode: {unicode}"
   },
   "symbols": {
-    "title": "Special Symbols & Characters",
+    "title": "Special Symbols to Copy and Paste",
     "metaTitle": "Special Symbols Copy & Paste — Cool Text Symbols",
     "metaDesc": "Copy and paste 1,800+ special symbols: arrows, stars, math signs, box-drawing and geometric shapes. Cool text symbols for usernames, bios and chats.",
     "clickToCopy": "Click to copy any symbol to clipboard.",
@@ -197,7 +197,7 @@
     }
   },
   "combos": {
-    "title": "Emoji Combos",
+    "title": "Aesthetic Emoji Combos",
     "metaTitle": "Emoji Combos — 1,100+ Aesthetic Emoji Combinations",
     "metaDesc": "Copy and paste 1,100+ aesthetic emoji combos for Instagram bios, captions and messages, sorted by theme: love, nature, food, space, animals and more.",
     "clickToCopy": "Click to copy any combo.",
@@ -243,12 +243,12 @@
     ]
   },
   "dividers": {
-    "title": "Text Dividers & Line Art",
+    "title": "Aesthetic Text Dividers",
     "metaTitle": "Text Dividers — Aesthetic Dividers Copy & Paste",
     "metaDesc": "Copy and paste aesthetic text dividers, line separators and borders to format Discord, Notion, Tumblr, Amino and Instagram posts, bios and profiles."
   },
   "invisible": {
-    "title": "Invisible Characters",
+    "title": "Invisible Characters & Blank Text",
     "testArea": "Test Area",
     "testAreaDesc": "Paste your invisible character between the brackets below to test its width.",
     "metaTitle": "Invisible Character — Blank Text Copy and Paste",
@@ -263,7 +263,7 @@
     "metaDesc": "Translate text to Braille dots and Morse code as you type, then copy and paste the result anywhere. A free online text to Braille converter."
   },
   "asciiArt": {
-    "title": "ASCII Art",
+    "title": "ASCII Art & Text Art",
     "searchPlaceholder": "Search ASCII art... (e.g. weapons, bear, multi-line)",
     "noResults": "No ASCII art found for",
     "metaTitle": "ASCII Art Copy and Paste — Text Art Pictures",
@@ -403,7 +403,8 @@
     "p2_1": "No, these are not actual fonts like the ones you install on your computer. They are essentially special symbols mapped out in the Unicode character table.",
     "p2_2": "Because they are plain text symbols, you can freely copy and paste them across various social media platforms and websites. If they were actual fonts, other people wouldn't be able to see them unless they had the exact same font installed on their device.",
     "h1": "{toolName} Generator",
-    "descPrefix": "Generate {desc}. Free online generator — type once, copy, and paste anywhere: Instagram, TikTok, Discord and more."
+    "descPrefix": "Generate {desc}. Free online generator — type once, copy, and paste anywhere: Instagram, TikTok, Discord and more.",
+    "q1H1": "What is {h1}?"
   },
   "textToolsDesc": {
     "fancy-text": "fancy, cool, and aesthetic text styles",
@@ -608,58 +609,72 @@
   "textToolsMeta": {
     "glitch-text": {
       "title": "Glitch Text Generator — Zalgo Text Copy and Paste",
+      "h1": "Glitch Text Generator",
       "description": "Make glitch and zalgo text in three levels, from mild to fully creepy. Copy and paste the glitched text into Discord, TikTok, Instagram or any chat."
     },
     "vaporwave-text": {
       "title": "Aesthetic Text Generator — Vaporwave Text",
+      "h1": "Aesthetic Text Generator",
       "description": "Turn text into ａｅｓｔｈｅｔｉｃ vaporwave fullwidth letters, small caps or faux Cyrillic. Copy and paste it into Instagram bios, TikTok and Discord."
     },
     "tiny-text": {
       "title": "Tiny Text Generator — Small Text Copy and Paste",
+      "h1": "Tiny Text Generator",
       "description": "Make ᵗⁱⁿʸ superscript, subscript and small caps text in one step. Copy and paste the small text into Discord, Instagram bios, usernames and chats."
     },
     "morse-code": {
       "title": "Morse Code Generator & Translator — Text to Morse",
+      "h1": "Morse Code Generator",
       "description": "Translate text to Morse code as you type: letters, numbers and punctuation become dots and dashes you can copy and paste. Free, no sign-up."
     },
     "cursive-text": {
       "title": "Cursive Text Generator — Cursive Font Copy & Paste",
+      "h1": "Cursive Text Generator",
       "description": "Write in 𝓬𝓾𝓻𝓼𝓲𝓿𝓮 script or bold cursive letters, then copy and paste the cursive font into Instagram bios, captions, TikTok or anywhere online."
     },
     "old-english-text": {
       "title": "Old English Font Generator — Gothic Text",
+      "h1": "Old English Font Generator",
       "description": "Convert text to 𝔒𝔩𝔡 𝔈𝔫𝔤𝔩𝔦𝔰𝔥 gothic letters in regular or bold. Copy and paste the gothic font into bios, captions, gamer tags and posts."
     },
     "bold-text": {
       "title": "Bold Text Generator — Bold Font Copy and Paste",
+      "h1": "Bold Text Generator",
       "description": "Make 𝐛𝐨𝐥𝐝 text for LinkedIn, Facebook, Instagram and X posts: serif bold, sans bold and bold italic letters you can copy and paste anywhere."
     },
     "italic-text": {
       "title": "Italic Text Generator — Italic Font Copy and Paste",
+      "h1": "Italic Text Generator",
       "description": "Write 𝘪𝘵𝘢𝘭𝘪𝘤 and bold italic text in serif or sans-serif styles, then copy and paste the italic font into Facebook, Instagram, YouTube or any post."
     },
     "bubble-text": {
       "title": "Bubble Text Generator — Bubble Letters Copy Paste",
+      "h1": "Bubble Text Generator",
       "description": "Turn text into ⓑⓤⓑⓑⓛⓔ letters: circled letters and numbers you can copy and paste into bios, chats and usernames. A free bubble letters font."
     },
     "square-text": {
       "title": "Square Text Generator — Square Letters Copy Paste",
+      "h1": "Square Text Generator",
       "description": "Put letters in boxes with 🅂🅀🅄🄰🅁🄴 and 🆂🆀🆄🅰🆁🅴 black square text. Copy and paste the square letters into posts, bios and usernames."
     },
     "upside-down-text": {
       "title": "Upside Down Text Generator — Flip Text Online",
+      "h1": "Upside Down Text Generator",
       "description": "Flip text upside down as you type, letters and all. Copy and paste the upside down text into messages, bios, comments and posts for a quick laugh."
     },
     "strikethrough-text": {
       "title": "Strikethrough Text Generator — Cross Out Text",
+      "h1": "Strikethrough Text Generator",
       "description": "Cross out text with s̶t̶r̶i̶k̶e̶t̶h̶r̶o̶u̶g̶h̶ or slash-through lines. Copy and paste it into Discord, Instagram, X or any app without a strikethrough button."
     },
     "leet-speak": {
       "title": "Leet Speak Generator — 1337 Text Translator",
+      "h1": "Leet Speak Generator",
       "description": "Translate text into leet speak (1337 5p34k): letters turn into numbers like 4, 3, 1 and 0. Copy and paste the hacker-style text anywhere online."
     },
     "weird-text": {
       "title": "Weird Text Generator — Creepy Text Copy and Paste",
+      "h1": "Weird Text Generator",
       "description": "Make weird and creepy text: glitchy zalgo, double-struck and faux Cyrillic letters. Copy and paste the strange text into Discord, Roblox chat or TikTok."
     }
   }

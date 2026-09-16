@@ -79,7 +79,7 @@
     ]
   },
   "emoji": {
-    "title": "Emojis à Copier-Coller",
+    "title": "Liste des emojis à copier-coller",
     "metaTitle": "Liste des emojis à copier-coller — 3 700+ emojis",
     "metaDesc": "Emoji copier coller : la liste complète des 3 700+ emojis avec nom, signification et teintes de peau. Unicode 16.0, sur iPhone, Android et ordinateur, gratuit.",
     "clickToCopy": "Cliquez sur un emoji pour le copier dans le presse-papiers.",
@@ -128,7 +128,7 @@
     "detailOgDesc": "Copiez l'emoji {name} {emoji}. Unicode : {unicode}"
   },
   "symbols": {
-    "title": "Symboles et caractères spéciaux",
+    "title": "Caractères spéciaux à copier-coller",
     "metaTitle": "Caractères spéciaux et symboles à copier-coller",
     "metaDesc": "Plus de 1 800 symboles spéciaux à copier-coller : flèches, étoiles, signes mathématiques, formes géométriques. Caractères spéciaux pour pseudo, bio ou Discord.",
     "clickToCopy": "Cliquez pour copier un symbole.",
@@ -151,7 +151,7 @@
     ]
   },
   "fancyText": {
-    "title": "Générateur de texte stylisé",
+    "title": "Générateur de police stylée",
     "metaTitle": "Police stylée — Générateur de texte stylisé",
     "metaDesc": "Générateur de police d'écriture avec 20+ styles : cursive, gras, gothique, bulle… Police stylée pour pseudo, Instagram, TikTok ou Discord, à copier-coller.",
     "inputPlaceholder": "Saisissez votre texte ici...",
@@ -197,7 +197,7 @@
     }
   },
   "combos": {
-    "title": "Combos d'emojis",
+    "title": "Combinaisons d'emojis aesthetic",
     "metaTitle": "Combinaison emoji — Combos d'emojis aesthetic",
     "metaDesc": "Emoji aesthetic à copier-coller : 1 100+ combinaisons pour bio Instagram, légendes et messages, triées par thème : amour, nature, espace, animaux, magie, fêtes.",
     "clickToCopy": "Cliquez pour copier un combo.",
@@ -220,7 +220,7 @@
     ]
   },
   "kaomoji": {
-    "title": "Kaomoji et émoticônes japonaises",
+    "title": "Kaomoji à copier-coller",
     "metaTitle": "Kaomoji à copier-coller — 2 000+ smileys japonais",
     "metaDesc": "Plus de 2 000 kaomoji et émoticônes kawaii à copier-coller, par humeur : joie, tristesse, colère et table flip, amour et cute, chats, ours et Lenny face.",
     "clickToCopy": "Cliquez pour copier un kaomoji.",
@@ -243,12 +243,12 @@
     ]
   },
   "dividers": {
-    "title": "Séparateurs et art linéaire",
+    "title": "Séparateurs de texte aesthetic",
     "metaTitle": "Séparateur de texte aesthetic à copier-coller",
     "metaDesc": "Séparateurs de texte, lignes décoratives et bordures aesthetic à copier-coller pour mettre en forme vos posts Discord, Notion, Tumblr, Instagram, bio et profil."
   },
   "invisible": {
-    "title": "Caractères invisibles",
+    "title": "Caractères invisibles pour pseudo",
     "testArea": "Zone de test",
     "testAreaDesc": "Collez votre caractère invisible entre les crochets ci-dessous pour tester sa largeur.",
     "metaTitle": "Caractère invisible pour pseudo à copier-coller",
@@ -263,7 +263,7 @@
     "metaDesc": "Traduction braille instantanée : tapez un texte, obtenez le braille lettre par lettre et le code morse. Traducteur braille en ligne gratuit, à copier-coller."
   },
   "asciiArt": {
-    "title": "Art ASCII",
+    "title": "ASCII art",
     "searchPlaceholder": "Rechercher de l'art ASCII... (ex. armes, ours, multi-lignes)",
     "noResults": "Aucun art ASCII trouvé pour",
     "metaTitle": "ASCII art — Dessin avec caractères spéciaux",
@@ -403,7 +403,8 @@
     "p2_1": "Non, ce ne sont pas de vraies polices comme celles que vous installez sur votre ordinateur. Ce sont essentiellement des symboles spéciaux de la table des caractères Unicode.",
     "p2_2": "Parce qu'il s'agit de symboles de texte brut, vous pouvez les copier et les coller librement sur les réseaux sociaux. Si c'étaient de vraies polices, d'autres personnes ne pourraient pas les voir sans les avoir installées.",
     "h1": "Générateur de {toolName}",
-    "descPrefix": "Générez {desc}. Générateur en ligne gratuit : saisissez, copiez et collez sur Instagram, TikTok ou Discord."
+    "descPrefix": "Générez {desc}. Générateur en ligne gratuit : saisissez, copiez et collez sur Instagram, TikTok ou Discord.",
+    "q1H1": "Qu’est-ce que {h1} ?"
   },
   "textToolsDesc": {
     "fancy-text": "des styles de texte fantaisistes, cool et esthétiques",
@@ -608,58 +609,72 @@
   "textToolsMeta": {
     "glitch-text": {
       "title": "Générateur de texte glitch — Texte zalgo",
+      "h1": "Générateur de texte glitch",
       "description": "Créez un texte glitch ou zalgo en 3 niveaux, du léger au très effrayant, plus un effet barré. Message glitch à copier-coller sur Discord, TikTok ou Instagram."
     },
     "vaporwave-text": {
       "title": "Texte aesthetic — Générateur de texte vaporwave",
+      "h1": "Générateur de texte aesthetic",
       "description": "Écriture aesthetic à copier-coller : lettres pleine chasse ａｅｓｔｈｅｔｉｃ, petites capitales ou faux cyrillique. Pour une bio Instagram, TikTok ou Discord."
     },
     "tiny-text": {
       "title": "Petite écriture — Générateur de texte minuscule",
+      "h1": "Générateur de petite écriture",
       "description": "Écrivez en ᵖᵉᵗⁱᵗ : lettres en exposant, en indice ou petites capitales. Petite écriture à copier-coller pour pseudo, bio Instagram ou Discord, sans appli."
     },
     "morse-code": {
       "title": "Traducteur morse — Générateur de code morse",
+      "h1": "Traducteur morse",
       "description": "Traduisez un texte en code morse en direct : lettres, chiffres et ponctuation deviennent points et tirets à copier-coller. Traducteur morse en ligne gratuit."
     },
     "cursive-text": {
       "title": "Police cursive — Générateur d'écriture cursive",
+      "h1": "Générateur de police cursive",
       "description": "Écriture cursive à copier-coller : lettres manuscrites 𝓬𝓾𝓻𝓼𝓲𝓿𝓮 fines ou en gras. Collez la police cursive dans votre bio Instagram, TikTok ou Discord."
     },
     "old-english-text": {
       "title": "Écriture gothique — Générateur d'ancien anglais",
+      "h1": "Générateur d'écriture gothique",
       "description": "Générateur d'écriture gothique : texte fraktur 𝔊𝔬𝔱𝔥𝔦𝔮𝔲𝔢 normal ou gras. Police gothique à copier-coller pour pseudo, bio Instagram et posts, gratuit."
     },
     "bold-text": {
       "title": "Texte en gras — Générateur de gras pour LinkedIn",
+      "h1": "Générateur de texte en gras",
       "description": "Écrire en gras sur LinkedIn, Facebook, Instagram ou Discord : 𝐠𝐫𝐚𝐬 avec ou sans empattement et gras italique. Texte en gras en ligne, à copier-coller."
     },
     "italic-text": {
       "title": "Texte en italique — Générateur d'italique",
+      "h1": "Générateur de texte en italique",
       "description": "Écrire en italique sur LinkedIn, Instagram, Messenger ou Facebook : 𝘪𝘵𝘢𝘭𝘪𝘲𝘶𝘦 avec ou sans empattement, et gras italique. À copier-coller, gratuit."
     },
     "bubble-text": {
       "title": "Lettres bulles — Générateur de lettres entourées",
+      "h1": "Générateur de lettres bulles",
       "description": "Écrivez en lettres entourées ⓑⓤⓛⓛⓔ : lettres minuscules, majuscules et chiffres dans des cercles. Lettre bulle à copier-coller pour pseudo et bio, gratuit."
     },
     "square-text": {
       "title": "Lettres carrées — Générateur de texte carré",
+      "h1": "Générateur de lettres carrées",
       "description": "Mettez chaque lettre dans un carré : 🄲🄰🅁🅁🄴 blanc ou 🅲🅰🆁🆁🅴 noir. Lettres carrées à copier-coller pour vos posts, bio Instagram et pseudo, gratuit."
     },
     "upside-down-text": {
       "title": "Texte à l'envers — Générateur de texte inversé",
+      "h1": "Générateur de texte à l'envers",
       "description": "Écrire à l'envers : le texte se retourne pendant la saisie, lettre par lettre. Texte à l'envers à copier-coller dans vos messages, bio ou sur WhatsApp, gratuit."
     },
     "strikethrough-text": {
       "title": "Texte barré — Générateur d'écriture barrée",
+      "h1": "Générateur de texte barré",
       "description": "Écriture barrée en un clic : t̶e̶x̶t̶e̶ barré d'un trait ou d'une barre oblique. Texte barré à copier-coller sur Discord, WhatsApp ou Instagram, sans raccourci."
     },
     "leet-speak": {
       "title": "Générateur de leet speak — Traducteur 1337",
+      "h1": "Générateur de leet speak",
       "description": "Traducteur leet speak : les lettres deviennent des chiffres comme 4, 3, 1 et 0 (1337 5p34k). Texte hacker à copier-coller sur Discord ou les réseaux, gratuit."
     },
     "weird-text": {
       "title": "Écriture bizarre — Générateur de lettres bizarres",
+      "h1": "Générateur d'écriture bizarre",
       "description": "Texte bizarre à copier-coller : lettres zalgo glitchées, ajourées 𝕓𝕚𝕫𝕒𝕣𝕣𝕖 et faux cyrillique. Écriture bizarre pour Instagram, Discord, Roblox ou TikTok."
     }
   }
