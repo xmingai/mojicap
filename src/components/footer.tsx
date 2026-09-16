@@ -71,7 +71,6 @@ export function Footer() {
                   <li><Link href={`${prefix}/pricing/`} className="hover:text-foreground hover:underline transition-colors">{t.plus}</Link></li>
                 )}
                 <li><Link href={`${prefix}/about`} className="hover:text-foreground hover:underline transition-colors">{t.about}</Link></li>
-                <li><a href="https://discord.gg/J62YvPcrzB" target="_blank" rel="noopener noreferrer" className="hover:text-foreground hover:underline transition-colors">Discord</a></li>
               </ul>
             </div>
           </div>
