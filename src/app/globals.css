@@ -137,3 +137,9 @@
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
+/* Paywall dialog emoji wall: each column holds its list twice, so moving it up by
+   half its height lands exactly where it started. */
+@keyframes emoji-wall {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}

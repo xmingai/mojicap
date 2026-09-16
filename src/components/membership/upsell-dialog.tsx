@@ -9,6 +9,7 @@ import { planFor, yearlySavingsPercent } from "@/lib/membership/plans";
 import { formatMoney } from "@/lib/membership/format";
 import { useMembership } from "./membership-provider";
 import { Loader2 } from "lucide-react";
+import { EmojiWall } from "./emoji-wall";
 
 export type UpsellFeature = "sync" | "fonts" | "bulk" | "copies";
 
@@ -32,9 +33,10 @@ export function UpsellDialog({ feature, onClose }: { feature: UpsellFeature | nu
 
   return (
     <Dialog open={feature !== null} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent closeLabel={dict.auth.close}>
+      <DialogContent closeLabel={dict.auth.close} className="max-w-[760px] overflow-hidden p-0 md:grid md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
+        <EmojiWall />
         {copy && feature && (
-          <>
+          <div className="p-6 md:flex md:flex-col md:justify-center md:p-8">
             <DialogTitle>{copy.title}</DialogTitle>
             <DialogDescription>{copy.desc}</DialogDescription>
             <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{t.upsell.alsoIncluded}</p>
@@ -72,7 +74,7 @@ export function UpsellDialog({ feature, onClose }: { feature: UpsellFeature | nu
               </Link>
               <DialogClose className="h-9 text-sm text-muted-foreground hover:text-foreground">{t.upsell.notNow}</DialogClose>
             </div>
-          </>
+          </div>
         )}
       </DialogContent>
     </Dialog>

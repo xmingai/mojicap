@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Check, Loader2 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
+import { EmojiWall } from "./emoji-wall";
 import { suggestEmailFix } from "@/lib/email-typo";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import Link from "next/link";
@@ -131,7 +132,9 @@ export function AuthDialog({ open, onOpenChange, reason = null, google, onSigned
         if (!next) reset();
       }}
     >
-      <DialogContent closeLabel={t.close}>
+      <DialogContent closeLabel={t.close} {...(reason ? { className: "max-w-[760px] overflow-hidden p-0 md:grid md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]" } : {})}>
+        {reason && <EmojiWall />}
+        <div className={reason ? "p-6 md:flex md:flex-col md:justify-center md:p-8" : undefined}>
         <DialogTitle>{limit ? limit.title : t.title}</DialogTitle>
         <DialogDescription>
           {limit ? limit.subtitle : step === "email" ? t.subtitle : t.codeSentTo.replace("{email}", email)}
@@ -273,6 +276,7 @@ export function AuthDialog({ open, onOpenChange, reason = null, google, onSigned
             </div>
           </form>
         )}
+        </div>
       </DialogContent>
     </Dialog>
   );
