@@ -569,7 +569,8 @@
     "monthlyNote": "Yearly costs {percent}% less",
     "onetimeNote": "One payment, no auto-renewal",
     "wechatOnly": "Pay with WeChat",
-    "refundLink": "Refund policy"
+    "refundLink": "Refund policy",
+    "comingSoon": "Opening soon"
   },
   "account": {
     "title": "Account",

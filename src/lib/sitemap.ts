@@ -15,7 +15,6 @@
 
 import { locales, type Locale } from "@/i18n/config";
 import { getBaseEmojis } from "@/lib/emoji";
-import { MEMBERSHIP_UI_ENABLED } from "@/lib/membership/config";
 import { absoluteUrl, SITE_URL } from "@/lib/seo";
 import { TEXT_TOOLS } from "@/lib/tool-routes";
 
@@ -34,8 +33,7 @@ const PAGE_PATHS = [
   "/about",
   "/privacy",
   "/terms",
-  // /pricing exists only while membership is switched on.
-  ...(MEMBERSHIP_UI_ENABLED ? ["/pricing"] : []),
+  "/pricing",
 ];
 
 export const SITEMAP_FILES = ["pages.xml", ...locales.map((l) => `emoji-${l}.xml`)];

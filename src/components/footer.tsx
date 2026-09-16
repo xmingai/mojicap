@@ -7,7 +7,6 @@ import { useDict, useLocale } from "@/i18n/context";
 import { defaultLocale } from "@/i18n/config";
 import { TEXT_TOOLS } from "@/lib/tool-routes";
 import { trackAd } from "@/components/ads/track";
-import { MEMBERSHIP_UI_ENABLED } from "@/lib/membership/config";
 
 // First six text tools, matching the previous hand-written footer list.
 const FOOTER_TEXT_TOOLS = TEXT_TOOLS.slice(0, 6);
@@ -67,9 +66,7 @@ export function Footer() {
             <div className="space-y-3">
               <h4 className="font-semibold text-foreground">{t.company}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                {MEMBERSHIP_UI_ENABLED && (
-                  <li><Link href={`${prefix}/pricing/`} className="hover:text-foreground hover:underline transition-colors">{t.plus}</Link></li>
-                )}
+                <li><Link href={`${prefix}/pricing/`} className="hover:text-foreground hover:underline transition-colors">{t.plus}</Link></li>
                 <li><Link href={`${prefix}/about`} className="hover:text-foreground hover:underline transition-colors">{t.about}</Link></li>
               </ul>
             </div>
