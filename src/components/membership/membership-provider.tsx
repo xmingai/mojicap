@@ -7,9 +7,10 @@ import { authClient } from "@/lib/auth-client";
 import { MEMBERSHIP_UI_ENABLED } from "@/lib/membership/config";
 import { useDict, useLocale } from "@/i18n/context";
 import { defaultLocale } from "@/i18n/config";
-import { AuthDialog } from "./auth-dialog";
+import { AuthDialog, type AuthReason } from "./auth-dialog";
 import { UpsellDialog, type UpsellFeature } from "./upsell-dialog";
 import { useCloudSync } from "./use-cloud-sync";
+import { configureCopyGate } from "@/lib/copy-gate";
 
 export type Me = {
   enabled: boolean;
@@ -55,6 +56,9 @@ export function MembershipProvider({ children }: { children: React.ReactNode }) 
   const [me, setMe] = useState<Me>(SIGNED_OUT);
   const [ready, setReady] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
+  // Set when the dialog opens because the free copies ran out, so it can lead
+  // with what an account gives instead of a bare email field.
+  const [authReason, setAuthReason] = useState<AuthReason>(null);
   const [upsell, setUpsell] = useState<UpsellFeature | null>(null);
   const [checkoutPending, setCheckoutPending] = useState<string | null>(null);
   const afterAuth = useRef<(() => void) | null>(null);
@@ -85,10 +89,31 @@ export function MembershipProvider({ children }: { children: React.ReactNode }) 
     refresh();
   }, [refresh]);
 
-  useCloudSync(MEMBERSHIP_UI_ENABLED && ready && me.isMember);
+  useCloudSync({ signedIn: MEMBERSHIP_UI_ENABLED && ready && Boolean(me.user), isMember: me.isMember });
+
+  // Free copies run out after COPY_LIMITS a day; the next attempt opens the
+  // sign-in dialog for visitors and the Plus dialog for signed-in members.
+  useEffect(() => {
+    const status = me.isMember ? "member" : me.user ? "free" : "anonymous";
+    configureCopyGate({
+      enabled: MEMBERSHIP_UI_ENABLED && ready,
+      status,
+      onBlocked: (blocked, retry) => {
+        if (blocked === "anonymous") {
+          // Signing in finishes the copy they were trying to make.
+          afterAuth.current = retry;
+          setAuthReason("copies");
+          setAuthOpen(true);
+        } else {
+          setUpsell("copies");
+        }
+      },
+    });
+  }, [ready, me.isMember, me.user]);
 
   const openAuth = useCallback((then?: () => void) => {
     afterAuth.current = then ?? null;
+    setAuthReason(null);
     setAuthOpen(true);
   }, []);
 
@@ -154,7 +179,7 @@ export function MembershipProvider({ children }: { children: React.ReactNode }) 
       {children}
       {MEMBERSHIP_UI_ENABLED && (
         <>
-          <AuthDialog open={authOpen} onOpenChange={setAuthOpen} google={me.google} onSignedIn={onSignedIn} />
+          <AuthDialog open={authOpen} onOpenChange={setAuthOpen} reason={authReason} google={me.google} onSignedIn={onSignedIn} />
           <UpsellDialog feature={upsell} onClose={() => setUpsell(null)} />
         </>
       )}

@@ -5,6 +5,8 @@
 
 export const LIMITS = {
   favorites: 500,
+  /** A free account syncs this many favorites; Plus raises it to `favorites`. */
+  freeFavorites: 20,
   recents: 50,
   combos: 200,
   itemChars: 64,

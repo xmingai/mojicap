@@ -13,6 +13,7 @@ import { useFavorites } from "@/hooks/use-favorites";
 import { MEMBERSHIP_UI_ENABLED } from "@/lib/membership/config";
 import { useMembership } from "@/components/membership/membership-provider";
 import { PlusBadge } from "@/components/membership/plus-badge";
+import { LIMITS } from "@/lib/membership/sync";
 import { SelectionBar } from "@/components/membership/selection-bar";
 import { EmojiHoverCard } from "@/components/emoji-hover-card";
 import { SizeSlider, COMMON_SIZE_PRESETS } from "@/components/size-slider";
@@ -107,23 +108,33 @@ export function EmojiGrid({ emojis, categories, versions }: EmojiGridProps) {
   };
 
   // Plus syncs favorites and recents; say so once, on the first list shown.
-  const syncHint = MEMBERSHIP_UI_ENABLED ? (
-    me.isMember ? (
-      <span className="inline-flex items-center gap-1 normal-case tracking-normal" title={dict.favorites.synced}>
-        <CloudCheck className="h-3.5 w-3.5" aria-label={dict.favorites.synced} />
-      </span>
-    ) : (
-      <button
-        type="button"
-        onClick={() => openUpsell("sync")}
-        className="inline-flex items-center gap-1.5 normal-case tracking-normal text-muted-foreground transition hover:text-foreground"
-      >
-        <Cloud className="h-3.5 w-3.5" />
-        {dict.favorites.syncUpsell}
-        <PlusBadge label={dict.plus.badge} />
-      </button>
-    )
-  ) : null;
+  // Three states: Plus syncs everything, a free account syncs a small shelf of
+  // favorites, and a visitor is invited to sign in for that much.
+  const syncHint = !MEMBERSHIP_UI_ENABLED ? null : me.isMember ? (
+    <span className="inline-flex items-center gap-1 normal-case tracking-normal" title={dict.favorites.synced}>
+      <CloudCheck className="h-3.5 w-3.5" aria-label={dict.favorites.synced} />
+    </span>
+  ) : (
+    <button
+      type="button"
+      onClick={() => openUpsell("sync")}
+      className="inline-flex items-center gap-1.5 normal-case tracking-normal text-muted-foreground transition hover:text-foreground"
+    >
+      {me.user ? (
+        <>
+          <CloudCheck className="h-3.5 w-3.5" />
+          {dict.favorites.syncedFree.replace("{count}", String(LIMITS.freeFavorites))}
+          <PlusBadge label={dict.plus.badge} />
+        </>
+      ) : (
+        <>
+          <Cloud className="h-3.5 w-3.5" />
+          {dict.favorites.syncUpsell}
+          <PlusBadge label={dict.plus.badge} />
+        </>
+      )}
+    </button>
+  );
 
   const listButton = (emoji: string, i: number) => (
     <button

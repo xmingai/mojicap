@@ -32,6 +32,14 @@ export async function requireMember(request: Request): Promise<Guard<SessionUser
   return guard;
 }
 
+/** Signed-in user plus whether Plus is active, for routes that serve both tiers. */
+export async function requireUserWithTier(request: Request): Promise<Guard<SessionUser & { isMember: boolean }>> {
+  const guard = await requireUser(request);
+  if (!guard.ok) return guard;
+  const row = await getMembership(getDB(), guard.value.id);
+  return { ok: true, value: { ...guard.value, isMember: isMemberNow(row) } };
+}
+
 export async function membershipSummary(userId: string) {
   const row = await getMembership(getDB(), userId);
   if (!row) return { isMember: false, plan: null };

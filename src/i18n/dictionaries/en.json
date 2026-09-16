@@ -474,7 +474,16 @@
     "errorGeneric": "Something went wrong. Please try again.",
     "legal": "By continuing you agree to the Terms and Privacy Policy.",
     "signedIn": "Signed in",
-    "signedOut": "Signed out"
+    "signedOut": "Signed out",
+    "limit": {
+      "title": "Free copies used up for today",
+      "subtitle": "Create a free account in one step — we email you a code, no password.",
+      "benefits": [
+        "10 copies a day instead of 3",
+        "Keep up to 20 favorites synced across your devices",
+        "Sign in with an emailed code — no password to remember"
+      ]
+    }
   },
   "plus": {
     "name": "MojiCap Plus",
@@ -514,7 +523,7 @@
     "upsell": {
       "sync": {
         "title": "Sync across your devices",
-        "desc": "Plus keeps your favorites and recently used emoji the same on every device."
+        "desc": "Plus syncs every favorite and your recently used emoji to every device. A free account syncs 20 favorites."
       },
       "fonts": {
         "title": "Unlock premium fonts",
@@ -526,8 +535,14 @@
       },
       "alsoIncluded": "Also in Plus",
       "priceFrom": "From {price} a month",
-      "seePlans": "See plans",
-      "notNow": "Not now"
+      "seePlans": "See monthly and yearly plans",
+      "notNow": "Not now",
+      "copies": {
+        "title": "Copy without counting",
+        "desc": "You have used today's 10 free copies. Plus lifts the limit, so every emoji, symbol and font is one tap away."
+      },
+      "ctaYearly": "Get Plus for {price} a year",
+      "yearlyNote": "About {price} a month, {percent}% less than paying monthly"
     },
     "checkoutError": "Couldn't open checkout. Please try again.",
     "checkoutUnavailable": "Checkout isn't available yet.",
@@ -549,7 +564,9 @@
         "q": "Can I switch between monthly and yearly?",
         "a": "Cancel your current plan and choose the other one when it ends. Your favorites and combos stay in your account."
       }
-    ]
+    ],
+    "saveAmount": "save {amount} a year",
+    "monthlyNote": "Yearly costs {percent}% less"
   },
   "account": {
     "title": "Account",
@@ -583,7 +600,8 @@
     "added": "Added to favorites",
     "removed": "Removed from favorites",
     "synced": "Synced across your devices",
-    "syncUpsell": "Sync across devices"
+    "syncUpsell": "Sync across devices",
+    "syncedFree": "{count} synced"
   },
   "selection": {
     "select": "Select",

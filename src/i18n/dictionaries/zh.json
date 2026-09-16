@@ -473,7 +473,16 @@
     "errorGeneric": "出了点问题，请重试。",
     "legal": "继续即表示你同意服务条款和隐私政策。",
     "signedIn": "已登录",
-    "signedOut": "已退出登录"
+    "signedOut": "已退出登录",
+    "limit": {
+      "title": "今天的免费复制次数已用完",
+      "subtitle": "一步创建免费账号，我们把验证码发到你的邮箱，无需密码。",
+      "benefits": [
+        "每天 10 次复制，而不是 3 次",
+        "最多 20 个收藏在你的设备间同步",
+        "用邮箱验证码登录，不用记密码"
+      ]
+    }
   },
   "plus": {
     "name": "MojiCap Plus",
@@ -513,7 +522,7 @@
     "upsell": {
       "sync": {
         "title": "在所有设备间同步",
-        "desc": "开通 Plus 后，收藏和最近使用的表情在每台设备上保持一致。"
+        "desc": "开通 Plus 后，收藏和最近使用的表情在每台设备上保持一致。免费账号可同步 20 个收藏。"
       },
       "fonts": {
         "title": "解锁高级字体",
@@ -525,8 +534,14 @@
       },
       "alsoIncluded": "Plus 还包括",
       "priceFrom": "每月 {price} 起",
-      "seePlans": "查看方案",
-      "notNow": "暂不需要"
+      "seePlans": "查看月付和年付方案",
+      "notNow": "暂不需要",
+      "copies": {
+        "title": "复制不用再数次数",
+        "desc": "今天的 10 次免费复制已用完。开通 Plus 后不再限次，表情、符号和字体随时一点即得。"
+      },
+      "ctaYearly": "开通 Plus，每年 {price}",
+      "yearlyNote": "约合每月 {price}，比月付便宜 {percent}%"
     },
     "checkoutError": "无法打开支付页，请重试。",
     "checkoutUnavailable": "支付暂未开放。",
@@ -548,7 +563,9 @@
         "q": "可以在月付和年付之间切换吗？",
         "a": "先取消当前方案，到期后再选择另一种。你的收藏和组合都会保留在账户里。"
       }
-    ]
+    ],
+    "saveAmount": "每年省 {amount}",
+    "monthlyNote": "年付便宜 {percent}%"
   },
   "account": {
     "title": "账户",
@@ -582,7 +599,8 @@
     "added": "已加入收藏",
     "removed": "已取消收藏",
     "synced": "已在你的设备间同步",
-    "syncUpsell": "跨设备同步"
+    "syncUpsell": "跨设备同步",
+    "syncedFree": "已同步 {count} 个"
   },
   "selection": {
     "select": "多选",
