@@ -208,7 +208,7 @@ function PlanCard({
         <>
           <p className="mt-1 flex items-center gap-2 text-lg font-semibold">
             {dict.plus.name}
-            <PlusBadge label={current.interval === "monthly" ? dict.plus.monthly : dict.plus.yearly} />
+            <PlusBadge label={current.interval === "monthly" ? dict.plus.monthly : dict.plus.yearly} variant="member" />
           </p>
           <p className="mt-1 text-sm text-muted-foreground">
             {current.kind === "onetime"
