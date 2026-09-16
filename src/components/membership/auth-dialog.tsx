@@ -132,9 +132,9 @@ export function AuthDialog({ open, onOpenChange, reason = null, google, onSigned
         if (!next) reset();
       }}
     >
-      <DialogContent closeLabel={t.close} {...(reason ? { className: "max-w-[760px] overflow-hidden p-0 md:grid md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]" } : {})}>
-        {reason && <EmojiWall />}
-        <div className={reason ? "p-6 md:flex md:flex-col md:justify-center md:p-8" : undefined}>
+      <DialogContent closeLabel={t.close} className="max-w-[760px] overflow-hidden p-0 md:grid md:min-h-[440px] md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
+        <EmojiWall />
+        <div className="p-6 md:flex md:flex-col md:justify-center md:p-8">
         <DialogTitle>{limit ? limit.title : t.title}</DialogTitle>
         <DialogDescription>
           {limit ? limit.subtitle : step === "email" ? t.subtitle : t.codeSentTo.replace("{email}", email)}
