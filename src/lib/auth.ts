@@ -34,7 +34,7 @@ function createAuth() {
       schema: { user, session, account, verification, rateLimit },
     }),
     session: {
-      expiresIn: 60 * 60 * 24 * 60, // 60 days
+      expiresIn: 60 * 60 * 24 * 365, // a year — signing in again means fetching a code from an inbox
       updateAge: 60 * 60 * 24, // refresh at most daily
       cookieCache: { enabled: true, maxAge: 5 * 60 },
     },
