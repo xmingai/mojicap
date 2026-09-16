@@ -518,8 +518,8 @@
         "desc": "Pick several emoji at once, copy them together and save your own combos."
       },
       "noPromo": {
-        "title": "No promotions",
-        "desc": "Browse without the top banner and pop-up promotions."
+        "title": "Ad-free, no promotions",
+        "desc": "Browse with no ads, no top banner and no pop-up promotions."
       }
     },
     "fineprint": "Cancel anytime. Payments are processed by Waffo.",
@@ -547,7 +547,11 @@
         "desc": "You have used today's 10 free copies. Plus lifts the limit, so every emoji, symbol and font is one tap away."
       },
       "ctaYearly": "Get Plus for {price} a year",
-      "yearlyNote": "About {price} a month, {percent}% less than paying monthly"
+      "yearlyNote": "About {price} a month, {percent}% less than paying monthly",
+      "noPromo": {
+        "title": "Go ad-free with Plus",
+        "desc": "No ads, no top banner, no pop-up promotions — just the emoji, symbols and fonts you came for."
+      }
     },
     "checkoutError": "Couldn't open checkout. Please try again.",
     "checkoutUnavailable": "Checkout isn't available yet.",
@@ -575,7 +579,8 @@
     "onetimeNote": "One payment, no auto-renewal",
     "wechatOnly": "Pay with WeChat",
     "refundLink": "Refund policy",
-    "comingSoon": "Opening soon"
+    "comingSoon": "Opening soon",
+    "adFreeButton": "Go ad-free"
   },
   "account": {
     "title": "Account",

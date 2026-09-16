@@ -518,8 +518,8 @@
         "desc": "Escolha vários emojis de uma vez, copie juntos e salve como seus combos."
       },
       "noPromo": {
-        "title": "Sem promoções",
-        "desc": "Navegue sem o banner superior e sem promoções em pop-up."
+        "title": "Sem anúncios nem promoções",
+        "desc": "Navegue sem anúncios, sem o banner superior e sem promoções em pop-up."
       }
     },
     "fineprint": "Cancele quando quiser. Os pagamentos são processados pela Waffo.",
@@ -547,7 +547,11 @@
         "desc": "Você já usou as 10 cópias gratuitas de hoje. Com o Plus o limite acaba, e cada emoji, símbolo e fonte fica a um toque."
       },
       "ctaYearly": "Assinar o Plus por {price} ao ano",
-      "yearlyNote": "Cerca de {price} por mês, {percent}% menos que pagar por mês"
+      "yearlyNote": "Cerca de {price} por mês, {percent}% menos que pagar por mês",
+      "noPromo": {
+        "title": "Sem anúncios com o Plus",
+        "desc": "Sem anúncios, sem banner superior e sem promoções em pop-up: só os emojis, símbolos e fontes que você procura."
+      }
     },
     "checkoutError": "Não foi possível abrir o pagamento. Tente de novo.",
     "checkoutUnavailable": "O pagamento ainda não está disponível.",
@@ -575,7 +579,8 @@
     "onetimeNote": "Pagamento único, sem renovação automática",
     "wechatOnly": "Pague com WeChat Pay",
     "refundLink": "Política de reembolso",
-    "comingSoon": "Em breve"
+    "comingSoon": "Em breve",
+    "adFreeButton": "Sem anúncios"
   },
   "account": {
     "title": "Conta",

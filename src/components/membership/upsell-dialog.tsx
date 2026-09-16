@@ -11,7 +11,7 @@ import { useMembership } from "./membership-provider";
 import { Loader2 } from "lucide-react";
 import { EmojiWall } from "./emoji-wall";
 
-export type UpsellFeature = "sync" | "fonts" | "bulk" | "copies";
+export type UpsellFeature = "sync" | "fonts" | "bulk" | "copies" | "noPromo";
 
 const ALL_BENEFITS = ["sync", "fonts", "bulk", "noPromo"] as const;
 
