@@ -6,6 +6,8 @@
  * sign-in flow can be exercised locally.
  */
 
+import { LOCALE_HEADER } from "./locale-header";
+
 export async function sendEmail(params: { to: string; subject: string; html: string; text: string }): Promise<void> {
   const key = process.env.RESEND_API_KEY?.trim();
   const from = process.env.EMAIL_FROM?.trim();
@@ -25,6 +27,17 @@ export async function sendEmail(params: { to: string; subject: string; html: str
   if (!res.ok) {
     console.error("[email] Resend rejected the message", res.status, await res.text().catch(() => ""));
   }
+}
+
+/**
+ * Language for the sign-in email: the page the visitor asked from, then the
+ * language they last picked in the switcher (NEXT_LOCALE), then English.
+ * Only languages we have copy for are accepted.
+ */
+export function emailLocale(headers: Headers | undefined): string {
+  const known = (value: string | null | undefined) => (value && value in OTP_COPY ? value : null);
+  const cookie = headers?.get("cookie")?.match(/(?:^|;\s*)NEXT_LOCALE=([a-z]{2})/)?.[1];
+  return known(headers?.get(LOCALE_HEADER)) ?? known(cookie) ?? "en";
 }
 
 const OTP_COPY: Record<string, { subject: string; heading: string; body: string; ignore: string }> = {

@@ -13,13 +13,8 @@ import { nextCookies } from "better-auth/next-js";
 import { after } from "next/server";
 import { getDB } from "./db";
 import { account, rateLimit, session, user, verification } from "./db/schema";
-import { sendEmail, signInCodeEmail } from "./email";
+import { emailLocale, sendEmail, signInCodeEmail } from "./email";
 
-function localeFromRequest(request: Request | undefined): string {
-  const cookie = request?.headers.get("cookie") ?? "";
-  const match = cookie.match(/(?:^|;\s*)NEXT_LOCALE=([a-z]{2})/);
-  return match?.[1] ?? "en";
-}
 
 function createAuth() {
   const googleId = process.env.GOOGLE_CLIENT_ID?.trim();
@@ -55,7 +50,7 @@ function createAuth() {
         allowedAttempts: 5,
         storeOTP: "hashed",
         async sendVerificationOTP({ email, otp }, ctx) {
-          const message = signInCodeEmail(otp, localeFromRequest(ctx?.request));
+          const message = signInCodeEmail(otp, emailLocale(ctx?.request?.headers));
           // Don't await: response timing must not reveal whether an address exists.
           // after() keeps the serverless function alive until the send completes.
           after(() => sendEmail({ to: email, ...message }));
