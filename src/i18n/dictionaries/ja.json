@@ -574,7 +574,8 @@
     "monthlyNote": "年払いは {percent}% 安くなります",
     "onetimeNote": "買い切り、自動更新なし",
     "wechatOnly": "WeChat Pay で支払い",
-    "refundLink": "返金ポリシー"
+    "refundLink": "返金ポリシー",
+    "comingSoon": "まもなく開始"
   },
   "account": {
     "title": "アカウント",

@@ -574,7 +574,8 @@
     "monthlyNote": "O plano anual custa {percent}% menos",
     "onetimeNote": "Pagamento único, sem renovação automática",
     "wechatOnly": "Pague com WeChat Pay",
-    "refundLink": "Política de reembolso"
+    "refundLink": "Política de reembolso",
+    "comingSoon": "Em breve"
   },
   "account": {
     "title": "Conta",

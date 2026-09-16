@@ -574,7 +574,8 @@
     "monthlyNote": "연간 결제가 {percent}% 저렴합니다",
     "onetimeNote": "1회 결제, 자동 갱신 없음",
     "wechatOnly": "WeChat Pay로 결제",
-    "refundLink": "환불 정책"
+    "refundLink": "환불 정책",
+    "comingSoon": "곧 오픈"
   },
   "account": {
     "title": "계정",

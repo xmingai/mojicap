@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Cloud, Layers, Loader2, Type, EyeOff } from "lucide-react";
 import { useDict, useLocale } from "@/i18n/context";
@@ -9,6 +9,8 @@ import { cn } from "@/lib/utils";
 import { planFor, yearlySavings, yearlySavingsPercent, type PlanInterval } from "@/lib/membership/plans";
 import { formatMoney } from "@/lib/membership/format";
 import { useMembership } from "@/components/membership/membership-provider";
+import { MEMBERSHIP_UI_ENABLED } from "@/lib/membership/config";
+import type { Market } from "@/lib/membership/plans";
 
 const BENEFITS = [
   { key: "sync", Icon: Cloud },
@@ -25,8 +27,26 @@ export function PricingClient() {
   const [interval, setBilling] = useState<PlanInterval>("yearly");
   const prefix = locale === defaultLocale ? "" : `/${locale}`;
 
+  // This page stays public while the rest of the membership is switched off, so
+  // visitors (and Waffo's review) can see what Plus costs. Without the provider
+  // running there is nobody to tell us the market, so ask for it here.
+  const [ownMarket, setOwnMarket] = useState<Market>("global");
+  useEffect(() => {
+    if (MEMBERSHIP_UI_ENABLED) return;
+    let cancelled = false;
+    fetch("/api/me/", { cache: "no-store" })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((body: { market?: Market } | null) => {
+        if (!cancelled && body?.market) setOwnMarket(body.market);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   // In mainland China these are one-time WeChat purchases; elsewhere card subscriptions.
-  const market = me.market;
+  const market = MEMBERSHIP_UI_ENABLED ? me.market : ownMarket;
   const plan = planFor(market, interval);
   const pending = checkoutPending === plan.sku;
 
@@ -86,6 +106,10 @@ export function PricingClient() {
                 {t.manage}
               </Link>
             </div>
+          ) : !MEMBERSHIP_UI_ENABLED ? (
+            <p className="mt-6 flex h-11 w-full items-center justify-center rounded-xl border border-dashed border-border text-sm font-medium text-muted-foreground">
+              {t.comingSoon}
+            </p>
           ) : (
             <button
               type="button"
