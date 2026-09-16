@@ -568,7 +568,8 @@
     "saveAmount": "экономия {amount} в год",
     "monthlyNote": "Годовой тариф на {percent}% дешевле",
     "onetimeNote": "Разовый платёж, без автопродления",
-    "wechatOnly": "Оплата через WeChat Pay"
+    "wechatOnly": "Оплата через WeChat Pay",
+    "refundLink": "Политика возврата"
   },
   "account": {
     "title": "Аккаунт",

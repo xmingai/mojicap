@@ -567,7 +567,8 @@
     "saveAmount": "每年省 {amount}",
     "monthlyNote": "年付便宜 {percent}%",
     "onetimeNote": "一次性付款，不会自动续费",
-    "wechatOnly": "使用微信支付"
+    "wechatOnly": "使用微信支付",
+    "refundLink": "退款政策"
   },
   "account": {
     "title": "账户",

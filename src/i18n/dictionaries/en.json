@@ -568,7 +568,8 @@
     "saveAmount": "save {amount} a year",
     "monthlyNote": "Yearly costs {percent}% less",
     "onetimeNote": "One payment, no auto-renewal",
-    "wechatOnly": "Pay with WeChat"
+    "wechatOnly": "Pay with WeChat",
+    "refundLink": "Refund policy"
   },
   "account": {
     "title": "Account",

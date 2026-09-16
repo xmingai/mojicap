@@ -568,7 +568,8 @@
     "saveAmount": "économisez {amount} par an",
     "monthlyNote": "L'offre annuelle coûte {percent} % de moins",
     "onetimeNote": "Paiement unique, sans renouvellement automatique",
-    "wechatOnly": "Paiement par WeChat Pay"
+    "wechatOnly": "Paiement par WeChat Pay",
+    "refundLink": "Politique de remboursement"
   },
   "account": {
     "title": "Compte",
