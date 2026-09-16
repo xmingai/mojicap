@@ -8,6 +8,7 @@ import { defaultLocale } from "@/i18n/config";
 import { TEXT_TOOLS } from "@/lib/tool-routes";
 import { trackAd } from "@/components/ads/track";
 import { MEMBERSHIP_UI_ENABLED } from "@/lib/membership/config";
+import { SUPPORT_EMAIL } from "@/lib/legal";
 
 // First six text tools, matching the previous hand-written footer list.
 const FOOTER_TEXT_TOOLS = TEXT_TOOLS.slice(0, 6);
@@ -71,6 +72,7 @@ export function Footer() {
                   <li><Link href={`${prefix}/pricing/`} className="hover:text-foreground hover:underline transition-colors">{t.plus}</Link></li>
                 )}
                 <li><Link href={`${prefix}/about`} className="hover:text-foreground hover:underline transition-colors">{t.about}</Link></li>
+                <li><a href={`mailto:${SUPPORT_EMAIL}`} className="hover:text-foreground hover:underline transition-colors">{t.contact}</a></li>
               </ul>
             </div>
           </div>
