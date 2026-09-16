@@ -2,7 +2,8 @@
  * Decorative left panel for the paywall dialogs: a slowly drifting wall of the
  * emoji people come here to copy, so the moment we ask for something the dialog
  * still looks like MojiCap rather than a form. Purely visual — hidden from
- * assistive tech, hidden on small screens, and still under reduced motion.
+ * assistive tech, hidden on small screens, and slowed right down (not stopped)
+ * under reduced motion.
  */
 
 const COLUMNS = [
@@ -12,6 +13,9 @@ const COLUMNS = [
   ["🌙", "🥳", "💜", "🤩", "🌷", "😇", "🍒", "🫧", "🙈", "💐"],
 ];
 
+/** Seconds for a column to scroll through its emoji once. */
+const SPEEDS = [22, 26, 20, 24];
+
 export function EmojiWall() {
   return (
     <div aria-hidden="true" className="relative hidden overflow-hidden bg-muted/50 md:block">
@@ -19,10 +23,14 @@ export function EmojiWall() {
         {COLUMNS.map((column, i) => (
           <div
             key={i}
-            className="flex flex-col gap-2.5 motion-safe:animate-[emoji-wall_42s_linear_infinite]"
-            // Neighbouring columns drift in opposite directions, and start offset,
-            // so the wall never lines up into rows.
-            style={{ animationDirection: i % 2 ? "reverse" : "normal", marginTop: `${(i % 2) * -24}px` }}
+            className="flex animate-emoji-wall flex-col gap-2.5 [animation-duration:var(--wall-speed)] motion-reduce:[animation-duration:90s]"
+            // Neighbouring columns drift in opposite directions at slightly different
+            // speeds, and start offset, so the wall never lines up into rows.
+            style={{
+              ["--wall-speed" as string]: `${SPEEDS[i]}s`,
+              animationDirection: i % 2 ? "reverse" : "normal",
+              marginTop: `${(i % 2) * -24}px`,
+            }}
           >
             {[...column, ...column].map((emoji, j) => (
               <span
