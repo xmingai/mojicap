@@ -33,6 +33,8 @@ type MembershipContextValue = {
   signOut: () => Promise<void>;
   startCheckout: (sku: string, source: string) => Promise<void>;
   checkoutPending: string | null;
+  /** True while the sign-in or Plus dialog is open, so nothing else competes with it. */
+  overlayOpen: boolean;
 };
 
 const SIGNED_OUT: Me = { enabled: MEMBERSHIP_UI_ENABLED, user: null, market: "global", isMember: false, plan: null, google: false };
@@ -122,7 +124,12 @@ export function MembershipProvider({ children }: { children: React.ReactNode }) 
 
   const onSignedIn = useCallback(async () => {
     setAuthOpen(false);
-    await refresh();
+    const fresh = await refresh();
+    // The copy gate is otherwise updated by an effect after the next render.
+    // The pending action runs before that, so without this a copy blocked for a
+    // visitor would be re-checked against the visitor's limit, fail again, and
+    // reopen the sign-in dialog right after a successful sign-in.
+    configureCopyGate({ status: fresh.isMember ? "member" : fresh.user ? "free" : "anonymous" });
     toast.success(dict.auth.signedIn, { duration: 1500 });
     const next = afterAuth.current;
     afterAuth.current = null;
@@ -173,8 +180,18 @@ export function MembershipProvider({ children }: { children: React.ReactNode }) 
   );
 
   const value = useMemo<MembershipContextValue>(
-    () => ({ ready, me, refresh, openAuth, openUpsell: setUpsell, signOut, startCheckout, checkoutPending }),
-    [ready, me, refresh, openAuth, signOut, startCheckout, checkoutPending],
+    () => ({
+      ready,
+      me,
+      refresh,
+      openAuth,
+      openUpsell: setUpsell,
+      signOut,
+      startCheckout,
+      checkoutPending,
+      overlayOpen: authOpen || upsell !== null,
+    }),
+    [ready, me, refresh, openAuth, signOut, startCheckout, checkoutPending, authOpen, upsell],
   );
 
   return (
