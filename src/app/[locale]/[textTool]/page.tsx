@@ -4,7 +4,6 @@ import { FancyTextClient } from "../fancy-text/fancy-text-client";
 import { getDictionary } from "@/i18n/dictionaries";
 import { type Locale } from "@/i18n/config";
 import { buildAlternates } from "@/lib/seo";
-import { TextToolsTabs } from "../fancy-text/text-tools-tabs";
 import { DYNAMIC_TEXT_TOOL_SLUGS, isDynamicTextTool } from "@/lib/tool-routes";
 
 function kebabToCamel(str: string) {
@@ -74,7 +73,6 @@ export default async function SpecificToolPage({
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <TextToolsTabs />
       
       <div className="space-y-4 text-center mb-10">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
