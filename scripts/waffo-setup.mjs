@@ -11,8 +11,8 @@
  *   export WAFFO_MERCHANT_ID=MER_…
  *   export WAFFO_STORE_ID=STO_0ip4NuuvjBGmQghudqq37j
  *   export WAFFO_PRIVATE_KEY_FILE=./waffo-private.pem     # or WAFFO_PRIVATE_KEY
- *   node --experimental-strip-types scripts/waffo-setup.mjs            # dry run
- *   node --experimental-strip-types scripts/waffo-setup.mjs --write    # + write catalog
+ *   node --experimental-strip-types scripts/waffo-setup.mjs            # dry run: prints the plan, calls nothing
+ *   node --experimental-strip-types scripts/waffo-setup.mjs --write    # create/update products + write catalog
  *   node --experimental-strip-types scripts/waffo-setup.mjs --webhook https://www.mojicap.com/api/webhooks/waffo/
  *   node --experimental-strip-types scripts/waffo-setup.mjs --publish  # promote test → production
  *
@@ -51,6 +51,18 @@ let WEBHOOK_URL = webhookFlag >= 0 ? process.argv[webhookFlag + 1] : null;
 // next.config sets trailingSlash: true, so the route lives at …/waffo/ and the
 // slash-less URL answers 308. Don't rely on the sender following redirects.
 if (WEBHOOK_URL && !WEBHOOK_URL.endsWith("/")) WEBHOOK_URL += "/";
+
+// Without an action flag, only print what would happen. Creating products and
+// then not recording their ids would make the next --write create duplicates.
+if (!WRITE && !PUBLISH && !WEBHOOK_URL) {
+  console.log(`Dry run — ${ENV} environment. Nothing is sent to Waffo.\n`);
+  for (const plan of PLANS) {
+    const existing = WAFFO_PRODUCT_IDS[plan.sku];
+    console.log(`  ${existing ? "=" : "+"} ${plan.sku.padEnd(14)} ${existing || "(new)"} ($${plan.priceUsd}/${plan.interval})`);
+  }
+  console.log("\nPass --write to create/update these products and record their ids.");
+  process.exit(0);
+}
 
 const client = new WaffoPancake({ merchantId: MERCHANT_ID, privateKey: PRIVATE_KEY, environment: ENV === "production" ? "prod" : "test" });
 
@@ -113,7 +125,7 @@ const fileBody = `/**
  *
  * Regenerate after creating or changing products:
  *   WAFFO_MERCHANT_ID=MER_… WAFFO_STORE_ID=STO_… WAFFO_PRIVATE_KEY_FILE=./waffo-private.pem \\
- *     node scripts/waffo-setup.mjs --write
+ *     node --experimental-strip-types scripts/waffo-setup.mjs --write
  */
 export const WAFFO_PRODUCT_IDS: Record<string, string> = {
 ${PLANS.map((p) => `  ${p.sku}: ${JSON.stringify(result[p.sku] ?? "")},`).join("\n")}
@@ -125,5 +137,6 @@ if (WRITE) {
   writeFileSync(target, fileBody);
   console.log(`\nWrote ${target}`);
 } else {
-  console.log(`\n--write not passed; catalog file would be:\n\n${fileBody}`);
+  // Products were created or changed but not recorded: print the ids so they can be saved by hand.
+  console.log(`\n--write not passed; save these ids in waffo-catalog.generated.ts:\n\n${fileBody}`);
 }
