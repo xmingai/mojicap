@@ -22,7 +22,9 @@ export async function POST(request: Request) {
   }
 
   const expectProd = waffoEnvironment() === "production";
+  const logFields = { deliveryId: event.id, eventType: event.eventType, mode: event.mode };
   if ((event.mode === "prod") !== expectProd) {
+    console.info("[webhook:waffo]", { ...logFields, outcome: "ignored:mode" });
     return Response.json({ received: true, ignored: true, mode: event.mode });
   }
 
@@ -31,6 +33,7 @@ export async function POST(request: Request) {
 
   try {
     const result = await processWaffoEvent(getDB(), event);
+    console.info("[webhook:waffo]", { ...logFields, outcome: result.outcome });
     return Response.json({ received: true, ...result });
   } catch (error) {
     console.error("[webhook:waffo] processing failed", { eventId: event.id, eventType: event.eventType, error });

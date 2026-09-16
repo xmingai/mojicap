@@ -9,8 +9,8 @@ import { migrate } from "drizzle-orm/libsql/migrator";
 import { sql } from "drizzle-orm";
 import * as schema from "../src/lib/db/schema";
 import type { DB } from "../src/lib/db";
-import { processWaffoEvent, getMembership } from "../src/lib/membership/process-event";
-import { isMemberNow, accessUntil, RENEWAL_GRACE_MS } from "../src/lib/membership/entitlement";
+import { applyProviderStatus, processWaffoEvent, getMembership } from "../src/lib/membership/process-event";
+import { isMemberNow, accessUntil, RENEWAL_GRACE_MS, type MembershipStatus } from "../src/lib/membership/entitlement";
 import { displayAmountToCents, extractWaffoEventData, type WaffoEvent } from "../src/lib/membership/waffo";
 import { getPlan, listPriceCents, plansFor, yearlySavings, yearlySavingsPercent } from "../src/lib/membership/plans";
 
@@ -151,6 +151,27 @@ test("a one-time purchase is checked against its own currency", async () => {
 test("order.completed for a subscription SKU is ignored", async () => {
   const wrongKind = ev("order.completed", { amount: "19.99", orderMetadata: { userId: "u1", sku: "plus_yearly" } }, "onetime-for-sub");
   assert.equal((await processWaffoEvent(db, wrongKind, { now: NOW })).outcome, "ignored:event_type");
+});
+
+test("lifecycle events on one order share Waffo's id and are still all processed", async () => {
+  // Observed in test mode: activated and canceling both arrive with id = the order id.
+  const activated = ev("subscription.activated", { currentPeriodStart: "2026-09-15", currentPeriodEnd: "2026-10-15", amount: "2.99" }, "ORD_1");
+  assert.equal((await processWaffoEvent(db, activated, { now: NOW })).outcome, "granted");
+  const canceling = { ...ev("subscription.canceling", {}, "ORD_1"), timestamp: "2026-09-16T00:00:00Z" };
+  assert.equal((await processWaffoEvent(db, canceling, { now: NOW })).outcome, "canceling");
+  assert.equal((await processWaffoEvent(db, canceling, { now: NOW })).outcome, "duplicate");
+  assert.equal((await getMembership(db, "u1"))?.status, "canceling");
+});
+
+test("cancel and resume apply Waffo's returned status to the same order only", async () => {
+  await processWaffoEvent(db, ev("subscription.payment_succeeded", { amount: "2.99", paymentDate: "2026-09-15" }), { now: NOW });
+  const cancel = { userId: "u1", orderId: "ORD_1", from: ["active", "past_due"] as MembershipStatus[], to: "canceling" as const };
+  assert.equal(await applyProviderStatus(db, { ...cancel, orderId: "ORD_old" }), false, "another order is untouched");
+  assert.equal(await applyProviderStatus(db, cancel), true);
+  assert.equal((await getMembership(db, "u1"))?.status, "canceling");
+  assert.equal(await applyProviderStatus(db, cancel), false, "not from canceling");
+  assert.equal(await applyProviderStatus(db, { userId: "u1", orderId: "ORD_1", from: ["canceling"], to: "active" }), true);
+  assert.equal((await getMembership(db, "u1"))?.status, "active");
 });
 
 test("a charge below list price never grants", async () => {
