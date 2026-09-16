@@ -5,9 +5,9 @@
  *
  * Regenerate after creating or changing products:
  *   WAFFO_MERCHANT_ID=MER_… WAFFO_STORE_ID=STO_… WAFFO_PRIVATE_KEY_FILE=./waffo-private.pem \
- *     node scripts/waffo-setup.mjs --write
+ *     node --experimental-strip-types scripts/waffo-setup.mjs --write
  */
 export const WAFFO_PRODUCT_IDS: Record<string, string> = {
-  plus_monthly: "",
-  plus_yearly: "",
+  plus_monthly: "PROD_186uzVQPL0VATZQFYS9ArA",
+  plus_yearly: "PROD_3wmciRYKhSdgyITruU7RXp",
 };
