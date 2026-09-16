@@ -487,7 +487,11 @@
     "termsLink": "使用条款",
     "privacyLink": "隐私政策",
     "typoQuestion": "你是想输入 {email} 吗？",
-    "noCode": "没收到验证码？请查看垃圾邮件文件夹，或换一个邮箱试试。"
+    "noCode": "没收到验证码？请查看垃圾邮件文件夹，或换一个邮箱试试。",
+    "checkout": {
+      "title": "登录后开通 Plus",
+      "subtitle": "输入邮箱获取 6 位验证码，新邮箱将自动创建账号。登录后直接进入付款。"
+    }
   },
   "plus": {
     "name": "MojiCap Plus",

@@ -488,7 +488,11 @@
     "termsLink": "Conditions d'utilisation",
     "privacyLink": "Politique de confidentialité",
     "typoQuestion": "Vouliez-vous dire {email} ?",
-    "noCode": "Pas de code ? Vérifiez vos spams ou essayez une autre adresse."
+    "noCode": "Pas de code ? Vérifiez vos spams ou essayez une autre adresse.",
+    "checkout": {
+      "title": "Connectez-vous pour passer à Plus",
+      "subtitle": "Nous envoyons un code à 6 chiffres à votre e-mail ; si vous êtes nouveau, votre compte est créé. Le paiement s’ouvre juste après."
+    }
   },
   "plus": {
     "name": "MojiCap Plus",

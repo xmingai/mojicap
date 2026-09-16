@@ -122,6 +122,15 @@ export function MembershipProvider({ children }: { children: React.ReactNode }) 
     setAuthOpen(true);
   }, []);
 
+  // Buying needs an account. Swap the Plus dialog for sign-in rather than
+  // stacking one on the other, and carry on to payment once signed in.
+  const signInToCheckout = useCallback((then: () => void) => {
+    setUpsell(null);
+    afterAuth.current = then;
+    setAuthReason("checkout");
+    setAuthOpen(true);
+  }, []);
+
   const onSignedIn = useCallback(async () => {
     setAuthOpen(false);
     const fresh = await refresh();
@@ -162,7 +171,7 @@ export function MembershipProvider({ children }: { children: React.ReactNode }) 
           if (body.code === "ALREADY_MEMBER" || body.code === "CAN_RESUME") {
             router.push(`${prefix}/account/`);
           } else if (body.code === "UNAUTHORIZED") {
-            openAuth(run);
+            signInToCheckout(run);
           } else if (body.code === "CHECKOUT_DISABLED") {
             toast.error(dict.plus.checkoutUnavailable);
           } else {
@@ -173,10 +182,10 @@ export function MembershipProvider({ children }: { children: React.ReactNode }) 
         }
         setCheckoutPending(null);
       };
-      if (!me.user) openAuth(run);
+      if (!me.user) signInToCheckout(run);
       else await run();
     },
-    [me.user, locale, prefix, router, openAuth, dict.plus.checkoutError, dict.plus.checkoutUnavailable],
+    [me.user, locale, prefix, router, signInToCheckout, dict.plus.checkoutError, dict.plus.checkoutUnavailable],
   );
 
   const value = useMemo<MembershipContextValue>(

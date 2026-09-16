@@ -488,7 +488,11 @@
     "termsLink": "Términos del Servicio",
     "privacyLink": "Política de Privacidad",
     "typoQuestion": "¿Querías escribir {email}?",
-    "noCode": "¿No llega el código? Revisa tu carpeta de spam o prueba con otro correo."
+    "noCode": "¿No llega el código? Revisa tu carpeta de spam o prueba con otro correo.",
+    "checkout": {
+      "title": "Inicia sesión para obtener Plus",
+      "subtitle": "Te enviamos un código de 6 dígitos a tu correo; si eres nuevo, se crea tu cuenta. Después pasas directo al pago."
+    }
   },
   "plus": {
     "name": "MojiCap Plus",

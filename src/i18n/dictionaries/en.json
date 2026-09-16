@@ -488,7 +488,11 @@
     "termsLink": "Terms of Service",
     "privacyLink": "Privacy Policy",
     "typoQuestion": "Did you mean {email}?",
-    "noCode": "No code? Check your spam folder, or try another address."
+    "noCode": "No code? Check your spam folder, or try another address.",
+    "checkout": {
+      "title": "Sign in to get Plus",
+      "subtitle": "Enter your email for a 6-digit code — new here? This creates your account. Checkout opens right after."
+    }
   },
   "plus": {
     "name": "MojiCap Plus",
