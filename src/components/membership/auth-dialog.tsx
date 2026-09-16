@@ -14,7 +14,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const RESEND_SECONDS = 60;
 
 /** Why the dialog opened; "copies" means the free daily copies ran out. */
-export type AuthReason = "copies" | null;
+export type AuthReason = "copies" | "checkout" | null;
 
 type Props = {
   open: boolean;
@@ -135,9 +135,15 @@ export function AuthDialog({ open, onOpenChange, reason = null, google, onSigned
       <DialogContent closeLabel={t.close} className="max-w-[760px] overflow-hidden p-0 md:grid md:min-h-[440px] md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
         <EmojiWall />
         <div className="p-6 md:flex md:flex-col md:justify-center md:p-8">
-        <DialogTitle>{limit ? limit.title : t.title}</DialogTitle>
+        <DialogTitle>{limit ? limit.title : reason === "checkout" ? t.checkout.title : t.title}</DialogTitle>
         <DialogDescription>
-          {limit ? limit.subtitle : step === "email" ? t.subtitle : t.codeSentTo.replace("{email}", email)}
+          {limit
+            ? limit.subtitle
+            : step === "code"
+              ? t.codeSentTo.replace("{email}", email)
+              : reason === "checkout"
+                ? t.checkout.subtitle
+                : t.subtitle}
         </DialogDescription>
 
         {limit && (

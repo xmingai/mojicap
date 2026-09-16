@@ -488,7 +488,11 @@
     "termsLink": "이용약관",
     "privacyLink": "개인정보처리방침",
     "typoQuestion": "혹시 {email}인가요?",
-    "noCode": "코드가 오지 않았나요? 스팸함을 확인하거나 다른 이메일로 시도해 보세요."
+    "noCode": "코드가 오지 않았나요? 스팸함을 확인하거나 다른 이메일로 시도해 보세요.",
+    "checkout": {
+      "title": "로그인하고 Plus 시작하기",
+      "subtitle": "이메일로 6자리 코드를 보내드려요. 처음이라면 계정이 만들어집니다. 로그인 후 바로 결제로 이동합니다."
+    }
   },
   "plus": {
     "name": "MojiCap Plus",
@@ -518,8 +522,8 @@
         "desc": "여러 이모지를 한 번에 골라 복사하고 나만의 조합으로 저장하세요."
       },
       "noPromo": {
-        "title": "프로모션 없음",
-        "desc": "상단 배너와 팝업 프로모션 없이 이용하세요."
+        "title": "광고·프로모션 없음",
+        "desc": "광고, 상단 배너, 팝업 프로모션 없이 이용하세요."
       }
     },
     "fineprint": "언제든지 해지할 수 있습니다. 결제는 Waffo가 처리합니다.",
@@ -547,7 +551,11 @@
         "desc": "오늘의 무료 복사 10회를 다 썼습니다. Plus를 이용하면 제한이 없어져 이모지, 기호, 폰트를 바로 쓸 수 있습니다."
       },
       "ctaYearly": "연 {price}로 Plus 시작하기",
-      "yearlyNote": "월 약 {price}, 월간 결제보다 {percent}% 저렴합니다"
+      "yearlyNote": "월 약 {price}, 월간 결제보다 {percent}% 저렴합니다",
+      "noPromo": {
+        "title": "Plus로 광고 없이",
+        "desc": "광고, 상단 배너, 팝업 프로모션 없이 필요한 이모지와 기호, 폰트만 바로 쓰세요."
+      }
     },
     "checkoutError": "결제 페이지를 열 수 없습니다. 다시 시도하세요.",
     "checkoutUnavailable": "아직 결제를 이용할 수 없습니다.",
@@ -575,7 +583,8 @@
     "onetimeNote": "1회 결제, 자동 갱신 없음",
     "wechatOnly": "WeChat Pay로 결제",
     "refundLink": "환불 정책",
-    "comingSoon": "곧 오픈"
+    "comingSoon": "곧 오픈",
+    "adFreeButton": "광고 제거"
   },
   "account": {
     "title": "계정",

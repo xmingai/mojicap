@@ -487,7 +487,11 @@
     "termsLink": "使用条款",
     "privacyLink": "隐私政策",
     "typoQuestion": "你是想输入 {email} 吗？",
-    "noCode": "没收到验证码？请查看垃圾邮件文件夹，或换一个邮箱试试。"
+    "noCode": "没收到验证码？请查看垃圾邮件文件夹，或换一个邮箱试试。",
+    "checkout": {
+      "title": "登录后开通 Plus",
+      "subtitle": "输入邮箱获取 6 位验证码，新邮箱将自动创建账号。登录后直接进入付款。"
+    }
   },
   "plus": {
     "name": "MojiCap Plus",
@@ -517,8 +521,8 @@
         "desc": "一次选多个表情一起复制，并保存成你自己的组合。"
       },
       "noPromo": {
-        "title": "无推广内容",
-        "desc": "浏览时不再出现顶部横条和弹窗推广。"
+        "title": "免广告且无推广内容",
+        "desc": "浏览时不再出现广告、顶部横条和弹窗推广。"
       }
     },
     "fineprint": "随时可取消。付款由 Waffo 处理。",
@@ -546,7 +550,11 @@
         "desc": "今天的 10 次免费复制已用完。开通 Plus 后不再限次，表情、符号和字体随时一点即得。"
       },
       "ctaYearly": "开通 Plus，每年 {price}",
-      "yearlyNote": "约合每月 {price}，比月付便宜 {percent}%"
+      "yearlyNote": "约合每月 {price}，比月付便宜 {percent}%",
+      "noPromo": {
+        "title": "开通 Plus，免广告",
+        "desc": "开通后不再出现广告、顶部横条和弹窗推广，只留下你要的表情、符号和字体。"
+      }
     },
     "checkoutError": "无法打开支付页，请重试。",
     "checkoutUnavailable": "支付暂未开放。",
@@ -574,7 +582,8 @@
     "onetimeNote": "一次性付款，不会自动续费",
     "wechatOnly": "使用微信支付",
     "refundLink": "退款政策",
-    "comingSoon": "即将开放"
+    "comingSoon": "即将开放",
+    "adFreeButton": "免广告"
   },
   "account": {
     "title": "账户",
