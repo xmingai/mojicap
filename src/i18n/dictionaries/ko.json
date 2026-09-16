@@ -288,7 +288,8 @@
     "company": "커뮤니티",
     "about": "소개",
     "sponsoredBy": "{brand} 후원",
-    "plus": "MojiCap Plus"
+    "plus": "MojiCap Plus",
+    "contact": "문의하기"
   },
   "common": {
     "copied": "{text} 복사됨",
@@ -472,7 +473,7 @@
     "errorCode": "코드가 올바르지 않습니다. 확인 후 다시 시도하세요.",
     "errorRate": "시도 횟수가 너무 많습니다. 1분 후 다시 시도하세요.",
     "errorGeneric": "문제가 발생했습니다. 다시 시도하세요.",
-    "legal": "계속하면 이용약관과 개인정보처리방침에 동의하게 됩니다.",
+    "legal": "계속하면 {terms}과 {privacy}에 동의하게 됩니다.",
     "signedIn": "로그인되었습니다",
     "signedOut": "로그아웃되었습니다",
     "limit": {
@@ -483,7 +484,11 @@
         "즐겨찾기를 최대 20개까지 기기 간 동기화",
         "이메일로 받은 코드로 로그인, 외울 것이 없습니다"
       ]
-    }
+    },
+    "termsLink": "이용약관",
+    "privacyLink": "개인정보처리방침",
+    "typoQuestion": "혹시 {email}인가요?",
+    "noCode": "코드가 오지 않았나요? 스팸함을 확인하거나 다른 이메일로 시도해 보세요."
   },
   "plus": {
     "name": "MojiCap Plus",
