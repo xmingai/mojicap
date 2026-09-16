@@ -5,6 +5,7 @@ import { Check, Loader2 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import { EmojiWall } from "./emoji-wall";
 import { suggestEmailFix } from "@/lib/email-typo";
+import { LOCALE_HEADER } from "@/lib/locale-header";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import Link from "next/link";
 import { useDict, useLocale } from "@/i18n/context";
@@ -94,7 +95,11 @@ export function AuthDialog({ open, onOpenChange, reason = null, google, onSigned
     setBusy(true);
     setError(null);
     setSuggestion(null);
-    const { error: err } = await authClient.emailOtp.sendVerificationOtp({ email: value, type: "sign-in" });
+    const { error: err } = await authClient.emailOtp.sendVerificationOtp(
+      { email: value, type: "sign-in" },
+      // The code email is written in the language of this page.
+      { headers: { [LOCALE_HEADER]: locale } },
+    );
     setBusy(false);
     if (err) {
       setError(t[errorKey(err)]);
