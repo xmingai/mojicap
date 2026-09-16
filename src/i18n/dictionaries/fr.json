@@ -474,7 +474,16 @@
     "errorGeneric": "Une erreur s'est produite. Réessayez.",
     "legal": "En continuant, vous acceptez les Conditions et la Politique de confidentialité.",
     "signedIn": "Connecté",
-    "signedOut": "Déconnecté"
+    "signedOut": "Déconnecté",
+    "limit": {
+      "title": "Copies gratuites épuisées pour aujourd'hui",
+      "subtitle": "Créez un compte gratuit en une étape — nous envoyons un code par e-mail, sans mot de passe.",
+      "benefits": [
+        "10 copies par jour au lieu de 3",
+        "Jusqu'à 20 favoris synchronisés sur vos appareils",
+        "Connexion avec un code reçu par e-mail, rien à retenir"
+      ]
+    }
   },
   "plus": {
     "name": "MojiCap Plus",
@@ -514,7 +523,7 @@
     "upsell": {
       "sync": {
         "title": "Synchronisez vos appareils",
-        "desc": "Avec Plus, vos favoris et emojis récents sont identiques sur chaque appareil."
+        "desc": "Avec Plus, vos favoris et emojis récents sont identiques sur chaque appareil. Un compte gratuit synchronise 20 favoris."
       },
       "fonts": {
         "title": "Débloquez les polices premium",
@@ -526,8 +535,14 @@
       },
       "alsoIncluded": "Également dans Plus",
       "priceFrom": "À partir de {price} par mois",
-      "seePlans": "Voir les offres",
-      "notNow": "Plus tard"
+      "seePlans": "Voir les offres mensuelle et annuelle",
+      "notNow": "Plus tard",
+      "copies": {
+        "title": "Copiez sans compter",
+        "desc": "Vous avez utilisé les 10 copies gratuites du jour. Plus supprime la limite, et chaque emoji, symbole et police reste à portée de clic."
+      },
+      "ctaYearly": "Passer à Plus pour {price} par an",
+      "yearlyNote": "Environ {price} par mois, {percent} % de moins qu'au mois"
     },
     "checkoutError": "Impossible d'ouvrir le paiement. Réessayez.",
     "checkoutUnavailable": "Le paiement n'est pas encore disponible.",
@@ -549,7 +564,9 @@
         "q": "Puis-je passer du mensuel à l'annuel ?",
         "a": "Résiliez votre offre actuelle et choisissez l'autre à son terme. Vos favoris et combos restent dans votre compte."
       }
-    ]
+    ],
+    "saveAmount": "économisez {amount} par an",
+    "monthlyNote": "L'offre annuelle coûte {percent} % de moins"
   },
   "account": {
     "title": "Compte",
@@ -583,7 +600,8 @@
     "added": "Ajouté aux favoris",
     "removed": "Retiré des favoris",
     "synced": "Synchronisé sur vos appareils",
-    "syncUpsell": "Synchroniser entre appareils"
+    "syncUpsell": "Synchroniser entre appareils",
+    "syncedFree": "{count} synchronisés"
   },
   "selection": {
     "select": "Sélectionner",

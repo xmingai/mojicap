@@ -12,7 +12,7 @@ import type { DB } from "../src/lib/db";
 import { processWaffoEvent, getMembership } from "../src/lib/membership/process-event";
 import { isMemberNow, accessUntil, RENEWAL_GRACE_MS } from "../src/lib/membership/entitlement";
 import { displayAmountToCents, extractWaffoEventData, type WaffoEvent } from "../src/lib/membership/waffo";
-import { getPlan, listPriceCents, yearlySavingsPercent } from "../src/lib/membership/plans";
+import { getPlan, listPriceCents, yearlySavingsPercent, yearlySavingsUsd } from "../src/lib/membership/plans";
 
 const DAY = 86_400_000;
 let db: DB;
@@ -46,6 +46,15 @@ function ev(eventType: string, data: Record<string, unknown>, id?: string): Waff
 }
 
 const NOW = new Date("2026-09-15T00:00:00Z");
+
+test("yearly is the cheaper plan, and the saving we advertise is the real one", () => {
+  const monthly = getPlan("plus_monthly")!.priceUsd;
+  const yearly = getPlan("plus_yearly")!.priceUsd;
+  assert.ok(yearly < monthly * 12, "a year of Plus costs less than twelve months");
+  assert.equal(yearlySavingsUsd(), Math.round((monthly * 12 - yearly) * 100) / 100);
+  assert.equal(yearlySavingsUsd(), 15.89);
+  assert.equal(yearlySavingsPercent(), 44);
+});
 
 test("plans: prices, list price cents and yearly saving", () => {
   assert.equal(getPlan("plus_monthly")?.priceUsd, 2.99);

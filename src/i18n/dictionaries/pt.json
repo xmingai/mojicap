@@ -474,7 +474,16 @@
     "errorGeneric": "Algo deu errado. Tente de novo.",
     "legal": "Ao continuar, você concorda com os Termos e a Política de Privacidade.",
     "signedIn": "Você entrou",
-    "signedOut": "Você saiu"
+    "signedOut": "Você saiu",
+    "limit": {
+      "title": "As cópias gratuitas de hoje acabaram",
+      "subtitle": "Crie uma conta gratuita em uma etapa: enviamos um código por e-mail, sem senha.",
+      "benefits": [
+        "10 cópias por dia em vez de 3",
+        "Até 20 favoritos sincronizados nos seus dispositivos",
+        "Entre com um código enviado por e-mail, nada para decorar"
+      ]
+    }
   },
   "plus": {
     "name": "MojiCap Plus",
@@ -514,7 +523,7 @@
     "upsell": {
       "sync": {
         "title": "Sincronize entre dispositivos",
-        "desc": "Com o Plus, seus favoritos e emojis recentes ficam iguais em todos os dispositivos."
+        "desc": "Com o Plus, seus favoritos e emojis recentes ficam iguais em todos os dispositivos. Uma conta gratuita sincroniza 20 favoritos."
       },
       "fonts": {
         "title": "Desbloqueie as fontes premium",
@@ -526,8 +535,14 @@
       },
       "alsoIncluded": "Também no Plus",
       "priceFrom": "A partir de {price} por mês",
-      "seePlans": "Ver planos",
-      "notNow": "Agora não"
+      "seePlans": "Ver planos mensal e anual",
+      "notNow": "Agora não",
+      "copies": {
+        "title": "Copie sem contar",
+        "desc": "Você já usou as 10 cópias gratuitas de hoje. Com o Plus o limite acaba, e cada emoji, símbolo e fonte fica a um toque."
+      },
+      "ctaYearly": "Assinar o Plus por {price} ao ano",
+      "yearlyNote": "Cerca de {price} por mês, {percent}% menos que pagar por mês"
     },
     "checkoutError": "Não foi possível abrir o pagamento. Tente de novo.",
     "checkoutUnavailable": "O pagamento ainda não está disponível.",
@@ -549,7 +564,9 @@
         "q": "Posso trocar entre mensal e anual?",
         "a": "Cancele o plano atual e escolha o outro quando ele terminar. Seus favoritos e combos continuam na sua conta."
       }
-    ]
+    ],
+    "saveAmount": "economize {amount} por ano",
+    "monthlyNote": "O plano anual custa {percent}% menos"
   },
   "account": {
     "title": "Conta",
@@ -583,7 +600,8 @@
     "added": "Adicionado aos favoritos",
     "removed": "Removido dos favoritos",
     "synced": "Sincronizado nos seus dispositivos",
-    "syncUpsell": "Sincronizar entre dispositivos"
+    "syncUpsell": "Sincronizar entre dispositivos",
+    "syncedFree": "{count} sincronizados"
   },
   "selection": {
     "select": "Selecionar",

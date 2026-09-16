@@ -33,6 +33,13 @@ export function listPriceCents(sku: string): number | null {
   return plan ? Math.round(plan.priceUsd * 100) : null;
 }
 
+/** Yearly saving versus twelve monthly payments, in dollars. */
+export function yearlySavingsUsd(): number {
+  const monthly = getPlan("plus_monthly")!.priceUsd;
+  const yearly = getPlan("plus_yearly")!.priceUsd;
+  return Math.round((monthly * 12 - yearly) * 100) / 100;
+}
+
 /** Yearly saving versus twelve monthly payments, as a whole percentage. */
 export function yearlySavingsPercent(): number {
   const monthly = getPlan("plus_monthly")!.priceUsd;

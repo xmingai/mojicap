@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Loader2 } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { useDict } from "@/i18n/context";
@@ -9,9 +9,13 @@ import { useDict } from "@/i18n/context";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const RESEND_SECONDS = 60;
 
+/** Why the dialog opened; "copies" means the free daily copies ran out. */
+export type AuthReason = "copies" | null;
+
 type Props = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  reason?: AuthReason;
   google: boolean;
   onSignedIn: () => void;
 };
@@ -24,9 +28,11 @@ function errorKey(error: { status?: number; code?: string } | null | undefined):
   return "errorGeneric";
 }
 
-export function AuthDialog({ open, onOpenChange, google, onSignedIn }: Props) {
-  const t = useDict().auth;
+export function AuthDialog({ open, onOpenChange, reason = null, google, onSignedIn }: Props) {
+  const dict = useDict();
+  const t = dict.auth;
   const [step, setStep] = useState<"email" | "code">("email");
+  const limit = reason === "copies" && step === "email" ? t.limit : null;
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [busy, setBusy] = useState(false);
@@ -94,10 +100,21 @@ export function AuthDialog({ open, onOpenChange, google, onSignedIn }: Props) {
       }}
     >
       <DialogContent closeLabel={t.close}>
-        <DialogTitle>{t.title}</DialogTitle>
+        <DialogTitle>{limit ? limit.title : t.title}</DialogTitle>
         <DialogDescription>
-          {step === "email" ? t.subtitle : t.codeSentTo.replace("{email}", email)}
+          {limit ? limit.subtitle : step === "email" ? t.subtitle : t.codeSentTo.replace("{email}", email)}
         </DialogDescription>
+
+        {limit && (
+          <ul className="mt-4 grid gap-2 rounded-xl bg-muted/60 p-3 text-sm">
+            {limit.benefits.map((benefit) => (
+              <li key={benefit} className="flex items-start gap-2">
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-foreground" />
+                <span>{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        )}
 
         {step === "email" ? (
           <form

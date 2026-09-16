@@ -22,23 +22,24 @@ function putRemote(path: string, items: readonly string[]) {
 }
 
 /**
- * Keeps favorites and recents in step with the member's account.
+ * Keeps favorites (and, for Plus, recents) in step with the account.
  *
  * First sync on a device merges local and remote (nothing picked before signing
  * in is lost). After that the account is the source of truth on load, so an
  * emoji removed on one device doesn't come back from another device's stale copy.
  * Local changes are pushed shortly after they happen.
  */
-export function useCloudSync(active: boolean) {
+export function useCloudSync({ signedIn, isMember }: { signedIn: boolean; isMember: boolean }) {
   useEffect(() => {
-    if (!active) return;
+    if (!signedIn) return;
     let cancelled = false;
     let applyingRemote = false;
     const timers = new Map<LocalList, ReturnType<typeof setTimeout>>();
 
+    // Favorites sync on any account (capped for free ones by the API); recents are Plus.
     const lists: { list: LocalList; path: string; max: number }[] = [
-      { list: favoriteList, path: "/api/sync/favorites/", max: LIMITS.favorites },
-      { list: recentList, path: "/api/sync/recents/", max: LIMITS.recents },
+      { list: favoriteList, path: "/api/sync/favorites/", max: isMember ? LIMITS.favorites : LIMITS.freeFavorites },
+      ...(isMember ? [{ list: recentList, path: "/api/sync/recents/", max: LIMITS.recents }] : []),
     ];
 
     (async () => {
@@ -75,5 +76,5 @@ export function useCloudSync(active: boolean) {
       unsubscribes.forEach((u) => u());
       timers.forEach((t) => clearTimeout(t));
     };
-  }, [active]);
+  }, [signedIn, isMember]);
 }

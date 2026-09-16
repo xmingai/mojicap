@@ -6,7 +6,7 @@ import { Cloud, Layers, Loader2, Type, EyeOff } from "lucide-react";
 import { useDict, useLocale } from "@/i18n/context";
 import { defaultLocale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
-import { getPlan, yearlySavingsPercent, type PlanInterval } from "@/lib/membership/plans";
+import { getPlan, yearlySavingsPercent, yearlySavingsUsd, type PlanInterval } from "@/lib/membership/plans";
 import { formatUsd } from "@/lib/membership/format";
 import { useMembership } from "@/components/membership/membership-provider";
 
@@ -38,7 +38,8 @@ export function PricingClient() {
       <div className="grid items-start gap-6 md:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] md:gap-10">
         <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
           <div role="radiogroup" aria-label={t.name} className="grid grid-cols-2 rounded-xl bg-muted p-1 text-sm font-medium">
-            {(["monthly", "yearly"] as const).map((value) => (
+            {/* Yearly first and preselected: it is the plan we recommend. */}
+            {(["yearly", "monthly"] as const).map((value) => (
               <button
                 key={value}
                 type="button"
@@ -47,12 +48,12 @@ export function PricingClient() {
                 onClick={() => setBilling(value)}
                 className={cn(
                   "flex h-9 items-center justify-center gap-1.5 rounded-lg transition",
-                  interval === value ? "bg-background text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground",
+                  interval === value ? "bg-foreground text-background shadow-sm" : "text-muted-foreground hover:text-foreground",
                 )}
               >
                 {value === "monthly" ? t.monthly : t.yearly}
                 {value === "yearly" && (
-                  <span className="text-xs font-semibold text-muted-foreground">
+                  <span className={cn("text-xs font-semibold", interval === "yearly" ? "text-background/80" : "text-muted-foreground")}>
                     −{yearlySavingsPercent()}%
                   </span>
                 )}
@@ -66,10 +67,10 @@ export function PricingClient() {
               <span className="text-muted-foreground">{interval === "monthly" ? t.perMonth : t.perYear}</span>
             </p>
             <p className="mt-1 h-5 text-sm text-muted-foreground tabular-nums">
-              {/* The saving is already on the Yearly toggle; only the per-month equivalent is new information. */}
+              {/* The percentage is already on the Yearly toggle; the per-month price and the money saved are new information. */}
               {interval === "yearly"
-                ? t.yearlyEquivalent.replace("{price}", formatUsd(Math.floor((plan.priceUsd / 12) * 100) / 100, locale))
-                : null}
+                ? `${t.yearlyEquivalent.replace("{price}", formatUsd(Math.floor((plan.priceUsd / 12) * 100) / 100, locale))} · ${t.saveAmount.replace("{amount}", formatUsd(yearlySavingsUsd(), locale))}`
+                : t.monthlyNote.replace("{percent}", String(yearlySavingsPercent()))}
             </p>
           </div>
 

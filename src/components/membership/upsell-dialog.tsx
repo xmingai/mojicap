@@ -5,10 +5,12 @@ import { Check } from "lucide-react";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { useDict, useLocale } from "@/i18n/context";
 import { defaultLocale } from "@/i18n/config";
-import { getPlan } from "@/lib/membership/plans";
+import { getPlan, yearlySavingsPercent } from "@/lib/membership/plans";
 import { formatUsd } from "@/lib/membership/format";
+import { useMembership } from "./membership-provider";
+import { Loader2 } from "lucide-react";
 
-export type UpsellFeature = "sync" | "fonts" | "bulk";
+export type UpsellFeature = "sync" | "fonts" | "bulk" | "copies";
 
 const ALL_BENEFITS = ["sync", "fonts", "bulk", "noPromo"] as const;
 
@@ -22,7 +24,11 @@ export function UpsellDialog({ feature, onClose }: { feature: UpsellFeature | nu
   const t = dict.plus;
   const prefix = locale === defaultLocale ? "" : `/${locale}`;
   const copy = feature ? t.upsell[feature] : null;
-  const monthly = getPlan("plus_monthly")!;
+  // Yearly first: it is the better deal for the visitor and the better retention
+  // for us, so it is the primary button and monthly lives behind "all plans".
+  const yearly = getPlan("plus_yearly")!;
+  const { startCheckout, checkoutPending } = useMembership();
+  const pending = checkoutPending === yearly.sku;
 
   return (
     <Dialog open={feature !== null} onOpenChange={(open) => !open && onClose()}>
@@ -41,16 +47,29 @@ export function UpsellDialog({ feature, onClose }: { feature: UpsellFeature | nu
               ))}
             </ul>
             <div className="mt-6 grid gap-2">
+              <button
+                type="button"
+                onClick={() => startCheckout(yearly.sku, `upsell:${feature}`)}
+                disabled={checkoutPending !== null}
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-foreground font-semibold text-background transition hover:bg-foreground/90 disabled:opacity-60"
+              >
+                {pending && <Loader2 className="h-4 w-4 animate-spin" />}
+                {pending
+                  ? t.ctaLoading
+                  : t.upsell.ctaYearly.replace("{price}", formatUsd(yearly.priceUsd, locale))}
+              </button>
+              <p className="text-center text-xs text-muted-foreground">
+                {t.upsell.yearlyNote
+                  .replace("{price}", formatUsd(Math.floor((yearly.priceUsd / 12) * 100) / 100, locale))
+                  .replace("{percent}", String(yearlySavingsPercent()))}
+              </p>
               <Link
                 href={`${prefix}/pricing/`}
                 onClick={onClose}
-                className="inline-flex h-11 items-center justify-center rounded-xl bg-foreground font-semibold text-background transition hover:bg-foreground/90"
+                className="text-center text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
               >
                 {t.upsell.seePlans}
               </Link>
-              <p className="text-center text-xs text-muted-foreground">
-                {t.upsell.priceFrom.replace("{price}", formatUsd(monthly.priceUsd, locale))}
-              </p>
               <DialogClose className="h-9 text-sm text-muted-foreground hover:text-foreground">{t.upsell.notNow}</DialogClose>
             </div>
           </>

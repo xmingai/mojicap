@@ -19,3 +19,11 @@ test("sanitizeCombo: needs both fields within limits", () => {
   assert.equal(sanitizeCombo({ name: "x".repeat(LIMITS.comboNameChars + 1), content: "a" }), null);
   assert.equal(sanitizeCombo(null), null);
 });
+
+test("a free account's favorites shelf is capped well below the Plus one", () => {
+  assert.equal(LIMITS.freeFavorites, 20);
+  assert.ok(LIMITS.freeFavorites < LIMITS.favorites);
+  const wanted = Array.from({ length: 30 }, (_, i) => `e${i}`);
+  assert.equal(sanitizeItems(wanted, LIMITS.freeFavorites)?.length, LIMITS.freeFavorites);
+  assert.equal(sanitizeItems(wanted, LIMITS.favorites)?.length, 30);
+});
