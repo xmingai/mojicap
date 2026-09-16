@@ -36,12 +36,12 @@ export function FancyTextClient({ toolMode = 'all' }: { toolMode?: string }) {
       {/* Main Content: Two Columns on large screens */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start">
         {/* Left Column: Input */}
-        <div className="sticky top-24 z-10">
+        <div className="lg:sticky lg:top-[calc(var(--site-header-h,3.5rem)+1rem)] lg:z-10">
           <textarea
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder={dict.fancyText.inputPlaceholder}
-            className="flex min-h-[160px] lg:min-h-[400px] w-full rounded-xl border border-input bg-muted/50 px-4 py-4 text-lg ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-y"
+            className="flex min-h-[160px] lg:min-h-[400px] w-full rounded-xl border border-input bg-muted px-4 py-4 text-lg ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-y"
             autoFocus
           />
         </div>

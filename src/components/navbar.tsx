@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
-import { Sun, Moon, Globe } from "lucide-react";
+import { Sun, Moon, ChevronDown, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -69,7 +69,7 @@ export function Navbar() {
   }
 
   return (
-    <header className="border-b border-white/20 dark:border-white/10 bg-background/40 backdrop-blur-2xl backdrop-saturate-150 shadow-sm">
+    <header className="relative z-20 border-b border-white/20 dark:border-white/10 bg-background/40 backdrop-blur-2xl backdrop-saturate-150 shadow-sm">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
         {/* Logo */}
         <Tooltip>
@@ -136,14 +136,18 @@ export function Navbar() {
         <div className="flex items-center gap-2">
           {/* Language Switcher */}
           <div className="relative" ref={langRef}>
+            {/* Shows which language is active, so visitors don't have to open the menu to find out. */}
             <Button
               variant="ghost"
-              size="icon"
               onClick={() => setLangOpen(!langOpen)}
-              className="h-8 w-8"
-              title="Language"
+              aria-haspopup="menu"
+              aria-expanded={langOpen}
+              className="h-8 gap-1.5 px-2"
+              title={localeNames[locale]}
             >
-              <Globe className="h-4 w-4" />
+              <span className="text-base leading-none">{localeFlags[locale]}</span>
+              <span className="hidden text-sm font-medium sm:inline">{localeNames[locale]}</span>
+              <ChevronDown className={cn("h-3.5 w-3.5 text-muted-foreground transition-transform", langOpen && "rotate-180")} />
             </Button>
 
             {langOpen && (
@@ -161,6 +165,7 @@ export function Navbar() {
                   >
                     <span>{localeFlags[l]}</span>
                     <span>{localeNames[l]}</span>
+                    {locale === l && <Check className="ml-auto h-3.5 w-3.5" />}
                   </button>
                 ))}
               </div>

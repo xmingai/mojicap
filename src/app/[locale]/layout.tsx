@@ -5,6 +5,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
+import { SiteHeader } from "@/components/site-header";
+import { TextToolsTabs } from "@/components/text-tools-tabs";
 import { Footer } from "@/components/footer";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { VormlyBanner } from "@/components/ads/vormly-banner";
@@ -107,10 +109,11 @@ export default async function LocaleLayout({
           <I18nProvider locale={locale as Locale} dict={dict}>
             <MembershipProvider>
             <TooltipProvider>
-              <div className="sticky top-0 z-50">
+              <SiteHeader>
                 <VormlyBanner />
                 <Navbar />
-              </div>
+                <TextToolsTabs />
+              </SiteHeader>
               <main className="flex-1">{children}</main>
               <Footer />
               <ScrollToTop />
