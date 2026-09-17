@@ -95,10 +95,10 @@ export function Footer() {
 }
 
 /**
- * "❤️ Sponsored by Vormly" — a deliberate dofollow link to the sister site.
- * Plain URL (no UTM) so the link equity signal is clean; clicks are still
- * counted via the ad_click event. `{brand}` in the dictionary string marks
- * where the anchor text goes.
+ * "❤️ Sponsored by Vormly" — a link to the sister site, marked rel="sponsored"
+ * as Google asks for paid or promotional links. Plain URL (no UTM); clicks are
+ * still counted via the ad_click event. `{brand}` in the dictionary string
+ * marks where the anchor text goes.
  */
 function SponsoredBy({ text }: { text: string }) {
   const [before, after] = text.split("{brand}");
@@ -110,7 +110,7 @@ function SponsoredBy({ text }: { text: string }) {
         <a
           href="https://vormly.ai/"
           target="_blank"
-          rel="noopener"
+          rel="sponsored noopener"
           onClick={() => trackAd("ad_click", "footer_link")}
           className="font-medium text-foreground hover:underline underline-offset-[3px]"
         >

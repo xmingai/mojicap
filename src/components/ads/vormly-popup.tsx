@@ -126,7 +126,7 @@ export function VormlyPopup() {
         <a
           href={vormlyUrl(PLACEMENT)}
           target="_blank"
-          rel="noopener"
+          rel="sponsored noopener"
           onClick={clickCta}
           className="mt-0.5 block rounded-xl bg-foreground px-4 py-2.5 text-center font-semibold text-background transition hover:bg-foreground/90"
         >

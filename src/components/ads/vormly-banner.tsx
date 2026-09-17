@@ -76,7 +76,7 @@ export function VormlyBanner() {
           <a
             href={vormlyUrl(PLACEMENT)}
             target="_blank"
-            rel="noopener"
+            rel="sponsored noopener"
             onClick={() => ready && trackAd("ad_click", PLACEMENT, ready.variant)}
             className="whitespace-nowrap font-semibold underline decoration-foreground/40 underline-offset-[3px] hover:decoration-foreground"
           >
