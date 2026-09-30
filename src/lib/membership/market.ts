@@ -7,9 +7,7 @@ import type { Market } from "./plans";
  *
  * Mainland China gets the one-time WeChat plans; everywhere else the card
  * subscription. The country is Cloudflare's cf-ipcountry, set from the
- * visitor's own address. (On Vercel behind Cloudflare's proxy,
- * x-vercel-ip-country described Cloudflare's edge, not the visitor.) Without
- * it — local dev — everyone is "global".
+ * visitor's own address. Without it (local dev) everyone is "global".
  *
  * Outside production a `mojicap_market` cookie overrides the country, so the
  * China flow can be exercised without a Chinese IP. It is ignored in

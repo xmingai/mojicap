@@ -18,7 +18,7 @@ export const MERCHANT_OF_RECORD = "Waffo Pancake (Waffo.com Limited)";
 export const REFUND_DAYS = 7;
 
 /** Bumped by hand when the text changes — a build date would move on every deploy. */
-export const LEGAL_UPDATED = "16 September 2026";
+export const LEGAL_UPDATED = "30 September 2026";
 
 export const GOVERNING_LAW = "the laws of the People's Republic of China";
 

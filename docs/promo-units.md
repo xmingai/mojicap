@@ -28,7 +28,7 @@
 src/
 ├─ lib/promo.ts                     ← 唯一的配置入口 + 纯函数（可单测）
 ├─ components/promo/
-│  ├─ track.ts                      ← 事件上报（Vercel Analytics + GA4）
+│  ├─ track.ts                      ← 事件上报（GA4）
 │  ├─ offer-countdown.tsx           ← 共用倒计时组件
 │  ├─ promo-banner.tsx              ← 顶部横条
 │  └─ promo-popup.tsx               ← 右下角弹窗

@@ -21,7 +21,9 @@
 - **会员状态**：`process-event.ts` 在一个事务里处理事件，按投递 id 去重；订阅以 Waffo **订单 id** 为身份。状态 active / canceling / past_due / canceled / refunded，续费有 3 天宽限期（`entitlement.ts`）。
 - **前端**：静态页面不读会员状态，由 `MembershipProvider` 在客户端请求 `/api/me/`。
 
-## 环境变量（Vercel → Settings → Environment Variables）
+## 环境变量（Cloudflare Workers）
+
+公开、构建时内联的 `NEXT_PUBLIC_*` 在 `.env.production`（已提交）；不敏感的运行时配置在 `wrangler.jsonc` 的 `vars`（`BETTER_AUTH_URL`、`EMAIL_FROM`、`WAFFO_ENV`）；其余都是 Worker 密钥，用 `npx wrangler secret put <名称>` 写入，不进仓库也不进任何 `.env`。
 
 | 变量 | 必需 | 说明 |
 |---|---|---|
@@ -51,14 +53,14 @@
    WAFFO_MERCHANT_ID=MER_… WAFFO_STORE_ID=STO_0ip4NuuvjBGmQghudqq37j WAFFO_PRIVATE_KEY_FILE=./waffo-private.pem \
      node --experimental-strip-types scripts/waffo-setup.mjs --write
    ```
-3. **测试**：在 Preview 部署里用 `WAFFO_ENV` 留空（test），注册 test webhook 指向 Preview 地址，用 Waffo 测试卡走完订阅 → 取消 → 恢复。
+3. **测试**：在本地（`WAFFO_ENV` 留空即 test）配合隧道地址注册 test webhook，用 Waffo 测试卡走完订阅 → 取消 → 恢复。
 4. **发布到生产**：Store KYB 审核通过后
    ```bash
    … scripts/waffo-setup.mjs --publish
    WAFFO_ENV=production … scripts/waffo-setup.mjs --webhook https://www.mojicap.com/api/webhooks/waffo/
    ```
    webhook 地址必须带末尾斜杠，否则会被 308 重定向导致回调丢失（脚本会自动补）。
-5. 在 Vercel 设置全部环境变量（`WAFFO_ENV=production`），重新部署。
+5. 用 `npx wrangler secret put` 写入密钥（`WAFFO_ENV=production` 已在 `wrangler.jsonc`），合并到 main 由 Workers Builds 部署。
 6. 线上验证：登录 → `/pricing/` 订阅 → 回到 `/account/?checkout=success` 显示 Plus → 推广位消失 → 收藏跨设备同步。
 
 ## 本地开发

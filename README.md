@@ -7,7 +7,7 @@
   <p><strong>A lightning-fast, minimal Emoji, Symbols & Kaomoji toolkit.</strong></p>
   
   <a href="https://www.mojicap.com" target="_blank">
-    <img src="https://img.shields.io/badge/Live_Demo-mojicap.com-000000?style=for-the-badge&logo=vercel" alt="Live Demo" />
+    <img src="https://img.shields.io/badge/Live_Demo-mojicap.com-000000?style=for-the-badge&logo=cloudflare" alt="Live Demo" />
   </a>
 </div>
 
@@ -33,7 +33,7 @@ If you are looking for a clean, modern benchmark on how to build a **Multi-lingu
 - **Framework**: [Next.js 16 (App Router)](https://nextjs.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Localization**: Next.js i18n routing
-- **Deployment**: [Vercel](https://vercel.com)
+- **Deployment**: [Cloudflare Workers](https://workers.cloudflare.com) via [OpenNext](https://opennext.js.org/cloudflare) — pushes to `main` deploy through Workers Builds; `npm run cf:deploy` deploys by hand
 
 ## 🏃‍♂️ Getting Started
 
