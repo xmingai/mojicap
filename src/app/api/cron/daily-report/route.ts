@@ -1,8 +1,8 @@
 /**
  * GET /api/cron/daily-report/ — emails the owner yesterday's sign-ups and
- * payments (see lib/reports/daily.ts). Vercel Cron calls it every morning per
- * vercel.json and sends `Authorization: Bearer $CRON_SECRET`; without that
- * secret configured the route refuses to run.
+ * payments (see lib/reports/daily.ts). A Cloudflare cron trigger calls it every
+ * morning (wrangler.jsonc → cloudflare/worker.ts) with `Authorization: Bearer
+ * $CRON_SECRET`; without that secret configured the route refuses to run.
  *
  * `?preview=1` returns the rendered report instead of sending it.
  * Env: CRON_SECRET, DAILY_REPORT_TO (defaults to the support address).

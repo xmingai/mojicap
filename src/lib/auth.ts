@@ -42,6 +42,14 @@ function createAuth() {
         "/sign-in/email-otp": { window: 60, max: 10 },
       },
     },
+    advanced: {
+      // Rate limits are per client IP. better-auth reads x-forwarded-for by
+      // default, which a client can set itself; without a usable IP it falls
+      // back to ONE bucket shared by every visitor — 3 sign-in codes a minute
+      // for the whole site. On Cloudflare the trustworthy source is
+      // cf-connecting-ip, which Cloudflare sets and a client cannot.
+      ipAddress: { ipAddressHeaders: ["cf-connecting-ip"] },
+    },
     socialProviders: googleId && googleSecret ? { google: { clientId: googleId, clientSecret: googleSecret } } : {},
     plugins: [
       emailOTP({

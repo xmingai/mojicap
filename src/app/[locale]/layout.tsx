@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
@@ -17,13 +16,8 @@ import { locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { SITE_URL } from "@/lib/seo";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { Analytics } from "@vercel/analytics/next";
 import "../globals.css";
 
-const inter = Inter({
-  variable: "--font-sans",
-  subsets: ["latin", "cyrillic", "latin-ext"],
-});
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -97,7 +91,7 @@ export default async function LocaleLayout({
   };
 
   return (
-    <html lang={locale} suppressHydrationWarning className={`${inter.variable} h-full`}>
+    <html lang={locale} suppressHydrationWarning className="font-inter h-full">
       <head>
         <script
           type="application/ld+json"
@@ -124,8 +118,6 @@ export default async function LocaleLayout({
           </I18nProvider>
         </ThemeProvider>
         {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />}
-        {/* Vercel Web Analytics: cookieless page views + custom events; independent cross-check for GA4 */}
-        <Analytics />
       </body>
     </html>
   );
