@@ -125,7 +125,8 @@
     "detailTitle": "{emoji} Emoji {name} — Copiar y Pegar",
     "detailDesc": "Copia el emoji {name} {emoji}. Conoce su significado, código Unicode ({unicode}) y emojis relacionados.",
     "detailOgTitle": "{emoji} Emoji {name}",
-    "detailOgDesc": "Copia el emoji {name} {emoji}. Unicode: {unicode}"
+    "detailOgDesc": "Copia el emoji {name} {emoji}. Unicode: {unicode}",
+    "categoryListTitle": "Los {count} emojis con su nombre"
   },
   "symbols": {
     "title": "Símbolos Especiales para Copiar",
@@ -714,6 +715,53 @@
       "title": "Letras Raras para Nick — Generador de Texto Raro",
       "h1": "Generador de Letras Raras para Nick",
       "description": "Letras raras para copiar y pegar: texto zalgo, 𝕕𝕠𝕓𝕝𝕖 𝕥𝕣𝕒𝕫𝕠 y cirílico falso. Crea nicks y nombres raros para Instagram, TikTok, Discord o tus perfiles."
+    }
+  },
+  "emojiCategories": {
+    "smileys-emotion": {
+      "title": "Emojis de caras — Copiar y pegar {count} caritas",
+      "h1": "Emojis de caras",
+      "desc": "Copia y pega emojis de caras 😀😂🥹 con un clic: {count} caritas felices, tristes, de amor, enojadas y más, con su significado."
+    },
+    "people-body": {
+      "title": "Emojis de manos — Gestos y personas para copiar",
+      "h1": "Emojis de manos y personas",
+      "desc": "Copia emojis de manos 👋🙏👍, gestos, partes del cuerpo y personas: {count} emojis, con tonos de piel en la página de cada uno."
+    },
+    "animals-nature": {
+      "title": "Emojis de animales — Copiar y pegar",
+      "h1": "Emojis de animales y naturaleza",
+      "desc": "Emojis de animales para copiar y pegar 🐶🐱🦋, además de flores, plantas y clima: {count} emojis. Un clic y listo."
+    },
+    "food-drink": {
+      "title": "Emojis de comida — Copiar y pegar comida y bebida",
+      "h1": "Emojis de comida y bebida",
+      "desc": "Emojis de comida para copiar y pegar 🍕🍓☕: frutas, platos, dulces y bebidas, {count} en total. Haz clic para copiar."
+    },
+    "travel-places": {
+      "title": "Emojis de viajes — Autos, aviones y lugares",
+      "h1": "Emojis de viajes y lugares",
+      "desc": "Copia y pega emojis de viajes ✈️🚗🏖️: autos, aviones, edificios, mapas y cielo, {count} emojis con un clic."
+    },
+    "activities": {
+      "title": "Emojis de deportes — Copiar juegos y actividades",
+      "h1": "Emojis de deportes y actividades",
+      "desc": "Emojis de deportes para copiar y pegar ⚽🏀🎮, juegos, eventos y celebraciones 🎉: {count} emojis."
+    },
+    "objects": {
+      "title": "Emojis de objetos — Copiar con su nombre",
+      "h1": "Emojis de objetos",
+      "desc": "Copia emojis de objetos 💡📱💎 con su nombre: ropa, música, tecnología, dinero y herramientas, {count} en total."
+    },
+    "symbols": {
+      "title": "Emojis de símbolos — Corazones y flechas",
+      "h1": "Emojis de símbolos",
+      "desc": "Emojis de símbolos para copiar y pegar ❤️✅⚠️: corazones, flechas, zodiaco, señales y formas, {count} emojis."
+    },
+    "flags": {
+      "title": "Emojis de banderas — Todos los países",
+      "h1": "Emojis de banderas",
+      "desc": "Emojis de banderas para copiar y pegar 🇪🇸🇲🇽🇦🇷: todos los países y banderas como 🏳️‍🌈, {count} con su nombre."
     }
   }
 }

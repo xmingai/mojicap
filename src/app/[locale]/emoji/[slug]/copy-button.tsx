@@ -5,7 +5,7 @@ import { Copy, Check } from "lucide-react";
 import { useState } from "react";
 import { copyToClipboard } from "@/lib/clipboard";
 
-export function CopyButton({ emoji, name }: { emoji: string; name: string }) {
+export function CopyButton({ emoji, name, label, copiedLabel }: { emoji: string; name: string; label: string; copiedLabel: string }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -18,11 +18,11 @@ export function CopyButton({ emoji, name }: { emoji: string; name: string }) {
     <Button onClick={handleCopy} size="lg" className="mt-2">
       {copied ? (
         <>
-          <Check className="h-4 w-4 mr-2" /> Copied!
+          <Check className="h-4 w-4 mr-2" /> {copiedLabel}
         </>
       ) : (
         <>
-          <Copy className="h-4 w-4 mr-2" /> Copy {emoji}
+          <Copy className="h-4 w-4 mr-2" /> {label} {emoji}
         </>
       )}
     </Button>

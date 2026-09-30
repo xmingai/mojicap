@@ -125,7 +125,8 @@
     "detailTitle": "{emoji} {name} Emoji — Copy & Paste",
     "detailDesc": "Copy the {name} emoji {emoji}. Learn its meaning, Unicode ({unicode}), and find related emojis.",
     "detailOgTitle": "{emoji} {name} Emoji",
-    "detailOgDesc": "Copy the {name} emoji {emoji}. Unicode: {unicode}"
+    "detailOgDesc": "Copy the {name} emoji {emoji}. Unicode: {unicode}",
+    "categoryListTitle": "All {count} emoji with names"
   },
   "symbols": {
     "title": "Special Symbols to Copy and Paste",
@@ -714,6 +715,53 @@
       "title": "Weird Text Generator — Creepy Text Copy and Paste",
       "h1": "Weird Text Generator",
       "description": "Make weird and creepy text: glitchy zalgo, double-struck and faux Cyrillic letters. Copy and paste the strange text into Discord, Roblox chat or TikTok."
+    }
+  },
+  "emojiCategories": {
+    "smileys-emotion": {
+      "title": "Smiley Face Emoji — Copy & Paste {count} Faces",
+      "h1": "Smiley Face Emoji",
+      "desc": "Copy and paste smiley face emoji 😀😂🥹 with one click: {count} faces for happy, sad, love, angry and more. Tap any face for its meaning and Unicode."
+    },
+    "people-body": {
+      "title": "Hand & People Emoji — Copy & Paste",
+      "h1": "Hand & People Emoji",
+      "desc": "Copy hand emoji 👋🙏👍, gestures, body parts and people — {count} emoji, with skin tones on each emoji's page. Tap any one to copy it."
+    },
+    "animals-nature": {
+      "title": "Animal Emoji — Copy & Paste {count} Animals & Plants",
+      "h1": "Animal & Nature Emoji",
+      "desc": "Copy and paste animal emoji 🐶🐱🦋 plus flowers, plants and weather — {count} emoji. One click copies; tap any emoji for its meaning."
+    },
+    "food-drink": {
+      "title": "Food Emoji — Copy & Paste {count} Foods & Drinks",
+      "h1": "Food & Drink Emoji",
+      "desc": "Copy and paste food emoji 🍕🍓☕: fruit, meals, sweets and drinks, {count} in all. Click to copy, or open one for its meaning and Unicode."
+    },
+    "travel-places": {
+      "title": "Travel Emoji — Cars, Planes & Places to Copy",
+      "h1": "Travel & Places Emoji",
+      "desc": "Copy and paste travel emoji ✈️🚗🏖️: cars, planes, buildings, maps and sky — {count} emoji. One click copies any of them."
+    },
+    "activities": {
+      "title": "Sports Emoji — Copy & Paste Games & Activities",
+      "h1": "Sports & Activity Emoji",
+      "desc": "Copy and paste sports emoji ⚽🏀🎮, games, events and celebrations 🎉 — {count} emoji. Click to copy, tap for the meaning."
+    },
+    "objects": {
+      "title": "Object Emoji — Copy & Paste With Names",
+      "h1": "Object Emoji",
+      "desc": "Copy and paste object emoji 💡📱💎 with their names: clothing, music, tech, money, tools and more — {count} emoji, one click each."
+    },
+    "symbols": {
+      "title": "Symbol Emoji — Hearts, Arrows & Signs to Copy",
+      "h1": "Symbol Emoji",
+      "desc": "Copy and paste symbol emoji ❤️✅⚠️: hearts, arrows, zodiac, signs and shapes — {count} emoji. Tap any symbol for its meaning."
+    },
+    "flags": {
+      "title": "Flag Emoji — Copy & Paste Every Country Flag",
+      "h1": "Flag Emoji",
+      "desc": "Copy and paste flag emoji 🇺🇸🇯🇵🇧🇷 for every country, plus 🏳️‍🌈 and other flags — {count} in the list, with names. One click copies."
     }
   }
 }

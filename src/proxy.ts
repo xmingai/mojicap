@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { locales, defaultLocale, type Locale } from "@/i18n/config";
+import categories from "@/data/categories.json";
 
 /**
  * URL strategy (must stay in sync with src/lib/seo.ts and src/lib/sitemap.ts):
@@ -30,6 +31,18 @@ export function proxy(request: NextRequest) {
       url.protocol = "https:";
       return NextResponse.redirect(url, 308);
     }
+  }
+
+  // Categories used to be a filter on the list (/emoji/?category=food-drink);
+  // they are pages now (/emoji/food-drink/), so old links go there for good.
+  const category = request.nextUrl.searchParams.get("category");
+  const listPath = pathname.match(/^(?:\/([a-z]{2}))?\/emoji\/?$/);
+  if (category && listPath && categories.some((c) => c.slug === category)) {
+    const locale = listPath[1] && listPath[1] !== defaultLocale ? `/${listPath[1]}` : "";
+    const url = request.nextUrl.clone();
+    url.pathname = `${locale}/emoji/${category}/`;
+    url.search = "";
+    return NextResponse.redirect(url, 308);
   }
 
   // /en and /en/... → strip the prefix (permanent redirect)

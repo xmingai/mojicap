@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllSlugs, getBaseEmojiOf, getEmojiBySlug, getRelatedEmojis, getSkinToneVariants } from "@/lib/emoji";
+import { getAllSlugs, getBaseEmojiOf, getCategories, getCategoryBySlug, getEmojiBySlug, getRelatedEmojis, getSkinToneVariants } from "@/lib/emoji";
 import { getEmojiTranslation } from "@/lib/emoji-i18n";
 import { CopyButton } from "./copy-button";
+import { CategoryView, categoryCopy } from "./category-view";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { ArrowLeft } from "lucide-react";
+import { capitalize } from "@/lib/utils";
 import { getDictionary } from "@/i18n/dictionaries";
 import { type Locale } from "@/i18n/config";
-import { absoluteUrl, buildDuplicateAlternates, buildEmojiAlternates, emojiDetailRobots } from "@/lib/seo";
+import { absoluteUrl, buildAlternates, buildDuplicateAlternates, buildEmojiAlternates, emojiDetailRobots } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>;
@@ -19,12 +21,22 @@ interface Props {
 // Other locales are generated on-demand via ISR at first visit, then cached.
 // This cuts build from ~22,700 pages to ~3,800 pages (10min → ~2min).
 export async function generateStaticParams() {
-  const slugs = getAllSlugs();
+  const slugs = [...getAllSlugs(), ...getCategories().map((c) => c.slug)];
   return slugs.map((slug) => ({ locale: "en", slug }));
 }
 
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
+  const category = getCategoryBySlug(slug);
+  if (category) {
+    const copy = categoryCopy(await getDictionary(locale as Locale), category);
+    return {
+      title: copy.title,
+      description: copy.desc,
+      alternates: buildAlternates(locale as Locale, `/emoji/${slug}`),
+    };
+  }
   const emoji = getEmojiBySlug(slug);
   if (!emoji) return { title: "Emoji Not Found" };
 
@@ -33,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // The i18n name drops the ": light skin tone" suffix for many variants, which
   // would make every tone of an emoji share one title. Fall back to the raw
   // Unicode name (which always carries the suffix) for variants.
-  const localName = emoji.skinToneVariant ? emoji.name : i18n?.name || emoji.name;
+  const localName = capitalize(emoji.skinToneVariant ? emoji.name : i18n?.name || emoji.name, locale);
   const fill = (tpl: string) =>
     tpl.replace("{emoji}", emoji.emoji).replace("{name}", localName).replace("{unicode}", emoji.unicode);
 
@@ -61,6 +73,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function EmojiDetailPage({ params }: Props) {
   const { locale, slug } = await params;
   const dict = await getDictionary(locale as Locale);
+  const category = getCategoryBySlug(slug);
+  if (category) return <CategoryView locale={locale as Locale} dict={dict} category={category} />;
   const emoji = getEmojiBySlug(slug);
 
   if (!emoji) notFound();
@@ -68,7 +82,7 @@ export default async function EmojiDetailPage({ params }: Props) {
   const i18n = getEmojiTranslation(slug, locale as Locale);
   // Same rule as in generateMetadata: variants keep their full Unicode name so
   // the heading distinguishes them from the base emoji.
-  const localName = emoji.skinToneVariant ? emoji.name : i18n?.name || emoji.name;
+  const localName = capitalize(emoji.skinToneVariant ? emoji.name : i18n?.name || emoji.name, locale);
   const localKeywords = i18n?.keywords || emoji.keywords;
   const localMeaning = i18n?.meaning || emoji.meaning;
   const localGroupName = i18n?.groupName || emoji.group;
@@ -97,6 +111,12 @@ export default async function EmojiDetailPage({ params }: Props) {
       {
         "@type": "ListItem",
         "position": 3,
+        "name": localGroupName,
+        "item": absoluteUrl(locale as Locale, `/emoji/${emoji.groupSlug}`)
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
         "name": localName,
         "item": absoluteUrl(locale as Locale, `/emoji/${slug}`)
       }
@@ -122,7 +142,7 @@ export default async function EmojiDetailPage({ params }: Props) {
       <div className="text-center mb-8">
         <span className="text-8xl sm:text-9xl block mb-4">{emoji.emoji}</span>
         <h1 className="text-2xl font-bold mb-2">{localName}</h1>
-        <CopyButton emoji={emoji.emoji} name={localName} />
+        <CopyButton emoji={emoji.emoji} name={localName} label={t.copyEmoji} copiedLabel={t.copied} />
       </div>
 
       <Separator className="my-8" />
@@ -141,7 +161,7 @@ export default async function EmojiDetailPage({ params }: Props) {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
         <InfoBlock title={t.category}>
           <Link
-            href={`${prefix}/emoji/?category=${emoji.groupSlug}`}
+            href={`${prefix}/emoji/${emoji.groupSlug}/`}
             className="text-sm hover:underline"
           >
             {localGroupName}
