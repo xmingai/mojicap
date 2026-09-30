@@ -144,10 +144,6 @@ export default function PrivacyPage() {
                 </td>
               </tr>
               <tr className={row}>
-                <td>Vercel</td>
-                <td>Hosting and privacy-friendly web analytics</td>
-              </tr>
-              <tr className={row}>
                 <td>Turso</td>
                 <td>The database holding accounts and synced lists</td>
               </tr>
@@ -161,7 +157,9 @@ export default function PrivacyPage() {
               </tr>
               <tr className={row}>
                 <td>Cloudflare</td>
-                <td>DNS, protection against attacks, and forwarding mail sent to our support address</td>
+                <td>
+                  Hosting the site, DNS, protection against attacks, and forwarding mail sent to our support address
+                </td>
               </tr>
             </tbody>
           </table>
