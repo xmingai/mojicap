@@ -16,7 +16,9 @@
 const BUILD_BOUND = /^text\/(html|x-component)\b/i;
 
 export function browserCacheControl(cacheControl: string | null, contentType: string | null): string | null {
-  if (!cacheControl || !/stale-while-revalidate/i.test(cacheControl)) return null;
+  // A page's first render (an ISR miss) carries s-maxage alone; later hits
+  // carry both. Either is a shared-cache header, not one for browsers.
+  if (!cacheControl || !/s-maxage|stale-while-revalidate/i.test(cacheControl)) return null;
   if (!contentType || !BUILD_BOUND.test(contentType)) return null;
   return "public, max-age=0, must-revalidate";
 }

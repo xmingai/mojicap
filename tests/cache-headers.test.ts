@@ -7,6 +7,8 @@ const VERCEL_STYLE = "s-maxage=31536000, stale-while-revalidate=2592000";
 test("pages and RSC payloads lose stale-while-revalidate", () => {
   assert.equal(browserCacheControl(VERCEL_STYLE, "text/html; charset=utf-8"), "public, max-age=0, must-revalidate");
   assert.equal(browserCacheControl(VERCEL_STYLE, "text/x-component"), "public, max-age=0, must-revalidate");
+  // First render of an on-demand page: s-maxage alone.
+  assert.equal(browserCacheControl("s-maxage=31536000", "text/html; charset=utf-8"), "public, max-age=0, must-revalidate");
 });
 
 test("everything else keeps its own header", () => {
