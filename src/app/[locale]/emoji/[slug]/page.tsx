@@ -9,7 +9,7 @@ import { Separator } from "@/components/ui/separator";
 import { ArrowLeft } from "lucide-react";
 import { getDictionary } from "@/i18n/dictionaries";
 import { type Locale } from "@/i18n/config";
-import { absoluteUrl, buildAlternates, buildDuplicateAlternates } from "@/lib/seo";
+import { absoluteUrl, buildDuplicateAlternates, buildEmojiAlternates, emojiDetailRobots } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>;
@@ -43,7 +43,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const base = getBaseEmojiOf(emoji);
   const alternates = base
     ? buildDuplicateAlternates(locale as Locale, `/emoji/${base.slug}`)
-    : buildAlternates(locale as Locale, `/emoji/${slug}`);
+    : buildEmojiAlternates(locale as Locale, `/emoji/${slug}`);
+  const robots = emojiDetailRobots(locale as Locale);
 
   return {
     title: fill(dict.emoji.detailTitle),
@@ -53,6 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: fill(dict.emoji.detailOgDesc),
     },
     alternates,
+    ...(robots && { robots }),
   };
 }
 

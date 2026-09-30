@@ -1,4 +1,4 @@
-import { locales, defaultLocale, type Locale } from "@/i18n/config";
+import { locales, defaultLocale, emojiContentLocales, hasEmojiContent, type Locale } from "@/i18n/config";
 
 export const SITE_URL = "https://www.mojicap.com";
 
@@ -36,10 +36,10 @@ export function absoluteUrl(locale: Locale, path = "/"): string {
   return `${SITE_URL}${localePath(locale, path)}`;
 }
 
-/** hreflang map for a path across all locales, plus x-default → English. */
-export function hreflangLanguages(path = "/"): Record<string, string> {
+/** hreflang map for a path across the given locales (default: all), plus x-default → English. */
+export function hreflangLanguages(path = "/", among: readonly Locale[] = locales): Record<string, string> {
   return {
-    ...Object.fromEntries(locales.map((l) => [l, absoluteUrl(l, path)])),
+    ...Object.fromEntries(among.map((l) => [l, absoluteUrl(l, path)])),
     "x-default": absoluteUrl(defaultLocale, path),
   };
 }
@@ -63,4 +63,22 @@ export function buildAlternates(locale: Locale, path = "/") {
     canonical: absoluteUrl(locale, path),
     languages: hreflangLanguages(path),
   };
+}
+
+/**
+ * `alternates` for an emoji detail page. Only locales with translated emoji
+ * content form the language cluster; a page in any other locale is noindexed
+ * (see emojiDetailRobots), so it keeps a self canonical and declares no hreflang.
+ */
+export function buildEmojiAlternates(locale: Locale, path: string) {
+  if (!hasEmojiContent(locale)) return { canonical: absoluteUrl(locale, path) };
+  return {
+    canonical: absoluteUrl(locale, path),
+    languages: hreflangLanguages(path, emojiContentLocales),
+  };
+}
+
+/** `robots` for an emoji detail page: noindex where the content is still English. */
+export function emojiDetailRobots(locale: Locale) {
+  return hasEmojiContent(locale) ? undefined : { index: false, follow: true };
 }

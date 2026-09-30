@@ -10,10 +10,11 @@
  *
  * Files: /sitemap.xml (index) → /sitemaps/pages.xml (home + tools, every
  * locale) and /sitemaps/emoji-<locale>.xml, one per language so Search Console
- * reports indexing coverage per locale.
+ * reports indexing coverage per locale — only for languages whose emoji content
+ * is translated (emojiContentLocales); the rest are noindexed.
  */
 
-import { locales, type Locale } from "@/i18n/config";
+import { emojiContentLocales, locales, type Locale } from "@/i18n/config";
 import { getBaseEmojis } from "@/lib/emoji";
 import { absoluteUrl, SITE_URL } from "@/lib/seo";
 import { TEXT_TOOLS } from "@/lib/tool-routes";
@@ -36,12 +37,12 @@ const PAGE_PATHS = [
   "/pricing",
 ];
 
-export const SITEMAP_FILES = ["pages.xml", ...locales.map((l) => `emoji-${l}.xml`)];
+export const SITEMAP_FILES = ["pages.xml", ...emojiContentLocales.map((l) => `emoji-${l}.xml`)];
 
 export function sitemapUrls(file: string): string[] | null {
   if (file === "pages.xml") return PAGE_PATHS.flatMap((path) => locales.map((locale) => absoluteUrl(locale, path)));
   const locale = file.match(/^emoji-([a-z]{2})\.xml$/)?.[1] as Locale | undefined;
-  if (!locale || !locales.includes(locale)) return null;
+  if (!locale || !emojiContentLocales.includes(locale)) return null;
   // Skin-tone variants canonicalise to their base emoji, so only base emoji are listed.
   return getBaseEmojis().map((emoji) => absoluteUrl(locale, `/emoji/${emoji.slug}`));
 }
