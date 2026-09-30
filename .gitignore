@@ -32,6 +32,8 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# Public build-time values only (NEXT_PUBLIC_*); see the file.
+!.env.production
 
 # vercel
 .vercel
@@ -49,3 +51,9 @@ next-env.d.ts
 # Waffo signing key — never commit
 *.pem
 waffo-private*
+
+# Cloudflare Workers (OpenNext)
+.open-next
+.wrangler
+.dev.vars*
+cloudflare-env.d.ts

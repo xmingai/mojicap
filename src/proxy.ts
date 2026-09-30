@@ -13,25 +13,11 @@ import categories from "@/data/categories.json";
  * redirect is for a visitor who explicitly picked another language in the
  * switcher (NEXT_LOCALE cookie), which crawlers never send.
  */
-const CANONICAL_HOST = "www.mojicap.com";
-
+// The bare domain and http:// are redirected to https://www by the Worker
+// entry (cloudflare/worker.ts) before Next runs.
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const defaultPrefix = `/${defaultLocale}`;
-
-  // On the production deployment only, collapse the *.vercel.app alias onto the
-  // canonical host so search engines never index a duplicate origin. Gated to
-  // VERCEL_ENV=production so preview deployments keep working on their own URLs.
-  if (process.env.VERCEL_ENV === "production") {
-    const host = request.headers.get("host") ?? "";
-    if (host && host !== CANONICAL_HOST) {
-      const url = request.nextUrl.clone();
-      url.host = CANONICAL_HOST;
-      url.port = "";
-      url.protocol = "https:";
-      return NextResponse.redirect(url, 308);
-    }
-  }
 
   // Categories used to be a filter on the list (/emoji/?category=food-drink);
   // they are pages now (/emoji/food-drink/), so old links go there for good.
@@ -79,7 +65,7 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Skip Next internals, Vercel platform paths (/_vercel/insights analytics beacon),
-  // API routes and anything with a file extension (sitemap.xml, robots.txt, images…)
-  matcher: ["/((?!_next|_vercel|api|.*\\..*).*)"],
+  // Skip Next internals, API routes and anything with a file extension
+  // (sitemap.xml, robots.txt, images…)
+  matcher: ["/((?!_next|api|.*\\..*).*)"],
 };

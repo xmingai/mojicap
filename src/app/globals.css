@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+/* Inter, self-hosted from the @fontsource-variable/inter package so builds never
+   fetch Google Fonts. Each script is its own file behind a unicode-range, so a
+   page downloads only the subsets its text uses. */
+@import "@fontsource-variable/inter/wght.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -145,4 +149,19 @@
 }
 .scrollbar-none::-webkit-scrollbar {
   display: none;
+}
+
+/* Metric-matched Arial (the values next/font generated for Inter), so text
+   doesn't shift when Inter finishes loading. */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  ascent-override: 90.44%;
+  descent-override: 22.52%;
+  line-gap-override: 0%;
+  size-adjust: 107.12%;
+}
+/* On <html>; @theme's --font-sans reads it, as it read next/font's class before. */
+.font-inter {
+  --font-sans: "Inter Variable", "Inter Fallback";
 }

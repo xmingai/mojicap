@@ -1,0 +1,50 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "mojicap",
+  // Our own entry: OpenNext's generated worker, the canonical-host redirect,
+  // and a scheduled() handler for the daily report. See cloudflare/worker.ts.
+  "main": "cloudflare/worker.ts",
+  "compatibility_date": "2026-09-01",
+  // Smaller script, less isolate memory: V8 keeps the source text on the heap.
+  "minify": true,
+  // nodejs_compat: better-auth, the Waffo SDK's RSA signing (node:crypto) and
+  // Next's proxy.ts, which Next 16 only runs on the Node.js runtime.
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  // Staging: reachable on workers.dev only, until the cutover adds the
+  // www.mojicap.com / mojicap.com routes.
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "mojicap"
+    }
+  ],
+  // ISR (emoji pages outside English render on first visit) and the data cache.
+  "r2_buckets": [
+    {
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "mojicap-next-cache"
+    }
+  ],
+  // No cron until the cutover: Vercel's cron (vercel.json) still sends the
+  // daily report, and two triggers would send it twice. The cutover adds
+  // "0 1 * * *" here (09:00 Beijing) and deletes vercel.json.
+  "triggers": {
+    "crons": []
+  },
+  // Configuration that is not secret. Secrets are set with `wrangler secret put`
+  // and never live in this file or in any .env that reaches a build.
+  "vars": {
+    "BETTER_AUTH_URL": "https://www.mojicap.com",
+    "EMAIL_FROM": "MojiCap <noreply@mojicap.com>",
+    "WAFFO_ENV": "production"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
