@@ -15,7 +15,7 @@
  */
 
 import { emojiContentLocales, locales, type Locale } from "@/i18n/config";
-import { getBaseEmojis } from "@/lib/emoji";
+import { getBaseEmojis, getCategories } from "@/lib/emoji";
 import { absoluteUrl, SITE_URL } from "@/lib/seo";
 import { TEXT_TOOLS } from "@/lib/tool-routes";
 
@@ -23,6 +23,7 @@ import { TEXT_TOOLS } from "@/lib/tool-routes";
 const PAGE_PATHS = [
   "/",
   "/emoji",
+  ...getCategories().map((c) => `/emoji/${c.slug}`),
   "/symbols",
   ...TEXT_TOOLS.map((t) => `/${t.slug}`),
   "/combos",

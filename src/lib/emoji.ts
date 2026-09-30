@@ -58,6 +58,15 @@ export function getCategories(): Category[] {
   return categoriesData as Category[];
 }
 
+/**
+ * Emoji categories have their own pages at /emoji/<category-slug>/, sharing the
+ * [slug] route with emoji detail pages; no emoji slug equals a category slug
+ * (tests/sitemap.test.ts checks this).
+ */
+export function getCategoryBySlug(slug: string): Category | undefined {
+  return (categoriesData as Category[]).find((c) => c.slug === slug);
+}
+
 export function getEmojiVersions(): EmojiVersion[] {
   return emojiVersionsData as EmojiVersion[];
 }

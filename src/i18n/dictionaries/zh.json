@@ -124,7 +124,8 @@
     "detailTitle": "{emoji} {name} Emoji — 复制粘贴",
     "detailDesc": "复制 {name} 表情 {emoji}。了解它的含义、Unicode 编码（{unicode}）以及相关表情。",
     "detailOgTitle": "{emoji} {name} 表情",
-    "detailOgDesc": "复制 {name} 表情 {emoji}。Unicode：{unicode}"
+    "detailOgDesc": "复制 {name} 表情 {emoji}。Unicode：{unicode}",
+    "categoryListTitle": "全部 {count} 个表情及名称"
   },
   "symbols": {
     "title": "特殊符号大全复制",
@@ -713,6 +714,53 @@
       "title": "特殊字体生成器 — 奇异字、奇怪的字体可复制",
       "h1": "特殊字体生成器",
       "description": "特殊字体英文在线转换：输入英文字母，生成 𝕨𝕖𝕚𝕣𝕕 双线体、仿俄文字母和 Zalgo 乱码等奇怪的字体，特殊字体符号一键复制，粘贴到网名、游戏昵称、抖音和 QQ。免费使用。"
+    }
+  },
+  "emojiCategories": {
+    "smileys-emotion": {
+      "title": "笑脸表情符号大全 — {count} 个可复制",
+      "h1": "笑脸表情符号",
+      "desc": "笑脸表情符号一键复制 😀😂🥹：开心、难过、爱心、生气等 {count} 个表情，点开可查看含义与 Unicode 编码。"
+    },
+    "people-body": {
+      "title": "手势表情符号 — 人物与手势 emoji 复制",
+      "h1": "手势与人物表情",
+      "desc": "手势表情符号一键复制 👋🙏👍：手势、身体部位和各类人物共 {count} 个，详情页提供肤色变体。"
+    },
+    "animals-nature": {
+      "title": "动物表情符号大全 — 动物 emoji 复制",
+      "h1": "动物与自然表情",
+      "desc": "动物表情符号一键复制 🐶🐱🦋，还有花草植物和天气，共 {count} 个，点开可查看每个表情的含义。"
+    },
+    "food-drink": {
+      "title": "食物表情符号 — 食物饮料 emoji 复制",
+      "h1": "食物与饮料表情",
+      "desc": "食物表情符号一键复制 🍕🍓☕：水果、正餐、甜点和饮料共 {count} 个，点击即复制。"
+    },
+    "travel-places": {
+      "title": "交通旅行表情 — 汽车飞机 emoji 复制",
+      "h1": "旅行与地点表情",
+      "desc": "交通旅行表情一键复制 ✈️🚗🏖️：汽车、飞机、建筑、地图和天空共 {count} 个，点击即复制。"
+    },
+    "activities": {
+      "title": "运动表情符号 — 体育游戏 emoji 复制",
+      "h1": "运动与活动表情",
+      "desc": "运动表情符号一键复制 ⚽🏀🎮：体育、游戏、节日庆祝 🎉 共 {count} 个，点开可查看含义。"
+    },
+    "objects": {
+      "title": "物品表情 — 物品 emoji 带名称复制",
+      "h1": "物品表情",
+      "desc": "物品表情一键复制 💡📱💎：服饰、音乐、电子产品、钱币和工具等 {count} 个，附中文名称。"
+    },
+    "symbols": {
+      "title": "符号表情 — 爱心、箭头、标志 emoji 复制",
+      "h1": "符号表情",
+      "desc": "符号表情一键复制 ❤️✅⚠️：爱心、箭头、星座、标志和形状共 {count} 个，点开可查看含义。"
+    },
+    "flags": {
+      "title": "国旗表情符号 — 各国国旗 emoji 复制",
+      "h1": "国旗表情",
+      "desc": "国旗表情符号一键复制 🇨🇳🇺🇸🇯🇵：世界各国国旗及 🏳️‍🌈 等旗帜共 {count} 个，附国家名称。"
     }
   }
 }

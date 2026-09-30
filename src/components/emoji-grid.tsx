@@ -24,13 +24,18 @@ interface EmojiGridProps {
   emojis: EmojiLite[]; // base emojis (no skin variants), slim payload
   categories: Category[];
   versions: EmojiVersion[];
+  /** Set on a category page (/emoji/<category>/): the grid shows that group only. */
+  category?: string | null;
+  /** Heading and intro for a category page; the full list uses the Emoji dictionary's. */
+  heading?: { title: string; intro: string };
 }
 
 type ViewMode = "category" | "version";
 
-export function EmojiGrid({ emojis, categories, versions }: EmojiGridProps) {
+export function EmojiGrid({ emojis, categories, versions, category = null, heading }: EmojiGridProps) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  // Categories are pages of their own, so the active one comes from the URL.
+  const activeCategory = category;
   const [activeVersion, setActiveVersion] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>("category");
   const { recent, addRecent } = useRecent();
@@ -153,32 +158,23 @@ export function EmojiGrid({ emojis, categories, versions }: EmojiGridProps) {
   const showLists = !searchQuery && viewMode === "category" && !activeCategory;
   const showFavorites = MEMBERSHIP_UI_ENABLED && showLists && favorites.length > 0;
 
-  // Deep links: /emoji/?q=heart (site-search JSON-LD) and /emoji/?category=food-drink (detail pages)
-  const applySearchParams = useCallback(
-    (params: URLSearchParams) => {
-      const q = params.get("q");
-      const category = params.get("category");
-      if (q) {
-        setSearchQuery(q);
-        setActiveCategory(null);
-        setActiveVersion(null);
-      } else if (category && categories.some((c) => c.slug === category)) {
-        setViewMode("category");
-        setActiveCategory(category);
-        setActiveVersion(null);
-        setSearchQuery("");
-      }
-    },
-    [categories]
-  );
+  // Deep link: /emoji/?q=heart (site-search JSON-LD). The old ?category= links
+  // are redirected to the category pages by the proxy.
+  const applySearchParams = useCallback((params: URLSearchParams) => {
+    const q = params.get("q");
+    if (q) {
+      setSearchQuery(q);
+      setActiveVersion(null);
+    }
+  }, []);
 
   return (
     <div className="space-y-4">
       <SearchParamsInit onParams={applySearchParams} />
       <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold mb-1">{t.title}</h1>
-          <p className="text-sm text-muted-foreground max-w-2xl">{t.metaDesc}</p>
+          <h1 className="text-2xl font-bold mb-1">{heading?.title ?? t.title}</h1>
+          <p className="text-sm text-muted-foreground max-w-2xl">{heading?.intro ?? t.metaDesc}</p>
         </div>
         <div className="shrink-0 mt-2 sm:mt-0">
           <SizeSlider sizeIndex={sizeIndex} setSizeIndex={setSizeIndex} />
@@ -189,10 +185,7 @@ export function EmojiGrid({ emojis, categories, versions }: EmojiGridProps) {
         value={searchQuery}
         onChange={(v) => {
           setSearchQuery(v);
-          if (v) {
-            setActiveCategory(null);
-            setActiveVersion(null);
-          }
+          if (v) setActiveVersion(null);
         }}
         placeholder={t.searchPlaceholder}
       />
@@ -216,10 +209,7 @@ export function EmojiGrid({ emojis, categories, versions }: EmojiGridProps) {
               {t.byCategory}
             </button>
             <button
-              onClick={() => {
-                setViewMode("version");
-                setActiveCategory(null);
-              }}
+              onClick={() => setViewMode("version")}
               className={cn(
                 "px-3 py-1.5 rounded-md text-sm font-medium transition-all",
                 viewMode === "version"
@@ -253,14 +243,7 @@ export function EmojiGrid({ emojis, categories, versions }: EmojiGridProps) {
 
       {/* Category tabs */}
       {!searchQuery && viewMode === "category" && (
-        <CategoryTabs
-          categories={categories}
-          activeCategory={activeCategory}
-          onSelect={(slug) => {
-            setActiveCategory(slug);
-            setSearchQuery("");
-          }}
-        />
+        <CategoryTabs categories={categories} activeCategory={activeCategory} />
       )}
 
       {/* Version browser */}
