@@ -10,9 +10,16 @@
   // nodejs_compat: better-auth, the Waffo SDK's RSA signing (node:crypto) and
   // Next's proxy.ts, which Next 16 only runs on the Node.js runtime.
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
-  // Staging: reachable on workers.dev only, until the cutover adds the
-  // www.mojicap.com / mojicap.com routes.
-  "workers_dev": true,
+  // Both hostnames are proxied records in the mojicap.com zone, so routes take
+  // their traffic without touching DNS - and removing a route hands it
+  // straight back to whatever the record points at (Vercel, until it is
+  // retired). The bare domain only ever redirects to www (cloudflare/worker.ts).
+  "routes": [
+    { "pattern": "www.mojicap.com/*", "zone_name": "mojicap.com" },
+    { "pattern": "mojicap.com/*", "zone_name": "mojicap.com" }
+  ],
+  // No second public copy of the site on *.workers.dev.
+  "workers_dev": false,
   "preview_urls": false,
   "assets": {
     "directory": ".open-next/assets",
@@ -31,11 +38,9 @@
       "bucket_name": "mojicap-next-cache"
     }
   ],
-  // No cron until the cutover: Vercel's cron (vercel.json) still sends the
-  // daily report, and two triggers would send it twice. The cutover adds
-  // "0 1 * * *" here (09:00 Beijing) and deletes vercel.json.
+  // 01:00 UTC = 09:00 Beijing, the same slot the Vercel cron used.
   "triggers": {
-    "crons": []
+    "crons": ["0 1 * * *"]
   },
   // Configuration that is not secret. Secrets are set with `wrangler secret put`
   // and never live in this file or in any .env that reaches a build.
