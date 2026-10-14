@@ -11,9 +11,19 @@ import { useMembership } from "./membership-provider";
 import { Loader2 } from "lucide-react";
 import { EmojiWall } from "./emoji-wall";
 
-export type UpsellFeature = "sync" | "fonts" | "bulk" | "copies" | "noPromo";
+export type UpsellFeature = "sync" | "fonts" | "bulk" | "copies" | "noPromo" | "unlimited";
 
-const ALL_BENEFITS = ["sync", "fonts", "bulk", "noPromo"] as const;
+const ALL_BENEFITS = ["copies", "sync", "fonts", "bulk", "noPromo"] as const;
+
+/** The benefit a dialog's headline already covers, so the list doesn't repeat it. */
+const HEADLINE_BENEFIT: Record<UpsellFeature, (typeof ALL_BENEFITS)[number]> = {
+  copies: "copies",
+  unlimited: "copies",
+  sync: "sync",
+  fonts: "fonts",
+  bulk: "bulk",
+  noPromo: "noPromo",
+};
 
 /**
  * Shown when a free visitor reaches for a Plus feature. The feature they tried
@@ -41,7 +51,7 @@ export function UpsellDialog({ feature, onClose }: { feature: UpsellFeature | nu
             <DialogDescription>{copy.desc}</DialogDescription>
             <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{t.upsell.alsoIncluded}</p>
             <ul className="mt-2 grid gap-2">
-              {ALL_BENEFITS.filter((b) => b !== feature).map((b) => (
+              {ALL_BENEFITS.filter((b) => b !== HEADLINE_BENEFIT[feature]).map((b) => (
                 <li key={b} className="flex items-start gap-2 text-sm">
                   <Check className="mt-0.5 h-4 w-4 shrink-0" />
                   {t.benefits[b].title}

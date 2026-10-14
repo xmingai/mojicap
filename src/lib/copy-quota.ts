@@ -1,8 +1,10 @@
 /**
  * Copy quota — the conversion gate on the one action everyone comes for.
  *
- *   anonymous          3 copies per rolling 24 hours, then the sign-in dialog
- *   signed in, free   10 copies per rolling 24 hours, then the Plus dialog
+ *   anonymous          1 copy per rolling 24 hours, then the sign-in dialog
+ *   signed in, free    4 per rolling 24 hours — the same log carries over, so
+ *                      signing in after the first copy gives 3 more — then
+ *                      the Plus dialog
  *   Plus member       unlimited, nothing is recorded
  *
  * The count lives in localStorage: copying happens in the browser, so this can
@@ -14,7 +16,7 @@
 export type CopyStatus = "anonymous" | "free" | "member";
 
 export const COPY_WINDOW_MS = 24 * 60 * 60 * 1000;
-export const COPY_LIMITS: Record<Exclude<CopyStatus, "member">, number> = { anonymous: 3, free: 10 };
+export const COPY_LIMITS: Record<Exclude<CopyStatus, "member">, number> = { anonymous: 1, free: 4 };
 export const COPY_LOG_KEY = "mojicap-copy-log";
 
 /** Copy timestamps still inside the window, oldest first. */

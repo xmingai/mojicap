@@ -15,7 +15,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const RESEND_SECONDS = 60;
 
 /** Why the dialog opened; "copies" means the free daily copies ran out. */
-export type AuthReason = "copies" | "checkout" | null;
+export type AuthReason = "copies" | "checkout" | "welcome" | null;
 
 type Props = {
   open: boolean;
@@ -62,7 +62,10 @@ export function AuthDialog({ open, onOpenChange, reason = null, google, onSigned
   const locale = useLocale();
   const prefix = locale === defaultLocale ? "" : `/${locale}`;
   const [step, setStep] = useState<"email" | "code">("email");
-  const limit = reason === "copies" && step === "email" ? t.limit : null;
+  // An opening pitch with the free-account benefits: when the free copies ran
+  // out, or on the home-page welcome. The welcome keeps the same list.
+  const limit =
+    step !== "email" ? null : reason === "copies" ? t.limit : reason === "welcome" ? { ...t.welcome, benefits: t.limit.benefits } : null;
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [busy, setBusy] = useState(false);

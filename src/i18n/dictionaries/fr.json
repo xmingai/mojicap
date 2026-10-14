@@ -480,7 +480,7 @@
       "title": "Copies gratuites épuisées pour aujourd'hui",
       "subtitle": "Créez un compte gratuit en une étape — nous envoyons un code par e-mail, sans mot de passe.",
       "benefits": [
-        "10 copies par jour au lieu de 3",
+        "3 copies de plus aujourd'hui une fois connecté",
         "Jusqu'à 20 favoris synchronisés sur vos appareils",
         "Connexion avec un code reçu par e-mail, rien à retenir"
       ]
@@ -492,6 +492,10 @@
     "checkout": {
       "title": "Connectez-vous pour passer à Plus",
       "subtitle": "Nous envoyons un code à 6 chiffres à votre e-mail ; si vous êtes nouveau, votre compte est créé. Le paiement s’ouvre juste après."
+    },
+    "welcome": {
+      "title": "Inscrivez-vous et copiez plus",
+      "subtitle": "Inscription ou connexion avec un code reçu par e-mail : une étape, sans mot de passe."
     }
   },
   "plus": {
@@ -509,6 +513,10 @@
     "metaTitle": "Tarifs de MojiCap Plus",
     "metaDesc": "MojiCap Plus synchronise vos emojis favoris sur tous vos appareils et ajoute des polices premium, la copie groupée et des combos personnalisés. 2,99 $ par mois ou 19,99 $ par an.",
     "benefits": {
+      "copies": {
+        "title": "Copies illimitées",
+        "desc": "Aucune limite quotidienne pour copier emojis, symboles et polices."
+      },
       "sync": {
         "title": "Favoris et récents synchronisés",
         "desc": "Vos emojis favoris et récents vous suivent sur tous vos appareils."
@@ -548,13 +556,17 @@
       "notNow": "Plus tard",
       "copies": {
         "title": "Copiez sans compter",
-        "desc": "Vous avez utilisé les 10 copies gratuites du jour. Plus supprime la limite, et chaque emoji, symbole et police reste à portée de clic."
+        "desc": "Vous avez utilisé les copies gratuites du jour. Plus supprime la limite, et chaque emoji, symbole et police reste à portée de clic."
       },
       "ctaYearly": "Passer à Plus pour {price} par an",
       "yearlyNote": "Environ {price} par mois, {percent} % de moins qu'au mois",
       "noPromo": {
         "title": "Sans publicité avec Plus",
         "desc": "Ni publicité, ni bandeau, ni promotions en pop-up : juste les emojis, symboles et polices que vous cherchez."
+      },
+      "unlimited": {
+        "title": "Copies illimitées avec Plus",
+        "desc": "Plus de limite quotidienne : copiez emojis, symboles et polices autant que vous voulez, sans publicité."
       }
     },
     "checkoutError": "Impossible d'ouvrir le paiement. Réessayez.",
@@ -584,7 +596,7 @@
     "wechatOnly": "Paiement par WeChat Pay",
     "refundLink": "Politique de remboursement",
     "comingSoon": "Bientôt disponible",
-    "adFreeButton": "Sans pub"
+    "adFreeButton": "Copies illimitées"
   },
   "account": {
     "title": "Compte",

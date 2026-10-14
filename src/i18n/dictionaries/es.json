@@ -480,7 +480,7 @@
       "title": "Se acabaron las copias gratis de hoy",
       "subtitle": "Crea una cuenta gratis en un paso: te enviamos un código por correo, sin contraseña.",
       "benefits": [
-        "10 copias al día en lugar de 3",
+        "3 copias más hoy al iniciar sesión",
         "Hasta 20 favoritos sincronizados en tus dispositivos",
         "Inicia sesión con un código que te enviamos por correo, nada que recordar"
       ]
@@ -492,6 +492,10 @@
     "checkout": {
       "title": "Inicia sesión para obtener Plus",
       "subtitle": "Te enviamos un código de 6 dígitos a tu correo; si eres nuevo, se crea tu cuenta. Después pasas directo al pago."
+    },
+    "welcome": {
+      "title": "Regístrate gratis y copia más",
+      "subtitle": "Regístrate o inicia sesión con un código por correo: un paso, sin contraseña."
     }
   },
   "plus": {
@@ -509,6 +513,10 @@
     "metaTitle": "Precios de MojiCap Plus",
     "metaDesc": "MojiCap Plus sincroniza tus emojis favoritos entre dispositivos y añade fuentes premium, copia en bloque y combos propios. $2.99 al mes o $19.99 al año.",
     "benefits": {
+      "copies": {
+        "title": "Copias ilimitadas",
+        "desc": "Sin límite diario para copiar emojis, símbolos y fuentes."
+      },
       "sync": {
         "title": "Sincroniza favoritos y recientes",
         "desc": "Tus emojis favoritos y usados recientemente te acompañan en todos tus dispositivos."
@@ -548,13 +556,17 @@
       "notNow": "Ahora no",
       "copies": {
         "title": "Copia sin contar",
-        "desc": "Ya usaste las 10 copias gratis de hoy. Con Plus se quita el límite y cada emoji, símbolo y fuente está a un toque."
+        "desc": "Ya usaste las copias gratis de hoy. Con Plus se quita el límite y cada emoji, símbolo y fuente está a un toque."
       },
       "ctaYearly": "Obtener Plus por {price} al año",
       "yearlyNote": "Unos {price} al mes, un {percent}% menos que pagar mes a mes",
       "noPromo": {
         "title": "Sin anuncios con Plus",
         "desc": "Sin anuncios, sin banner superior y sin promociones emergentes: solo los emojis, símbolos y fuentes que buscas."
+      },
+      "unlimited": {
+        "title": "Copias ilimitadas con Plus",
+        "desc": "Sin límite diario de copias: copia emojis, símbolos y fuentes tantas veces como quieras, y sin anuncios."
       }
     },
     "checkoutError": "No se pudo abrir el pago. Inténtalo de nuevo.",
@@ -584,7 +596,7 @@
     "wechatOnly": "Paga con WeChat Pay",
     "refundLink": "Política de reembolso",
     "comingSoon": "Disponible pronto",
-    "adFreeButton": "Sin anuncios"
+    "adFreeButton": "Copias ilimitadas"
   },
   "account": {
     "title": "Cuenta",
