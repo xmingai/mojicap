@@ -480,7 +480,7 @@
       "title": "Free copies used up for today",
       "subtitle": "Create a free account in one step — we email you a code, no password.",
       "benefits": [
-        "10 copies a day instead of 3",
+        "3 more copies today once you sign in",
         "Keep up to 20 favorites synced across your devices",
         "Sign in with an emailed code — no password to remember"
       ]
@@ -492,6 +492,10 @@
     "checkout": {
       "title": "Sign in to get Plus",
       "subtitle": "Enter your email for a 6-digit code — new here? This creates your account. Checkout opens right after."
+    },
+    "welcome": {
+      "title": "Get more free copies",
+      "subtitle": "Sign up or sign in with an emailed code: one step, no password."
     }
   },
   "plus": {
@@ -509,6 +513,10 @@
     "metaTitle": "MojiCap Plus Pricing",
     "metaDesc": "MojiCap Plus syncs your favorite emoji across devices and adds premium fancy fonts, bulk copy and custom combos. $2.99 a month or $19.99 a year.",
     "benefits": {
+      "copies": {
+        "title": "Unlimited copies",
+        "desc": "No daily limit on copying emoji, symbols and fonts."
+      },
       "sync": {
         "title": "Sync favorites and recents",
         "desc": "Your favorite and recently used emoji follow you to every device."
@@ -548,13 +556,17 @@
       "notNow": "Not now",
       "copies": {
         "title": "Copy without counting",
-        "desc": "You have used today's 10 free copies. Plus lifts the limit, so every emoji, symbol and font is one tap away."
+        "desc": "You've used today's free copies. Plus lifts the limit, so every emoji, symbol and font is one tap away."
       },
       "ctaYearly": "Get Plus for {price} a year",
       "yearlyNote": "About {price} a month, {percent}% less than paying monthly",
       "noPromo": {
         "title": "Go ad-free with Plus",
         "desc": "No ads, no top banner, no pop-up promotions — just the emoji, symbols and fonts you came for."
+      },
+      "unlimited": {
+        "title": "Unlimited copies with Plus",
+        "desc": "Plus removes the daily copy limit: copy any emoji, symbol or font as often as you like, with no ads."
       }
     },
     "checkoutError": "Couldn't open checkout. Please try again.",
@@ -584,7 +596,7 @@
     "wechatOnly": "Pay with WeChat",
     "refundLink": "Refund policy",
     "comingSoon": "Opening soon",
-    "adFreeButton": "Go ad-free"
+    "adFreeButton": "Unlimited copies"
   },
   "account": {
     "title": "Account",

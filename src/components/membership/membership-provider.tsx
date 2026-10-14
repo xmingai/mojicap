@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { authClient } from "@/lib/auth-client";
 import { MEMBERSHIP_UI_ENABLED } from "@/lib/membership/config";
@@ -12,6 +12,7 @@ import { AuthDialog, type AuthReason } from "./auth-dialog";
 import { UpsellDialog, type UpsellFeature } from "./upsell-dialog";
 import { useCloudSync } from "./use-cloud-sync";
 import { configureCopyGate } from "@/lib/copy-gate";
+import { pathWithoutLocale } from "@/lib/seo";
 
 export type Me = {
   enabled: boolean;
@@ -39,6 +40,8 @@ type MembershipContextValue = {
 
 const SIGNED_OUT: Me = { enabled: MEMBERSHIP_UI_ENABLED, user: null, market: "global", isMember: false, plan: null, google: false };
 const CACHE_KEY = "mojicap-me";
+const WELCOME_KEY = "mojicap-welcome-shown";
+const WELCOME_EVERY_MS = 24 * 60 * 60 * 1000;
 
 const MembershipContext = createContext<MembershipContextValue | null>(null);
 
@@ -95,6 +98,26 @@ export function MembershipProvider({ children }: { children: React.ReactNode }) 
   }, [refresh]);
 
   useCloudSync({ signedIn: MEMBERSHIP_UI_ENABLED && ready && Boolean(me.user), isMember: me.isMember });
+
+  // Visitors who land on the home page are invited to sign up straight away:
+  // once /api/me says they are signed out, at most once a day per browser, and
+  // never over another dialog. Closing it is all it takes to browse on.
+  const pathname = usePathname();
+  const onHome = pathWithoutLocale(pathname ?? "/") === "/";
+  useEffect(() => {
+    if (!MEMBERSHIP_UI_ENABLED || !ready || me.user || !onHome || authOpen || upsell) return;
+    try {
+      const last = Number(localStorage.getItem(WELCOME_KEY));
+      if (Number.isFinite(last) && Date.now() - last < WELCOME_EVERY_MS) return;
+      localStorage.setItem(WELCOME_KEY, String(Date.now()));
+    } catch {
+      return; // no storage, no way to keep it to once a day: don't show it at all
+    }
+    afterAuth.current = null;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setAuthReason("welcome");
+    setAuthOpen(true);
+  }, [ready, me.user, onHome, authOpen, upsell]);
 
   // Free copies run out after COPY_LIMITS a day; the next attempt opens the
   // sign-in dialog for visitors and the Plus dialog for signed-in members.

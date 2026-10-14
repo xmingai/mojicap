@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Cloud, Layers, Loader2, Type, EyeOff } from "lucide-react";
+import { Cloud, Layers, Loader2, Type, EyeOff, Infinity as InfinityIcon } from "lucide-react";
 import { useDict, useLocale } from "@/i18n/context";
 import { defaultLocale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
@@ -13,6 +13,7 @@ import { MEMBERSHIP_UI_ENABLED } from "@/lib/membership/config";
 import type { Market } from "@/lib/membership/plans";
 
 const BENEFITS = [
+  { key: "copies", Icon: InfinityIcon },
   { key: "sync", Icon: Cloud },
   { key: "fonts", Icon: Type },
   { key: "bulk", Icon: Layers },

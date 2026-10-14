@@ -84,7 +84,7 @@ export default function TermsPage() {
 
         <Section n={3} title="MojiCap Plus, prices and billing">
           <p>
-            MojiCap Plus adds cloud sync for favorites and recently used emoji, premium text styles, bulk copying with saved
+            MojiCap Plus removes the daily limit on copying, and adds cloud sync for favorites and recently used emoji, premium text styles, bulk copying with saved
             combos, and removes ads and the promotional units. Prices include tax.
           </p>
           <p className="font-medium text-foreground">Subscription (outside mainland China)</p>

@@ -6,9 +6,10 @@ import { useDict } from "@/i18n/context";
 import { useMembership } from "./membership-provider";
 
 /**
- * Header entry to Plus, beside the language switcher: the one benefit every
- * visitor notices is the promo units, so the pitch is "go ad-free" and the
- * click opens the upsell dialog with that as the headline. Members never see it.
+ * Header entry to Plus, beside the language switcher. Copying is what every
+ * visitor comes for and what the free tier limits, so the pitch is "unlimited
+ * copies" and the click opens the upsell dialog with that as the headline.
+ * Members never see it.
  */
 export function AdFreeButton() {
   const dict = useDict();
@@ -19,7 +20,7 @@ export function AdFreeButton() {
   return (
     <button
       type="button"
-      onClick={() => openUpsell("noPromo")}
+      onClick={() => openUpsell("unlimited")}
       aria-label={label}
       className="inline-flex h-8 items-center gap-1.5 rounded-full bg-amber-400/15 px-2 text-sm font-medium text-amber-700 ring-1 ring-amber-500/30 transition hover:bg-amber-400/25 hover:ring-amber-500/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:px-3 dark:text-amber-300"
     >
