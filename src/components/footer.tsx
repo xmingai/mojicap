@@ -6,7 +6,6 @@ import { Separator } from "@/components/ui/separator";
 import { useDict, useLocale } from "@/i18n/context";
 import { defaultLocale } from "@/i18n/config";
 import { TEXT_TOOLS } from "@/lib/tool-routes";
-import { trackAd } from "@/components/ads/track";
 import { SUPPORT_EMAIL } from "@/lib/legal";
 
 // First six text tools, matching the previous hand-written footer list.
@@ -79,7 +78,6 @@ export function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
           <p>{t.copyright.replace("{year}", new Date().getFullYear().toString())}</p>
-          <SponsoredBy text={t.sponsoredBy} />
           <div className="flex gap-4">
             <Link href={`${prefix}/privacy`} className="hover:text-foreground transition-colors">
               {t.privacy}
@@ -91,33 +89,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  );
-}
-
-/**
- * "❤️ Sponsored by Vormly" — a link to the sister site, marked rel="sponsored"
- * as Google asks for paid or promotional links. Plain URL (no UTM); clicks are
- * still counted via the ad_click event. `{brand}` in the dictionary string
- * marks where the anchor text goes.
- */
-function SponsoredBy({ text }: { text: string }) {
-  const [before, after] = text.split("{brand}");
-  return (
-    <p className="flex items-center gap-1">
-      <span aria-hidden="true">❤️</span>
-      <span>
-        {before}
-        <a
-          href="https://vormly.ai/"
-          target="_blank"
-          rel="sponsored noopener"
-          onClick={() => trackAd("ad_click", "footer_link")}
-          className="font-medium text-foreground hover:underline underline-offset-[3px]"
-        >
-          Vormly
-        </a>
-        {after}
-      </span>
-    </p>
   );
 }
