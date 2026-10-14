@@ -6,7 +6,7 @@
  * dictionaries under `ads.vormly`.
  */
 
-export type AdPlacement = "top_banner" | "corner_popup" | "footer_link";
+export type AdPlacement = "top_banner" | "corner_popup";
 
 export const VORMLY_AD = {
   enabled: true,
