@@ -10,6 +10,8 @@ import { Footer } from "@/components/footer";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { VormlyBanner } from "@/components/ads/vormly-banner";
 import { VormlyPopup } from "@/components/ads/vormly-popup";
+import { AdSenseScript } from "@/components/ads/adsense-script";
+import { ADSENSE_CLIENT } from "@/lib/adsense";
 import { MembershipProvider } from "@/components/membership/membership-provider";
 import { I18nProvider } from "@/i18n/context";
 import { locales, type Locale } from "@/i18n/config";
@@ -56,6 +58,9 @@ export async function generateMetadata({
       index: true,
       follow: true,
     },
+    // AdSense site ownership: server-rendered, so it verifies even though the ad
+    // script itself only loads on the client for non-members.
+    other: { "google-adsense-account": ADSENSE_CLIENT },
     // No `alternates` here on purpose: Next.js replaces that object wholesale,
     // so a layout-level canonical would be inherited by every page. Each page
     // sets its own via buildAlternates() in src/lib/seo.ts.
@@ -113,6 +118,7 @@ export default async function LocaleLayout({
               <ScrollToTop />
               <Toaster />
               <VormlyPopup />
+              <AdSenseScript />
             </TooltipProvider>
             </MembershipProvider>
           </I18nProvider>

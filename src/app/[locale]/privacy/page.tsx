@@ -120,13 +120,23 @@ export default function PrivacyPage() {
                 <td>Aggregate analytics events</td>
                 <td>Our legitimate interest in improving MojiCap</td>
               </tr>
+              <tr className={row}>
+                <td>Showing ads to visitors without Plus</td>
+                <td>Cookies and device identifiers set by Google AdSense</td>
+                <td>Your consent where the law requires it (for example in the EEA and UK); otherwise our legitimate interest in funding the free site</td>
+              </tr>
             </tbody>
           </table>
-          <p>We do not use your data for automated decision-making or profiling.</p>
+          <p>
+            We make no automated decisions about you. Personalized ads, where you allow them, are chosen by Google, not by us.
+          </p>
         </Section>
 
         <Section n={4} title="Who we share it with">
-          <p className="text-foreground">We do not sell your personal information, and we do not share it for advertising.</p>
+          <p className="text-foreground">
+            We do not sell your personal information. Your account details and lists are never given to advertisers; the only
+            advertising data is what Google AdSense collects through its own cookies, described in section 5.
+          </p>
           <p>We use these processors, each only for the purpose listed:</p>
           <table className="w-full text-sm">
             <thead>
@@ -153,7 +163,10 @@ export default function PrivacyPage() {
               </tr>
               <tr className={row}>
                 <td>Google</td>
-                <td>Google Analytics, and Google sign-in if you choose it</td>
+                <td>
+                  Google Analytics; Google AdSense, which shows ads to visitors without Plus; and Google sign-in if you choose
+                  it
+                </td>
               </tr>
               <tr className={row}>
                 <td>Cloudflare</td>
@@ -171,8 +184,8 @@ export default function PrivacyPage() {
 
         <Section n={5} title="Cookies and browser storage">
           <p>
-            MojiCap sets no advertising cookies. What we store is either required for the site to work or kept only in your own
-            browser:
+            Besides what the site needs to work and what stays in your own browser, MojiCap uses Google Analytics and, for
+            visitors without Plus, Google AdSense. Plus members are not served ads.
           </p>
           <table className="w-full text-sm">
             <thead>
@@ -203,8 +216,34 @@ export default function PrivacyPage() {
                 <td>Aggregate usage statistics</td>
                 <td>Per Google&rsquo;s retention settings</td>
               </tr>
+              <tr className={row}>
+                <td>Advertising cookies (Google AdSense)</td>
+                <td>Serving ads, measuring them, and, where you allow it, personalizing them</td>
+                <td>Per Google&rsquo;s retention settings</td>
+              </tr>
             </tbody>
           </table>
+          <p>
+            Google and its partners use cookies to serve ads based on your visits to this and other websites. You can turn
+            off personalized ads in{" "}
+            <a className="underline" href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">
+              Google&rsquo;s Ad Settings
+            </a>
+            , or opt out of other vendors&rsquo; personalized ads at{" "}
+            <a className="underline" href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer">
+              aboutads.info
+            </a>
+            . See{" "}
+            <a
+              className="underline"
+              href="https://policies.google.com/technologies/partner-sites"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              how Google uses data from sites that use its services
+            </a>
+            . In the EEA, the UK and Switzerland we ask for your consent before ads are personalized.
+          </p>
         </Section>
 
         <Section n={6} title="Security">
