@@ -19,7 +19,7 @@ import { getBaseEmojis, getCategories } from "@/lib/emoji";
 import { absoluteUrl, SITE_URL } from "@/lib/seo";
 import { TEXT_TOOLS } from "@/lib/tool-routes";
 
-// Everything indexable besides emoji detail pages. /account is private and never listed.
+// Everything indexable besides emoji detail pages.
 const PAGE_PATHS = [
   "/",
   "/emoji",
@@ -35,7 +35,6 @@ const PAGE_PATHS = [
   "/about",
   "/privacy",
   "/terms",
-  "/pricing",
 ];
 
 export const SITEMAP_FILES = ["pages.xml", ...emojiContentLocales.map((l) => `emoji-${l}.xml`)];

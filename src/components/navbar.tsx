@@ -12,8 +12,6 @@ import { useDict, useLocale } from "@/i18n/context";
 import { locales, localeNames, localeFlags, defaultLocale, type Locale } from "@/i18n/config";
 import { pathWithoutLocale } from "@/lib/seo";
 import { writeCookie } from "@/lib/cookies";
-import { AccountButton } from "@/components/membership/account-button";
-import { AdFreeButton } from "@/components/membership/ad-free-button";
 import { useState, useRef, useEffect } from "react";
 
 export function Navbar() {
@@ -135,7 +133,6 @@ export function Navbar() {
 
         {/* Actions */}
         <div className="flex items-center gap-2">
-          <AdFreeButton />
           {/* Language Switcher */}
           <div className="relative" ref={langRef}>
             {/* Shows which language is active, so visitors don't have to open the menu to find out. */}
@@ -173,8 +170,6 @@ export function Navbar() {
               </div>
             )}
           </div>
-
-          <AccountButton />
 
           {/* Theme Toggle */}
           <Button

@@ -16,8 +16,6 @@ import {
   type AdVariant,
 } from "@/lib/ads";
 import { trackAd } from "./track";
-import { useMembership } from "@/components/membership/membership-provider";
-import { MEMBERSHIP_UI_ENABLED } from "@/lib/membership/config";
 import { OfferCountdown } from "./offer-countdown";
 
 const PLACEMENT = "corner_popup" as const;
@@ -33,16 +31,11 @@ const MODELS = ["Seedance", "Veo", "Kling", "Grok Video", "Midjourney", "Suno"];
 export function VormlyPopup() {
   const dict = useDict();
   const pathname = usePathname();
-  // "No promotions" is a Plus benefit.
-  // Wait for the account check so a member is never shown (or counted as seeing) a promotion.
-  const { me, ready: membershipReady, overlayOpen } = useMembership();
-  const pending = MEMBERSHIP_UI_ENABLED && !membershipReady;
-  const excluded = isExcludedRoute(pathWithoutLocale(pathname)) || me.isMember;
+  const excluded = isExcludedRoute(pathWithoutLocale(pathname));
   const [open, setOpen] = useState<{ variant: AdVariant } | null>(null);
 
   useEffect(() => {
-    // Don't start (or count) the popup while a sign-in or Plus dialog has the visitor's attention.
-    if (!VORMLY_AD.enabled || excluded || pending || overlayOpen) return;
+    if (!VORMLY_AD.enabled || excluded) return;
     if (isDismissed(VORMLY_AD.storageKeys.popup)) return;
     try {
       if (sessionStorage.getItem(VORMLY_AD.storageKeys.popupSession)) return;
@@ -57,21 +50,19 @@ export function VormlyPopup() {
       trackAd("ad_impression", PLACEMENT, variant);
     }, VORMLY_AD.popupDelayMs);
     return () => clearTimeout(timer);
-  }, [excluded, pending, overlayOpen]);
+  }, [excluded]);
 
   useEffect(() => {
-    // While hidden under a dialog, Escape belongs to that dialog — it must not
-    // also dismiss this card for a day.
-    if (!open || overlayOpen) return;
+    if (!open) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") dismiss();
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open, overlayOpen]);
+  }, [open]);
 
-  if (!open || excluded || overlayOpen) return null;
+  if (!open || excluded) return null;
 
   const t = dict.ads.vormly;
   const copy = t[open.variant];

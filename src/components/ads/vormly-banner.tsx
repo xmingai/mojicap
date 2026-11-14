@@ -15,8 +15,6 @@ import {
   type AdVariant,
 } from "@/lib/ads";
 import { trackAd } from "./track";
-import { useMembership } from "@/components/membership/membership-provider";
-import { MEMBERSHIP_UI_ENABLED } from "@/lib/membership/config";
 import { OfferCountdown } from "./offer-countdown";
 
 const PLACEMENT = "top_banner" as const;
@@ -31,22 +29,18 @@ const PLACEMENT = "top_banner" as const;
 export function VormlyBanner() {
   const dict = useDict();
   const pathname = usePathname();
-  // "No promotions" is a Plus benefit.
-  // Wait for the account check so a member is never shown (or counted as seeing) a promotion.
-  const { me, ready: membershipReady } = useMembership();
-  const pending = MEMBERSHIP_UI_ENABLED && !membershipReady;
-  const excluded = isExcludedRoute(pathWithoutLocale(pathname)) || me.isMember;
+  const excluded = isExcludedRoute(pathWithoutLocale(pathname));
   const [ready, setReady] = useState<{ visible: boolean; variant: AdVariant } | null>(null);
 
   useEffect(() => {
-    if (!VORMLY_AD.enabled || excluded || pending) return;
+    if (!VORMLY_AD.enabled || excluded) return;
     const variant = getAssignedVariant();
     const visible = !isDismissed(VORMLY_AD.storageKeys.banner);
     // One-time read of localStorage after mount (unavailable during SSR).
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setReady({ visible, variant });
     if (visible) trackAd("ad_impression", PLACEMENT, variant);
-  }, [excluded, pending]);
+  }, [excluded]);
 
   if (!VORMLY_AD.enabled || excluded) return null;
   if (ready && !ready.visible) return null;

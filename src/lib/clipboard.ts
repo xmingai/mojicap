@@ -1,7 +1,6 @@
 "use client";
 
 import { toast } from "sonner";
-import { consumeCopy } from "./copy-gate";
 
 /**
  * Track copy events in Google Analytics.
@@ -20,9 +19,6 @@ function trackCopyEvent(text: string, label?: string) {
 }
 
 export async function copyToClipboard(text: string, label?: string) {
-  // Over the free quota the sign-in or Plus dialog opens instead of copying.
-  if (!consumeCopy(() => copyToClipboard(text, label))) return false;
-
   try {
     await navigator.clipboard.writeText(text);
     toast.success(`Copied ${label || text}`, {

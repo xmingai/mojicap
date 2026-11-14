@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo, useCallback, useEffect, useRef } from "react";
-import { Cloud, CloudCheck, Loader2, SquareCheckBig } from "lucide-react";
+import { Loader2, SquareCheckBig } from "lucide-react";
 import type { Emoji, EmojiLite, Category, EmojiVersion } from "@/lib/emoji";
 import { copyToClipboard } from "@/lib/clipboard";
 import { searchEmojis } from "@/lib/search";
@@ -10,11 +10,7 @@ import { SearchParamsInit } from "@/components/search-params-init";
 import { CategoryTabs } from "@/components/category-tabs";
 import { useRecent } from "@/hooks/use-recent";
 import { useFavorites } from "@/hooks/use-favorites";
-import { MEMBERSHIP_UI_ENABLED } from "@/lib/membership/config";
-import { useMembership } from "@/components/membership/membership-provider";
-import { PlusBadge } from "@/components/membership/plus-badge";
-import { LIMITS } from "@/lib/membership/sync";
-import { SelectionBar } from "@/components/membership/selection-bar";
+import { SelectionBar } from "@/components/selection-bar";
 import { EmojiHoverCard } from "@/components/emoji-hover-card";
 import { SizeSlider, COMMON_SIZE_PRESETS } from "@/components/size-slider";
 import { cn } from "@/lib/utils";
@@ -40,7 +36,6 @@ export function EmojiGrid({ emojis, categories, versions, category = null, headi
   const [viewMode, setViewMode] = useState<ViewMode>("category");
   const { recent, addRecent } = useRecent();
   const { favorites } = useFavorites();
-  const { me, openUpsell } = useMembership();
   const [selectMode, setSelectMode] = useState(false);
   const [selected, setSelected] = useState<string[]>([]);
   const [sizeIndex, setSizeIndex] = useState(2);
@@ -104,42 +99,9 @@ export function EmojiGrid({ emojis, categories, versions, category = null, headi
   );
 
   const toggleSelectMode = () => {
-    if (!me.isMember) {
-      openUpsell("bulk");
-      return;
-    }
     setSelectMode((on) => !on);
     setSelected([]);
   };
-
-  // Plus syncs favorites and recents; say so once, on the first list shown.
-  // Three states: Plus syncs everything, a free account syncs a small shelf of
-  // favorites, and a visitor is invited to sign in for that much.
-  const syncHint = !MEMBERSHIP_UI_ENABLED ? null : me.isMember ? (
-    <span className="inline-flex items-center gap-1 normal-case tracking-normal" title={dict.favorites.synced}>
-      <CloudCheck className="h-3.5 w-3.5" aria-label={dict.favorites.synced} />
-    </span>
-  ) : (
-    <button
-      type="button"
-      onClick={() => openUpsell("sync")}
-      className="inline-flex items-center gap-1.5 normal-case tracking-normal text-muted-foreground transition hover:text-foreground"
-    >
-      {me.user ? (
-        <>
-          <CloudCheck className="h-3.5 w-3.5" />
-          {dict.favorites.syncedFree.replace("{count}", String(LIMITS.freeFavorites))}
-          <PlusBadge label={dict.plus.badge} />
-        </>
-      ) : (
-        <>
-          <Cloud className="h-3.5 w-3.5" />
-          {dict.favorites.syncUpsell}
-          <PlusBadge label={dict.plus.badge} />
-        </>
-      )}
-    </button>
-  );
 
   const listButton = (emoji: string, i: number) => (
     <button
@@ -156,7 +118,7 @@ export function EmojiGrid({ emojis, categories, versions, category = null, headi
     </button>
   );
   const showLists = !searchQuery && viewMode === "category" && !activeCategory;
-  const showFavorites = MEMBERSHIP_UI_ENABLED && showLists && favorites.length > 0;
+  const showFavorites = showLists && favorites.length > 0;
 
   // Deep link: /emoji/?q=heart (site-search JSON-LD). The old ?category= links
   // are redirected to the category pages by the proxy.
@@ -223,21 +185,18 @@ export function EmojiGrid({ emojis, categories, versions, category = null, headi
           <span className="text-xs text-muted-foreground ml-2">
             {filteredEmojis.length.toLocaleString()} {t.shown}
           </span>
-          {MEMBERSHIP_UI_ENABLED && (
-            <button
-              type="button"
-              aria-pressed={selectMode}
-              onClick={toggleSelectMode}
-              className={cn(
-                "ml-auto inline-flex h-8 items-center gap-1.5 rounded-lg px-3 text-sm font-medium transition",
-                selectMode ? "bg-foreground text-background" : "text-muted-foreground hover:bg-muted hover:text-foreground",
-              )}
-            >
-              <SquareCheckBig className="h-4 w-4" />
-              {selectMode ? dict.selection.done : dict.selection.select}
-              {!me.isMember && <PlusBadge label={dict.plus.badge} />}
-            </button>
-          )}
+          <button
+            type="button"
+            aria-pressed={selectMode}
+            onClick={toggleSelectMode}
+            className={cn(
+              "ml-auto inline-flex h-8 items-center gap-1.5 rounded-lg px-3 text-sm font-medium transition",
+              selectMode ? "bg-foreground text-background" : "text-muted-foreground hover:bg-muted hover:text-foreground",
+            )}
+          >
+            <SquareCheckBig className="h-4 w-4" />
+            {selectMode ? dict.selection.done : dict.selection.select}
+          </button>
         </div>
       )}
 
@@ -301,10 +260,7 @@ export function EmojiGrid({ emojis, categories, versions, category = null, headi
       {/* Favorites */}
       {showFavorites && (
         <div className="space-y-2">
-          <h3 className="flex items-center gap-3 text-xs font-medium text-muted-foreground uppercase tracking-wider">
-            {dict.favorites.title}
-            {syncHint}
-          </h3>
+          <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">{dict.favorites.title}</h3>
           <div className="flex flex-wrap gap-1">{favorites.slice(0, 40).map(listButton)}</div>
         </div>
       )}
@@ -312,10 +268,7 @@ export function EmojiGrid({ emojis, categories, versions, category = null, headi
       {/* Recent */}
       {showLists && recent.length > 0 && (
         <div className="space-y-2">
-          <h3 className="flex items-center gap-3 text-xs font-medium text-muted-foreground uppercase tracking-wider">
-            {t.recentlyUsed}
-            {!showFavorites && syncHint}
-          </h3>
+          <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">{t.recentlyUsed}</h3>
           <div className="flex flex-wrap gap-1">{recent.slice(0, 20).map(listButton)}</div>
         </div>
       )}

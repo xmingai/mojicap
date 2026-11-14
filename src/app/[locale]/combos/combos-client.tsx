@@ -8,7 +8,6 @@ import { SearchBar } from "@/components/search-bar";
 import { SizeSlider, FANCY_TEXT_SIZE_PRESETS } from "@/components/size-slider";
 import { CategoryFilterBar } from "@/components/category-filter-bar";
 import { Copy } from "lucide-react";
-import { MyCombos } from "@/components/membership/my-combos";
 
 type Combo = { name: string; emoji: string; keywords?: string[] };
 type ComboCategory = { id: string; name: string; icon: string; combos: Combo[] };
@@ -79,7 +78,6 @@ export function CombosClient() {
         }}
       />
 
-      {!searchQuery && !activeCategory && <MyCombos fontSize={currentSize.value} />}
 
       {/* Combos */}
       {filteredCategories.map((cat) => (
