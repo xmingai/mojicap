@@ -12,7 +12,6 @@ import { VormlyBanner } from "@/components/ads/vormly-banner";
 import { VormlyPopup } from "@/components/ads/vormly-popup";
 import { AdSenseScript } from "@/components/ads/adsense-script";
 import { ADSENSE_CLIENT } from "@/lib/adsense";
-import { MembershipProvider } from "@/components/membership/membership-provider";
 import { I18nProvider } from "@/i18n/context";
 import { locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -106,7 +105,6 @@ export default async function LocaleLayout({
       <body className="min-h-full flex flex-col font-sans antialiased">
         <ThemeProvider>
           <I18nProvider locale={locale as Locale} dict={dict}>
-            <MembershipProvider>
             <TooltipProvider>
               <SiteHeader>
                 <VormlyBanner />
@@ -120,7 +118,6 @@ export default async function LocaleLayout({
               <VormlyPopup />
               <AdSenseScript />
             </TooltipProvider>
-            </MembershipProvider>
           </I18nProvider>
         </ThemeProvider>
         {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />}

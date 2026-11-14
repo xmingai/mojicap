@@ -19,6 +19,16 @@ export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const defaultPrefix = `/${defaultLocale}`;
 
+  // MojiCap Plus and accounts were retired: their pages go to the home page.
+  const retired = pathname.match(/^(?:\/([a-z]{2}))?\/(?:pricing|account)\/?$/);
+  if (retired) {
+    const locale = retired[1] && retired[1] !== defaultLocale ? `/${retired[1]}/` : "/";
+    const url = request.nextUrl.clone();
+    url.pathname = locale;
+    url.search = "";
+    return NextResponse.redirect(url, 308);
+  }
+
   // Categories used to be a filter on the list (/emoji/?category=food-drink);
   // they are pages now (/emoji/food-drink/), so old links go there for good.
   const category = request.nextUrl.searchParams.get("category");

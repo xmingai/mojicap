@@ -3,7 +3,7 @@
 import { useCallback, useSyncExternalStore } from "react";
 import { favoriteList } from "@/lib/local-list";
 
-/** Favorites work for everyone on this device; MojiCap Plus syncs them across devices. */
+/** Favorites are kept in this browser only. */
 export function useFavorites() {
   const favorites = useSyncExternalStore(favoriteList.subscribe, favoriteList.get, favoriteList.getServerSnapshot);
   const isFavorite = useCallback((emoji: string) => favorites.includes(emoji), [favorites]);

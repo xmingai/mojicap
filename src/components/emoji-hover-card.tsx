@@ -6,7 +6,6 @@ import { ArrowRight, Check, Copy, Heart, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { useFavorites } from "@/hooks/use-favorites";
-import { MEMBERSHIP_UI_ENABLED } from "@/lib/membership/config";
 import type { EmojiLite } from "@/lib/emoji";
 import { useDict, useLocale } from "@/i18n/context";
 import { defaultLocale } from "@/i18n/config";
@@ -70,21 +69,19 @@ export function EmojiHoverCard({ emoji, onCopy, sizeValue, selectMode = false, s
             </p>
           </div>
           <div className="flex flex-shrink-0 items-start gap-1">
-            {MEMBERSHIP_UI_ENABLED && (
-              <button
-                type="button"
-                aria-pressed={favorite}
-                aria-label={favorite ? dict.favorites.remove : dict.favorites.add}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  const added = toggleFavorite(emoji.emoji);
-                  toast.success(added ? dict.favorites.added : dict.favorites.removed, { duration: 1200 });
-                }}
-                className="grid h-7 w-7 place-items-center rounded-md text-muted-foreground transition hover:bg-muted hover:text-foreground"
-              >
-                <Heart className={cn("h-4 w-4", favorite && "fill-current text-foreground")} />
-              </button>
-            )}
+            <button
+              type="button"
+              aria-pressed={favorite}
+              aria-label={favorite ? dict.favorites.remove : dict.favorites.add}
+              onClick={(e) => {
+                e.stopPropagation();
+                const added = toggleFavorite(emoji.emoji);
+                toast.success(added ? dict.favorites.added : dict.favorites.removed, { duration: 1200 });
+              }}
+              className="grid h-7 w-7 place-items-center rounded-md text-muted-foreground transition hover:bg-muted hover:text-foreground"
+            >
+              <Heart className={cn("h-4 w-4", favorite && "fill-current text-foreground")} />
+            </button>
             <div className="text-4xl leading-none">{emoji.emoji}</div>
           </div>
         </div>

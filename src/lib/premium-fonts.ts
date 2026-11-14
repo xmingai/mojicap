@@ -1,5 +1,5 @@
-// Plus-only text styles, shown after the free styles on the Fancy Text page.
-// Kept separate from font-transform so the free set (and its SEO pages) never changes.
+// Extra text styles, shown after the standard set on the all-styles Fancy Text page.
+// Kept separate from font-transform so the standard set (and its SEO pages) never changes.
 
 type PremiumStyle = {
   name: string;

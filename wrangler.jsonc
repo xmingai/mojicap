@@ -1,14 +1,13 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "mojicap",
-  // Our own entry: OpenNext's generated worker, the canonical-host redirect,
-  // and a scheduled() handler for the daily report. See cloudflare/worker.ts.
+  // Our own entry: OpenNext's generated worker plus the canonical-host
+  // redirect. See cloudflare/worker.ts.
   "main": "cloudflare/worker.ts",
   "compatibility_date": "2026-09-01",
   // Smaller script, less isolate memory: V8 keeps the source text on the heap.
   "minify": true,
-  // nodejs_compat: better-auth, the Waffo SDK's RSA signing (node:crypto) and
-  // Next's proxy.ts, which Next 16 only runs on the Node.js runtime.
+  // nodejs_compat: Next's proxy.ts, which Next 16 only runs on the Node.js runtime.
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   // Both hostnames are proxied records in the mojicap.com zone, so routes take
   // their traffic without touching DNS - and removing a route hands it
@@ -38,16 +37,10 @@
       "bucket_name": "mojicap-next-cache"
     }
   ],
-  // 01:00 UTC = 09:00 Beijing, the same slot the Vercel cron used.
+  // No scheduled jobs. An empty list (rather than no key) removes the daily
+  // report cron that earlier deploys registered.
   "triggers": {
-    "crons": ["0 1 * * *"]
-  },
-  // Configuration that is not secret. Secrets are set with `wrangler secret put`
-  // and never live in this file or in any .env that reaches a build.
-  "vars": {
-    "BETTER_AUTH_URL": "https://www.mojicap.com",
-    "EMAIL_FROM": "MojiCap <noreply@mojicap.com>",
-    "WAFFO_ENV": "production"
+    "crons": []
   },
   "observability": {
     "enabled": true
